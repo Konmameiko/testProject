@@ -1,0 +1,102 @@
+import React, { Component } from 'react';
+import styles from './index.less'
+
+
+export default class SlidingPhoto extends Component {
+
+    photolist: any;
+    //butlist: any;
+    componentDidMount() {
+        for (let i = 1; i < 5; i++) {
+            this.photolist.children[i].style.left = (750 - 280) + (i - 1) * 70 + 'px';
+        }
+    }
+    onmouseover = (value:any) =>{
+        return()=>{
+            for (let i = 0; i < 5; i++) {
+                if (i <= value) {
+                    this.statrMove(this.photolist.children[i], { left: i * 70},"");
+                }
+                else {
+                    this.statrMove(this.photolist.children[i], { left: (750 - 280) + (i - 1) * 70 },"");
+                }
+            }
+        }
+    };
+    getStyle = (obj:any,attr:any) =>{
+        if(obj.currentStyle){
+			return obj.currentStyle[attr];
+		}
+		else{
+			return getComputedStyle(obj,"false")[attr];
+		}
+    }
+    statrMove = (obj:any, json:any, endFn:any) => {
+        clearInterval(obj.timer);
+        obj.timer = setInterval( () => {
+            var bBtn = true;
+            for (var attr in json) {
+                var iCur = 0;
+                if (attr == 'opacity') {
+                    if (Math.round(parseFloat(this.getStyle(obj, attr)) * 100) == 0) {
+                        iCur = Math.round(parseFloat(this.getStyle(obj, attr)) * 100);
+                    }
+                    else {
+                        iCur = Math.round(parseFloat(this.getStyle(obj, attr)) * 100) || 100;
+                    }
+                }
+                else {
+                    iCur = parseInt(this.getStyle(obj, attr)) || 0;
+                }
+                var iSpeed = (json[attr] - iCur) / 8;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                if (iCur != json[attr]) {
+                    bBtn = false;
+                }
+                if (attr == 'opacity') {
+                    obj.style.filter = 'alpha(opacity=' + (iCur + iSpeed) + ')';
+                    obj.style.opacity = (iCur + iSpeed) / 100;
+                }
+                else {
+                    obj.style[attr] = iCur + iSpeed + 'px';
+                }
+            }
+            if (bBtn) {
+                clearInterval(obj.timer);
+                if (endFn) {
+                    endFn.call(obj);
+                }
+            }
+        }, 30);
+    }
+    // onChangePhoto = (value:any) =>{
+    //     return(e:any)=>{
+    //         this.photolist.children.forEach((element:any) => {
+    //             if(element.className == styles.photo){
+    //                 element.className = "";
+    //             }
+    //         });
+    //         this.butlist.children.forEach((element:any)  => {
+    //             if(element.className == styles.active){
+    //                 element.className = "";
+    //             }
+    //         });
+    //         e.target.className = styles.active;
+    //         this.photolist.children[value-1].className = styles.photo;
+    //     }
+    // }
+    render() {
+        return (
+            <div className={styles.box}>
+                <ul ref={(e) => this.photolist = e}>
+                    <li className={styles.photo} onMouseOver={this.onmouseover(0)}><img src={require('@/assets/3.jpg')} alt="" /></li>
+                    <li onMouseOver={this.onmouseover(1)}><img src={require('@/assets/1.jpg')} alt="" /></li>
+                    <li onMouseOver={this.onmouseover(2)}><img src={require('@/assets/2.jpg')} alt="" /></li>
+                    <li onMouseOver={this.onmouseover(3)}><img src={require('@/assets/8.jpg')} alt="" /></li>
+                    <li onMouseOver={this.onmouseover(4)}><img src={require('@/assets/11.jpg')} alt="" /></li>
+                </ul>
+            </div>
+        );
+    }
+}
+
