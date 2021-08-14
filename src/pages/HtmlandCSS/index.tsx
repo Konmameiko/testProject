@@ -6,6 +6,7 @@ import Rotate from './PhotoRotate';
 import Sliding from './SlidingPhoto';
 import Erasure from './PhotoErasure';
 import ThreeD from './PhotoThreeD'
+import TimerShaft from './TimeShaftMake'
 
 const { Header, Content} = Layout;
 
@@ -15,7 +16,7 @@ export default class index extends Component {
         {name:"轮播图与滚动图片", router:"/Test/Html_CSSLearn/slidingPhoto"},
         {name:"图片擦除", router:"/Test/Html_CSSLearn/photoErasure"},
         {name:"图片3D 轮播", router:"/Test/Html_CSSLearn/photo3D"},
-        {name:"时间轴制作", router:"/Test/Html_CSSLearn/photoErasure"},
+        {name:"时间轴制作", router:"/Test/Html_CSSLearn/TimeShaftMake"},
         {name:"简易搜索框", router:"/Test/Html_CSSLearn/photoErasure"},
         {name:"简易登陆界面", router:"/Test/Html_CSSLearn/photoErasure"},
         {name:"简单的视差滚动效果", router:"/Test/Html_CSSLearn/photoErasure"},
@@ -39,6 +40,7 @@ export default class index extends Component {
                     <Route path='/Test/Html_CSSLearn/slidingPhoto' component={Sliding}></Route>
 					<Route path='/Test/Html_CSSLearn/photoErasure' component={Erasure}></Route>
 					<Route path='/Test/Html_CSSLearn/photo3D' component={ThreeD}></Route>
+                    <Route path='/Test/Html_CSSLearn/TimeShaftMake' component={TimerShaft}></Route>
                 </div>
                 </Content>
             </Layout>
