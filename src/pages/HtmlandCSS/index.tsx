@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu} from 'antd';
 import styles from './index.less'
 import { NavLink, Route } from 'umi';
 import Rotate from './PhotoRotate';
 import Sliding from './SlidingPhoto';
 import Erasure from './PhotoErasure';
+import ThreeD from './PhotoThreeD'
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content} = Layout;
 
 export default class index extends Component {
     array = [
         {name:"图片立方体旋转", router:"/Test/Html_CSSLearn/photoRotate"},
         {name:"轮播图与滚动图片", router:"/Test/Html_CSSLearn/slidingPhoto"},
         {name:"图片擦除", router:"/Test/Html_CSSLearn/photoErasure"},
-        {name:"图片3D 轮播", router:"/Test/Html_CSSLearn/photoErasure"},
+        {name:"图片3D 轮播", router:"/Test/Html_CSSLearn/photo3D"},
         {name:"时间轴制作", router:"/Test/Html_CSSLearn/photoErasure"},
         {name:"简易搜索框", router:"/Test/Html_CSSLearn/photoErasure"},
         {name:"简易登陆界面", router:"/Test/Html_CSSLearn/photoErasure"},
@@ -32,16 +33,12 @@ export default class index extends Component {
                 </Menu>
                 </Header>
                 <Content style={{ padding: '0 50px' }}>
-                {/* <Breadcrumb style={{ margin: '16px 0' }}>
-                    <Breadcrumb.Item>Home</Breadcrumb.Item>
-                    <Breadcrumb.Item>List</Breadcrumb.Item>
-                    <Breadcrumb.Item>App</Breadcrumb.Item>
-                </Breadcrumb> */}
                 <div className={styles.site_layout_content}>
                     {/* *注册路由*/}
                     <Route path='/Test/Html_CSSLearn/photoRotate' component={Rotate}></Route>
                     <Route path='/Test/Html_CSSLearn/slidingPhoto' component={Sliding}></Route>
 					<Route path='/Test/Html_CSSLearn/photoErasure' component={Erasure}></Route>
+					<Route path='/Test/Html_CSSLearn/photo3D' component={ThreeD}></Route>
                 </div>
                 </Content>
             </Layout>

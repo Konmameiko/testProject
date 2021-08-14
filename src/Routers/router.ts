@@ -10,6 +10,7 @@ export default [
         routes:[
             {path:'/Test/SPAandRouter/about', component:'@/pages/SPAandRouter/About/index',title:"单页面及路由-about"},
             {path:'/Test/SPAandRouter/home', component:'@/pages/SPAandRouter/Home/index', title:"单页面及路由-home",
+            
             routes:[
                 {path:'/Test/SPAandRouter/home/news', component:'@/pages/SPAandRouter/Home/Message/index', title:"单页面及路由-home-message"},
                 {path:'/Test/SPAandRouter/home/message', component:'@/pages/SPAandRouter/Home/News/index', title:"单页面及路由-home-news"},
@@ -21,8 +22,9 @@ export default [
     { path: '/Test/Html_CSSLearn', component: '@/pages/HtmlandCSS/index', title:"HTML+CSS学习",
         routes:[
             { path: '/Test/Html_CSSLearn/photoRotate', component: '@/pages/HtmlandCSS/PhotoRotate/index', title:"集合-图片旋转"},
-            { path: '/Test/Html_CSSLearn/slidingPhoto', component: '@/pages/HtmlandCSS/SlidingPhoto/index', title:"集合-图片轮播与推拉"},
+            { path: '/Test/Html_CSSLearn/slidingPhoto', component: '@/pages/HtmlandCSS/SlidingPhoto/index', title:"集合-图片推拉"},
             { path: '/Test/Html_CSSLearn/photoErasure', component: '@/pages/HtmlandCSS/PhotoErasure/index', title:"集合-图片擦除"},
+            { path: '/Test/Html_CSSLearn/photo3D', component: '@/pages/HtmlandCSS/PhotoThreeD/index', title:"集合-图片3D轮播"},
         ]
     },
 ];
