@@ -1,50 +1,68 @@
-import React, { Component } from 'react'
-import { Layout, Menu} from 'antd';
-import styles from './index.less'
-import { NavLink, Route } from 'umi';
+import React,{ Component } from 'react'
+import { Layout,Tabs} from 'antd';
 import Rotate from './PhotoRotate';
 import Sliding from './SlidingPhoto';
 import Erasure from './PhotoErasure';
 import ThreeD from './PhotoThreeD'
 import TimerShaft from './TimeShaftMake'
+import SimpleSearch from './simpleSearch'
+import SimpleLogin from './simpleLogin'
+import styles from './index.less'
+
 
 const { Header, Content} = Layout;
+const { TabPane } = Tabs;
+const array = [
+    {name:"图片立方体旋转",index:"1",components:<Rotate />},
+    {name:"轮播图与滚动图片",index:"2",components:<Sliding />},
+    {name:"图片擦除",index:"3",components:<Erasure />},
+    {name:"图片3D 轮播",index:"4",components:<ThreeD />},
+    {name:"时间轴制作",index:"5",components:<TimerShaft />},
+    {name:"简易搜索框",index:"6",components:<SimpleSearch />},
+    {name:"简易登陆界面",index:"7",components:<SimpleLogin />},
+    {name:"视觉差名片",index:"8",components:<Rotate />},
+    {name:"3D变形分裂卡片",index:"9",components:<Rotate />},
+    {name:"鼠标悬停灯泡字",index:"10",components:<Rotate />},
+    {name:"灰度悬停效果",index:"11",components:<Rotate />},
+    {name:"简单的视差滚动效果",index:"12",components:<Rotate />},
+    {name:"简单的视差滚动效果",index:"13",components:<Rotate />},
+];
+class index extends Component {
 
-export default class index extends Component {
-    array = [
-        {name:"图片立方体旋转", router:"/Test/Html_CSSLearn/photoRotate"},
-        {name:"轮播图与滚动图片", router:"/Test/Html_CSSLearn/slidingPhoto"},
-        {name:"图片擦除", router:"/Test/Html_CSSLearn/photoErasure"},
-        {name:"图片3D 轮播", router:"/Test/Html_CSSLearn/photo3D"},
-        {name:"时间轴制作", router:"/Test/Html_CSSLearn/TimeShaftMake"},
-        {name:"简易搜索框", router:"/Test/Html_CSSLearn/photoErasure"},
-        {name:"简易登陆界面", router:"/Test/Html_CSSLearn/photoErasure"},
-        {name:"简单的视差滚动效果", router:"/Test/Html_CSSLearn/photoErasure"},
-    ];
+    state = {
+        key : 1
+    }
+
+    switchDemo = (value:any) =>{
+        const MyComponent = array[value-1].components;
+        return MyComponent;
+    }
+
+    setTabKey = (key:any) =>{
+        this.setState({key:Number(key)+1})
+    }
+
     render() {
+        const {key} = this.state;
         return (
             <Layout className={styles.layout}>
                 <Header>
                 <div className={styles.logo} />
-                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-                    {this.array.map((obj, index) => {
-                        const key = index + 1;
-                        return <Menu.Item key={key}><NavLink to={obj.router}>{obj.name}</NavLink></Menu.Item>;
-                    })}
-                </Menu>
+                    <Tabs className={styles.tabs} defaultActiveKey="0" onChange={this.setTabKey}>
+                        {array.map((obj, index) => {
+                            return <TabPane tab={obj.name} key={index}></TabPane>
+                        })}
+                    </Tabs>
                 </Header>
                 <Content style={{ padding: '0 50px' }}>
                 <div className={styles.site_layout_content}>
-                    {/* *注册路由*/}
-                    <Route path='/Test/Html_CSSLearn/photoRotate' component={Rotate}></Route>
-                    <Route path='/Test/Html_CSSLearn/slidingPhoto' component={Sliding}></Route>
-					<Route path='/Test/Html_CSSLearn/photoErasure' component={Erasure}></Route>
-					<Route path='/Test/Html_CSSLearn/photo3D' component={ThreeD}></Route>
-                    <Route path='/Test/Html_CSSLearn/TimeShaftMake' component={TimerShaft}></Route>
+                    {
+                        this.switchDemo(key)
+                    }
                 </div>
                 </Content>
             </Layout>
-//   mountNode,
         )
     }
 }
+export default index;
