@@ -89,11 +89,11 @@ export default class SlidingPhoto extends Component {
         return (
             <div className={styles.box}>
                 <ul ref={(e) => this.photolist = e}>
-                    <li className={styles.photo} onMouseOver={this.onmouseover(0)}><img src={require('@/assets/3.jpg')} alt="" /></li>
-                    <li onMouseOver={this.onmouseover(1)}><img src={require('@/assets/1.jpg')} alt="" /></li>
-                    <li onMouseOver={this.onmouseover(2)}><img src={require('@/assets/2.jpg')} alt="" /></li>
-                    <li onMouseOver={this.onmouseover(3)}><img src={require('@/assets/8.jpg')} alt="" /></li>
-                    <li onMouseOver={this.onmouseover(4)}><img src={require('@/assets/11.jpg')} alt="" /></li>
+                    <li className={styles.photo} onMouseOver={this.onmouseover(0)}><img src={require('@/assets/images/3.jpg')} alt="" /></li>
+                    <li onMouseOver={this.onmouseover(1)}><img src={require('@/assets/images/1.jpg')} alt="" /></li>
+                    <li onMouseOver={this.onmouseover(2)}><img src={require('@/assets/images/2.jpg')} alt="" /></li>
+                    <li onMouseOver={this.onmouseover(3)}><img src={require('@/assets/images/8.jpg')} alt="" /></li>
+                    <li onMouseOver={this.onmouseover(4)}><img src={require('@/assets/images/11.jpg')} alt="" /></li>
                 </ul>
             </div>
         );

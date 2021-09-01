@@ -28,4 +28,14 @@ export default defineConfig({
   favicon:'/ico/icon.ico',
   routes: routes,
   fastRefresh: {},
+  chainWebpack(config:any) {
+  config.module
+    .rule("media")
+    .test(/\.(mp(3|4)|wav|m4a)$/)
+    .use("file-loader")
+    .loader(require.resolve("file-loader"))
+    .options({
+      esModule:false,
+    })
+  },
 });

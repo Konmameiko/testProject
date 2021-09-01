@@ -18,7 +18,7 @@ class PhotoErasure extends Component {
             <div className={styles.body}>
                 <Scratch
                     //填充图片
-                    img={require('@/assets/8.jpg')}
+                    img={require('@/assets/images/8.jpg')}
                     //内部图片与上下左右的间距值
                     round={[0,0,0,0]}
                     //画笔直径
@@ -39,7 +39,7 @@ class PhotoErasure extends Component {
                         无值或者其他值会被拉伸铺满容器
                     */
                 >
-                    <img className={styles.img2} src={require('@/assets/2.jpg')} alt=""/>
+                    <img className={styles.img2} src={require('@/assets/images/2.jpg')} alt=""/>
                 </Scratch>
             </div>
         );

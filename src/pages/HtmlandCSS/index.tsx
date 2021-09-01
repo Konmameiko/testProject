@@ -8,6 +8,7 @@ import TimerShaft from './TimeShaftMake'
 import SimpleSearch from './simpleSearch'
 import SimpleLogin from './simpleLogin'
 import styles from './index.less'
+import Drop from './drop'
 
 
 const { Header, Content} = Layout;
@@ -24,7 +25,7 @@ const array = [
     {name:"3D变形分裂卡片",index:"9",components:<Rotate />},
     {name:"鼠标悬停灯泡字",index:"10",components:<Rotate />},
     {name:"灰度悬停效果",index:"11",components:<Rotate />},
-    {name:"简单的视差滚动效果",index:"12",components:<Rotate />},
+    {name:"简单的拖拽效果",index:"12",components:<Drop/>},
     {name:"简单的视差滚动效果",index:"13",components:<Rotate />},
 ];
 class index extends Component {
