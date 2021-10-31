@@ -19,4 +19,5 @@ export default [
     },
     { path: '/Test/ReduxLearn', component: '@/pages/ReduxLearn/reduxIndex', title:"Redux学习"},
     { path: '/Test/Html_CSSLearn', component: '@/pages/HtmlandCSS/index', title:"HTML+CSS学习",},
+    { path: '/Test/learnTSX', component: '@/pages/learnTSX/index', title:"TSX+less学习",},
 ];

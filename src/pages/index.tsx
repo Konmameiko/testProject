@@ -43,7 +43,7 @@ export default class IndexPage extends Component<any, any>{
 				</ul>
 				<ul className={styles.ul}>
 					<li><Link to='/Test/ReduxLearn'>案例八：Redux学习案例</Link></li>
-					<li><Link to='/manage'>跳转至后台</Link></li>
+					<li><Link to='/Test/learnTSX'>TSX学习页面</Link></li>
 					<li><Link to='/manage'>跳转至后台</Link></li>
 					<li><Link to='/manage'>跳转至后台</Link></li>
 				</ul>

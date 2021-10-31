@@ -1,0 +1,37 @@
+@counter-style circled-alpha {
+    system: fixed;
+    symbols: '🐭' '🐮' '🐯' '🐰' '👹' '🤡';
+    suffix: " : ";
+    prefix: "";
+}
+
+@n:1;
+
+.body{
+    margin: 0;
+    padding: 0 0 0 1rem;
+    // font-size: 10px;
+    #text{
+        // color: yellowgreen;
+        list-style-type: circled-alpha;
+        font-size: 1.2rem;
+        font-weight: 500;
+        border: 0.2rem solid yellowgreen;
+        .child1{
+            color: saddlebrown;
+        }
+        .child2{
+            color: salmon;
+        }
+        .child3{
+            color: aqua;
+        }
+        p{
+            margin: 0.2rem 0 0 0;
+        }
+        &:hover{
+            background-color: burlywood;
+        }
+    }
+}
+
