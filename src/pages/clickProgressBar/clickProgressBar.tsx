@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './clickProgressBar.less'
 
 var width = 0;
-class clickProgressBar extends Component {
+class clickProgressBar extends Component{
     bar: any;
     interval : NodeJS.Timeout | null = null;
     tick(){
@@ -15,6 +15,7 @@ class clickProgressBar extends Component {
     componentDidMount(){
         this.interval = setInterval(() => this.tick(), 500);
     }
+
     componentWillUnmount(){
         this.interval && clearInterval(this.interval)
     }

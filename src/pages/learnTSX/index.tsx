@@ -42,6 +42,14 @@ function index() {
                 <li className={styles.child5}>文字5</li>
                 <li className={styles.child6}>文字6</li>
             </div>
+            <div className={styles.wrap}>冷冷清清</div>
+            <div className={styles.background1}>
+                <p>乘风好去</p>
+                <p>长空万里</p>
+                <p>直下看山河</p>
+            </div>
+            <div className={styles.background2}>
+            </div>
             <Son name={time} />
         </div>
     )
@@ -55,6 +63,24 @@ type IPlanTagProps = {
 type tagsProps = {
         [propName: string]: IPlanTagProps;
 }
+
+function pluck<T, K extends keyof T>(o: T, names: K[]): T[K][] {
+    return names.map(n => {
+        console.log(n, o[n])
+        return o[n]
+    });
+}
+  
+let sym2 = Symbol("key");
+let sym3 = Symbol("key");
+let obj = {
+    [sym2]:'value',
+    [sym3]:'value3'
+}
+console.log(
+    obj[sym2],
+    obj[sym3]
+)
 class Son extends Component<sonType>{
     constructor(props:sonType){
         super(props);
@@ -71,9 +97,8 @@ class Son extends Component<sonType>{
         return str1 + ' ' + list[3] + ' '
     }
 
-    f1 = (data:any) =>{
-        const str = '{"platForm":"wechat","result":"1"}'
-
+    f1 =  (data:any):void =>{
+        console.log(123)
     }
     
 
@@ -83,8 +108,27 @@ class Son extends Component<sonType>{
             <div>
                 <p>逝者如斯夫, {name}</p>
                 <p>{this.showValue()}</p>
-                <button onClick={this.f1}>点击事件</button>
+                <button className={styles.button1} onClick={this.f1}>点击事件</button>
             </div>
         )
     }
 }
+
+function classDecorator<T extends {new(...args:any[]):{}}>(constructor:T) {
+    return class extends constructor {
+        newProperty = "new property";
+        hello = "override";
+    }
+}
+
+@classDecorator
+class Greeter {
+    property = "property";
+    hello: string;
+    constructor(m: string) {
+        this.hello = m;
+    }
+}
+
+console.log(new Greeter("world"));
+// {property: 'property', hello: 'override', newProperty: 'new property'}

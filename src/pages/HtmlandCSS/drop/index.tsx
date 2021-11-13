@@ -7,8 +7,8 @@ export default class index extends Component<any,any> {
     constructor(props:any) {
         super(props)
         this.state = {
-            needX: 1100,
-            needY: 400,
+            needX: 0,
+            needY: 0,
             flag:0,
             radio:88,
         }
@@ -26,6 +26,7 @@ export default class index extends Component<any,any> {
         this.disY = e.clientY - e.target.offsetTop;
         document.onmousemove = this.fnMove.bind(this)
     }
+
     fnMove(e:any) {
         this.setState({
             needX: e.clientX - this.disX,
@@ -35,6 +36,7 @@ export default class index extends Component<any,any> {
         })
         console.log('触发move事件')
     }
+
     fnUp() {
         // 第三步：鼠标放开时document移除onmousemove事件
         document.onmousemove = null
@@ -62,6 +64,10 @@ export default class index extends Component<any,any> {
         const value = (document.body.clientWidth * 43/48 * 0.6 * 191/273 - 400)/2;
         console.log(value,'value')
         this.setState({radio:value})
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.handleResize.bind(this));
     }
 
     render() {

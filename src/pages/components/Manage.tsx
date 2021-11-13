@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
+import { history } from 'umi';
 import styles from '../index.less';
-import {history} from 'umi';
+
 class Manage extends Component<any,any> {
+
+    
+    timer:NodeJS.Timeout | null = null;
+
+    handleScroll(e:any){
+        console.log('zhengzaigundong')
+        this.timer && clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            console.log('停止')
+        }, 300);
+    }
+
     render() {
         return (
-            <div>
+            <div onWheel={(e) => this.handleScroll(e)}>
                 <div className={styles.manage}>
                     <div className={styles.column}>
                         <img className={styles.managePhoto} src={require('@/assets/images/3.jpg')} alt="智子"/>
@@ -46,9 +59,10 @@ class Manage extends Component<any,any> {
                         <img className={styles.managePhoto} src={require('@/assets/images/12.png')} alt="智子"/>
                         <img className={styles.managePhoto} src={require('@/assets/images/9.jpg')} alt="智子"/>
                     </div>
-                </div>
-                <button onClick={()=>this.props.history.go(-1)}>返回</button>
+                </div>  
+                <button onClick={()=>history.go(-1)}>返回</button>
             </div>
+            
         );
     }
 }

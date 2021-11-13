@@ -1,7 +1,11 @@
 @width:80%;
+@base-color: green;
+@dark-color: darken(@base-color, 10%);
 body{
   //background-color:black;
   color: black;
+  height: 3000px;
+  overflow-y: scroll;
 }
 h1{
   color: chartreuse;
@@ -39,7 +43,6 @@ h1{
   font-size: 20px;
   margin-left: 50px;
 }
-
 .table0{
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;  //设置边框为单
@@ -83,6 +86,30 @@ h1{
   100%{width: 100px; height: 100px; position: absolute;}
 }
 
+.learnCSS{
+  margin:100px 0 0 300px;
+  width: 600px;
+  height: 200px;
+  background: yellowgreen;
+  box-shadow: 
+    0 0 3px 5px #655, 
+    0 0 6px 10px deeppink,
+    5px 5px 10px 20px rgba(4, 69, 247, 0.6);
+  &:hover{
+    background: pink;
+  }  
+}
+
+.Photo1{
+  width: 400px;
+  height: 200px;
+  opacity: 0.8;
+}
+.Photo2{
+  width: 400px;
+  height: 200px;
+  opacity: 0.2;
+}
 
 
 .manage{

@@ -1,10 +1,13 @@
+import { Table } from 'antd';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import styles from './index.less'
 
 class test extends Component<any,any>{
     count = 1;
     state={
         opacity: 1,
+        formValues:{},
     }
 
     // componentWillMount(){
