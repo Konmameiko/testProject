@@ -22,8 +22,8 @@ export default class index extends Component<any,any> {
         this.setState({
             flag:0,
         })
-        this.disX = e.clientX - e.target.offsetLeft;
-        this.disY = e.clientY - e.target.offsetTop;
+        this.disX = e.clientX - e.target.offsetLeft + 25;
+        this.disY = e.clientY - e.target.offsetTop + 25;
         document.onmousemove = this.fnMove.bind(this)
     }
 

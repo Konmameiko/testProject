@@ -10,6 +10,7 @@ import SimpleLogin from './simpleLogin'
 import Drop from './drop'
 import FlatPreloader from './FlatPreloader'
 import Wave from './wave/wave'
+import Drag2drawText from './drag2drawText';
 
 
 import styles from './index.less'
@@ -31,7 +32,7 @@ class index extends Component {
         {name:"简易登陆界面",index:"7"},
         {name:"拖拽截取功能",index:"8"},
         {name:"平缓的缓冲效果",index:"9"},
-        {name:"鼠标悬停灯泡字",index:"10"},
+        {name:"字体拖拽效果",index:"10"},
         {name:"灰度悬停效果",index:"11"},
         {name:"海浪动画",index:"12"},
         {name:"简单的视差滚动效果",index:"13"},
@@ -57,6 +58,8 @@ class index extends Component {
                 return <Drop/>
             case 9:
                 return <FlatPreloader/>
+            case 10:
+                return <Drag2drawText />
             case 12:
                 return <Wave/>
         }
