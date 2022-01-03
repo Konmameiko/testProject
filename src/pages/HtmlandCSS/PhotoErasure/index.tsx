@@ -12,7 +12,6 @@ class PhotoErasure extends Component {
     onSuccess = () =>{
         console.log('完成')
     }
-
     render() {
         return (
             <div className={styles.body}>

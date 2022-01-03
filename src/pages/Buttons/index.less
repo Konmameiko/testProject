@@ -1,0 +1,109 @@
+.default{
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+        7px 7px 20px 0px rgba(0,0,0,.1),
+        4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+
+.home{
+    width: 100vw;
+    height: 100vh;
+    background-color: #e0e5ec;;
+    .title{
+        position: relative;
+        text-align: center;
+        color: #353535;
+        font-size: 50px;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+    }
+    .buttons{
+        display: flex;
+        // flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        align-content: space-between;
+        .btn1{
+            .default();
+            background: rgb(6,14,131);
+            background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+            border: none;
+            &:hover{
+                background: rgb(0,3,255);
+                background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+            }
+        }
+    
+        .btn2{
+            .default();
+            background: rgb(96,9,240);
+            background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%);
+            border: none;
+            &:hover{
+                box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+                inset -4px -4px 6px 0 rgba(255,255,255,.2),
+                inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+            }
+            &:before{
+                height: 0%;
+                width: 2px;
+            }
+        }
+    
+        .btn3{
+            .default();
+        }
+    
+        .btn4{
+            .default();
+        }
+    
+        .btn5{
+            .default();
+        }
+    
+        .btn6{
+            .default();
+        }
+    
+        .btn7{
+            .default();
+        }
+    
+        .btn8{
+            .default();
+        }
+    
+        .btn9{
+            .default();
+        }
+    
+        .btn10{
+            .default();
+        }
+    
+        .btn11{
+            .default();
+        }
+    }
+    p{
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        text-align: center;
+        font-size: 18px;
+        color: #676767;
+    }
+}

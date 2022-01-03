@@ -8,7 +8,7 @@ export default class IndexPage extends Component<any, any>{
 		console.log(history)
 		window.addEventListener('visibilitychange', this.onViewChange);
 	}
-	onViewChange() {
+	onViewChange(): void {
 		let hidden = document.visibilityState;
 		if (hidden == 'hidden') {
 			clearTimeout(this.timer);
@@ -34,13 +34,13 @@ export default class IndexPage extends Component<any, any>{
 					<li><Link to='/manage'>跳转至后台</Link></li>
 					<li><Link to='/TodoLIst'>跳转至TodoList</Link></li>
 					<li><Link to='/Test'>跳转至React生命周期学习页</Link></li>
-					<li><Link to='/Test/Html_CSSLearn'>案例三: 静态页面学习集合</Link></li>
+					<li><Link to='/Test/Html_CSSLearn'>案例三:静态页面学习集合</Link></li>
 				</ul>
 				<ul className={styles.ul}>
-					<li><Link to='/Test/Less2Stars'>案例四：星空特效（less循环）</Link></li>
+					<li><Link to='/Test/moreButtons'>案例四：按钮特效合集</Link></li>
 					<li><Link to='/Test/SPAandRouter'>案例五：单页面及路由组件学习</Link></li>
-					<li><Link to='/Test/axios'>案例六: AXIOS及ajax学习</Link></li>
-					<li><Link to='/Test/clickProgressBar'>案例七: 进度条点击</Link></li>
+					<li><Link to='/Test/axios'>案例六:AXIOS及ajax学习</Link></li>
+					<li><Link to='/Test/clickProgressBar'>案例七:进度条点击</Link></li>
 				</ul>
 				<ul className={styles.ul}>
 					<li><Link to='/Test/ReduxLearn'>案例八：Redux学习案例</Link></li>

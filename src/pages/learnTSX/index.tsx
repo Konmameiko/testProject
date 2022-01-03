@@ -17,7 +17,6 @@ function index() {
         let timer2 = setInterval(()=>{
             setTime(myDate.toLocaleDateString() + myDate.toLocaleTimeString());
         }, 1000)
-
         return () => {
             clearInterval(timer2)
         }
@@ -51,6 +50,7 @@ function index() {
             <div className={styles.background2}>
             </div>
             <Son name={time} />
+            <div className={styles.test}></div>
         </div>
     )
 }
@@ -71,16 +71,13 @@ function pluck<T, K extends keyof T>(o: T, names: K[]): T[K][] {
     });
 }
   
-let sym2 = Symbol("key");
-let sym3 = Symbol("key");
-let obj = {
-    [sym2]:'value',
-    [sym3]:'value3'
-}
-console.log(
-    obj[sym2],
-    obj[sym3]
-)
+// let sym2 = Symbol("key");
+// let sym3 = Symbol("key");
+// let obj = {
+//     [sym2]:'value',
+//     [sym3]:'value3'
+// }
+// console.log(obj[sym2],obj[sym3])
 class Son extends Component<sonType>{
     constructor(props:sonType){
         super(props);
@@ -91,14 +88,17 @@ class Son extends Component<sonType>{
         let num1: number = 8;
         let obj1: tagsProps = {a:{color:'blue'}, b:{color:''}}
         let arr2: ReadonlyArray<string> = ['1', '2', '3'];
-        
         let list: Array<number|string> = [1,2,3,4,5,'555']
         let str1: string = istrue ? (num1 + '-true') : (num1 + '-false');
         return str1 + ' ' + list[3] + ' '
     }
 
     f1 =  (data:any):void =>{
-        console.log(123)
+        // let ans = self.crypto.getRandomValues(new Int16Array(1)).buffer;
+        // console.log('这是一串随机数', ans)
+        // let timer = setTimeout(()=>{
+        //     console.log(document.hidden, '5秒之后');
+        // },5000)
     }
     
 
@@ -109,6 +109,7 @@ class Son extends Component<sonType>{
                 <p>逝者如斯夫, {name}</p>
                 <p>{this.showValue()}</p>
                 <button className={styles.button1} onClick={this.f1}>点击事件</button>
+                <span style={{letterSpacing:'1px'}}>“试问岭南应不好，却道，此心安处是吾乡”</span>
             </div>
         )
     }
@@ -121,14 +122,19 @@ function classDecorator<T extends {new(...args:any[]):{}}>(constructor:T) {
     }
 }
 
-@classDecorator
-class Greeter {
-    property = "property";
-    hello: string;
-    constructor(m: string) {
-        this.hello = m;
-    }
-}
+// @classDecorator
+// class Greeter {
+//     property = "property";
+//     hello: string;
+//     constructor(m: string) {
+//         this.hello = m;
+//     }
+// }
 
-console.log(new Greeter("world"));
-// {property: 'property', hello: 'override', newProperty: 'new property'}
+// console.log(new Greeter("world"));
+// // {property: 'property', hello: 'override', newProperty: 'new property'}
+
+// enum color{red, pink, blue};
+// let c:color = 123;
+// let str:string = color[2];
+// console.log(c, str)

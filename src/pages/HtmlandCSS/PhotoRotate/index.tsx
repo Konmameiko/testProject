@@ -18,8 +18,6 @@ export default class PhotoRotate extends Component {
             this.piclist.style.transform = 'rotateX('+current+'deg)';
         }
     }
-    componentDidMount() {
-    }  
     render() {
         return (
             <div className={styles.box}>

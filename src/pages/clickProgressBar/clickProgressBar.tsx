@@ -10,6 +10,9 @@ class clickProgressBar extends Component{
         if(width < 0){
            width = 0;
         } 
+        if(width > 100){
+            this.interval && clearInterval(this.interval)
+        }
         this.bar.style.width = width+"px";
     }
     componentDidMount(){

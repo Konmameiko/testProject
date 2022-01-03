@@ -1,0 +1,69 @@
+.body{
+    min-height: 100vh;
+    height: 100%;
+    overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #4b96eb 30%, #777779 100%);
+    .txt1{
+        //此渐变方法仅webkit内核浏览器可用
+        font-size: 10vh;
+        width: 80vh;
+        left: 10vh;
+        font-weight: bold;
+        position: relative;
+        //为文本元素提供渐变背景
+        background-image: linear-gradient(to right,rgb(152, 9, 248),#0adbf7,rgb(250, 77, 9));
+        //使用透明颜色填充文本
+        -webkit-text-fill-color:transparent;
+        //用文本剪辑背景 用渐变背景作为颜色填充文本。
+        background-clip: text;  
+    }
+    .txt2{
+        //仅webkit内核可用
+        font-size: 10vh;
+        width: 80vh;
+        left: 200px;
+        font-weight: bold;
+        position: relative;
+        color: rgb(230, 240, 230);
+        //利用mask产生遮蔽效果  可设置遮蔽效果为渐变 效果相当于...基本看不出来
+        mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#53ec0c), to(rgba(128, 4, 4, 0.062)));
+    }
+    /*利用近大远小的原理设置盒子的大小制造空间感*/
+    .star1{
+        .mixin(400);
+        height: 2px;
+        width: 2px;
+        animation: animStar 50s linear infinite;
+        animation-delay:-10s;
+    }
+    .star2{
+        .mixin(200);
+        height: 5px;
+        width: 2px;
+        animation: animStar 100s linear infinite;
+        animation-delay:-8s;
+    }
+    .star3{
+        .mixin(50);
+        height: 7px;
+        width: 5px;
+        animation: animStar 150s linear infinite;
+        animation-delay:-5s;
+    }
+}
+
+/*less循环  传入参数为要生成盒子阴影的个数，
+随机生成位移范围1000*1000的白色*/
+.mixin(@n) when(@n>0) {
+    box-shadow+ : ~`Math.round(Math.random()*2000)+'px ' + Math.round(Math.random()*2000)+'px #FFF'`;
+    .mixin(@n - 1);
+}
+
+//盒子调用垂直向上位移的动画带动盒子阴影位移实现动态效果
+@keyframes animStar {
+    0% { transform: translateY(0px)}
+    25% {transform: translateY(-250px) translateX(500px)}
+    50% {transform: translateY(-500px) translateX(-500px) scale(2, 0.5)}
+    75% {transform: translateY(-750px) translateX(600px)}
+    100% { transform: translateY(-1000px) translateX(-600px)  translate(40px,20%)}
+}

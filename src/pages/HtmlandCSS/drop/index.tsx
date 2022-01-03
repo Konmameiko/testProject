@@ -18,19 +18,18 @@ export default class index extends Component<any,any> {
     }
 
     fnDown(e:any) {
+        
         // 第二步：记录拖拽起始位置，鼠标按下时document绑定onmousemove事件，实时改变元素的布局style
         this.setState({
             flag:0,
         })
-        this.disX = e.clientX - e.target.offsetLeft + 25;
-        this.disY = e.clientY - e.target.offsetTop + 25;
         document.onmousemove = this.fnMove.bind(this)
     }
 
     fnMove(e:any) {
         this.setState({
-            needX: e.clientX - this.disX,
-            needY: e.clientY - this.disY,
+            needX: e.clientX - 148,
+            needY: e.clientY - 148,
             flag:1,
             scale:1,
         })
@@ -39,6 +38,7 @@ export default class index extends Component<any,any> {
 
     fnUp() {
         // 第三步：鼠标放开时document移除onmousemove事件
+        console.log('up')
         document.onmousemove = null
     }
 

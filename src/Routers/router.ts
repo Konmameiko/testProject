@@ -5,7 +5,7 @@ export default [
     { path: '/Test', component: '@/pages/test', title:"React学习"},
     { path: '/Test/axios', component: '@/pages/axios/app', title:"ajax学习"},
     { path: '/Test/clickProgressBar', component: '@/pages/clickProgressBar/clickProgressBar', title:"进度条点击"},
-    { path: '/Test/Less2Stars', component: '@/pages/Less2Stars/Less2Stars', title:"星空特效（less循环）"},
+    { path: '/Test/moreButtons', component: '@/pages/Buttons/buttons', title:"按钮特效集合"},
     { path: '/Test/SPAandRouter', component: '@/pages/SPAandRouter/SPA', title:"单页面及路由",
         routes:[
             {path:'/Test/SPAandRouter/about', component:'@/pages/SPAandRouter/About/index',title:"单页面及路由-about"},
@@ -20,5 +20,5 @@ export default [
     { path: '/Test/ReduxLearn', component: '@/pages/ReduxLearn/reduxIndex', title:"Redux学习"},
     { path: '/Test/Html_CSSLearn', component: '@/pages/HtmlandCSS/index', title:"HTML+CSS学习",},
     { path: '/Test/learnTsx', component: '@/pages/learnTSX/index', title:"TS学习",},
-    { path: '/Test/text', component: '@/pages/text/index', title:"字体特效页",},
+    { path: '/Test/text', component: '@/pages/text/index', title:"字体特效集合",},
 ];
