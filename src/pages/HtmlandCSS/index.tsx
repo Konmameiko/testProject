@@ -12,7 +12,8 @@ import FlatPreloader from './FlatPreloader';
 import Wave from './wave/wave';
 import DrawText from './drag2drawText';
 import Temporary from './temporary';
-import StarSky from './starSky/Less2Stars'
+import StarSky from './starSky/Less2Stars';
+import Interstellar from './Interstellar';
 
 
 import styles from './index.less'
@@ -38,10 +39,12 @@ class index extends Component {
         {name:"星空特效",index:"11"},
         {name:"海浪动画",index:"12"},
         {name:"简单的视差滚动效果",index:"13"},
-        {name:"临时Demo页",index:"14"},
+        {name:"星际穿越",index:"14"},
+        {name:"临时Demo页",index:"15"},
     ];
 
     switchDemo = (value:any) =>{
+        console.log(value);
         switch(value){
             case 1:
                 return <Rotate/>
@@ -61,14 +64,18 @@ class index extends Component {
                 return <Drop/>
             case 9:
                 return <FlatPreloader/>
-            case 10: 
+            case 10:
                 return <DrawText/>
             case 11:
                 return <StarSky/>
             case 12:
                 return <Wave/>
             case 14:
+                return <Interstellar/>
+            case 15:
                 return <Temporary/>
+            default:
+                return <FlatPreloader/>
         }
     }
 
