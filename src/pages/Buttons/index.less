@@ -1,4 +1,10 @@
+@fuschia: #ff0081;
+@button-bg: @fuschia;
+@button-text-color: #fff;
+@baby-blue: #f8faff;
+
 .default{
+    text-transform: uppercase;
     width: 130px;
     height: 40px;
     color: #fff;
@@ -423,7 +429,6 @@
             }
         }
           
-    
         .btn8{
             .default();
             border: none;
@@ -485,24 +490,6 @@
                 inset -4px -4px 6px 0 rgba(255,255,255,.2),
                 inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
             }
-        }
-
-        @keyframes shiny-btn1 {
-            0% { -webkit-transform: scale(0) rotate(45deg);
-                    opacity: 0;
-            }
-            80% {
-                -webkit-transform: scale(0) rotate(45deg);
-                opacity: 0.5;
-            }
-            81% {
-                -webkit-transform: scale(4) rotate(45deg);
-                opacity: 1;
-            }
-            100% {
-                -webkit-transform: scale(50) rotate(45deg);
-                opacity: 0;
-            }  
         }
     
         .btn10{
@@ -574,14 +561,145 @@
 
         .btn12{
             .default();
+            background-color: @button-bg;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+            box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+            -webkit-appearance: none;
+            appearance: none;
+            &:focus {
+                outline: 0;
+            }
+            &:before {
+                display: block;
+                top: -75%;
+                background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+                background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+            }
+            &:after {
+                display: block;
+                bottom: -75%;
+                background-image: radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, transparent 10%, #c8ff00 15%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%);
+                background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+            }
+            &:active {
+                transform: scale(0.9);
+                background-color: #e60074;
+                box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+            }
+            &.animate{
+                &:before{
+                    display: block;
+                    animation: topBubbles ease-in-out 0.75s forwards;
+                }
+                &:after{
+                    display: block;
+                    animation: bottomBubbles ease-in-out 0.75s forwards;
+                }
+            }
+        }
+        .btn12:before, .btn12:after{
+            position: absolute;
+            content: '';
+            display: none;
+            width: 140%;
+            height: 100%;
+            left: -20%;
+            transition: all ease-in-out 0.5s;
+            background-repeat: no-repeat; 
         }
 
         .btn13{
             .default();
+            border-radius: 0;
+            border: none;
+            color: red;
+            font-weight: 700;
+            isolation: isolate;
+            &:hover{
+                color: #fff;
+                &:before{
+                    background: #fc0303;
+                    border-top-color: #f45e61;
+                    border-right-color: #f45e61;
+                    border-bottom-color: #fc0303;
+                    transition:
+                        background 0s linear 0.6s,
+                        border-top-color 0.20s linear,
+                        border-right-color 0.20s linear 0.20s,
+                        border-bottom-color 0.20s linear 0.40s;
+                }
+                &:after{
+                    border-top: 2px solid red;
+                    border-left-width: 20px;
+                    border-right-width: 20px;
+                }
+            }
+            &:before{
+                border: 20px solid transparent;
+                z-index: -1;
+            }
+            &:after{
+                mix-blend-mode: color-dodge;
+                z-index: -1; 
+            }
+        }
+
+        .btn13:before, .btn13:after{
+            box-sizing: inherit;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; 
         }
 
         .btn14{
             .default();
+            background-color: #ECFBFF;
+            border: 2px solid #A6E0EE;
+            color: #2D7586;
+            font-weight: 800;
+            text-align: left;
+            &:hover{
+                background-color: #DDF7FF;
+                svg{
+                    transform: rotate(10deg);
+                    transition: transform .15s;
+                }
+    
+            }
+
+            svg {
+                position: absolute;
+                top: 5px;
+                right: 15px;
+                height: 30px;
+                width: auto;
+                transition: transform .15s;
+                
+                path {
+                  fill: #2D7586;
+                }
+            }
+            &.click14{
+                background-color: #cff5b3;
+                border: 2px solid #cff5b3;
+                color: #6AAA3B;
+                svg {
+                    animation: flyaway 2s linear;
+                    top: -80px;
+                    right: -1000px;
+                    
+                    path {
+                      fill: #6AAA3B;
+                    }
+                }
+            }
         }
 
         .btn15{
@@ -596,4 +714,78 @@
             .default();
         }
     }
+    .text{
+        font-weight: 600;
+    }
+}
+
+// 9
+@keyframes shiny-btn1 {
+    0% { -webkit-transform: scale(0) rotate(45deg);
+            opacity: 0;
+    }
+    80% {
+        -webkit-transform: scale(0) rotate(45deg);
+        opacity: 0.5;
+    }
+    81% {
+        -webkit-transform: scale(4) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(50) rotate(45deg);
+        opacity: 0;
+    }  
+}
+
+// 12
+@keyframes topBubbles{
+    0%{
+        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+    }
+    50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+    }
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+    }
+}
+  
+@keyframes bottomBubbles{
+    0%{
+        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+    }
+    50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;}
+    100% {
+        background-position: 0% 100%, 20% 110%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+        background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+    }
+}
+
+@keyframes flyaway {
+    0%   { 
+        transform: rotate(-10deg);
+        top: 13px;
+        right: 25px;}
+    40%   { transform: rotate(10deg);
+        top: 40px;
+        right: -30px;
+        opacity: 1; }
+    60%   { 
+        transform: rotate(20deg);
+        top: -40px;
+        right: -180px;
+        opacity: 1; }
+    80%   { 
+        transform: rotate(40deg);
+        top: -120px;
+        right: -280px;
+        opacity: 0.6; }
+    100% { 
+        transform: rotate(60deg);
+        top: -200px;
+        right: -400px;
+        opacity: 0; }
 }

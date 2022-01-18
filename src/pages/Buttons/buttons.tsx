@@ -2,6 +2,34 @@ import React, { Component } from 'react';
 import styles from './index.less';
 
 export default class buttons extends Component {
+
+
+    button12 = (e:any) =>{
+        e.preventDefault;
+        e.target.classList.remove(styles.animate);
+        e.target.classList.add(styles.animate);
+        setTimeout(function(){
+            e.target.classList.remove(styles.animate);
+        },700);
+    }
+
+    button14 = (e:any) =>{
+        e.preventDefault;
+        e.target.classList.add(styles.click14);
+        setTimeout(function(){
+            e.target.classList.remove(styles.click14);
+        },3000);
+    }
+
+    componentDidMount(){
+        const bubblyButtons = document.getElementsByClassName(styles.btn12);
+        const button14 = document.getElementsByClassName(styles.btn14)[0];
+        for (var i = 0; i < bubblyButtons.length; i++) {
+            bubblyButtons[i].addEventListener('click', this.button12, false);
+        }
+        button14.addEventListener('click', this.button14, false);
+    }
+
     render() {
         return (
             <div className={styles.home}>
@@ -20,12 +48,16 @@ export default class buttons extends Component {
                     <button className={styles.btn11}>button11</button>
                     <button className={styles.btn12}>button12</button>
                     <button className={styles.btn13}>button13</button>
-                    <button className={styles.btn14}>button14</button>
+                    <button className={styles.btn14}>Send
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xmlSpace="preserve">
+                            <path id="paper-plane-icon" d="M462,54.955L355.371,437.187l-135.92-128.842L353.388,167l-179.53,124.074L50,260.973L462,54.955z M202.992,332.528v124.517l58.738-67.927L202.992,332.528z"></path> 
+                        </svg>
+                    </button>
                     <button className={styles.btn15}>button15</button>
                     <button className={styles.btn16}>button16</button>
                     <button className={styles.btn17}>button17</button>
                 </div>
-                <p>天天摸鱼身体棒</p>
+                <p className={styles.text}>天天摸鱼身体棒</p>
             </div>
         )
     }
