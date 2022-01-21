@@ -20,22 +20,23 @@ export default defineConfig({
       secure: false,
     }
   },
-  // hash: true,
-  // history: {
-  //   type: 'hash',
-  // },
-  //links:[{rel:"icon",href:'/ico/icon.ico'},],
   favicon:'/ico/icon.ico',
   routes: routes,
   fastRefresh: {},
-  chainWebpack(config:any) {
-  config.module
-    .rule("media")
-    .test(/\.(mp(3|4)|wav|m4a)$/)
-    .use("file-loader")
-    .loader(require.resolve("file-loader"))
-    .options({
-      esModule:false,
-    })
+  alias: {
+    '@': require('path').resolve(__dirname, './src'),
+    '@pages': require('path').resolve(__dirname, './src/pages'),
   },
+  // 引入 MP3 mp4 wav格式的视频
+  chainWebpack(config:any) {
+    config.module
+      .rule("media")
+      .test(/\.(mp(3|4)|wav|m4a)$/)
+      .use("file-loader")
+      .loader(require.resolve("file-loader"))
+      .options({
+        esModule:false,
+      })
+  },
+
 });

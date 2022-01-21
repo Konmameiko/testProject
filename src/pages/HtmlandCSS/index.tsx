@@ -14,9 +14,11 @@ import DrawText from './drag2drawText';
 import Temporary from './temporary';
 import StarSky from './starSky/Less2Stars';
 import Interstellar from './Interstellar';
+import FrostedGlass from './frostedGlass/frosted'
 
 
 import styles from './index.less'
+import { ClampToEdgeWrapping } from 'three';
 const { Header, Content} = Layout;
 const { TabPane } = Tabs;
 
@@ -36,16 +38,37 @@ class index extends Component {
         {name:"拖拽及缩放页面",index:"8"},
         {name:"平缓的缓冲效果",index:"9"},
         {name:"拖拽生成字符串",index:"10"},
-        {name:"星空特效",index:"11"},
+        {name:"雪花特效",index:"11"},
         {name:"海浪动画",index:"12"},
         {name:"简单的视差滚动效果",index:"13"},
         {name:"星际穿越",index:"14"},
         {name:"临时Demo页",index:"15"},
+        {name:"毛玻璃效果",index:"16"},
     ];
 
+    //获取url中的参数方法
+    getUrlParam = (name:string) => {
+        //构造一个含有目标参数的正则表达式对象
+        const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        //匹配目标参数
+        const r = window.location.search.substr(1).match(reg);
+    
+        //返回参数
+        if (r != null) {
+            return (r[2]);
+        } else {
+            return null;
+        }
+    };
+
+    componentDidMount(){
+        const index = this.getUrlParam('indexNum');
+        console.log(index);
+        index ? this.setState({key:Number(index)}) : this.setTabKey(0);
+    }
+
     switchDemo = (value:any) =>{
-        console.log(value);
-        switch(value){
+        switch(value+1){
             case 1:
                 return <Rotate/>
             case 2:
@@ -70,17 +93,20 @@ class index extends Component {
                 return <StarSky/>
             case 12:
                 return <Wave/>
+            case 13:
+                return <FlatPreloader/>
             case 14:
                 return <Interstellar/>
             case 15:
                 return <Temporary/>
-            default:
-                return <FlatPreloader/>
+            case 16:
+                return <FrostedGlass/>
         }
     }
 
     setTabKey = (key:any) =>{
-        this.setState({key:Number(key)+1})
+        window.location.search=`?&indexNum=${Number(key)}`;
+        console.log(location);
     }
 
     render() {
@@ -88,19 +114,18 @@ class index extends Component {
         return (
             <Layout className={styles.layout}>
                 <Header>
-                <div className={styles.logo} />
-                    <Tabs className={styles.tabs} defaultActiveKey="0" onChange={this.setTabKey} destroyInactiveTabPane={true} type={'line'}>
+                    <Tabs className={styles.tabs} defaultActiveKey="0" onChange={this.setTabKey} activeKey={key+''} destroyInactiveTabPane={true} type={'line'}>
                         {this.array.map((obj, index) => {
                             return <TabPane tab={obj.name} key={index}></TabPane>
                         })}
                     </Tabs>
                 </Header>
                 <Content style={{ padding: '0 50px' }}>
-                <div className={styles.site_layout_content}>
-                    {
-                        this.switchDemo(key)
-                    }
-                </div>
+                    <div className={styles.site_layout_content}>
+                        {
+                            this.switchDemo(key)
+                        }
+                    </div>
                 </Content>
             </Layout>
         )
