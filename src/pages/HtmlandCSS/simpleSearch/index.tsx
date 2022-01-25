@@ -1,29 +1,33 @@
+import { event } from 'jquery';
 import React from 'react'
 import styles from './index.less'
 
 function index() {
+    function searchToggle(e:any) {
+        const body1 = document.getElementsByClassName(styles.searchWrapper)[0];
+        if(!body1.classList.contains(styles.active)){
+            console.log('chufa');
+            body1.classList.add(styles.active);
+            e.preventDefault();
+        }
+        else{
+            body1.classList.remove(styles.active);
+        }
+    }
+
+
+    function closeToggle(e:any) {
+        const body1 = document.getElementsByClassName(styles.searchWrapper)[0];
+        body1.classList.remove(styles.active);
+    }
 
     return (
-        <div className={styles.outer}>
-            <div className={styles.shell}>
-                <input type="checkbox" id='checkbox' className={styles.input0}/>
-                <label htmlFor="checkbox" className={styles.label}></label>
-                <input type="text" className={styles.input} id='input'/>
-                <div className={styles.fonts}>
-                    <span className={styles.font1}>s</span>
-                    <span className={styles.font2}>e</span>
-                    <span className={styles.font3}>a</span>
-                    <span className={styles.font4}>r</span>
-                    <span className={styles.font5}>c</span>
-                    <span className={styles.font6}>h</span>
-                    <span className={styles.font7}>.</span>
-                    <span className={styles.font8}>.</span>
-                    <span className={styles.font9}>.</span>
-                    <span className={styles.font10}>.</span>
-                    <span className={styles.font11}>.</span>
-                    <span className={styles.font12}>.</span>
-                </div>
+        <div className={styles.searchWrapper}>
+            <div className={styles.input}>
+                <input type="text" className={styles.search} placeholder="Type to search" />
+                <button className={styles.icon} onClick={searchToggle}><span></span></button>
             </div>
+            <span className={styles.close} onClick={closeToggle}></span>
         </div>
     )
 }
