@@ -63,7 +63,6 @@ class index extends Component {
 
     componentDidMount(){
         const index = this.getUrlParam('indexNum');
-        console.log(index);
         index ? this.setState({key:Number(index)}) : this.setTabKey(0);
     }
 
@@ -105,7 +104,7 @@ class index extends Component {
     }
 
     setTabKey = (key:any) =>{
-        window.location.search=`?&indexNum=${Number(key)}`;
+        window.location.search=`?indexNum=${Number(key)}`;
         console.log(location);
     }
 

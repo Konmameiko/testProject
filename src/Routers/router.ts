@@ -1,6 +1,6 @@
 export default [
     { path: '/', component: '@/pages/index' ,title:"主页展示",},
-    { path: '/manage', component: '@/pages/components/Manage',title:"后台管理页" },
+    { path: '/photoManage', component: '@/pages/components/Manage',title:"图片CSS样式集合" },
     { path: '/TodoList', component: '@/pages/components/TodoList', title:"待做清单页面"},
     { path: '/Test', component: '@/pages/test', title:"React学习"},
     { path: '/Test/axios', component: '@/pages/axios/app', title:"ajax学习"},

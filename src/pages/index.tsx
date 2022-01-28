@@ -5,7 +5,7 @@ import React, {Component } from 'react';
 export default class IndexPage extends Component<any, any>{
 	timer: any | null = null;
 	componentDidMount() {
-		console.log(history)
+		console.log(history);
 		window.addEventListener('visibilitychange', this.onViewChange);
 	}
 	onViewChange(): void {
@@ -31,8 +31,8 @@ export default class IndexPage extends Component<any, any>{
 					<h1>Hello,world!</h1>
 				</div>
 				<ul className={styles.ul}>
-					<li><Link to='/manage'>跳转至后台</Link></li>
-					<li><Link to='/TodoLIst'>跳转至TodoList</Link></li>
+					<li><Link to='/photoManage'>案例一: 图片处理页面</Link></li>
+					<li><Link to='/TodoLIst'>案例二： TodoList</Link></li>
 					<li><Link to='/Test'>跳转至React生命周期学习页</Link></li>
 					<li><Link to='/Test/Html_CSSLearn'>案例三:静态页面学习集合</Link></li>
 				</ul>

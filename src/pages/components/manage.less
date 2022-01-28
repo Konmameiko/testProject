@@ -1,0 +1,112 @@
+.manage {
+    padding: 0 4px;
+    display: flex;
+    flex-wrap: wrap;
+  
+    .column {
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 4px;
+        span{
+            width: 100%;
+            font-size: 24px;
+            line-height: 32px;
+            text-align: center;
+            float: right;
+        }
+        .managePhoto {
+            width: 100%;
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        .blur{
+            filter: blur(2px);
+        }
+
+        .brightness{
+            // 设置亮度 默认值为1
+            filter: brightness(.7);
+        }
+
+        .contrast{
+            // 设置对比度  默认值为1
+            filter: contrast(1.5);
+        }
+
+        .hueRotate{
+            //HSL 色相（hue）是色轮上从 0 到 360 的度数。0 是红色，120 是绿色，240 是蓝色
+            filter: hue-rotate(70deg);
+        }
+
+
+    
+        /* 响应式布局 - 创建两列而不是四列布局 */
+    }
+
+  
+    @media (max-width: 800px) {
+        .column {
+            flex: 50%;
+            max-width: 50%;
+        }
+    }
+  
+    /* 响应式布局 - 创建上下堆叠而不是并排的两列布局 */
+    @media (max-width: 600px) {
+        .column {
+            flex: 100%;
+            max-width: 100%;
+        }
+    }
+}
+
+.btn{
+    text-transform: uppercase;
+    position:fixed;
+    display: inline-block;
+    width: 130px;
+    height: 40px;
+    left: 45%;
+    bottom: 10%;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+        7px 7px 20px 0px rgba(0,0,0,.1),
+        4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    &:after {
+        position: absolute;
+        content: " ";
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1fd1f9;
+        background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+        transition: all 0.3s ease;
+    }
+    &:hover {
+        background: transparent;
+        box-shadow: 4px 4px 6px 0 rgba(255,255,255,.5),
+                    -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+        inset -4px -4px 6px 0 rgba(255,255,255,.5),
+        inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+        color: #ffffff;
+        &:after {
+            -webkit-transform: scale(2) rotate(180deg);
+            transform: scale(2) rotate(180deg);
+            box-shadow: 4px 4px 6px 0 rgba(255,255,255,.5),
+                    -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+            inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+            inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+        }
+    }
+}
