@@ -14,7 +14,8 @@ import DrawText from './drag2drawText';
 import Temporary from './temporary';
 import StarSky from './starSky/Less2Stars';
 import Interstellar from './Interstellar';
-import FrostedGlass from './frostedGlass/frosted'
+import FrostedGlass from './frostedGlass/frosted';
+import Confetti from './confetti'
 
 
 import styles from './index.less'
@@ -44,6 +45,7 @@ class index extends Component {
         {name:"星际穿越",index:"14"},
         {name:"临时Demo页",index:"15"},
         {name:"毛玻璃效果",index:"16"},
+        {name:"五彩纸屑",index:"17"},
     ];
 
     //获取url中的参数方法
@@ -100,6 +102,8 @@ class index extends Component {
                 return <Temporary/>
             case 16:
                 return <FrostedGlass/>
+            case 17:
+                return <Confetti/>
         }
     }
 
