@@ -15,8 +15,8 @@ import Temporary from './temporary';
 import StarSky from './starSky/Less2Stars';
 import Interstellar from './Interstellar';
 import FrostedGlass from './frostedGlass/frosted';
-import Confetti from './confetti'
-
+import Confetti from './confetti';
+import FrostedGlassBg from './frostedGlassBg';
 
 import styles from './index.less'
 import { ClampToEdgeWrapping } from 'three';
@@ -26,7 +26,7 @@ const { TabPane } = Tabs;
 class index extends Component {
 
     state = {
-        key : 1
+        key : sessionStorage.getItem('HtmlDemoIndex') || '0'
     }
     array = [
         {name:"图片立方体旋转",index:"1"},
@@ -46,6 +46,7 @@ class index extends Component {
         {name:"临时Demo页",index:"15"},
         {name:"毛玻璃效果",index:"16"},
         {name:"五彩纸屑",index:"17"},
+        {name:"毛玻璃渐变背景",index:"18"},
     ];
 
     //获取url中的参数方法
@@ -64,12 +65,11 @@ class index extends Component {
     };
 
     componentDidMount(){
-        const index = this.getUrlParam('indexNum');
-        index ? this.setState({key:Number(index)}) : this.setTabKey(0);
+        console.log('it`s running')
     }
 
     switchDemo = (value:any) =>{
-        switch(value+1){
+        switch(Number(value)+1){
             case 1:
                 return <Rotate/>
             case 2:
@@ -104,12 +104,14 @@ class index extends Component {
                 return <FrostedGlass/>
             case 17:
                 return <Confetti/>
+            case 18:
+                return <FrostedGlassBg/>
         }
     }
 
     setTabKey = (key:any) =>{
-        window.location.search=`?indexNum=${Number(key)}`;
-        console.log(location);
+        sessionStorage.setItem('HtmlDemoIndex', key);
+        this.setState({key})
     }
 
     render() {

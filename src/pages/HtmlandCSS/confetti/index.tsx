@@ -183,12 +183,8 @@ function Index() {
     }
 
     return (
-        // <div className={styles.basic}>
-        //     <div className={styles.photo1} />
-        //     <div className={styles.photo2} />
-        //     <div className={styles.photo3} />
-        // </div>
-        <div>
+        <div className={styles.basic}>
+             <p>Click Me</p>
             <canvas id='canvas' className={styles.confetti} ref={conRef}></canvas>
         </div>
     );
