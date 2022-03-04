@@ -175,6 +175,72 @@
             animation-delay:1.8s;
         }
     }
+
+    .load6{
+        position: relative;
+        width: 128px;
+        height: 128px;
+        margin-left: 36px;
+        animation: petal 2s infinite linear; 
+        .petal{
+            height: 40px;
+            overflow: auto;
+            width: 16px;
+            margin: auto;
+            max-width: 100%;
+            position: absolute;
+            border-radius: 0 60px 0 60px;
+            box-shadow: inset 0 0 0 1.6px #E645D0, 0 0 9px 0 #E645D0;
+            &:nth-of-type(1){
+                top: 0;
+                left: 50px;
+                transform: rotate(45deg);
+                animation: petalChild 4s infinite linear;
+            }
+            &:nth-of-type(2){
+                top: 12px;
+                left: 83px;
+                transform: rotate(90deg);
+                animation: petalChild 4s infinite 0.5s linear;
+            }
+            &:nth-of-type(3){
+                top: 45px;
+                left: 95px;
+                transform: rotate(135deg);
+                animation: petalChild 4s infinite 1s linear;
+            }
+            &:nth-of-type(4){
+                top: 78px;
+                left: 83px;
+                transform: rotate(180deg);
+                animation: petalChild 4s infinite 1.5s linear;
+            }
+            &:nth-of-type(5){
+                top: 90px;
+                left: 50px;
+                transform: rotate(225deg);
+                animation: petalChild 4s infinite 2s linear;
+            }
+            &:nth-of-type(6){
+                top: 78px;
+                left: 17px;
+                transform: rotate(270deg);
+                animation: petalChild 4s infinite 2.5s linear;
+            }
+            &:nth-of-type(7){
+                top: 45px;
+                left: 5px;
+                transform: rotate(315deg);
+                animation: petalChild 4s infinite 3s linear;
+            }
+            &:nth-of-type(8){
+                top: 12px;
+                left: 17px;
+                transform: rotate(0deg);
+                animation: petalChild 4s infinite 3.5s linear;
+            }
+        }
+    }
 }
 
 
@@ -250,5 +316,24 @@
         -o-transform:rotate(-180deg); 
         transform:rotate(-180deg);
         opacity:0;
+    }
+}
+
+@keyframes petal{
+    0%{
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes petalChild{
+    0%,100% {}
+    50% {
+        box-shadow: inset 0 0 0 1.6px #17E1E6, 0 0 9px 0 #17E1E6;
     }
 }

@@ -54,6 +54,16 @@ export default class index extends Component {
                 {/* loading6 */}
                 <div className={styles.wrapper}>
                     <p>loading 6</p>
+                    <div className={styles.load6}>
+                        <div className={styles.petal}></div>
+                        <div className={styles.petal}></div>
+                        <div className={styles.petal}></div>
+                        <div className={styles.petal}></div>
+                        <div className={styles.petal}></div>
+                        <div className={styles.petal}></div>
+                        <div className={styles.petal}></div>
+                        <div className={styles.petal}></div>
+                    </div>
                 </div>  
                 {/* loading7 */}
                 <div className={styles.wrapper}>
