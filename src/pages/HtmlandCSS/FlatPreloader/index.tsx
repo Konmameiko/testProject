@@ -50,7 +50,6 @@ export default class index extends Component {
                         <div>L</div>
                     </div>
                 </div>
-
                 {/* loading6 */}
                 <div className={styles.wrapper}>
                     <p>loading 6</p>
@@ -98,6 +97,38 @@ export default class index extends Component {
                 {/* loading10 */}
                 <div className={styles.wrapper}>
                     <p>loading 10</p>
+                    <div className={styles.load10}>
+                        <div className={styles.line}></div>
+                        <div className={styles.line}></div>
+                        <div className={styles.line}></div>
+                        <div className={styles.line}></div>
+                    </div>
+                </div>
+                {/* loading11 */}
+                <div className={styles.wrapper}>
+                    <p>loading 11</p>
+                    <div className={styles.load11}>
+                        <div className={styles.dash_uno}></div>
+                        <div className={styles.dash_dos}></div>
+                        <div className={styles.dash_tres}></div>
+                        <div className={styles.dash_cuatro}></div>
+                    </div>
+                </div>
+                {/* loading12 */}
+                <div className={styles.wrapper}>
+                    <p>loading 12</p>
+                </div>
+                {/* loading13 */}
+                <div className={styles.wrapper}>
+                    <p>loading 13</p>
+                </div>
+                {/* loading14 */}
+                <div className={styles.wrapper}>
+                    <p>loading 14</p>
+                </div>
+                {/* loading15 */}
+                <div className={styles.wrapper}>
+                    <p>loading 15</p>
                 </div>
             </div>
         )

@@ -1,7 +1,7 @@
 .content{
     margin: 0 auto;
     padding: 20px;
-    max-width: 1200px;
+    max-width: 1500px;
     position: relative;
     display: flex;
     width: 100%;
@@ -10,7 +10,7 @@
     flex-wrap: wrap;
     font-family: "Open Sans", sans-serif;
     background-color: #e9e9e9;
-
+    overflow-y: scroll;
     .title{
         width: 100%;
         height: 50px;
@@ -22,10 +22,11 @@
     }
 
     .wrapper{
-        width: 200px;
-        height: 200px;
+        position: relative;
+        width: 15vw;
+        height: 15vw;
         float: left;
-        margin: 10px 10px 0 0;
+        margin: 10px 5px 0 0;
         padding: 20px 0 0 0;
         border-radius: 10px;
         text-align: center;
@@ -42,9 +43,9 @@
 
     .load1{
         position: relative;
-        width: 100px;
-        height: 100px;
-        margin-left: 50px;
+        width: 50%;
+        height: 50%;
+        margin-left: 25%;
         hr{
             border: 0;
             margin: 0;
@@ -73,9 +74,9 @@
 
     .load2{
         position: relative;
-        width: 100px;
-        height: 100px;
-        margin-left: 50px;
+        width: 50%;
+        height: 50%;
+        margin-left: 25%;
         .line{
             display: inline-block;
             width: 15px;
@@ -97,9 +98,9 @@
 
     .load3{
         position: relative;
-        width: 100px;
-        height: 100px;
-        margin-left: 50px;
+        width: 50%;
+        height: 50%;
+        margin-left: 25%;
         .line{
             display: inline-block;
             width: 15px;
@@ -122,8 +123,8 @@
     .load4{
         width: 100px;
         height: 100px;
+        margin-left: calc(50% - 50px);
         padding: 3px;
-        margin-left: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -180,7 +181,8 @@
         position: relative;
         width: 128px;
         height: 128px;
-        margin-left: 36px;
+        margin-left: calc(50% - 64px);
+        // margin-left: 18%;
         animation: petal 2s infinite linear; 
         .petal{
             height: 40px;
@@ -277,8 +279,8 @@
     .load8{
         position: relative;
         left: calc(50% - 50px);
-        width: 100px;
-        height: 100px;
+        width: 50%;
+        height: 50%;
         &::before{   // shadow
             content: '';
             width: 80px;
@@ -311,7 +313,6 @@
         width: 200px;
         height: 120px;
         margin-top: -10px;
-
         .text9{
             position: relative;
             margin-top: 80px;
@@ -369,6 +370,62 @@
             height: 35px;
             z-index: 2;
             background: #d8d8d8;
+        }
+    }
+
+    .load10{
+        position: relative;
+        left: calc(50% - 50px);
+        width: 50%;
+        height: 50%;
+        .line{
+            position: absolute;
+            top: 50%;
+            margin-left: 10px;
+            width: 100px;
+            height: 6px;
+            background: rgb(1, 102, 102);
+            animation: rotate-line 1.5s infinite ease;
+            &:nth-of-type(2) { animation-delay: 0.1s; }  
+            &:nth-of-type(3) { animation-delay: 0.2s; }
+            &:nth-of-type(4) { animation-delay: 0.3s; }
+        }
+    }
+
+    .load11{
+        position: absolute;
+        left: 40px;
+        top: 40%;
+        width: 80%;
+        height: 50%;
+        display: flex;
+        div{
+            margin: 0 10px;
+            width: 25px;
+            height: 10px;
+            border-radius: 8px;
+            background: #FF2CBD;
+            box-shadow: 0 0 10px 0 #FECDFF;
+        }
+        .dash_uno{
+            margin-right: -18px;
+            transform-origin: center left;
+            animation: dash-one 3s linear infinite;
+        }
+        .dash_dos{
+            transform-origin: center right;
+            animation: dash-two 3s linear infinite;
+            animation-delay: .2s;
+        }
+        .dash_tres{
+            transform-origin: center right;
+            animation: dash-three 3s linear infinite;
+            animation-delay: .3s;
+        }
+        .dash_cuatro{
+            transform-origin: center right;
+            animation: dash-four 3s linear infinite;
+            animation-delay: .4s;
         }
     }
 }
@@ -584,5 +641,112 @@
     }
     68% {
         transform: scaleY(0.18);
+    }
+}
+
+// load10 旋转线条
+@keyframes rotate-line{
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+// load11 撞针
+@keyframes dash-one{
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(360deg);
+    }
+    30% {
+        transform: rotate(370deg);
+    }
+    35% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes dash-two{
+    0% {
+        transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(0deg);
+    }
+    30% {
+        transform: rotate(-180deg);
+    }
+    35% {
+        transform: rotate(-190deg);
+    }
+    40% {
+        transform: rotate(-180deg);
+    }
+    78% {
+        transform: rotate(-180deg);
+    }
+    95% {
+        transform: rotate(-360deg);
+    }
+    98% {
+        transform: rotate(-370deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+@keyframes dash-three{
+    0% {
+        transform: rotate(0deg);
+    }
+    27% {
+        transform: rotate(0deg);  
+    }
+    40% {
+        transform: rotate(180deg);
+    }
+    45% {
+        transform: rotate(190deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    62% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(360deg);
+    }
+    80% {
+        transform: rotate(370deg);
+    }
+    85% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes dash-four{
+    0% {
+        transform: rotate(0deg);
+    }
+    38% {
+        transform: rotate(0deg);
+    }
+    60% {
+        transform: rotate(-360deg);
+    }
+    65% {
+        transform: rotate(-370deg);
+    }
+    75% {
+        transform: rotate(-360deg);
+    }
+    100% {
+        transform: rotate(-360deg);
     }
 }
