@@ -37,6 +37,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^12.4.0",
+    "swiper": "6.8.4",
     "three": "^0.134.0",
     "umi": "^3.4.7"
   },

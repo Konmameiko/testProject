@@ -26,40 +26,40 @@ export default class IndexPage extends Component<any, any>{
 	}
 	render() {
 		return (
-			<div>
+			<div className={styles.content}>
 				<div className={styles.index}>
 					<h1>Hello,world!</h1>
 				</div>
 				<ul className={styles.ul}>
-					<li><Link to='/photoManage'>案例一: 图片处理页面</Link></li>
-					<li><Link to='/TodoLIst'>案例二： TodoList</Link></li>
-					<li><Link to='/Test'>跳转至React生命周期学习页</Link></li>
-					<li><Link to='/Test/Html_CSSLearn'>案例三:静态页面学习集合</Link></li>
+					<li><Link to='/photoManage'><p className={styles.css}>图片处理</p></Link></li>
+					<li><Link to='/TodoLIst'><p className={styles.TS_JS}>TodoList</p></Link></li>
+					<li><Link to='/Test'><p className={styles.TS_JS}>React生命周期</p></Link></li>
+					<li><Link to='/Test/Html_CSSLearn'><p className={styles.css}>静态页面demos</p></Link></li>
 				</ul>
 				<ul className={styles.ul}>
-					<li><Link to='/Test/moreButtons'>案例四：按钮特效合集</Link></li>
-					<li><Link to='/Test/SPAandRouter'>案例五：单页面及路由组件学习</Link></li>
-					<li><Link to='/Test/axios'>案例六:AXIOS及ajax学习</Link></li>
-					<li><Link to='/Test/clickProgressBar'>案例七:进度条点击</Link></li>
+					<li><Link to='/Test/moreButtons'><p className={styles.css}>按钮demos</p></Link></li>
+					<li><Link to='/Test/SPAandRouter'><p className={styles.TS_JS}>路由组件学习</p></Link></li>
+					<li><Link to='/Test/axios'><p className={styles.TS_JS}>AXIOS学习</p></Link></li>
+					<li><Link to='/Test/clickProgressBar'><p className={styles.css}>进度条demos</p></Link></li>
 				</ul>
 				<ul className={styles.ul}>
-					<li><Link to='/Test/ReduxLearn'>案例八：Redux学习案例</Link></li>
-					<li><Link to='/Test/learnTsx'>TSX学习页面</Link></li>
-					<li><Link to='/Test/text'>字体特效集合</Link></li>
-					<li><Link to='/manage'>跳转至后台</Link></li>
+					<li><Link to='/Test/ReduxLearn'><p className={styles.TS_JS}>Redux学习案例</p></Link></li>
+					<li><Link to='/Test/learnTsx'><p className={styles.TS_JS}>TSX学习页面</p></Link></li>
+					<li><Link to='/Test/text'><p className={styles.css}>字体demos</p></Link></li>
+					<li><Link to='/manage'><p className={styles.css}>跳转至后台</p></Link></li>
 				</ul>
 				<ul className={styles.ul}>
-					<li><Link to='/manage'>跳转至后台</Link></li>
-					<li><Link to='/manage'>跳转至后台</Link></li>
-					<li><Link to='/manage'>跳转至后台</Link></li>
-					<li><Link to='/manage'>跳转至后台</Link></li>
+					<li><Link to='/manage'><p className={styles.css}>跳转至后台</p></Link></li>
+					<li><Link to='/manage'><p className={styles.css}>跳转至后台</p></Link></li>
+					<li><Link to='/manage'><p className={styles.css}>跳转至后台</p></Link></li>
+					<li><Link to='/manage'><p className={styles.css}>跳转至后台</p></Link></li>
 				</ul>
 				<audio src={require('@/assets/audios/windy.mp3')} />
 				{/* <div className={styles.anime}></div> */}
 				<p className={styles.textStyle}>
 					从去年起，仿佛听得有人说我是仇猫的。那根据自然是在我的那一篇《兔和猫》；这是自画招供，当然无话可说，——但倒也毫不介意。一到今年，我可很有点担心了。我是常不免于弄弄笔墨的， 写了下来，印了出去，对于有些人似乎总是搔着痒处的时候少，碰着痛处的时候多。万一不谨，甚而至于得罪了名人或名教授，或者更甚而至于得罪了“负有指导青年责任的前辈”之流，可就危险已 极。为什么呢？因为这些大脚色是“不好惹”的。怎地“不好惹”呢？就是怕要浑身发热之后，做一封信登在报纸上，广告道：“看哪！狗不是仇猫的么？鲁迅先生却自己承认是仇猫的，而他还说要 打‘落水狗’！”①这“逻辑”的奥义，即在用我的话，来证明我倒是狗，于是而凡有言说，全都根本推翻，即使我说二二得四，三三见九，也没有一字不错。这些既然都错，则绅士口头的二二得七 ，三三见千等等，自然就不错了。
 				</p>
-				<table className={styles.table0}>
+				{/* <table className={styles.table0}>
 					<tbody>
 						<tr className={styles.list0}>
 							<th>第一句</th>
@@ -92,11 +92,9 @@ export default class IndexPage extends Component<any, any>{
 							<td>谁怕</td>
 						</tr>
 					</tbody>
-				</table>
+				</table> */}
 				{/* <Manage /> */}
-				<div className={styles.learnCSS}></div>                        
-				<img className={styles.Photo1} src={require('@/assets/images/12.png')} />
-                <img className={styles.Photo2} src={require('@/assets/images/8.jpg')} />
+				{/* <div className={styles.learnCSS}></div>                         */}
 			</div>
 		);
 	}
