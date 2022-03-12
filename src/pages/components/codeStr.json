@@ -1,0 +1,28 @@
+{
+    "data" : [
+        {
+            "codeStr": "filter: blur(2px);"
+        },
+        {
+            "codeStr": "filter: brightness(.7);"
+        },
+        {
+            "codeStr": "filter: contrast(1.5);"
+        },
+        {
+            "codeStr": "filter: hue-rotate(70deg);"
+        },
+        {
+            "codeStr": "filter: invert(100%);"
+        },
+        {
+            "codeStr": "filter: grayscale(100%);"
+        },
+        {
+            "codeStr": "filter: sepia(100%);"
+        },
+        {
+            "codeStr": "filter: saturate(200%);"
+        }
+    ]
+}
