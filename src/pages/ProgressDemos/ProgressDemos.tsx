@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styles from './clickProgressBar.less'
+import styles from './ProgressDemos.less'
 
 var width = 0;
-class clickProgressBar extends Component{
+class ProgressDemos extends Component{
     bar: any;
     interval : NodeJS.Timeout | null = null;
     tick(){
@@ -50,4 +50,4 @@ class clickProgressBar extends Component{
     }
 }
 
-export default clickProgressBar;
+export default ProgressDemos;

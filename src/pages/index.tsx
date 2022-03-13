@@ -40,7 +40,7 @@ export default class IndexPage extends Component<any, any>{
 					<li><Link to='/Test/moreButtons'><p className={styles.css}>按钮demos</p></Link></li>
 					<li><Link to='/Test/SPAandRouter'><p className={styles.TS_JS}>路由组件学习</p></Link></li>
 					<li><Link to='/Test/axios'><p className={styles.TS_JS}>AXIOS学习</p></Link></li>
-					<li><Link to='/Test/clickProgressBar'><p className={styles.css}>进度条demos</p></Link></li>
+					<li><Link to='/Test/ProgressDemos'><p className={styles.css}>进度条demos</p></Link></li>
 				</ul>
 				<ul className={styles.ul}>
 					<li><Link to='/Test/ReduxLearn'><p className={styles.TS_JS}>Redux学习案例</p></Link></li>

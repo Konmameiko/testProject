@@ -4,7 +4,7 @@ import { history } from 'umi';
 import data from './codeStr.json'
 import styles from './manage.less';
 import 'swiper/swiper-bundle.css';
-import clickProgressBar from '../clickProgressBar/clickProgressBar';
+import clickProgressBar from '../ProgressDemos/ProgressDemos';
 import { CustomBlending } from 'three';
 
 const Manage =({}) => {

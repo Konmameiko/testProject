@@ -4,7 +4,7 @@ export default [
     { path: '/TodoList', component: '@/pages/components/TodoList', title:"待做清单页面"},
     { path: '/Test', component: '@/pages/test', title:"React学习"},
     { path: '/Test/axios', component: '@/pages/axios/app', title:"ajax学习"},
-    { path: '/Test/clickProgressBar', component: '@/pages/clickProgressBar/clickProgressBar', title:"进度条点击"},
+    { path: '/Test/ProgressDemos', component: '@/pages/ProgressDemos/ProgressDemos', title:"进度条组件"},
     { path: '/Test/moreButtons', component: '@/pages/Buttons/buttons', title:"按钮特效集合"},
     { path: '/Test/SPAandRouter', component: '@/pages/SPAandRouter/SPA', title:"单页面及路由",
         routes:[
