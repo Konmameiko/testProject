@@ -21,6 +21,9 @@
     7px 7px 20px 0px rgba(0,0,0,.1),
     4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
+    &:active{
+        transform: scale(0.9);
+    }
 }
 
 .home{
@@ -703,6 +706,22 @@
 
         .btn15{
             .default();
+            background: #3498db;
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 10%;
+                border-radius: 50%;
+                background-color: darken(#f1c40f, 20%);
+                opacity: 0.4;
+                left: 0;
+                bottom: -30px;
+            }
+            &:hover{
+                animation:elasticity .8s;
+            }
         }
 
         .btn16{
@@ -787,4 +806,17 @@
         top: -200px;
         right: -400px;
         opacity: 0; }
+}
+
+// 15
+@keyframes elasticity{
+    0%, 100%{
+        transform: scale(1, 1);
+    }
+    30%{
+        transform: scale(1, 1.6);
+    }
+    70%{
+        transform: scale(1.2, 1);
+    }
 }
