@@ -66,7 +66,7 @@ class index extends Component {
                 <Header>
                     <Tabs className={styles.tabs} defaultActiveKey="0" onChange={this.setTabKey} activeKey={key+''} destroyInactiveTabPane={true} type={'line'}>
                         {this.array.map((obj, index) => {
-                            return <TabPane tab={obj.name} key={index}></TabPane>
+                            return <TabPane tab={index+'-'+obj.name} key={index}></TabPane>
                         })}
                     </Tabs>
                 </Header>
