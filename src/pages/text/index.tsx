@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './text.less';
+import styles from './text.scss';
 
 declare module 'react'{
     interface HTMLAttributes<T>{
@@ -26,8 +26,12 @@ export default class index extends Component {
                     <span alt="redTip">红色标签字体</span>
                     <span alt='button'>Button</span>
                     <span alt='shining'>Shining Text</span>
-                    <ruby>佐天泪子<rp> (</rp><rt>xiān qún kuáng mó</rt><rp>) </rp></ruby>
-                    <ruby>超電磁砲<rp> (</rp><rt>レールガン</rt><rp>) </rp></ruby>
+                    <span>
+                        <ruby>佐天泪子<rp> (</rp><rt>xiān qún kuáng mó</rt><rp>) </rp></ruby>
+                        <ruby>超電磁砲<rp> (</rp><rt>レールガン</rt><rp>) </rp></ruby>
+                    </span>
+                    {/* 故障风特效 */}
+                    <span alt='glitch' data-text="GLITCH">GLITCH</span> 
             </div>
         )
     }

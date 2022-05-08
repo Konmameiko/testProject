@@ -1,21 +1,25 @@
-@fontSize:20px;
+$fontSize:32px;
 .body{
-    width: 100vw;
-    height: 100vh;
+    width: 97vw;
+    height: auto;
     background: rgba(16, 23, 34, 0.2);
-
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: 1%;
     span{
-        font-size: @fontSize;
+        width: 20%;
+        font-size: $fontSize;
         font-family: 'Source Sans Pro', '等距更纱黑体 SC', 'Helvetica Neue', Arial, sans-serif;
-        margin: 20px 20px;
-        padding: @fontSize/5 @fontSize/2;
+        margin: 10px 10px;
+        padding: calc($fontSize/5) calc($fontSize/2);
         font-weight: 300;
         line-height: 2;
         text-align: center;
         white-space: nowrap;
         vertical-align: baseline;
-        border-radius: @fontSize/10;
-        border-radius: @fontSize/4;
+        border-radius: calc($fontSize/10);
+        // border-radius: $fontSize/4;
     }
 
     span[alt='bold']{
@@ -28,7 +32,7 @@
 
     span[alt='highlight']{
         background:#a9d18e;
-        border-radius: @fontSize/8;
+        border-radius: calc($fontSize/8);
     }
 
     span[alt='overline']{
@@ -45,7 +49,7 @@
 
     span[alt='wavy']{
         background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23333' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%; 
-        background-size: @fontSize auto;
+        background-size: $fontSize auto;
         &:hover{
           animation: waveMove 1s infinite linear;  
         }
@@ -65,7 +69,7 @@
             transparent 55%,
             transparent 100%,
         );
-        background-size: @fontSize @fontSize/10;
+        background-size: $fontSize calc($fontSize/10);
         background-repeat: repeat-x;
         background-position: bottom;
     }
@@ -74,7 +78,7 @@
         //  设置为透明色 
         color: transparent;     
         background-color: gray;
-        border-radius: @fontSize/8;
+        border-radius: calc($fontSize/8);
         // 设置显隐效果的时间
         transition: all .28s ease;
         &:hover{
@@ -128,8 +132,8 @@
     }
 
     span[alt='redTip']{
-        border-radius: @fontSize;
-        font-size: @fontSize*0.75;
+        border-radius: $fontSize;
+        font-size: calc($fontSize*0.75);
         color: #fff;
         text-align: center;
         background: red;
@@ -169,6 +173,56 @@
         }
         100% {
             background-position: 500%;
+        }
+    }
+
+    span[alt='glitch']{
+        position: relative;
+        color: black;
+        font-family: 'Varela', sans-serif;
+        text-align: left;
+        font-weight: bold;
+        $left:16px;
+        $top:8px;
+        &::before{
+            content:attr(data-text);
+            position:absolute;
+            left:calc($left - 1px);
+            text-shadow:1px 0 rgb(91, 255, 119);
+            top:$top;
+            color:black;
+            background:transparent;
+            overflow:hidden;
+            clip:rect(0,300px,0,0);
+            animation: noise1 3s linear infinite;
+        }
+        &::after{
+            content:attr(data-text);
+            position:absolute;
+            left:calc($left + 1px);
+            text-shadow:-1px 0 rgb(255, 255, 255);
+            top:$top;
+            color:black;
+            background:transparent;
+            overflow:hidden;
+            clip:rect(0,300px,0,0);
+            animation: noise2 3s linear infinite;
+        }
+    }
+    @keyframes noise1{
+        $steps:20;
+        @for $i from 0 through $steps{
+            #{percentage($i*calc(1/$steps))}{
+                clip:rect(random(100)+px,120px,random(60)+px,0);
+            }
+        }
+    }
+    @keyframes noise2{
+        $steps:20;
+        @for $i from 0 through $steps{
+            #{percentage($i*calc(1/$steps))}{
+                clip:rect(random(100)+px,120px,random(60)+px,0);
+            }
         }
     }
 }
