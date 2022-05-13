@@ -25,7 +25,8 @@ class test extends Component<any,any>{
 
     componentDidMount(){
         this.count++;
-        console.log(this.count,"didmount");
+        const temp = sessionStorage.getItem('test')
+        console.log(this.count,"didmount", temp);
         this.setState({opacity:0.1});
     }
 
@@ -41,21 +42,21 @@ class test extends Component<any,any>{
     // }
     componentWillUnmount(){
         this.count++;
-        console.log(this.count,"Unmount");
+        // console.log(this.count,"Unmount");
     }
 
     getSnapshotBeforeUpdate(){
         this.count++;
-        console.log(this.count,"GetSnapshot");
+        // console.log(this.count,"GetSnapshot");
         return {test:1}; 
     }
 
     componentDidUpdate(preProps:any,preState:any,snapShot:any){
         this.count++;
-        console.log(this.count,"didUpdate");
-        console.log("preprops: " , preProps);
-        console.log("preState: " , preState);
-        console.log("snapshot: " , snapShot);
+        // console.log(this.count,"didUpdate");
+        // console.log("preprops: " , preProps);
+        // console.log("preState: " , preState);
+        // console.log("snapshot: " , snapShot);
     }
 
     click = (key:any) =>{
@@ -64,7 +65,7 @@ class test extends Component<any,any>{
     
     render() {
         this.count++; 
-        console.log(this.count,"render");
+        // console.log(this.count,"render");
         return (
             <div>
                 <h1>---Test Zero---</h1>

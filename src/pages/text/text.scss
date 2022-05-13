@@ -19,7 +19,7 @@ $fontSize:32px;
         white-space: nowrap;
         vertical-align: baseline;
         border-radius: calc($fontSize/10);
-        // border-radius: $fontSize/4;
+        // border-radius: calc($fontSize/4);
     }
 
     span[alt='bold']{
@@ -187,7 +187,7 @@ $fontSize:32px;
         &::before{
             content:attr(data-text);
             position:absolute;
-            left:calc($left - 1px);
+            left:($left - 1px);
             text-shadow:1px 0 rgb(91, 255, 119);
             top:$top;
             color:black;
@@ -199,7 +199,7 @@ $fontSize:32px;
         &::after{
             content:attr(data-text);
             position:absolute;
-            left:calc($left + 1px);
+            left:($left + 1px);
             text-shadow:-1px 0 rgb(255, 255, 255);
             top:$top;
             color:black;

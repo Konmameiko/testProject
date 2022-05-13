@@ -11,19 +11,27 @@ export default class IndexPage extends Component<any, any>{
 	onViewChange(): void {
 		let hidden = document.visibilityState;
 		if (hidden == 'hidden') {
-			clearTimeout(this.timer);
+			this.timer && clearTimeout(this.timer);
 			document.title = "页面要崩溃了~";
 		} else {
 			document.title = "诶，好像又好了";
 			this.timer = setTimeout(() => {
+				this.timer && clearTimeout(this.timer);
 				document.title = "主页展示";
 			}, 1500);
 		}
 	}
+
+	goToListPage() {
+		history.push('/Test');
+		sessionStorage.setItem('test', '123');
+	}
+
 	componentWillUnmount() {
 		this.timer && clearTimeout(this.timer);
 		window.removeEventListener('visibilitychange', this.onViewChange);
 	}
+
 	render() {
 		return (
 			<div className={styles.content}>
@@ -33,7 +41,7 @@ export default class IndexPage extends Component<any, any>{
 				<ul className={styles.ul}>
 					<li><Link to='/photoManage'><p className={styles.css}>图片处理</p></Link></li>
 					<li><Link to='/TodoLIst'><p className={styles.TS_JS}>TodoList</p></Link></li>
-					<li><Link to='/Test'><p className={styles.TS_JS}>React生命周期</p></Link></li>
+					<li onClick={this.goToListPage}><p className={styles.TS_JS}>React生命周期</p></li>
 					<li><Link to='/Test/Html_CSSLearn'><p className={styles.css}>静态页面demos</p></Link></li>
 				</ul>
 				<ul className={styles.ul}>
@@ -46,7 +54,7 @@ export default class IndexPage extends Component<any, any>{
 					<li><Link to='/Test/ReduxLearn'><p className={styles.TS_JS}>Redux学习案例</p></Link></li>
 					<li><Link to='/Test/learnTsx'><p className={styles.TS_JS}>TSX学习页面</p></Link></li>
 					<li><Link to='/Test/text'><p className={styles.css}>字体demos</p></Link></li>
-					<li><Link to='/manage'><p className={styles.css}>跳转至后台</p></Link></li>
+					<li><Link to='/Test/svgFilter'><p className={styles.css}>SVG滤镜</p></Link></li>
 				</ul>
 				<ul className={styles.ul}>
 					<li><Link to='/manage'><p className={styles.css}>跳转至后台</p></Link></li>

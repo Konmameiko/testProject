@@ -1,6 +1,6 @@
 /*less循环  传入参数为要生成盒子阴影的个数，*/
 .mixin(@n) when(@n>0) {
-    box-shadow+ : ~`Math.ceil(Math.random()*350) + 'px' + ' ' + Math.ceil(Math.random()*600) + 'px  #ffffff' `;
+    box-shadow+ : ~`Math.ceil(Math.random()*350) + 'px' + ' ' + Math.ceil(Math.random()*600) + 'px  gold' `;
     .mixin(@n - 1);
 }
 

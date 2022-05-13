@@ -47,8 +47,23 @@ class index extends Component {
         {name:"临时Demo页",index:"15", component: <Temporary/>},
         {name:"毛玻璃效果",index:"16", component: <FrostedGlass/>},
         {name:"毛玻璃渐变背景",index:"17", component: <FrostedGlassBg/>},
-        {name:"安卓手机充电效果",index:"18", component: <Recharge/>},
+        {name:"安卓充电效果",index:"18", component: <Recharge/>},
     ];
+
+    //获取url中的参数方法
+    getUrlParam = (name:string) => {
+        //构造一个含有目标参数的正则表达式对象
+        const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        //匹配目标参数
+        const r = window.location.search.substr(1).match(reg);
+    
+        //返回参数
+        if (r != null) {
+            return (r[2]);
+        } else {
+            return null;
+        }
+    };
 
     switchDemo = (value:any) =>{
         return this.array[value].component;
@@ -66,7 +81,7 @@ class index extends Component {
                 <Header>
                     <Tabs className={styles.tabs} defaultActiveKey="0" onChange={this.setTabKey} activeKey={key+''} destroyInactiveTabPane={true} type={'line'}>
                         {this.array.map((obj, index) => {
-                            return <TabPane tab={index+'-'+obj.name} key={index}></TabPane>
+                            return <TabPane tab={`${index+1}-${obj.name}`} key={index}></TabPane>
                         })}
                     </Tabs>
                 </Header>
