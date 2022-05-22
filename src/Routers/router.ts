@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: KonmaMeiko
+ * @Date: 2022-01-28 17:04:42
+ * @lastEditTime: Do not edit
+ * @LastEditors: KonmaMeiko
+ */
 export default [
     { path: '/', component: '@/pages/index' ,title:"主页展示",},
     { path: '/photoManage', component: '@/pages/components/Manage',title:"图片CSS样式集合" },
@@ -21,4 +28,5 @@ export default [
     { path: '/Test/Html_CSSLearn', component: '@/pages/HtmlandCSS/index', title:"HTML+CSS学习",},
     { path: '/Test/learnTsx', component: '@/pages/learnTSX/index', title:"TS学习",},
     { path: '/Test/text', component: '@/pages/text/index', title:"字体特效集合",},
+    { path: '/Test/svgFilter', component: '@/pages/SVGFilter/home', title:"SVG滤镜",},
 ];

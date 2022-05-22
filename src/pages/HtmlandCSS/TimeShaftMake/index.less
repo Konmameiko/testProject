@@ -2,7 +2,7 @@
 // 设置左循环与右循环  每隔32个字符换行一次 最大字数为300
 .leftLoop(@n) when(@n<300) {
     .isText:nth-of-type(@{n}){
-        margin-left: 21%;
+        margin-left: 20%;
     }
     .leftLoop(@n+32);
 }
@@ -72,7 +72,7 @@
                 flex-wrap: wrap;
                 span{
                     position: absolute;
-                    font-size: 16px;
+                    font-size: 1em;
                     color: gray;
                     opacity: 0.7;
                     transition: all 1s;
