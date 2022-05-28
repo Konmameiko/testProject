@@ -2,11 +2,13 @@
  * @Description: SVG滤镜
  * @Author: KonmaMeiko
  * @Date: 2022-05-09 14:52:03
- * @LastEditTime: 2022-05-26 22:55:59
- * @LastEditors: KonmaMeiko
+ * @LastEditTime: 2022-05-27 16:35:31
+ * @LastEditors: ly-yuzh
  */
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Layout, Menu } from 'antd';
+import HaloEffect from './components/haloEffect';
+import MosaicEffect from './components/mosaicEffect';
 import styles from './home.scss';
 export interface prop {}
 
@@ -16,35 +18,53 @@ interface IProps extends Partial<prop> {
 }
 
 const SVGFilter: FC<IProps> = ({ onSomething }) => {
+  const [itemKey, setItemKey] = useState<string>('item-1');
+  const [indexKey, setIndexKey] = useState<Map<string, JSX.Element>>(new Map());
+  const items = [
+    // 菜单项务必填写 key
+    { label: '光晕滤镜特效', key: 'item-1', component: <HaloEffect /> },
+    { label: '马赛克滤镜特效', key: 'item-2', component: <MosaicEffect /> },
+  ];
+
+  useEffect(() => {
+    const tempMap = new Map();
+    for (let i of items) {
+      tempMap.set(i.key, i.component);
+    }
+    setIndexKey(tempMap);
+  }, []);
+
   const handleChange = (item: any) => {
-    console.log(item);
+    setItemKey(item.key);
   };
 
-  const items = [
-    { label: '菜单项一', key: 'item-1' }, // 菜单项务必填写 key
-    { label: '菜单项二', key: 'item-2' },
-    {
-      label: '子菜单',
-      key: 'submenu',
-      children: [{ label: '子菜单项', key: 'submenu-item-1' }],
-    },
-  ];
+  const renderComponents = () => {
+    if (indexKey.size != 0) {
+      return indexKey.get(itemKey);
+    } else {
+      return <h1>Loading......</h1>;
+    }
+  };
 
   return (
     <Layout className={styles.home}>
       <Sider trigger={null} collapsible>
-        <div className={styles.logo} />
-        <Menu onClick={(item) => handleChange(item)} items={items} />
+        <div className={styles.logo}>Not 摸</div>
+        <Menu
+          style={{ backgroundColor: 'white' }}
+          onClick={(item) => handleChange(item)}
+          items={items}
+        />
       </Sider>
       <Layout className={styles.siteLayout}>
         <Content
           className={styles.siteLayoutBackground}
           style={{
-            padding: 24,
+            padding: 0,
             minHeight: '100vh',
           }}
         >
-          Content
+          {renderComponents()}
         </Content>
       </Layout>
     </Layout>
