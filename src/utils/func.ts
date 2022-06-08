@@ -6,12 +6,16 @@
  * @LastEditors: ly-yuzh
  */
 class Normal {
-  private static utils: Normal = new Normal();
+  private static Normal: Normal = new Normal();
 
   private constructor() {}
 
+  public static getInstance(): Normal {
+    return this.Normal;
+  }
+
   // 方法耗时测试
-  public handleTimeSpend = (fn: any, args: any): void => {
+  public handleTimeSpend = (fn: any, args: any[]): void => {
     console.log('传入参数：', typeof fn, ...args);
     console.time('test');
     const res = fn(...args);

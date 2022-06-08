@@ -1,14 +1,25 @@
 /*
+ * @Description:
+ * @Author: ly-yuzh
+ * @Date: 2022-06-02 14:41:45
+ * @LastEditTime: 2022-06-08 17:55:43
+ * @LastEditors: ly-yuzh
+ */
+/*
  * @Description: 常用API方法
  * @Author: ly-yuzh
  * @Date: 2022-06-02 14:41:45
- * @LastEditTime: 2022-06-02 14:57:15
+ * @LastEditTime: 2022-06-08 17:06:43
  * @LastEditors: ly-yuzh
  */
 class Utiles {
   private static utils: Utiles = new Utiles();
 
   private constructor() {}
+
+  public static getInstance(): Utiles {
+    return this.utils;
+  }
 
   /* 获取路由参数 */
   public getURLObj(): object {
@@ -68,6 +79,37 @@ class Utiles {
     }
     for (let i = 5; i <= Math.sqrt(n); i += 6) {
       if (n % i == 0 || n % (i + 2) == 0) return false;
+    }
+    return true;
+  };
+
+  /* 判断字符串是否符合括号规则 */
+  public isBracket = (str: string): boolean => {
+    /* 正则写法 匹配字符串中符合的 (){}[] 去掉之后再重复筛选 */
+    // const finishFlag = /[\(\)\[\]\{\}]/g;	// 剩余字符串是否保留括号
+    // const filter_arr = [/\(([^\(\)\[\]{}])*\)/g, /\[([^\(\)\[\]{}])*\]/g, /\{([^\(\)\[\]{}])*\}/g];
+    // let length;
+    // do{
+    // 	length = str.length;
+    // 	str = filter_arr.reduce((pre, cur)=>{
+    // 		return pre.replace(cur, '');
+    // 	}, str)
+    // }while(length !== str.length);
+    // return !finishFlag.test(str);
+
+    let openHandle = ['(', '{', '['];
+    let handlePair = new Map([
+      [')', '('],
+      ['}', '{'],
+      [']', '['],
+    ]);
+    let list = [];
+    for (let i of str) {
+      if (openHandle.indexOf(i) > -1) {
+        list.push(i);
+      } else if (handlePair.has(i)) {
+        if (list.pop() !== handlePair.get(i)) return false;
+      }
     }
     return true;
   };
