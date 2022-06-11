@@ -1,16 +1,9 @@
 /*
- * @Description:
- * @Author: ly-yuzh
- * @Date: 2022-06-02 14:41:45
- * @LastEditTime: 2022-06-08 17:55:43
- * @LastEditors: ly-yuzh
- */
-/*
  * @Description: 常用API方法
- * @Author: ly-yuzh
+ * @Author: konmameiko
  * @Date: 2022-06-02 14:41:45
  * @LastEditTime: 2022-06-08 17:06:43
- * @LastEditors: ly-yuzh
+ * @LastEditors: konmameiko
  */
 class Utiles {
   private static utils: Utiles = new Utiles();
