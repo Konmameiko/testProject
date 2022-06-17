@@ -2,9 +2,13 @@
  * @Description: 常用API方法
  * @Author: konmameiko
  * @Date: 2022-06-02 14:41:45
- * @LastEditTime: 2022-06-08 17:06:43
- * @LastEditors: konmameiko
+ * @LastEditTime: 2022-06-18 01:28:42
+ * @LastEditors: KonmaMeiko
  */
+
+interface arr2treeIProps {
+  [key: string]: any;
+}
 class Utiles {
   private static utils: Utiles = new Utiles();
 
@@ -105,6 +109,58 @@ class Utiles {
       }
     }
     return true;
+  };
+
+  /* 扁平化数组转tree结构 */
+  // const array = [{id: 1, name: '部门1', pid: 0},{id: 2, name: '部门2', pid: 1},{id: 3, name: '部门3', pid: 1},{id: 4, name: '部门4', pid: 3},{id: 5, name: '部门5', pid: 4},];
+  public array2tree = (array: Array<arr2treeIProps>): object[] => {
+    /* 递归写法 */
+    // const result:Array<arr2treeIProps>= [];
+    // const array2treeChildren = (array:Array<arr2treeIProps>, result:Array<arr2treeIProps>, pid: number) =>{
+    //   for(let item of array){
+    //     if(item.pid === pid){
+    //       const tempObj = {...item, children:[]};
+    //       result.push(tempObj);
+    //       array2treeChildren(array, tempObj.children, item.id)
+    //     }
+    //   }
+    //   console.log(result);
+    //   return result;
+    // }
+    // array2treeChildren(array, result, 0);
+    // return result;
+
+    const result = []; // 存放结果集
+    const itemMap = {}; //
+    for (const item of array) {
+      const id = item.id;
+      const pid = item.pid;
+
+      if (!itemMap[id]) {
+        itemMap[id] = {
+          children: [],
+        };
+      }
+
+      itemMap[id] = {
+        ...item,
+        children: itemMap[id]['children'],
+      };
+
+      const treeItem = itemMap[id];
+
+      if (pid === 0) {
+        result.push(treeItem);
+      } else {
+        if (!itemMap[pid]) {
+          itemMap[pid] = {
+            children: [],
+          };
+        }
+        itemMap[pid].children.push(treeItem);
+      }
+    }
+    return result;
   };
 }
 
