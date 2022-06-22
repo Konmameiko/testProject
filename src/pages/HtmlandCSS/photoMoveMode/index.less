@@ -1,0 +1,59 @@
+.container {
+  position: absolute;
+  right: 0;
+  width: 50vw;
+  height: 50vh;
+  top: 10vh;
+  right: 10vw;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  ul {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    object-fit: fill;
+    box-sizing: border-box;
+    white-space: nowrap;
+    animation: move calc(var(--speed) * var(--s)) steps(var(--s)) infinite;
+    // animation: move1 calc(var(--speed)) infinite;
+    li {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      list-style: none;
+      flex-shrink: 0;
+      object-fit: fill;
+      box-sizing: border-box;
+      white-space: nowrap;
+      animation: move1 calc(var(--speed)) infinite;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+    }
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0, 0px);
+  }
+  100% {
+    transform: translate(calc(var(--s) * var(--w) * -1px), 0);
+  }
+}
+
+@keyframes move1 {
+  0% {
+    transform: translate(0, 0px);
+  }
+  80%,
+  100% {
+    transform: translate(calc(var(--w) * -1px), 0);
+  }
+}

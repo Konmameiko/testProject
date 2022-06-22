@@ -1,97 +1,115 @@
 .site_layout_content {
-    border: aqua 3px solid;
-    width: 100%;
-	height: 600px;
-    padding: 24px;
-    overflow: hidden;
+  border: aqua 3px solid;
+  width: 100%;
+  height: calc(100vh - 70px);
+  padding: 24px;
+  overflow: hidden;
 }
 #components-layout-demo-top .logo {
-	float: left;
-	width: 120px;
-	height: 31px;
-	margin: 16px 24px 16px 0;
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
 }
 .ant-row-rtl #components-layout-demo-top .logo {
-  	float: right;
-  	margin: 16px 0 16px 24px;
+  float: right;
+  margin: 16px 0 16px 24px;
 }
-.tabs{
-    color: aliceblue;
+.tabs {
+  color: aliceblue;
 }
 
-.error{
-	width: 100%;
-	height: 100%;
-	position: relative;
-	font-family: 'PT Sans Caption', sans-serif, 'arial', 'Times New Roman';
-	.title{
-		position: relative;
-		font-size: 30vh;
-		width: 30vw;
-		margin:4vh 0 0 30vw;
-		font-weight: bold;
-		padding: 0;
-		background-image: linear-gradient(
-            45deg,orangered, orange, gold, lightgreen, cyan, dodgerblue, mediumpurple, hotpink, orangered
-        );
-        color: transparent;
-        background-clip: text;
-		animation: rainbow 3.6s infinite linear;
-		&:after{
-			content: attr(data-h1);
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			color: transparent;
-			/* webkit only for graceful degradation to IE */
-			background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176, #b98acc, #69a6ce, #9b59b6);
-			-webkit-text-fill-color: transparent;
-			background-size: 400%;
-			text-shadow: 1px 1px 2px transparentize(#fff, .75);
-			animation: animateTextBackground 10s ease-in-out infinite;
-		}
-	}
+.error {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  font-family: 'PT Sans Caption', sans-serif, 'arial', 'Times New Roman';
+  .title {
+    position: relative;
+    font-size: 30vh;
+    width: 30vw;
+    margin: 4vh 0 0 30vw;
+    font-weight: bold;
+    padding: 0;
+    background-image: linear-gradient(
+      45deg,
+      orangered,
+      orange,
+      gold,
+      lightgreen,
+      cyan,
+      dodgerblue,
+      mediumpurple,
+      hotpink,
+      orangered
+    );
+    color: transparent;
+    background-clip: text;
+    animation: rainbow 3.6s infinite linear;
+    &:after {
+      content: attr(data-h1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      color: transparent;
+      /* webkit only for graceful degradation to IE */
+      background: -webkit-repeating-linear-gradient(
+        -45deg,
+        #71b7e6,
+        #69a6ce,
+        #b98acc,
+        #ee8176,
+        #b98acc,
+        #69a6ce,
+        #9b59b6
+      );
+      -webkit-text-fill-color: transparent;
+      background-size: 400%;
+      text-shadow: 1px 1px 2px transparentize(#fff, 0.75);
+      animation: animateTextBackground 10s ease-in-out infinite;
+    }
+  }
 
-	.msg{
-		position: absolute;
-		text-align: center;
-		line-height: 100px;
-		font-size: 32px;
-		width: 100px;
-		height: 100px;
-		z-index: 9999;
-		display: block;
-		top: 10%;
-		left: 25%;
-		background: #535353;
-		color: #a2a2a2;
-		border-radius: 50%;
-		font-style: italic;
-		.triangle{
-			position: absolute;
-			top: 70%;
-			right: 0%;
-			border-left: 20px solid #535353;
-			border-top: 15px solid transparent;
-			border-bottom: 15px solid transparent;
-			transform: rotate(45deg);
-		}
-	}
-	
-	.text{
-		position: relative;
-		width: 100%;
-		text-align: center;
-        font-size: 32px;
-		color: #A2A2A2;
-        font-weight: bold;
-        padding-bottom: 20px;
-	}
+  .msg {
+    position: absolute;
+    text-align: center;
+    line-height: 100px;
+    font-size: 32px;
+    width: 100px;
+    height: 100px;
+    z-index: 9999;
+    display: block;
+    top: 10%;
+    left: 25%;
+    background: #535353;
+    color: #a2a2a2;
+    border-radius: 50%;
+    font-style: italic;
+    .triangle {
+      position: absolute;
+      top: 70%;
+      right: 0%;
+      border-left: 20px solid #535353;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      transform: rotate(45deg);
+    }
+  }
+
+  .text {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    color: #a2a2a2;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
 }
 
 @keyframes rainbow {
-	to{
-		background-position: -30vw;
-	}
+  to {
+    background-position: -30vw;
+  }
 }
