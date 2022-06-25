@@ -1,8 +1,8 @@
 /*
  * @Description: 照片选取页
- * @Author: ly-yuzh
+ * @Author: KonmaMeiko
  * @Date: 2022-06-20 17:43:18
- * @LastEditTime: 2022-06-23 22:17:11
+ * @LastEditTime: 2022-06-24 20:58:26
  * @LastEditors: KonmaMeiko
  */
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';

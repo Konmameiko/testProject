@@ -1,9 +1,9 @@
 /*
  * @Description: 常用函數API
- * @Author: ly-yuzh
+ * @Author: KonmaMeiko
  * @Date: 2022-06-02 14:34:29
  * @LastEditTime: 2022-06-02 14:52:02
- * @LastEditors: ly-yuzh
+ * @LastEditors: KonmaMeiko
  */
 class Normal {
   private static Normal: Normal = new Normal();
