@@ -1,28 +1,46 @@
 {
-    "data" : [
-        {
-            "codeStr": "filter: blur(2px);"
-        },
-        {
-            "codeStr": "filter: brightness(.7);"
-        },
-        {
-            "codeStr": "filter: contrast(1.5);"
-        },
-        {
-            "codeStr": "filter: hue-rotate(70deg);"
-        },
-        {
-            "codeStr": "filter: invert(100%);"
-        },
-        {
-            "codeStr": "filter: grayscale(100%);"
-        },
-        {
-            "codeStr": "filter: sepia(100%);"
-        },
-        {
-            "codeStr": "filter: saturate(200%);"
-        }
-    ]
+  "textData": [
+    {
+      "codeStr": "filter: blur(2px);",
+      "title": "图片模糊"
+    },
+    {
+      "codeStr": "filter: brightness(.7);",
+      "title": "图片反转"
+    },
+    {
+      "codeStr": "filter: contrast(1.5);",
+      "title": "图片暗化"
+    },
+    {
+      "codeStr": "filter: hue-rotate(70deg);",
+      "title": "图片灰化"
+    },
+    {
+      "codeStr": "filter: invert(100%);",
+      "title": "图片对比度"
+    },
+    {
+      "codeStr": "filter: grayscale(100%);",
+      "title": "图片棕化"
+    },
+    {
+      "codeStr": "filter: sepia(100%);",
+      "title": "色相变化"
+    },
+    {
+      "codeStr": "filter: saturate(200%);",
+      "title": "图片饱和度"
+    }
+  ],
+  "styleData": [
+    { "style": "blur" },
+    { "style": "invert" },
+    { "style": "brightness" },
+    { "style": "grayscale" },
+    { "style": "contrast" },
+    { "style": "sepia" },
+    { "style": "hueRotate" },
+    { "style": "saturate" }
+  ]
 }

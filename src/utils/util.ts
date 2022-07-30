@@ -1,14 +1,25 @@
 /*
- * @Description: 常用API方法
- * @Author: konmameiko
+ * @Description:
+ * @Author: ly-yuzh
  * @Date: 2022-06-02 14:41:45
- * @LastEditTime: 2022-06-22 22:44:26
- * @LastEditors: KonmaMeiko
+ * @LastEditTime: 2022-06-17 17:55:23
+ * @LastEditors: ly-yuzh
+ */
+/*
+ * @Description: 常用API方法
+ * @Author: ly-yuzh
+ * @Date: 2022-06-02 14:41:45
+ * @LastEditTime: 2022-06-08 17:06:43
+ * @LastEditors: ly-yuzh
  */
 
 interface arr2treeIProps {
+  id: number;
+  name: string;
+  pid: number;
   [key: string]: any;
 }
+
 class Utiles {
   private static utils: Utiles = new Utiles();
 
@@ -117,15 +128,15 @@ class Utiles {
     /* 递归写法 */
     // const result:Array<arr2treeIProps>= [];
     // const array2treeChildren = (array:Array<arr2treeIProps>, result:Array<arr2treeIProps>, pid: number) =>{
-    //   for(let item of array){
-    //     if(item.pid === pid){
-    //       const tempObj = {...item, children:[]};
-    //       result.push(tempObj);
-    //       array2treeChildren(array, tempObj.children, item.id)
-    //     }
-    //   }
-    //   console.log(result);
-    //   return result;
+    // 	for(let item of array){
+    // 		if(item.pid === pid){
+    // 			const tempObj = {...item, children:[]};
+    // 			result.push(tempObj);
+    // 			array2treeChildren(array, tempObj.children, item.id)
+    // 		}
+    // 	}
+    // 	console.log(result);
+    // 	return result;
     // }
     // array2treeChildren(array, result, 0);
     // return result;
