@@ -15,3 +15,4 @@
 4. getPrimeNum  判断是否为质数
 5. isBracket  判断字符串是否符合括号规则
 6. array2tree  扁平化数组转为树结构
+7. PunctuationMatch 输入框自动补全字符 并光标居中 如 《》“” {} 【】等

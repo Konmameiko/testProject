@@ -1,15 +1,8 @@
 /*
- * @Description:
- * @Author: ly-yuzh
- * @Date: 2022-06-02 14:41:45
- * @LastEditTime: 2022-06-17 17:55:23
- * @LastEditors: ly-yuzh
- */
-/*
  * @Description: 常用API方法
  * @Author: ly-yuzh
  * @Date: 2022-06-02 14:41:45
- * @LastEditTime: 2022-06-08 17:06:43
+ * @LastEditTime: 2022-08-01 17:36:41
  * @LastEditors: ly-yuzh
  */
 
@@ -172,6 +165,89 @@ class Utiles {
       }
     }
     return result;
+  };
+
+  /* 输入框自动匹配标点符号 光标居中 */
+  public PunctuationMatch = () => {
+    /*
+     * @desc: 自动匹配标点符号
+     * @email: yanwenbin1991@live.com
+     * @author: XboxYan
+     */
+    const quotes = {
+      "'": "'",
+      '"': '"',
+      '(': ')',
+      '（': '）',
+      '【': '】',
+      '[': ']',
+      '《': '》',
+      '「': '」',
+      '『': '』',
+      '{': '}',
+      '“': '”',
+      '‘': '’',
+      '”': '“',
+      '’': '‘',
+    };
+
+    const quotes_reverse = ['”', '’'];
+    const selection = document.getSelection();
+    function commonInput(ev: any) {
+      const tagName = ev.target.tagName;
+      if (tagName === 'TEXTAREA' || tagName === 'INPUT') {
+        inputTextArea.call(ev.target, ev);
+      } else {
+        input.call(ev.target, ev);
+      }
+    }
+    document.addEventListener('compositionend', commonInput);
+    document.addEventListener('input', commonInput);
+
+    function inputTextArea(this: any, ev: any) {
+      const quote = quotes[ev.data];
+      if (
+        quote &&
+        (ev.inputType === 'insertText' || ev.type === 'compositionend')
+      ) {
+        const reverse = quotes_reverse.includes(ev.data);
+        if (reverse) {
+          this.setSelectionRange(
+            this.selectionStart - 1,
+            this.selectionEnd - 1,
+          );
+        }
+        this.setRangeText(quote);
+        if (reverse) {
+          this.setSelectionRange(
+            this.selectionStart + 1,
+            this.selectionEnd + 1,
+          );
+        }
+      }
+    }
+
+    function input(ev: any) {
+      const quote = quotes[ev.data];
+      if (quote && ev.inputType === 'insertText' && selection) {
+        const newQuote = document.createTextNode(quote);
+        const range = selection.getRangeAt(0);
+        const reverse = quotes_reverse.includes(ev.data);
+        if (reverse) {
+          const { startContainer, startOffset, endContainer, endOffset } =
+            range;
+          range.setStart(startContainer, startOffset - 1);
+          range.setEnd(endContainer, endOffset - 1);
+        }
+        range.insertNode(newQuote);
+        if (reverse) {
+          range.setStartAfter(newQuote);
+        } else {
+          range.setEndBefore(newQuote);
+        }
+        range.commonAncestorContainer.normalize();
+      }
+    }
   };
 }
 
