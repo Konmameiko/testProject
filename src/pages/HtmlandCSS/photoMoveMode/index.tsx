@@ -2,7 +2,7 @@
  * @Description: 照片选取页
  * @Author: KonmaMeiko
  * @Date: 2022-06-20 17:43:18
- * @LastEditTime: 2022-06-28 20:37:31
+ * @LastEditTime: 2022-08-03 21:50:38
  * @LastEditors: KonmaMeiko
  */
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
@@ -81,8 +81,8 @@ const PhotoMode: FC<IProps> = () => {
   };
 
   useEffect(() => {
-    setCurWidth('40%');
-    setPhotoWidth(document.body.clientWidth * 0.4);
+    setCurWidth('80%');
+    setPhotoWidth(document.body.clientWidth * 0.8);
     handleTimeTable(timeTable[0], 0);
     return () => {
       timer && clearTimeout(timer);

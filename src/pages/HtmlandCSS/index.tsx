@@ -19,6 +19,7 @@ import FrostedGlassBg from './frostedGlassBg';
 import NotFound from './404';
 import Recharge from './recharge';
 import PhotoMoveMode from './photoMoveMode';
+import CssGraph from './CssGraph';
 
 import styles from './index.less';
 
@@ -49,6 +50,7 @@ class index extends Component {
     { name: '毛玻璃渐变背景', index: '17', component: <FrostedGlassBg /> },
     { name: '安卓充电效果', index: '18', component: <Recharge /> },
     { name: '纯CSS轮播图', index: '19', component: <PhotoMoveMode /> },
+    { name: 'Css图案集合', index: '20', component: <CssGraph /> },
   ];
 
   //获取url中的参数方法
