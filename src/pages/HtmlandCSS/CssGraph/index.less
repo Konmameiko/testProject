@@ -219,4 +219,253 @@
       box-sizing: border-box;
     }
   }
+
+  .heart {
+    position: relative;
+    width: 6vw;
+    height: 5.4vw;
+    background-color: transparent !important;
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      left: 3vw;
+      top: 0;
+      width: 3vw;
+      height: 5vw;
+      background-color: red;
+      border-radius: 3vw 3vw 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+    &::after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+  }
+
+  .infinity {
+    position: relative;
+    width: 12vw;
+    height: 6vw;
+    box-sizing: content-box;
+    background-color: transparent !important;
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      box-sizing: content-box;
+      top: 0;
+      left: 0;
+      width: 3.2vw;
+      height: 3.2vw;
+      border: 1.2vw solid red;
+      border-radius: 3vw 3vw 0 3vw;
+      transform: rotate(-45deg);
+    }
+    &::after {
+      left: auto;
+      right: 0;
+      border-radius: 3vw 3vw 3vw 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  .diamondNarrow {
+    width: 0;
+    border: 3vw solid transparent;
+    background-color: transparent !important;
+    border-bottom: 4.2vw solid greenyellow;
+    position: relative;
+    top: -3vw;
+    &::after {
+      position: absolute;
+      content: '';
+      border: 3vw solid transparent;
+      border-top: 4.2vw solid rgb(13, 0, 255);
+      top: 4vw;
+      left: -3vw;
+    }
+  }
+
+  .diamond {
+    background-color: transparent !important;
+    border-style: solid;
+    border-color: transparent transparent rgb(255, 0, 0) transparent;
+    border-width: 0 1.5vw 1.5vw 1.5vw;
+    width: 3vw;
+    box-sizing: content-box;
+    position: relative;
+    margin: 0.7vw 0 3vw 0;
+    &::before {
+      width: 0;
+      position: absolute;
+      content: '';
+      border: 3vw solid transparent;
+      border-top: 3vw solid red;
+      left: -1.5vw;
+      top: 1.5vw;
+    }
+  }
+
+  .pacman {
+    width: 0;
+    height: 0;
+    background-color: transparent !important;
+    border-right: 3.6vw solid transparent;
+    border-top: 3.6vw solid black;
+    border-left: 3.6vw solid black;
+    border-bottom: 3.6vw solid black;
+    border-top-left-radius: 3.6vw;
+    border-top-right-radius: 3.6vw;
+    border-bottom-left-radius: 3.6vw;
+    border-bottom-right-radius: 3.6vw;
+  }
+
+  .talkbubble {
+    width: 7vw;
+    height: 4.5vw;
+    position: relative;
+    border-radius: 1vw;
+    &::before {
+      content: '';
+      position: absolute;
+      right: 100%;
+      top: 1.5vw;
+      border-top: 0.75vw solid transparent;
+      border-right: 1.5vw solid rgb(255, 89, 117);
+      border-bottom: 0.75vw solid transparent;
+    }
+  }
+
+  .burst12 {
+    background-color: aqua !important;
+    width: 5vw;
+    height: 5vw;
+    position: relative;
+    text-align: center;
+    &::after,
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      height: 5vw;
+      width: 5vw;
+      background-color: aqua;
+    }
+    &::before {
+      transform: rotate(30deg);
+    }
+    &::after {
+      transform: rotate(60deg);
+    }
+  }
+
+  .Taiji {
+    width: 0;
+    height: 9vw;
+    border-right: 4.5vw solid #fff;
+    border-left: 4.5vw solid #000;
+    border-radius: 50%;
+    position: relative;
+    &::before {
+      display: block;
+      content: '';
+      box-sizing: content-box;
+      background-color: #fff;
+      border: 2vw solid #000;
+      width: 0.5vw;
+      height: 0.5vw;
+      border-radius: 50%;
+      margin-left: -2.25vw;
+    }
+    &::after {
+      display: block;
+      content: '';
+      box-sizing: content-box;
+      background-color: #000;
+      border: 2vw solid #fff;
+      width: 0.5vw;
+      height: 0.5vw;
+      border-radius: 50%;
+      margin-left: -2.25vw;
+    }
+    &:hover {
+      box-shadow: 5px 0 10px #457b9d, -5px 0 10px #06d6a0, 0 5px 10px #480ca8,
+        0 -5px 10px #e63946;
+    }
+  }
+
+  .magnifyingGlass {
+    font-size: 10em;
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    border: 0.1em solid red;
+    position: relative;
+    border-radius: 0.35em;
+    background-color: transparent !important;
+    &::before {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      right: -0.25em;
+      bottom: -0.1em;
+      border-width: 0;
+      background-color: red;
+      width: 0.35em;
+      height: 0.08em;
+      transform: rotate(45deg);
+    }
+  }
+
+  .moon {
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    box-shadow: 1vw 1vw 0 0 red;
+    background-color: transparent !important;
+  }
+
+  .lock {
+    font-size: 8px;
+    position: relative;
+    width: 18em;
+    height: 13em;
+    border-radius: 2em;
+    top: 10em;
+    box-sizing: border-box;
+    border: 3.5em solid red;
+    border-right-width: 7.5em;
+    border-left-width: 7.5em;
+    margin: 0 0 6rem 0;
+    background-color: transparent !important;
+    &::before {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      border: 2.5em solid red;
+      width: 14em;
+      height: 12em;
+      left: 50%;
+      margin-left: -7em;
+      top: -12em;
+      border-top-left-radius: 7em;
+      border-top-right-radius: 7em;
+    }
+    &::after {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      border: 1em solid red;
+      width: 5em;
+      height: 8em;
+      border-radius: 2.5em;
+      left: 50%;
+      top: -1em;
+      margin-left: -2.5em;
+    }
+  }
 }

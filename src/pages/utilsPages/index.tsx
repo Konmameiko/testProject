@@ -1,9 +1,9 @@
 /*
  * @Description: 功能首页
- * @Author: ly-yuzh
+ * @Author: KonmaMeiko
  * @Date: 2022-07-28 16:21:56
  * @LastEditTime: 2022-07-28 16:24:13
- * @LastEditors: ly-yuzh
+ * @LastEditors: KonmaMeiko
  */
 import React, { FC } from 'react';
 import SliceRender from './sliceRender/sliceRender';

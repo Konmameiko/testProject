@@ -1,9 +1,9 @@
 /*
  * @Description: CSS常用形状集合
- * @Author: ly-yuzh
+ * @Author: KonmaMeiko
  * @Date: 2022-08-03 14:10:48
- * @LastEditTime: 2022-08-03 17:42:30
- * @LastEditors: ly-yuzh
+ * @LastEditTime: 2022-08-04 17:46:08
+ * @LastEditors: KonmaMeiko
  */
 import React from 'react';
 import styles from './index.less';
@@ -56,12 +56,39 @@ const CssGraph = () => {
       <div className={styles.content}>
         <div className={styles.octagon} />
       </div>
-      <div className={styles.content}></div>
-      <div className={styles.content}></div>
-      <div className={styles.content}></div>
-      <div className={styles.content}></div>
-      <div className={styles.content}></div>
-      <div className={styles.content}></div>
+      <div className={styles.content}>
+        <div className={styles.heart} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.infinity} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.diamondNarrow} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.diamond} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.pacman} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.talkbubble} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.burst12} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.Taiji} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.magnifyingGlass} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.moon} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.lock} />
+      </div>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 /*
  * @Description: HOC组件
- * @Author: ly-yuzh
+ * @Author: KonmaMeiko
  * @Date: 2022-07-29 10:18:34
  * @LastEditTime: 2022-07-29 11:01:01
- * @LastEditors: ly-yuzh
+ * @LastEditors: KonmaMeiko
  */
 import { useEffect, useState } from 'react';
 
