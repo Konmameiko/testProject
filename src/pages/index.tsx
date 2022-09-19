@@ -97,8 +97,8 @@ export default class IndexPage extends Component<any, any> {
             </Link>
           </li>
           <li>
-            <Link to="/manage">
-              <p className={styles.css}>跳转至后台</p>
+            <Link to="/imgWrapper">
+              <p className={styles.css}>图片瀑布流</p>
             </Link>
           </li>
           <li>

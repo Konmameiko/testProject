@@ -1,9 +1,21 @@
+/*
+ * @Description:
+ * @Author: KonmaMeiko
+ * @Date: 2022-07-30 17:45:55
+ * @lastEditTime: Do not edit
+ * @LastEditors: KonmaMeiko
+ */
 export default [
   { path: '/', component: '@/pages/index', title: '主页展示' },
   {
     path: '/photoManage',
     component: '@/pages/components/Manage',
     title: '图片CSS样式集合',
+  },
+  {
+    path: '/imgWrapper',
+    component: '@/pages/components/imgWrapper',
+    title: '图片瀑布流',
   },
   {
     path: '/TodoList',
