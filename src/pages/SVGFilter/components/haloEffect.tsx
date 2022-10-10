@@ -2,11 +2,11 @@
  * @Description: SCG滤镜实现光晕特效
  * @Author: KonmaMeiko
  * @Date: 2022-05-27 14:13:47
- * @LastEditTime: 2022-05-27 16:28:36
+ * @LastEditTime: 2022-10-10 17:59:08
  * @LastEditors: KonmaMeiko
  */
 import React, { FC } from 'react';
-import styles from '../basic.less';
+import styles from './basic.less';
 
 export interface IProps {}
 

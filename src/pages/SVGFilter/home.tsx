@@ -2,13 +2,14 @@
  * @Description: SVG滤镜
  * @Author: KonmaMeiko
  * @Date: 2022-05-09 14:52:03
- * @LastEditTime: 2022-05-27 16:35:31
+ * @LastEditTime: 2022-10-10 17:56:21
  * @LastEditors: KonmaMeiko
  */
 import React, { FC, useEffect, useState } from 'react';
 import { Layout, Menu } from 'antd';
 import HaloEffect from './components/haloEffect';
 import MosaicEffect from './components/mosaicEffect';
+import RoundRec from './components/roundRec';
 import styles from './home.scss';
 export interface prop {}
 
@@ -24,6 +25,7 @@ const SVGFilter: FC<IProps> = ({ onSomething }) => {
     // 菜单项务必填写 key
     { label: '光晕滤镜特效', key: 'item-1', component: <HaloEffect /> },
     { label: '马赛克滤镜特效', key: 'item-2', component: <MosaicEffect /> },
+    { label: '圆角滤镜', key: 'item-3', component: <RoundRec /> },
   ];
 
   useEffect(() => {

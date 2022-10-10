@@ -2,11 +2,11 @@
  * @Description: 马赛克SVG滤镜
  * @Author: KonmaMeiko
  * @Date: 2022-05-27 14:26:40
- * @LastEditTime: 2022-06-25 18:45:22
+ * @LastEditTime: 2022-10-10 17:51:23
  * @LastEditors: KonmaMeiko
  */
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
-import logo from '../../../../assets/images/11.jpg';
+import React, { FC } from 'react';
+import logo from '../../../assets/images/11.jpg';
 export interface IProps {}
 
 const MosaicEffect: FC<IProps> = () => {

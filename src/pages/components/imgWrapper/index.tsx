@@ -1,9 +1,9 @@
 /*
  * @Description: 图片轮播
- * @Author: ly-yuzh
+ * @Author: KonmaMeiko
  * @Date: 2022-09-19 19:17:05
  * @LastEditTime: 2022-09-19 19:32:57
- * @LastEditors: ly-yuzh
+ * @LastEditors: KonmaMeiko
  */
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import styles from './index.less';
