@@ -6,31 +6,49 @@
  * @LastEditors: KonmaMeiko
  */
 import React from 'react';
+import { TimePicker } from 'antd';
+import moment from 'moment';
+
 const ProgressDemos = () => {
-  // let x = 2;
-  // let n = 10;
-  var myPow = (nums1, nums2) => {
-    const n = nums1.length;
-    const idx = new Array(n).fill(0);
-    for (let i = 0; i < n; i++) idx[i] = i;
-    nums1.sort((a, b) => a - b);
-    idx.sort((i, j) => nums2[i] - nums2[j]);
-    let L = 0,
-      R = n - 1; // nums2(索引)的左右指针
-    for (let i of nums1) {
-      console.log(i, nums2[idx[L]], idx);
-      if (i > nums2[idx[L]])
-        nums2[idx[L++]] = i; // 可以满足 nums1[i] > nums2[i]
-      else nums2[idx[R--]] = i; //丢到数组最后
+  // 解压缩字符串 '2<A>' AA
+  // 'A2<B2<CE>>' ABCECEBCECE
+  var myPow = (str) => {
+    const stack = [];
+    let res = '';
+    let num = 0;
+    for (let c of str) {
+      if (c === '[') {
+        stack.push([num, res]);
+        [num, res] = [0, ''];
+      } else if (c === ']') {
+        let [preNum, preRes] = stack.pop();
+        res = preRes + res.repeat(preNum);
+      } else if (!isNaN(c)) {
+        num = num * 10 + parseInt(c);
+      } else {
+        res += c;
+      }
     }
-    return nums2;
+    return res;
   };
   const handleClick = () => {
-    return myPow([2, 7, 11, 15], [1, 9, 4, 11]);
+    console.time();
+    const res = myPow('A2<B2<CE>>');
+    console.timeEnd();
+    return res;
+  };
+
+  const onChange = (time, timeString) => {
+    console.log(time, timeString);
   };
 
   return (
     <div>
+      <TimePicker
+        onChange={onChange}
+        defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
+      />
+      <p>shoudonghuanhang</p>
       <button onClick={() => console.log(handleClick())}>点击</button>
     </div>
   );

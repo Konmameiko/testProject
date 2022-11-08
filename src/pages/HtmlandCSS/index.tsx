@@ -61,7 +61,6 @@ class index extends Component {
     const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
     //匹配目标参数
     const r = window.location.search.substr(1).match(reg);
-
     //返回参数
     if (r != null) {
       return r[2];
