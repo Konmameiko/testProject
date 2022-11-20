@@ -1,12 +1,18 @@
 import React, { FC, useEffect, useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { history } from 'umi';
-import styles from './manage.less';
+import styles from './manage.scss';
+import image1 from '../../assets/images/7.png';
+import image2 from '../../assets/images/11.jpg';
+import image3 from '../../assets/images/18.png';
+import image4 from '../../assets/images/20.jpg';
+import image5 from '../../assets/images/25.jpg';
+import image6 from '../../assets/images/27.png';
 import 'swiper/swiper-bundle.css';
 
 interface textProps {
   title: string;
-  codeStr: string;
+  codeStr: Array<string>;
 }
 interface stylyProps {
   style: string;
@@ -20,6 +26,7 @@ const Manage = ({}) => {
   const swiperRef = useRef<any>(null);
   const swiperTwoRef = useRef<any>(null);
   const [data, setData] = useState<JSONProps | null>(null);
+  const imageArr = [image1, image2, image3, image4, image5, image6];
 
   useEffect(() => {
     const tmpData = require('./codeStr.json');
@@ -46,7 +53,7 @@ const Manage = ({}) => {
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
-            loop={true}
+            // loop={true}
           >
             <div
               className={styles.left}
@@ -85,8 +92,7 @@ const Manage = ({}) => {
                   strokeWidth="1"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  points="
-                                0.375,0.375 45.63,38.087 0.375,75.8 "
+                  points="0.375,0.375 45.63,38.087 0.375,75.8 "
                 />
               </svg>
             </div>
@@ -98,9 +104,7 @@ const Manage = ({}) => {
                         className={`${styles.managePhoto} ${
                           styles[item.style]
                         }`}
-                        src={require(`@/assets/images/${
-                          index % 2 === 0 ? 18 : 27
-                        }.png`)}
+                        src={imageArr[index % 6]}
                       />
                     </SwiperSlide>
                   );
@@ -116,7 +120,7 @@ const Manage = ({}) => {
             onSwiper={(swiper) => {
               swiperTwoRef.current = swiper;
             }}
-            loop={true}
+            // loop={true}
           >
             {data
               ? data.textData.map((item: textProps) => {
@@ -138,21 +142,15 @@ const Manage = ({}) => {
 };
 
 const CodePart = ({ title, codeStr }: textProps) => {
-  const [arr, setArr] = useState<Array<string>>([]);
-  useEffect(() => {
-    const arr = codeStr.split(';');
-    setArr(arr);
-  }, []);
-
   return (
     <div className={styles.codePart}>
       <h1 className={styles.title}>{title}</h1>
       <div className={styles.code}>
-        {arr.map((item, index) => {
-          if (index < arr.length - 1)
+        {codeStr.map((item, index) => {
+          if (index <= codeStr.length - 1)
             return (
               <p key={index} className={styles.codeStr}>
-                {item + ';'}
+                {item}
               </p>
             );
         })}

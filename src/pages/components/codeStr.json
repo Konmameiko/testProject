@@ -1,36 +1,94 @@
 {
   "textData": [
     {
-      "codeStr": "filter: blur(2px);",
+      "codeStr": ["filter: blur(2px);"],
       "title": "图片模糊"
     },
     {
-      "codeStr": "filter: brightness(.7);",
+      "codeStr": ["filter: brightness(.7);"],
       "title": "图片反转"
     },
     {
-      "codeStr": "filter: contrast(1.5);",
+      "codeStr": ["filter: contrast(1.5);"],
       "title": "图片暗化"
     },
     {
-      "codeStr": "filter: hue-rotate(70deg);",
+      "codeStr": ["filter: hue-rotate(70deg);"],
       "title": "图片灰化"
     },
     {
-      "codeStr": "filter: invert(100%);",
+      "codeStr": ["filter: invert(100%);"],
       "title": "图片对比度"
     },
     {
-      "codeStr": "filter: grayscale(100%);",
+      "codeStr": ["filter: grayscale(100%);"],
       "title": "图片棕化"
     },
     {
-      "codeStr": "filter: sepia(100%);",
+      "codeStr": ["filter: sepia(100%);"],
       "title": "色相变化"
     },
     {
-      "codeStr": "filter: saturate(200%);",
+      "codeStr": ["filter: saturate(200%);"],
       "title": "图片饱和度"
+    },
+    {
+      "codeStr": [
+        "// 设置变量",
+        "$count: 100;\t// 总数",
+        "$sqrt: 10;\t\t// \t开方根",
+        "$per: 11%;",
+        "// 设置SCSS循环 输出自定义@prpperty 名称",
+        "@for $i from 1 to ($count + 1) {",
+        "@property --m-#{$i} {",
+        "syntax: \"<number>\";",
+        "initial-value: 1;",
+        "inherits: false;",
+        "}",
+        "}",
+        "// mask 渐变属性",
+        "@function bgSet($n) {",
+        "$bg : radial-gradient(rgba(0, 0, 0, var(--m-1)), rgba(0, 0, 0, var(--m-1)));",
+        "@for $i from 2 through $n {",
+        "$bg: $bg, radial-gradient(rgba(0, 0, 0, var(--m-#{$i})), rgba(0, 0, 0, var(--m-#{$i})));",
+        "}",
+        "@return $bg;",
+        "}",
+        "// mask 位置设定",
+        "@function positionSet($n) {",
+        "$bgPosition: ();",
+        "@for $i from 0 through ($n) {",
+        "@for $j from 0 through ($n - 1) {",
+        "// $bgPosition: $bgPosition, $i * $per $j * $per;",
+        "$bgPosition: $bgPosition, $i * 6vw $j * 6vh;",
+        "}",
+        "}",
+        "@return $bgPosition;",
+        "}",
+        "// mask 渐变时长设定",
+        "@function transitionSet($n) {",
+        "$transition: --m-1 0.1s 0.1s;",
+        "@for $i from 1 through $n {",
+        "$transition: $transition, --m-#{$i} #{random(1000)}ms #{random(1000)}ms linear;",
+        "}",
+        "@return $transition;",
+        "}",
+        ".fadeout{",
+        "mask: bgSet($count);",
+        "mask-size: $per $per;",
+        "mask-repeat: no-repeat;",
+        "mask-position: positionSet($sqrt);",
+        "transition: transitionSet($count);",
+        "mask-border: none;",
+        "// 设置图片渐隐",
+        "&:hover {",
+        "@for $i from 1 through $count {",
+        "--m-#{$i}: 0;",
+        "}",
+        "}",
+        "}"
+      ],
+      "title": "图片渐隐"
     }
   ],
   "styleData": [
@@ -41,6 +99,7 @@
     { "style": "contrast" },
     { "style": "sepia" },
     { "style": "hueRotate" },
-    { "style": "saturate" }
+    { "style": "saturate" },
+    { "style": "fadeout" }
   ]
 }
