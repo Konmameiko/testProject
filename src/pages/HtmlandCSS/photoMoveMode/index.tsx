@@ -2,7 +2,7 @@
  * @Description: 照片选取页
  * @Author: KonmaMeiko
  * @Date: 2022-06-20 17:43:18
- * @LastEditTime: 2022-08-30 19:48:47
+ * @LastEditTime: 2023-03-11 19:41:47
  * @LastEditors: KonmaMeiko
  */
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
@@ -37,7 +37,7 @@ const PhotoMode: FC<IProps> = () => {
   const timeTable = [
     { type: 'normal', time: 3500 },
     { type: 'normal', time: 3500 },
-    { type: 'pause', time: 8000 },
+    { type: 'pause', time: 32880 },
     { type: 'normal', time: 3500 },
     { type: 'normal', time: 3500 },
     { type: 'normal', time: 3500 },
