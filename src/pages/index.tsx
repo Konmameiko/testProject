@@ -6,7 +6,13 @@ export default class IndexPage extends Component<any, any> {
   timer: any | null = null;
   componentDidMount() {
     window.addEventListener('visibilitychange', this.onViewChange);
+    if ('paintWorklet' in CSS) {
+      CSS.paintWorklet.addModule(
+        `${process.env.PUBLIC_URL}/paintWorklet/headerHighlight.js`,
+      );
+    }
   }
+
   onViewChange(): void {
     let hidden = document.visibilityState;
     if (hidden == 'hidden') {
