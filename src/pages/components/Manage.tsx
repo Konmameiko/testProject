@@ -71,8 +71,7 @@ const Manage = ({}) => {
                   strokeWidth="1"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  points="
-                                45.63,75.8 0.375,38.087 45.63,0.375 "
+                  points="45.63,75.8 0.375,38.087 45.63,0.375 "
                 />
               </svg>
             </div>
@@ -120,7 +119,6 @@ const Manage = ({}) => {
             onSwiper={(swiper) => {
               swiperTwoRef.current = swiper;
             }}
-            // loop={true}
           >
             {data
               ? data.textData.map((item: textProps) => {
