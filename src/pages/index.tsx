@@ -6,11 +6,10 @@ export default class IndexPage extends Component<any, any> {
   timer: any | null = null;
   componentDidMount() {
     window.addEventListener('visibilitychange', this.onViewChange);
-    // if ('paintWorklet' in CSS) {
-    //   CSS.paintWorklet.addModule(
-    //     `${process.env.PUBLIC_URL}/paintWorklet/headerHighlight.js`,
-    //   );
-    // }
+    if ('paintWorklet' in CSS) {
+      // 将文件放入public文件夹下方便引入
+      (CSS as any).paintWorklet.addModule('worklet/CSSHoudini.js');
+    }
   }
 
   onViewChange(): void {

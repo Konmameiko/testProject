@@ -1,6 +1,11 @@
 @width: 80%;
 @base-color: green;
 @dark-color: darken(@base-color, 10%);
+@property --animation-tick {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 1000;
+}
 
 body {
   //background-color:black;
@@ -72,13 +77,9 @@ em {
   width: 100%;
   height: auto;
   min-height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    rgba(134, 225, 253, 0.6) 0%,
-    rgba(10, 250, 250, 0.4) 50%,
-    rgba(6, 71, 168, 0.2) 100%
-  );
-  // background: paint(waveDraw);
+  background: paint(waveDraw);
+  animation: move 20s infinite linear;
+  --animation-tick: 1000;
   .index {
     width: 100%;
     height: 30vh;
@@ -250,6 +251,12 @@ em {
     width: 100px;
     height: 100px;
     position: absolute;
+  }
+}
+
+@keyframes move {
+  100% {
+    --animation-tick: 0;
   }
 }
 
