@@ -1,6 +1,7 @@
 @width: 80%;
 @base-color: green;
 @dark-color: darken(@base-color, 10%);
+
 @property --animation-tick {
   syntax: '<number>';
   inherits: false;
@@ -72,140 +73,163 @@ em {
   border-bottom: inset 5px black;
 }
 
-.content {
+.homeBody {
   position: relative;
   width: 100%;
-  height: auto;
-  min-height: 100vh;
-  background: paint(waveDraw);
-  animation: move 20s infinite linear;
-  --animation-tick: 1000;
-  .index {
+  height: 100%;
+  .glass {
+    position: absolute;
     width: 100%;
-    height: 30vh;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-image: url(./../assets/images/10.jpg);
-    background-repeat: no-repeat;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url('../assets/images/14.png');
     background-size: cover;
-    & > h1 {
-      height: 100%;
-      text-align: center;
-      font-size: 25vh;
-      font-weight: 800;
-      letter-spacing: 20px; //字符间距
-      line-height: 1.4; //行间距
+    opacity: 0.5;
+    filter: blur(5px);
+  }
+  .content {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    background: paint(waveDraw);
+    animation: move 20s infinite linear;
+    --animation-tick: 1000;
+
+    .index {
+      width: 100%;
+      height: 30vh;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: url(./../assets/images/10.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      & > h1 {
+        height: 100%;
+        text-align: center;
+        font-size: 25vh;
+        font-weight: 800;
+        letter-spacing: 20px; //字符间距
+        line-height: 1.4; //行间距
+      }
     }
-  }
 
-  .textStyle {
-    width: 80vw;
-    margin: 70px auto;
-    text-indent: 38px; //首行缩进
-    font-size: 16px;
-    letter-spacing: 3px; //字符间距
-    line-height: 1.4; //行间距
-    text-shadow: 2px 2px pink; //文字阴影 x,y，阴影颜色
-    font-weight: bold; //字体粗细
-    text-align: left;
-    color: chocolate;
-  }
+    .textStyle {
+      width: 80vw;
+      margin: 70px auto;
+      text-indent: 38px; //首行缩进
+      font-size: 16px;
+      letter-spacing: 3px; //字符间距
+      line-height: 1.4; //行间距
+      text-shadow: 2px 2px pink; //文字阴影 x,y，阴影颜色
+      font-weight: bold; //字体粗细
+      text-align: left;
+      color: chocolate;
+    }
 
-  .ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    width: 80vw;
-    margin-left: 10vw;
-    & > li {
-      position: relative;
-      width: 15vw;
-      margin-top: 20px;
-      border: none;
-      cursor: pointer;
-      border: 1px solid rgb(0, 0, 0);
-      border-radius: 5%;
-      p {
-        width: 100%;
-        color: rgb(20, 116, 20);
-        font-size: 1vw;
-        margin: 0;
-        text-align: left;
-        padding-left: 80px;
-        &::before {
-          position: absolute;
-          left: 0;
-          width: 3vw;
-          height: 100%;
-          border-radius: 5%;
-          text-align: center;
-          background-color: rgb(2, 139, 180);
+    .ul {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: 80vw;
+      margin-left: 10vw;
+
+      & > li {
+        position: relative;
+        width: 15vw;
+        margin-top: 20px;
+        border: none;
+        cursor: pointer;
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 5%;
+
+        p {
+          width: 100%;
+          color: rgb(20, 116, 20);
+          font-size: 1vw;
+          margin: 0;
+          text-align: left;
+          padding-left: 80px;
+          word-break: break-all;
+
+          &::before {
+            position: absolute;
+            left: 0;
+            width: 3vw;
+            height: 100%;
+            border-radius: 5%;
+            text-align: center;
+            background-color: rgb(2, 139, 180);
+          }
+
+          &:hover {
+            color: red;
+
+            &::before {
+              background-color: rgb(0, 12, 15);
+            }
+          }
         }
 
-        &:hover {
-          color: red;
+        .css {
           &::before {
-            background-color: rgb(0, 12, 15);
+            color: rgb(222, 252, 51);
+            content: 'css';
+          }
+        }
+
+        .TS_JS {
+          &::before {
+            color: rgb(222, 252, 51);
+            content: 'TS JS';
           }
         }
       }
+    }
 
-      .css {
-        &::before {
-          color: rgb(222, 252, 51);
-          content: 'css';
-        }
+    .table0 {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse; //设置边框为单
+      width: 80%;
+      color: black;
+      margin: auto;
+      margin-top: 20px;
+
+      td,
+      th {
+        border: 4px solid gray;
+        padding: 8px;
+        text-align: center;
       }
 
-      .TS_JS {
-        &::before {
-          color: rgb(222, 252, 51);
-          content: 'TS JS';
-        }
+      th {
+        font-size: 1.2em;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:not(.list0):hover {
+        background-color: pink;
       }
     }
-  }
 
-  .table0 {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse; //设置边框为单
-    width: 80%;
-    color: black;
-    margin: auto;
-    margin-top: 20px;
-
-    td,
-    th {
-      border: 4px solid gray;
-      padding: 8px;
-      text-align: center;
-    }
-
-    th {
-      font-size: 1.2em;
-      padding-top: 12px;
-      padding-bottom: 12px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    tr:not(.list0):hover {
+    .anime {
+      border: aqua 2px solid;
+      width: 100px;
+      height: 100px;
+      position: absolute;
       background-color: pink;
+      animation-name: example;
+      animation-duration: 5s;
+      animation-iteration-count: 3;
     }
-  }
-
-  .anime {
-    border: aqua 2px solid;
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    background-color: pink;
-    animation-name: example;
-    animation-duration: 5s;
-    animation-iteration-count: 3;
   }
 }
 

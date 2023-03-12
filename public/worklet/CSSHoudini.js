@@ -14,7 +14,7 @@ registerPaint(
     paint(ctx, size, properties) {
       let tick = Number(properties.get('--animation-tick'));
       const { width, height } = size;
-      const initY = height * 0.5;
+      const initY = height * 0.7;
       ctx.beginPath();
       for (let i = 0; i <= width; i++) {
         ctx.lineTo(i, initY + Math.sin((i + tick) / 20) * 10);
@@ -23,7 +23,11 @@ registerPaint(
       ctx.lineTo(0, height);
       ctx.lineTo(0, initY);
       ctx.closePath();
-      ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
+      const gnt = ctx.createLinearGradient(0, 75, 800, 75);
+      gnt.addColorStop(0, 'rgba(134, 225, 253, 0.3)');
+      gnt.addColorStop(0.5, 'rgba(10, 250, 250, 0.3)');
+      gnt.addColorStop(1, 'rgba(6, 71, 168, 0.3)');
+      ctx.fillStyle = gnt;
       ctx.fill();
     }
   },
