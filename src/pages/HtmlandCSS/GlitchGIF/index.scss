@@ -1,0 +1,23 @@
+$img: '../../../assets/images/jinx.gif';
+.glitch_body{
+  width: 985px;
+  height: 426px;
+  background: url($img), #0ff;
+  background-blend-mode: lighten;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 2;
+  &::after {
+    content: '';
+    width: 985px;
+    height: 426px;
+    position: absolute;
+    margin-left: 10px;
+    z-index: 3;
+    background: url($img), #f00;
+    background-blend-mode: lighten;
+    mix-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}

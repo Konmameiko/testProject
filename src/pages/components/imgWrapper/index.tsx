@@ -1,11 +1,11 @@
 /*
- * @Description: 图片轮播
+ * @Description: 瀑布流
  * @Author: KonmaMeiko
  * @Date: 2022-09-19 19:17:05
- * @LastEditTime: 2022-09-19 19:32:57
+ * @LastEditTime: 2023-03-26 21:59:54
  * @LastEditors: KonmaMeiko
  */
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import styles from './index.less';
 import pic1 from '../../../assets/images/1.jpg';
 import pic2 from '../../../assets/images/2.jpg';
