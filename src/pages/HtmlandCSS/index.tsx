@@ -86,9 +86,7 @@ const Index: FC = () => {
     'tab-3': interItems,
     'tab-4': tmpItems,
   };
-  const [key, setKey] = useState<string>(
-    sessionStorage.getItem('HtmlDemoIndex') || '0',
-  );
+  const [key, setKey] = useState<string>('tab-0');
   const [menuitems, setMenuItems] = useState(tmpItems);
   const [menuItemKey, setMenuItemKey] = useState('temp-1');
   const [indexKey, setIndexKey] = useState<Map<string, JSX.Element>>(new Map());
