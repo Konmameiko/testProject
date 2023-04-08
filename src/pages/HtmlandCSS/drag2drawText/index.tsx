@@ -3,7 +3,7 @@ import styles from './index.less';
 
 // 原项目地址  https://codepen.io/tholman/pen/qCnfB
 let counter = 0;
-let minFontSize = 3;
+let minFontSize = 6;
 let letters = `时维九月，序属三秋。潦水尽而寒潭清，烟光凝而暮山紫。
     俨骖騑于上路，访风景于崇阿；临帝子之长洲，得天人之旧馆。层峦耸翠，上出重霄；飞阁流丹，下临无地。
     鹤汀凫渚，穷岛屿之萦回；桂殿兰宫，即冈峦之体势。披绣闼，俯雕甍，山原旷其盈视，川泽纡其骇瞩。
@@ -34,8 +34,8 @@ export default class index extends Component {
   componentDidMount() {
     canvas = document.getElementById('canvas') as HTMLCanvasElement;
     context = canvas.getContext('2d') as CanvasRenderingContext2D;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth * 0.8;
+    canvas.height = window.innerHeight * 0.9;
 
     canvas.addEventListener('mousemove', this.mouseMove, false);
     canvas.addEventListener('mousedown', this.mouseDown, false);
