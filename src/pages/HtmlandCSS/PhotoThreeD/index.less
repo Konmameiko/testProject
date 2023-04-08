@@ -1,69 +1,76 @@
-@bg-color:rgb(174, 208, 253);
+/*
+ * @Description: 
+ * @Author: KonmaMeiko
+ * @Date: 2023-03-11 17:03:20
+ * @lastEditTime: Do not edit
+ * @LastEditors: KonmaMeiko
+ */
+@bg-color:rgb (174, 208, 253);
 
-.simulateBody{
-    background-color: @bg-color;
-    width: 100%;
-    height: 100%;
-    .outer{
-        position: relative;
-        perspective: 1600px;    //定义 3D 元素距视图的距离
-        top:100px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .photos{
-            //border: 2px red solid;
-            width: 500px;
-            height: 300px;
-            position: relative;
-            transform-style:preserve-3d;    //设置元素的子元素是位于3D 空间中还是平面中
-            animation: outer 8s infinite cubic-bezier(.7,0.3,0.3,0.7);
-            //bezier函数决定动画从开始到结束的速度过渡效果  cubic-bezier(x1,y1,x2,y2)
-            // P0：默认值 (0, 0)
-            // P1：动态取值 (x1, y1)
-            // P2：动态取值 (x2, y2)
-            // P3：默认值 (1, 1)
-        }
-        .photos div{
-            position: absolute;
-            background-size: cover;
-            opacity: 0.9;
-            width: 400px;
-            height: 250px;
-            transform: rotateY(calc(var(--index)*90deg)) translateZ(600px);
-        }
-        .photo1{
-            --index:1;
-            background-image: url(../../../assets/images/28.png);
-        }
-        .photo2{
-            --index:2;
-            background-image: url(../../../assets/images/4.jpg);
-        }
-        .photo3{
-            --index:3;
-            background-image: url(../../../assets/images/7.png);
-        }
-        .photo4{
-            --index:4;
-            background-image: url(../../../assets/images/25.jpg);
-        }
+.simulateBody {
+  background-color: @bg-color;
+  width: 100%;
+  height: 100%;
+  .outer {
+    position: relative;
+    perspective: 1600px; //定义 3D 元素距视图的距离
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .photos {
+      // border: 2px red solid;
+      width: 500px;
+      height: 300px;
+      position: relative;
+      transform-style: preserve-3d; //设置元素的子元素是位于3D 空间中还是平面中
+      animation: outer 8s infinite cubic-bezier(0.7, 0.3, 0.3, 0.7);
+      //bezier函数决定动画从开始到结束的速度过渡效果  cubic-bezier(x1,y1,x2,y2)
+      // P0：默认值 (0, 0)
+      // P1：动态取值 (x1, y1)
+      // P2：动态取值 (x2, y2)
+      // P3：默认值 (1, 1)
     }
+    .photos div {
+      position: absolute;
+      background-size: cover;
+      opacity: 0.9;
+      width: 400px;
+      height: 250px;
+      transform: rotateY(calc(var(--index) * 90deg)) translateZ(600px);
+    }
+    .photo1 {
+      --index: 1;
+      background-image: url(../../../assets/images/28.png);
+    }
+    .photo2 {
+      --index: 2;
+      background-image: url(../../../assets/images/4.jpg);
+    }
+    .photo3 {
+      --index: 3;
+      background-image: url(../../../assets/images/7.png);
+    }
+    .photo4 {
+      --index: 4;
+      background-image: url(../../../assets/images/25.jpg);
+    }
+  }
 }
-@keyframes outer{
-    0%{
-        transform:translateZ(-200px) rotateY(-0) ;
-    }
-    25%{
-        transform:translateZ(-200px) rotateY(-90deg) ;
-    }
-    50%{
-        transform:translateZ(-200px) rotateY(-180deg) ;
-    }
-    75%{
-        transform:translateZ(-200px) rotateY(-270deg) ;
-    }
-    100%{
-        transform:translateZ(-200px) rotateY(-360deg) ;
-    }
+@keyframes outer {
+  0% {
+    transform: translateZ(-200px) rotateY(-0);
+  }
+  25% {
+    transform: translateZ(-200px) rotateY(-90deg);
+  }
+  50% {
+    transform: translateZ(-200px) rotateY(-180deg);
+  }
+  75% {
+    transform: translateZ(-200px) rotateY(-270deg);
+  }
+  100% {
+    transform: translateZ(-200px) rotateY(-360deg);
+  }
 }

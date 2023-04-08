@@ -1,215 +1,211 @@
-
 // 设置左循环与右循环  每隔32个字符换行一次 最大字数为300
 .leftLoop(@n) when(@n<300) {
-    .isText:nth-of-type(@{n}){
-        margin-left: 20%;
-    }
-    .leftLoop(@n+32);
+  .isText:nth-of-type(@{n}) {
+    margin-left: calc((100% - 768px) / 2);
+  }
+  .leftLoop(@n+32);
 }
 
 .rightLoop(@n) when(@n<300) {
-    .isText:nth-of-type(@{n}){
-        margin-right: 21%;
-    }
-    .rightLoop(@n+32);
+  .rightLoop(@n+32);
 }
 
-.simulateBody{
+.simulateBody {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+  z-index: 1;
+  overflow: hidden;
+  .content {
     position: relative;
     width: 100%;
-    height: 80vh;
-    background-color: whitesmoke;
-    z-index: 1;
-    .content{
-        position: relative;
+    height: 100%;
+    .message {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      .title {
+        position: absolute;
         width: 100%;
         height: 100%;
-        .message{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border: 2px solid pink;
-            .title{
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                span{
-                    position: absolute;
-                    font-size: 24px;
-                    color: gray;
-                    opacity: 0.7;
-                    transition: all 1s;
-                }
-                .isTitle{
-                    position: relative;
-                    color: black;
-                    top: -40%;
-                    margin-right: 1%;
-                    text-align: center;
-                    font-size: 36px;
-                    font-weight: 900;
-                    opacity: 1;
-                    z-index: 3;
-                }
-                
-            }
-            .text{
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                display: flex;
-                align-items: center;
-                align-content: center;
-                flex-wrap: wrap;
-                span{
-                    position: absolute;
-                    font-size: 1em;
-                    color: gray;
-                    opacity: 0.7;
-                    transition: all 1s;
-                }
-                .isText{
-                    position: relative;
-                    font-size: 24px;
-                    font-weight: 300;
-                    top: -20%;
-                    font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑";
-                    color: black;
-                    z-index: 3;
-                    opacity: 1;
-                    background-color: aliceblue;
-                    box-shadow: 10px 10px 10px 10px rgb(255, 255, 255);
-                }
-                .leftLoop(1);
-                .rightLoop(32);
-            }
-        }
-    }
-    .bar{
-        position: absolute;
-        width: 80%;
-        height: 20vh;
-        background-color: white;
-        top: 55vh;
-        left: 10%;
-        border-radius: 20px;
-        box-shadow: 40px 0 65px rgba(#D4C5BA, 0.4);
+        top: 0;
+        left: 0;
         display: flex;
         align-items: center;
-        justify-items: left;
-        z-index: 1;
-        overflow: hidden;
-        .line{
-            position: absolute;
-            width: 100%;
-            height: 4px;
-            top: calc(50% - 2px);
-            left: 10px;
-            background-color: gray;
-            display: inline-block;
+        justify-content: center;
+        span {
+          position: absolute;
+          font-size: 24px;
+          color: gray;
+          opacity: 0.7;
+          transition: all 1s;
         }
-        .activeLine{
-            position: absolute;
-            width: 0;
-            height: 4px;
-            top: calc(50% - 2px);
-            left: 10px;
-            display: inline-block;
-            background-color: rgb(34, 255, 0);
-            // 当width发生变化时, 触发效果
-            transition:width 2s linear;
+        .isTitle {
+          position: relative;
+          color: black;
+          top: -40%;
+          margin-right: 1%;
+          text-align: center;
+          font-size: 36px;
+          font-weight: 900;
+          opacity: 1;
+          z-index: 3;
         }
-        .item{
-            position: relative;
-            width: 500px;
-            height: 50px;
-            z-index: 5;
-            cursor: pointer;
-            .dot{
-                position: absolute;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background-color: black;
-                display: inline-block;
-                top: calc(50% - 5px);
-            }
-            .age{
-                position: relative;
-                margin-top: 40px;
-                font-size: large;
-                color: #ba7c3f;
-            }
-            
-            .dotActive{
-                position: absolute;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                display: inline-block;
-                top: calc(50% - 10px);
-                background-color: brown;
-                &::before {
-                    content: '';
-                    width: 6px;
-                    height: 6px;
-                    border-radius: 50%;
-                    background-color: white;
-                    position: absolute;
-                    left: 7px;
-                    top: 7px;
-                }
-                animation: colorDot 1s linear 1;
-            }
-
-            .dotEnd{
-                position: absolute;
-                width: 30px;
-                height: 30px;
-                border-radius: 40%;
-                display: inline-block;
-                top: calc(50% - 15px);
-                background-color: brown;
-                &::before {
-                    content: '';
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    background-color: white;
-                    position: absolute;
-                    left: 10px;
-                    top: 10px;
-                }
-                animation: colorDot 2s linear 1;
-            }
-        }
-    }
-}
-
-@keyframes colorLine{
-    0%{
-        width: 0;
-    }
-    100%{
+      }
+      .text {
+        position: absolute;
         width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        flex-wrap: wrap;
+        span {
+          position: absolute;
+          font-size: 1em;
+          color: gray;
+          opacity: 0.7;
+          transition: all 1s;
+        }
+        .isText {
+          position: relative;
+          font-size: 24px;
+          font-weight: 300;
+          top: -20%;
+          font-family: STXihei, '华文细黑', 'Microsoft YaHei', '微软雅黑';
+          color: black;
+          z-index: 3;
+          opacity: 1;
+          background-color: aliceblue;
+          box-shadow: 10px 10px 10px 10px rgb(255, 255, 255);
+        }
+        .leftLoop(1);
+        .rightLoop(32);
+      }
     }
+  }
+  .bar {
+    position: absolute;
+    width: 80%;
+    height: 15vh;
+    background-color: rgb(255, 211, 153);
+    top: 65vh;
+    left: 10%;
+    padding: 10px 10px;
+    border-radius: 20px;
+    border: 2px solid white;
+    box-shadow: 40px 0 65px rgba(#d4c5ba, 0.7);
+    display: flex;
+    align-items: center;
+    justify-items: left;
+    z-index: 1;
+    overflow: hidden;
+    .line {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      top: calc(50% - 2px);
+      left: 10px;
+      background-color: gray;
+      display: inline-block;
+    }
+    .activeLine {
+      position: absolute;
+      width: 0;
+      height: 4px;
+      top: calc(50% - 2px);
+      left: 10px;
+      display: inline-block;
+      background-color: rgb(34, 255, 0);
+      // 当width发生变化时, 触发效果
+      transition: width 2s linear;
+    }
+    .item {
+      position: relative;
+      width: 500px;
+      height: 50px;
+      z-index: 5;
+      cursor: pointer;
+      .dot {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: black;
+        display: inline-block;
+        top: calc(50% - 5px);
+      }
+      .age {
+        position: relative;
+        margin-top: 40px;
+        font-size: large;
+        color: #ba7c3f;
+      }
+
+      .dotActive {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-block;
+        top: calc(50% - 10px);
+        background-color: brown;
+        &::before {
+          content: '';
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: white;
+          position: absolute;
+          left: 7px;
+          top: 7px;
+        }
+        animation: colorDot 1s linear 1;
+      }
+
+      .dotEnd {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 40%;
+        display: inline-block;
+        top: calc(50% - 15px);
+        background-color: brown;
+        &::before {
+          content: '';
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: white;
+          position: absolute;
+          left: 10px;
+          top: 10px;
+        }
+        animation: colorDot 2s linear 1;
+      }
+    }
+  }
 }
 
-@keyframes colorDot{
-    0%{
-        transform: scale(0.5);
-    }
-    100%{
-        transform: scale(1.0);
-    }
+@keyframes colorLine {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
+@keyframes colorDot {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

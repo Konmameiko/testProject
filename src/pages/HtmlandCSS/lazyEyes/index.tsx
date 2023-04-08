@@ -2,7 +2,7 @@
  * @Description: 跟随鼠标转动的模拟眼睛
  * @Author: KonmaMeiko
  * @Date: 2022-08-29 15:47:18
- * @LastEditTime: 2022-08-30 17:42:56
+ * @LastEditTime: 2023-04-09 00:23:23
  * @LastEditors: KonmaMeiko
  */
 import e from '@umijs/deps/compiled/express';
@@ -67,7 +67,6 @@ const LazyEye: FC<IProps> = () => {
     // 鼠标坐标
     let mouseCoords = [e.clientX - origin[0], origin[1] - e.clientY];
     // 移出div则复原
-    console.log(clientHeight, clientWidth, '1223123123123');
     const tmpX = (document.body.clientWidth - 200) / 2;
     const tmpY = (document.body.clientHeight - 200) / 2;
     if (
