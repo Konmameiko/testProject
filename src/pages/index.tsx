@@ -5,11 +5,12 @@ import React, { Component } from 'react';
 export default class IndexPage extends Component<any, any> {
   timer: any | null = null;
   componentDidMount() {
-    window.addEventListener('visibilitychange', this.onViewChange);
-    if ('paintWorklet' in CSS) {
-      // 将文件放入public文件夹下方便引入
-      (CSS as any).paintWorklet.addModule('worklet/CSSHoudini.js');
-    }
+    // 关闭首页下方滚动波浪
+    // window.addEventListener('visibilitychange', this.onViewChange);
+    // if ('paintWorklet' in CSS) {
+    //   // 将文件放入public文件夹下方便引入
+    //   (CSS as any).paintWorklet.addModule('worklet/CSSHoudini.js');
+    // }
   }
 
   onViewChange(): void {
@@ -119,7 +120,6 @@ export default class IndexPage extends Component<any, any> {
               </Link>
             </li>
           </ul>
-          <audio src={require('@/assets/audios/windy.mp3')} />
           {/* <div className={styles.anime}></div> */}
           <p className={styles.textStyle}>
             这个故事还和一本书有关，这本书名叫《银河系搭车客指南》。它不是地球书，从未在
