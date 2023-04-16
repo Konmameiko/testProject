@@ -1,3 +1,10 @@
+/*
+ * @Description:
+ * @Author: KonmaMeiko
+ * @Date: 2023-03-11 17:03:20
+ * @lastEditTime: Do not edit
+ * @LastEditors: KonmaMeiko
+ */
 import styles from './index.less';
 import { Link, history } from 'umi';
 import React, { Component } from 'react';
@@ -27,11 +34,6 @@ export default class IndexPage extends Component<any, any> {
     }
   }
 
-  goToListPage() {
-    history.push('/Test');
-    sessionStorage.setItem('test', '123');
-  }
-
   componentWillUnmount() {
     this.timer && clearTimeout(this.timer);
     window.removeEventListener('visibilitychange', this.onViewChange);
@@ -52,26 +54,13 @@ export default class IndexPage extends Component<any, any> {
               </Link>
             </li>
             <li>
-              <Link to="/TodoLIst">
-                <p className={styles.TS_JS}>TodoList</p>
-              </Link>
-            </li>
-            <li onClick={() => this.goToListPage}>
-              <p className={styles.TS_JS}>React生命周期</p>
-            </li>
-            <li>
               <Link to="/Test/Html_CSSLearn">
-                <p className={styles.css}>StaticPages</p>
+                <p className={styles.css}>静态页面</p>
               </Link>
             </li>
             <li>
               <Link to="/Test/moreButtons">
-                <p className={styles.css}>ButtonDemos</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Test/axios">
-                <p className={styles.TS_JS}>AXIOS学习</p>
+                <p className={styles.css}>按钮组件</p>
               </Link>
             </li>
             <li>
@@ -80,18 +69,8 @@ export default class IndexPage extends Component<any, any> {
               </Link>
             </li>
             <li>
-              <Link to="/Test/ReduxLearn">
-                <p className={styles.TS_JS}>Redux学习</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Test/learnTsx">
-                <p className={styles.TS_JS}>TSX学习</p>
-              </Link>
-            </li>
-            <li>
               <Link to="/Test/text">
-                <p className={styles.css}>FontDemos</p>
+                <p className={styles.css}>字体组件</p>
               </Link>
             </li>
             <li>
@@ -100,27 +79,11 @@ export default class IndexPage extends Component<any, any> {
               </Link>
             </li>
             <li>
-              <Link to="/Test/utilsPages">
-                <p className={styles.TS_JS}>前端功能集合</p>
-              </Link>
-            </li>
-            <li>
               <Link to="/imgWrapper">
                 <p className={styles.css}>图片瀑布流</p>
               </Link>
             </li>
-            <li>
-              <Link to="/manage">
-                <p className={styles.css}>跳转至后台</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/manage">
-                <p className={styles.css}>跳转至后台</p>
-              </Link>
-            </li>
           </ul>
-          {/* <div className={styles.anime}></div> */}
           <p className={styles.textStyle}>
             这个故事还和一本书有关，这本书名叫《银河系搭车客指南》。它不是地球书，从未在
             地球上出版过，直到那场恐怖大灾难降临为止，也没有哪个地球人见过甚至听说过这本书。
@@ -135,42 +98,6 @@ export default class IndexPage extends Component<any, any> {
             了为数不少的杜撰篇章（至少也是缺乏实据的谬误猜想），但在两个重要方面胜过了那部历
             史更悠久、内容更无趣的著作。
           </p>
-          {/* <table className={styles.table0}>
-                  <tbody>
-                    <tr className={styles.list0}>
-                      <th>第一句</th>
-                      <th>第二句</th>
-                      <th>第三句</th>
-                      <th>第四句</th>
-                    </tr>
-                    <tr className={styles.list1}>
-                      <td>三十功名</td>
-                      <td>尘与土</td>
-                      <td>八千里路</td>
-                      <td>云和月</td>
-                    </tr>
-                    <tr className={styles.list2}>
-                      <td>西风吹老洞庭波</td>
-                      <td>一夜湘君白发多</td>
-                      <td>醉后不知天在水</td>
-                      <td>满船清梦压星河</td>
-                    </tr>
-                    <tr className={styles.list3}>
-                      <td>小时不识月</td>
-                      <td>呼作白玉盘</td>
-                      <td>又疑瑶台镜</td>
-                      <td>飞在青云端</td>
-                    </tr>
-                    <tr className={styles.list4}>
-                      <td>莫听穿林打叶声</td>
-                      <td>何妨吟啸且徐行</td>
-                      <td>竹杖芒鞋轻胜马</td>
-                      <td>谁怕</td>
-                    </tr>
-                  </tbody>
-                </table> */}
-          {/* <Manage /> */}
-          {/* <div className={styles.learnCSS}></div> */}
         </div>
       </div>
     );

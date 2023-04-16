@@ -18,17 +18,6 @@ export default [
     title: '图片瀑布流',
   },
   {
-    path: '/TodoList',
-    component: '@/pages/components/TodoList',
-    title: '待做清单页面',
-  },
-  { path: '/Test', component: '@/pages/components/test', title: 'React学习' },
-  {
-    path: '/Test/axios',
-    component: '@/pages/components/axiosLearning/app',
-    title: 'ajax学习',
-  },
-  {
     path: '/Test/Codes',
     component: '@/pages/codeTest/algorithmLearn',
     title: '算法学习页面',
@@ -39,19 +28,9 @@ export default [
     title: '按钮特效集合',
   },
   {
-    path: '/Test/ReduxLearn',
-    component: '@/pages/components/reduxLearning/reduxIndex',
-    title: 'Redux学习',
-  },
-  {
     path: '/Test/Html_CSSLearn',
     component: '@/pages/HtmlandCSS/index',
     title: 'HTML+CSS学习',
-  },
-  {
-    path: '/Test/learnTsx',
-    component: '@/pages/components/tsxLearning/index',
-    title: 'TS学习',
   },
   {
     path: '/Test/text',
