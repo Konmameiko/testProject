@@ -9,8 +9,23 @@ import styles from './index.less';
 import { Link, history } from 'umi';
 import React, { Component } from 'react';
 
+interface menuItemProps {
+  text?: string;
+  icon?: string;
+  router?: string;
+}
+
 export default class IndexPage extends Component<any, any> {
   timer: any | null = null;
+  MenuItemArr = [
+    { router: '/photoManage', text: '图片处理', icon: '' },
+    { router: '/Test/Html_CSSLearn', text: '静态页面', icon: '' },
+    { router: '/Test/moreButtons', text: '按钮组件', icon: '' },
+    { router: '/Test/Codes', text: '算法临时', icon: '' },
+    { router: '/Test/text', text: '字体组件', icon: '' },
+    { router: '/Test/svgFilter', text: 'SVG滤镜', icon: '' },
+    { router: '/imgWrapper', text: '图片瀑布流', icon: '' },
+  ];
   componentDidMount() {
     // 关闭首页下方滚动波浪
     // window.addEventListener('visibilitychange', this.onViewChange);
@@ -47,45 +62,32 @@ export default class IndexPage extends Component<any, any> {
           <div className={styles.index}>
             <h1>Hello,world!</h1>
           </div>
-          <ul className={styles.ul}>
-            <li>
-              <Link to="/photoManage">
-                <p className={styles.css}>图片处理</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Test/Html_CSSLearn">
-                <p className={styles.css}>静态页面</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Test/moreButtons">
-                <p className={styles.css}>按钮组件</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Test/Codes">
-                <p className={styles.TS_JS}>算法临时</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Test/text">
-                <p className={styles.css}>字体组件</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Test/svgFilter">
-                <p className={styles.css}>SVG滤镜</p>
-              </Link>
-            </li>
-            <li>
-              <Link to="/imgWrapper">
-                <p className={styles.css}>图片瀑布流</p>
-              </Link>
-            </li>
-          </ul>
+          <div className={styles.menus}>
+            {this.MenuItemArr.map((item) => {
+              return (
+                <MenuItem
+                  router={item.router}
+                  text={item.text}
+                  icon={item.icon}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     );
   }
 }
+
+const MenuItem = ({ text, icon, router }: menuItemProps) => {
+  return (
+    <div className={styles.muneItenBody}>
+      <div className={styles.routerBtn}>
+        <Link to={router}>
+          <img className={styles.menuIcon} src={icon} alt="图标" />
+          <span className={styles.text}>{text}</span>
+        </Link>
+      </div>
+    </div>
+  );
+};
