@@ -2,7 +2,7 @@
  * @Description: 瀑布流
  * @Author: KonmaMeiko
  * @Date: 2022-09-19 19:17:05
- * @LastEditTime: 2023-03-26 21:59:54
+ * @LastEditTime: 2023-05-01 22:22:40
  * @LastEditors: KonmaMeiko
  */
 import React, { FC } from 'react';
@@ -16,7 +16,7 @@ import pic6 from '../../../assets/images/6.jpg';
 import pic7 from '../../../assets/images/12.png';
 import pic8 from '../../../assets/images/25.jpg';
 import pic9 from '../../../assets/images/26.jpg';
-import pic10 from '../../../assets/images/15.jpg';
+import pic10 from '../../../assets/images/18.png';
 import pic11 from '../../../assets/images/23.jpg';
 
 export interface IProps {}
