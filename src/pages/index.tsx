@@ -33,7 +33,7 @@ export default class IndexPage extends Component<any, any> {
     { router: '/Test/text', text: '字体组件', icon: icon5 },
     { router: '/Test/svgFilter', text: 'SVG滤镜', icon: icon6 },
     { router: '/imgWrapper', text: '图片瀑布流', icon: icon7 },
-    { router: '/404', text: '404', icon: icon8 },
+    { router: '/404', text: '', icon: icon8 },
   ];
   componentDidMount() {
     // 关闭首页下方滚动波浪
