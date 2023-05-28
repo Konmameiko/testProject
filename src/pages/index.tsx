@@ -16,11 +16,13 @@ import icon5 from '../assets/darksouls_icon/5.png';
 import icon6 from '../assets/darksouls_icon/6.png';
 import icon7 from '../assets/darksouls_icon/7.png';
 import icon8 from '../assets/darksouls_icon/8.png';
+import bg1 from '../assets/images/31.png';
+import darkSoulGif from '../assets/darksouls_icon/darksoul.gif';
 
 interface menuItemProps {
-  text?: string;
-  icon?: string;
-  router?: string;
+  text: string;
+  icon: string;
+  router: string;
 }
 
 export default class IndexPage extends Component<any, any> {
@@ -78,6 +80,7 @@ export default class IndexPage extends Component<any, any> {
                   router={item.router}
                   text={item.text}
                   icon={item.icon}
+                  key={item.text}
                 />
               );
             })}
@@ -89,9 +92,27 @@ export default class IndexPage extends Component<any, any> {
 }
 
 const MenuItem = ({ text, icon, router }: menuItemProps) => {
+  const onIconHover = (type: number) => {
+    type === 1
+      ? ((
+          document.getElementById(`${text}-id`) as HTMLElement
+        ).style.backgroundImage = `url(${darkSoulGif})`)
+      : ((
+          document.getElementById(`${text}-id`) as HTMLElement
+        ).style.backgroundImage = `url(${bg1})`);
+  };
+
   return (
-    <div className={styles.muneItenBody}>
-      <div className={styles.routerBtn}>
+    <div
+      className={styles.muneItenBody}
+      onMouseEnter={() => onIconHover(1)}
+      onMouseLeave={() => onIconHover(2)}
+    >
+      <div
+        id={`${text}-id`}
+        className={styles.routerBtn}
+        style={{ backgroundImage: `url(${bg1})` }}
+      >
         <Link to={router}>
           <img className={styles.menuIcon} src={icon} alt="图标" />
           <span className={styles.text}>{text}</span>
