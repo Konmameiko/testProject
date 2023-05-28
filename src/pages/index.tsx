@@ -86,6 +86,9 @@ export default class IndexPage extends Component<any, any> {
             })}
           </div>
         </div>
+        <footer className={styles.bottom}>
+          <p>Simple is better than complex. </p>
+        </footer>
       </div>
     );
   }
