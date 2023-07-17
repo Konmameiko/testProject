@@ -20,7 +20,4 @@
 /src/.umi-test
 /src/assets/audios
 /.env.local
-*.mp3
 *.gif
-*.jpg
-*.png

@@ -3,284 +3,282 @@
 @dark-color: darken(@base-color, 10%);
 
 @property --animation-tick {
-  syntax: '<number>';
-  inherits: false;
-  initial-value: 1000;
+	syntax: '<number>';
+	inherits: false;
+	initial-value: 1000;
 }
 
 body {
-  //background-color:black;
-  color: black;
-  margin: 0;
-  height: 100%;
-  overflow-y: scroll;
+	//background-color:black;
+	color: black;
+	margin: 0;
+	height: 100%;
+	overflow-y: scroll;
 }
 
 h1 {
-  color: chartreuse;
+	color: chartreuse;
 }
 
 /*去掉列表前面的圆点*/
 ul,
 ol {
-  list-style: none;
+	list-style: none;
 }
 
 input {
-  padding-top: 0;
-  padding-bottom: 0;
-  font-family: 'SimSun', '宋体';
+	padding-top: 0;
+	padding-bottom: 0;
+	font-family: 'SimSun', '宋体';
 }
 
 /*字体一般是指定这两个*/
 select,
 input {
-  vertical-align: middle;
+	vertical-align: middle;
 }
 
 select,
 input,
 textarea {
-  font-size: 12px;
-  margin: 0;
+	font-size: 12px;
+	margin: 0;
 }
 
 textarea {
-  resize: none;
+	resize: none;
 }
 
 /*禁止文本输入框在右下角拖拽（因为拖动后会调整输入框大小）*/
 img {
-  border: 0;
-  vertical-align: middle;
+	border: 0;
+	vertical-align: middle;
 }
 
 /* 去掉图片底侧默认的3像素空白缝隙*/
 table {
-  border-collapse: collapse;
+	border-collapse: collapse;
 }
 
 s,
 i,
 em {
-  font-style: normal;
-  text-decoration: none;
+	font-style: normal;
+	text-decoration: none;
 }
 
 /*去掉i标签和em的斜体，取消s标签的删除线*/
 .bordered {
-  border-top: double 5px black;
-  border-bottom: inset 5px black;
+	border-top: double 5px black;
+	border-bottom: inset 5px black;
 }
 
 .homeBody {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  background: url('../assets/images/30.jpg');
-  background-size: cover;
-  background-position: center;
-  font-family: 'Times New Roman', Times, serif;
-  .glass {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0.8;
-    background: url('../assets/images/30.jpg');
-    background-size: cover;
-    filter: blur(20px);
-    clip-path: inset(10em);
-    background-position: center;
-  }
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background: url('../assets/images/30.jpg');
+	background-size: cover;
+	background-position: center;
+	font-family: 'Times New Roman', Times, serif;
+	.glass {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 0.8;
+		background: url('../assets/images/30.jpg');
+		background-size: cover;
+		filter: blur(20px);
+		clip-path: inset(10em);
+		background-position: center;
+	}
 
-  .content {
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 100vh;
-    background: paint(waveDraw);
-    animation: move 20s infinite linear;
-    --animation-tick: 1000;
+	.content {
+		position: relative;
+		width: 100%;
+		height: auto;
+		min-height: 100vh;
+		background: paint(waveDraw);
+		animation: move 20s infinite linear;
+		--animation-tick: 1000;
 
-    .index {
-      width: 100%;
-      height: 25vh;
-      margin-top: 5vh;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-image: url(./../assets/images/3.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      -webkit-text-stroke: 2px gray;
+		.index {
+			width: 100%;
+			height: 25vh;
+			margin-top: 5vh;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-image: url(./../assets/images/3.webp);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			-webkit-text-stroke: 2px gray;
 
-      & > h1 {
-        height: 100%;
-        text-align: center;
-        font-size: 10vw;
-        font-weight: 800;
-        letter-spacing: 20px; //字符间距
-        line-height: 1.4; //行间距
-      }
-    }
+			& > h1 {
+				height: 100%;
+				text-align: center;
+				font-size: 10vw;
+				font-weight: 800;
+				letter-spacing: 20px; //字符间距
+				line-height: 1.4; //行间距
+			}
+		}
 
-    .menus {
-      position: relative;
-      margin: 0 10%;
-      width: 80%;
-      padding: 20px 0 0 20px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-around;
-      align-content: space-around;
-      flex-wrap: wrap;
-      .muneItenBody {
-        position: relative;
-        width: calc((80% - 20px) / 2);
-        height: 4em;
-        margin: 10px 0 0 10px;
-      }
-      .routerBtn {
-        width: 80%;
-        height: 100%;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        display: inline-block;
-        background-image: url('../assets/images/31.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-        filter: grayscale(1);
-        box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.6),
-          7px 7px 20px 0px rgba(255, 255, 255, 0.2),
-          4px 4px 5px 0px rgba(255, 254, 254, 0.1);
-        &:hover {
-          filter: grayscale(0);
-          color: white;
-        }
-        .menuIcon {
-          height: 3em;
-          object-fit: cover;
-        }
-        .text {
-          position: relative;
-          margin-left: 20px;
-          width: 100%;
-          height: 100%;
-          text-align: center;
-          font-family: 'Lato', sans-serif;
-          font-weight: 700;
-          font-size: 2em;
-          color: rgb(173, 173, 173);
-          letter-spacing: 14px;
-          line-height: 2em;
-        }
-      }
-    }
+		.menus {
+			position: relative;
+			margin: 0 10%;
+			width: 80%;
+			padding: 20px 0 0 20px;
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-around;
+			align-content: space-around;
+			flex-wrap: wrap;
+			.muneItenBody {
+				position: relative;
+				width: calc((80% - 20px) / 2);
+				height: 4em;
+				margin: 10px 0 0 10px;
+			}
+			.routerBtn {
+				width: 80%;
+				height: 100%;
+				border-radius: 5px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				position: relative;
+				display: inline-block;
+				background-image: url('../assets/images/31.png');
+				background-repeat: no-repeat;
+				background-size: cover;
+				filter: grayscale(1);
+				box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.6), 7px 7px 20px 0px rgba(255, 255, 255, 0.2),
+					4px 4px 5px 0px rgba(255, 254, 254, 0.1);
+				&:hover {
+					filter: grayscale(0);
+					color: white;
+				}
+				.menuIcon {
+					height: 3em;
+					object-fit: cover;
+				}
+				.text {
+					position: relative;
+					margin-left: 20px;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					font-family: 'Lato', sans-serif;
+					font-weight: 700;
+					font-size: 2em;
+					color: rgb(173, 173, 173);
+					letter-spacing: 14px;
+					line-height: 2em;
+				}
+			}
+		}
 
-    .anime {
-      border: aqua 2px solid;
-      width: 100px;
-      height: 100px;
-      position: absolute;
-      background-color: pink;
-      animation-name: example;
-      animation-duration: 5s;
-      animation-iteration-count: 3;
-    }
-  }
+		.anime {
+			border: aqua 2px solid;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			background-color: pink;
+			animation-name: example;
+			animation-duration: 5s;
+			animation-iteration-count: 3;
+		}
+	}
 
-  .bottom {
-    color: #bacbd4;
-    font-weight: 900;
-    font-family: 'Times New Roman', Times, serif;
-    text-decoration: line-through;
-    text-decoration-color: gray;
-    text-decoration-thickness: 1px;
-    font-size: 3.5em;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    bottom: 0;
-  }
+	.bottom {
+		color: #bacbd4;
+		font-weight: 900;
+		font-family: 'Times New Roman', Times, serif;
+		text-decoration: line-through;
+		text-decoration-color: gray;
+		text-decoration-thickness: 1px;
+		font-size: 3.5em;
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		bottom: 0;
+	}
 }
 
 @keyframes example {
-  0% {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-  }
+	0% {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+	}
 
-  20% {
-    width: 200px;
-    height: 100px;
-    position: fixed;
-    background-image: linear-gradient(red, yellow, blue);
-  }
+	20% {
+		width: 200px;
+		height: 100px;
+		position: fixed;
+		background-image: linear-gradient(red, yellow, blue);
+	}
 
-  40% {
-    width: 100px;
-    height: 200px;
-    position: relative;
-    background-image: linear-gradient(to right, pink, yellow, green);
-    box-shadow: 13px 13px black;
-  }
+	40% {
+		width: 100px;
+		height: 200px;
+		position: relative;
+		background-image: linear-gradient(to right, pink, yellow, green);
+		box-shadow: 13px 13px black;
+	}
 
-  60% {
-    width: 300px;
-    height: 100px;
-    position: fixed;
-    background-image: radial-gradient(red, yellow, blue);
-    box-shadow: 13px 13px green;
-  }
+	60% {
+		width: 300px;
+		height: 100px;
+		position: fixed;
+		background-image: radial-gradient(red, yellow, blue);
+		box-shadow: 13px 13px green;
+	}
 
-  80% {
-    width: 100px;
-    height: 150px;
-    position: relative;
-    background-image: linear-gradient(to bottom right, red, gray, blue);
-    box-shadow: 13px 13px aqua;
-  }
+	80% {
+		width: 100px;
+		height: 150px;
+		position: relative;
+		background-image: linear-gradient(to bottom right, red, gray, blue);
+		box-shadow: 13px 13px aqua;
+	}
 
-  100% {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-  }
+	100% {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+	}
 }
 
 @keyframes move {
-  100% {
-    --animation-tick: 0;
-  }
+	100% {
+		--animation-tick: 0;
+	}
 }
 
 .learnCSS {
-  margin: 100px 0 0 300px;
-  width: 600px;
-  height: 200px;
-  background: yellowgreen;
-  box-shadow: 0 0 3px 5px #655, 0 0 6px 10px deeppink,
-    5px 5px 10px 20px rgba(4, 69, 247, 0.6);
+	margin: 100px 0 0 300px;
+	width: 600px;
+	height: 200px;
+	background: yellowgreen;
+	box-shadow: 0 0 3px 5px #655, 0 0 6px 10px deeppink, 5px 5px 10px 20px rgba(4, 69, 247, 0.6);
 
-  &:hover {
-    background: pink;
-  }
+	&:hover {
+		background: pink;
+	}
 }
 
 .Photo1 {
-  width: 400px;
-  height: 200px;
-  opacity: 0.8;
+	width: 400px;
+	height: 200px;
+	opacity: 0.8;
 }
 
 .Photo2 {
-  width: 400px;
-  height: 200px;
-  opacity: 0.2;
+	width: 400px;
+	height: 200px;
+	opacity: 0.2;
 }
