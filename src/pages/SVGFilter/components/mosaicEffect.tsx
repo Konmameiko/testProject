@@ -5,8 +5,8 @@
  * @LastEditTime: 2022-10-10 17:51:23
  * @LastEditors: KonmaMeiko
  */
-import React, { FC } from 'react'
-import logo from '../../../assets/images/11.webp'
+import React, { FC } from 'react';
+import logo from '../../../assets/images/11.webp';
 export interface IProps {}
 
 const MosaicEffect: FC<IProps> = () => {
@@ -33,7 +33,7 @@ const MosaicEffect: FC<IProps> = () => {
 				</filter>
 			</svg>
 		</div>
-	)
-}
+	);
+};
 //memo的使用在不希望一直跟随父组件更新的子组件上
-export default React.memo(MosaicEffect)
+export default React.memo(MosaicEffect);

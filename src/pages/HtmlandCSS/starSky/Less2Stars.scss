@@ -1,77 +1,77 @@
-.body{
-    height: 100%;
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    overflow: hidden;
-    filter: drop-shadow(0 0 10px white);
-    .txt1{
-        //此渐变方法仅webkit内核浏览器可用
-        font-size: 10vh;
-        width: 80vh;
-        left: 10vh;
-        font-weight: bold;
-        position: absolute;
-        //为文本元素提供渐变背景
-        background-image: linear-gradient(to right,rgb(152, 9, 248),#0adbf7,rgb(250, 77, 9));
-        //使用透明颜色填充文本
-        -webkit-text-fill-color:transparent;
-        //用文本剪辑背景 用渐变背景作为颜色填充文本。
-        background-clip: text;  
-    }
-    .txt2{
-        //仅webkit内核可用
-        font-size: 10vh;
-        top: 100px;
-        width: 80vh;
-        left: 200px;
-        font-weight: bold;
-        position: absolute;
-        color: rgb(230, 240, 230);
-        //利用mask产生遮蔽效果  可设置遮蔽效果为渐变 效果相当于...基本看不出来
-        mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#53ec0c), to(rgba(128, 4, 4, 0.062)));
-    }
-    /*利用近大远小的原理设置盒子的大小制造空间感*/
-    @function random_range($min, $max) {
-        $rand: random();
-        $random_range: $min + floor($rand * (($max - $min) + 1));
-        @return $random_range;
-    }
-      
-    .snow {
-        $total: 200;
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: white;
-        border-radius: 50%;
-      
-        @for $i from 1 through $total {
-            $random-x: random(1000000) * 0.0001vw;
-            $random-offset: random_range(-100000, 100000) * 0.0001vw;
-            $random-x-end: $random-x + $random-offset;
-            $random-x-end-yoyo: $random-x + calc($random-offset / 2);
-            $random-yoyo-time: calc(random_range(30000, 80000) / 100000);
-            $random-yoyo-y: $random-yoyo-time * 100vh;
-            $random-scale: random(10000) * 0.0001;
-            $fall-duration: random_range(10, 30) * 1s;
-            $fall-delay: random(30) * -1s;
-        
-            &:nth-child(#{$i}) {
-                opacity: random(10000) * 0.0001;
-                transform: translate($random-x, -10px) scale($random-scale);
-                animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
-            }
-        
-            @keyframes fall-#{$i} {
-                #{percentage($random-yoyo-time)} {
-                    transform: translate($random-x-end, $random-yoyo-y) scale($random-scale);
-                }
-        
-                to {
-                    transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
-                }
-            }
-        }
-    }
+.body {
+	height: 100%;
+	background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+	overflow: hidden;
+	filter: drop-shadow(0 0 10px white);
+	.txt1 {
+		//此渐变方法仅webkit内核浏览器可用
+		font-size: 10vh;
+		width: 80vh;
+		left: 10vh;
+		font-weight: bold;
+		position: absolute;
+		//为文本元素提供渐变背景
+		background-image: linear-gradient(to right, rgb(152, 9, 248), #0adbf7, rgb(250, 77, 9));
+		//使用透明颜色填充文本
+		-webkit-text-fill-color: transparent;
+		//用文本剪辑背景 用渐变背景作为颜色填充文本。
+		background-clip: text;
+	}
+	.txt2 {
+		//仅webkit内核可用
+		font-size: 10vh;
+		top: 100px;
+		width: 80vh;
+		left: 200px;
+		font-weight: bold;
+		position: absolute;
+		color: rgb(230, 240, 230);
+		//利用mask产生遮蔽效果  可设置遮蔽效果为渐变 效果相当于...基本看不出来
+		mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#53ec0c), to(rgba(128, 4, 4, 0.062)));
+	}
+	/*利用近大远小的原理设置盒子的大小制造空间感*/
+	@function random_range($min, $max) {
+		$rand: random();
+		$random_range: $min + floor($rand * (($max - $min) + 1));
+		@return $random_range;
+	}
+
+	.snow {
+		$total: 200;
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		background: white;
+		border-radius: 50%;
+
+		@for $i from 1 through $total {
+			$random-x: random(1000000) * 0.0001vw;
+			$random-offset: random_range(-100000, 100000) * 0.0001vw;
+			$random-x-end: $random-x + $random-offset;
+			$random-x-end-yoyo: $random-x + calc($random-offset / 2);
+			$random-yoyo-time: calc(random_range(30000, 80000) / 100000);
+			$random-yoyo-y: $random-yoyo-time * 100vh;
+			$random-scale: random(10000) * 0.0001;
+			$fall-duration: random_range(10, 30) * 1s;
+			$fall-delay: random(30) * -1s;
+
+			&:nth-child(#{$i}) {
+				opacity: random(10000) * 0.0001;
+				transform: translate($random-x, -10px) scale($random-scale);
+				animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
+			}
+
+			@keyframes fall-#{$i} {
+				#{percentage($random-yoyo-time)} {
+					transform: translate($random-x-end, $random-yoyo-y) scale($random-scale);
+				}
+
+				to {
+					transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
+				}
+			}
+		}
+	}
 }
 
 // /*less循环  传入参数为要生成盒子阴影的个数，

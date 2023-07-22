@@ -6,9 +6,9 @@
  * @LastEditors: KonmaMeiko
  */
 
-import React, { FC } from 'react'
-import styles from './basic.less'
-import img from '@/assets/images/2.webp'
+import React, { FC } from 'react';
+import styles from './basic.less';
+import img from '@/assets/images/2.webp';
 export interface IProps {}
 
 const RoundRec: FC<IProps> = () => {
@@ -31,7 +31,7 @@ const RoundRec: FC<IProps> = () => {
 				</filter>
 			</svg>
 		</div>
-	)
-}
+	);
+};
 //memo的使用在不希望一直跟随父组件更新的子组件上
-export default React.memo(RoundRec)
+export default React.memo(RoundRec);

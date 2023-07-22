@@ -1,25 +1,22 @@
-import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
-import 'css-doodle';   // 该组件将通过其内部的规则（纯 CSS）生成一个 div 网格 可用以生成图形模式或动画图形。
-import styles from './index.scss'
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import 'css-doodle'; // 该组件将通过其内部的规则（纯 CSS）生成一个 div 网格 可用以生成图形模式或动画图形。
+import styles from './index.scss';
 
-export interface IProps{
-    
-}
+export interface IProps {}
 
-const GlassBg:FC<IProps> = ({})=>{
+const GlassBg: FC<IProps> = ({}) => {
+	const doodle = document.querySelector('css-doodle') as any;
+	const updateCss = () => {
+		doodle && doodle.update();
+	};
 
-    const doodle = document.querySelector('css-doodle') as any;
-    const updateCss = () =>{
-        doodle && doodle.update();
-    }
-
-    return (
-        // 参考网址 https://juejin.cn/post/7057330357556740127
-        // GPU的占用率极高  使用时应尽量减少rand函数
-        <div className={styles.Bg}>
-            <p onClick={()=>updateCss()}>Click Me</p>
-            <css-doodle>
-                {`
+	return (
+		// 参考网址 https://juejin.cn/post/7057330357556740127
+		// GPU的占用率极高  使用时应尽量减少rand函数
+		<div className={styles.Bg}>
+			<p onClick={() => updateCss()}>Click Me</p>
+			<css-doodle>
+				{`
                     :doodle {
                         @grid: 3x3/ 100Vmin;
                     }
@@ -49,9 +46,9 @@ const GlassBg:FC<IProps> = ({})=>{
                         }
                     }
                 `}
-            </css-doodle>
-        </div>
-    )
-}
+			</css-doodle>
+		</div>
+	);
+};
 //memo的使用在不希望一直跟随父组件更新的子组件上
 export default React.memo(GlassBg);

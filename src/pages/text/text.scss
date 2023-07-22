@@ -1,228 +1,232 @@
-$fontSize:32px;
-.body{
-    width: 97vw;
-    height: auto;
-    background: rgba(16, 23, 34, 0.2);
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-left: 1%;
-    span{
-        width: 20%;
-        font-size: $fontSize;
-        font-family: 'Source Sans Pro', '等距更纱黑体 SC', 'Helvetica Neue', Arial, sans-serif;
-        margin: 10px 10px;
-        padding: calc($fontSize/5) calc($fontSize/2);
-        font-weight: 300;
-        line-height: 2;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: baseline;
-        border-radius: calc($fontSize/10);
-        // border-radius: calc($fontSize/4);
-    }
+$fontSize: 32px;
+.body {
+	width: 97vw;
+	height: auto;
+	background: rgba(16, 23, 34, 0.2);
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	margin-left: 1%;
+	span {
+		width: 20%;
+		font-size: $fontSize;
+		font-family: 'Source Sans Pro', '等距更纱黑体 SC', 'Helvetica Neue', Arial, sans-serif;
+		margin: 10px 10px;
+		padding: calc($fontSize/5) calc($fontSize/2);
+		font-weight: 300;
+		line-height: 2;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: baseline;
+		border-radius: calc($fontSize/10);
+		// border-radius: calc($fontSize/4);
+	}
 
-    span[alt='bold']{
-        font-weight: 800;
-    }
+	span[alt='bold'] {
+		font-weight: 800;
+	}
 
-    span[alt='italic']{
-        font-style: italic;
-    }
+	span[alt='italic'] {
+		font-style: italic;
+	}
 
-    span[alt='highlight']{
-        background:#a9d18e;
-        border-radius: calc($fontSize/8);
-    }
+	span[alt='highlight'] {
+		background: #a9d18e;
+		border-radius: calc($fontSize/8);
+	}
 
-    span[alt='overline']{
-        text-decoration: overline;
-    }
+	span[alt='overline'] {
+		text-decoration: overline;
+	}
 
-    span[alt='underline']{
-        text-decoration: underline;
-    }
-    
-    span[alt='removeline']{
-        text-decoration: line-through;
-    }
+	span[alt='underline'] {
+		text-decoration: underline;
+	}
 
-    span[alt='wavy']{
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23333' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%; 
-        background-size: $fontSize auto;
-        &:hover{
-          animation: waveMove 1s infinite linear;  
-        }
-    }
-    @keyframes waveMove{
-        from { background-position: 0 100%; }
-        to { background-position: -20px 100%; }
-    }
+	span[alt='removeline'] {
+		text-decoration: line-through;
+	}
 
-    span[alt='emphasize']{
-        background: linear-gradient(
-            to right,
-            transparent 0%,
-            transparent 45%,
-            rgb(243, 3, 3) 45%,
-            rgb(243, 3, 3) 55%,
-            transparent 55%,
-            transparent 100%,
-        );
-        background-size: $fontSize calc($fontSize/10);
-        background-repeat: repeat-x;
-        background-position: bottom;
-    }
+	span[alt='wavy'] {
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23333' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E")
+			repeat-x 0 100%;
+		background-size: $fontSize auto;
+		&:hover {
+			animation: waveMove 1s infinite linear;
+		}
+	}
+	@keyframes waveMove {
+		from {
+			background-position: 0 100%;
+		}
+		to {
+			background-position: -20px 100%;
+		}
+	}
 
-    span[alt='hide']{
-        //  设置为透明色 
-        color: transparent;     
-        background-color: gray;
-        border-radius: calc($fontSize/8);
-        // 设置显隐效果的时间
-        transition: all .28s ease;
-        &:hover{
-            color: black;
-            background: none
-        }
-    }
+	span[alt='emphasize'] {
+		background: linear-gradient(
+			to right,
+			transparent 0%,
+			transparent 45%,
+			rgb(243, 3, 3) 45%,
+			rgb(243, 3, 3) 55%,
+			transparent 55%,
+			transparent 100%
+		);
+		background-size: $fontSize calc($fontSize/10);
+		background-repeat: repeat-x;
+		background-position: bottom;
+	}
 
-    span[alt='rainbow']{
-        // 设置斜径向渐变
-        background-image: linear-gradient(
-            30deg,orangered, orange, gold, lightgreen, cyan, dodgerblue, mediumpurple, hotpink, orangered
-        );
-        color: transparent;
-        background-clip: text;
-        animation: rainbow 2s infinite linear;
-        background-size: 50vw;
-    }
-    @keyframes rainbow {
-        to{
-            background-position: -50vw;
-        }
-    }
+	span[alt='hide'] {
+		//  设置为透明色
+		color: transparent;
+		background-color: gray;
+		border-radius: calc($fontSize/8);
+		// 设置显隐效果的时间
+		transition: all 0.28s ease;
+		&:hover {
+			color: black;
+			background: none;
+		}
+	}
 
-    span[alt='shake']{
-        animation: shake .95s cubic-bezier(1,-1.91,0,2.79) 0s 
-        infinite normal both running;
-    }
-    @keyframes shake{
-        0%{text-shadow:none}
-        25%{text-shadow:-1px -1px 0 #ff0048,1px 1px 0 #3234ff}
-        50%{text-shadow:1px -1px 0 #ff0048,-1px 1px 0 #3234ff}
-        75%{text-shadow:-1px 1px 0 #ff0048,1px -1px 0 #3234ff}
-        to{text-shadow:1px 1px 0 #ff0048,-1px -1px 0 #3234ff}
-    }
+	span[alt='rainbow'] {
+		// 设置斜径向渐变
+		background-image: linear-gradient(30deg, orangered, orange, gold, lightgreen, cyan, dodgerblue, mediumpurple, hotpink, orangered);
+		color: transparent;
+		background-clip: text;
+		animation: rainbow 2s infinite linear;
+		background-size: 50vw;
+	}
+	@keyframes rainbow {
+		to {
+			background-position: -50vw;
+		}
+	}
 
-    span[alt='shadow']{
-        font-family: 'Open Sans', sans-serif;
-        font-weight:900;
-        color: black;
-        text-shadow: white   .02em -.02em 0,
-               white   .04em -.04em 0,
-               white   .06em -.06em 0,
-               white   .08em -.08em 0,
-               white   .1em  -.1em  0,
-               white  -.02em  .02em 0,
-               white  -.04em  .04em 0,
-               white  -.06em  .06em 0,
-               white  -.08em  .08em 0,
-               white  -.1em   .1em  0;
-    }
+	span[alt='shake'] {
+		animation: shake 0.95s cubic-bezier(1, -1.91, 0, 2.79) 0s infinite normal both running;
+	}
+	@keyframes shake {
+		0% {
+			text-shadow: none;
+		}
+		25% {
+			text-shadow: -1px -1px 0 #ff0048, 1px 1px 0 #3234ff;
+		}
+		50% {
+			text-shadow: 1px -1px 0 #ff0048, -1px 1px 0 #3234ff;
+		}
+		75% {
+			text-shadow: -1px 1px 0 #ff0048, 1px -1px 0 #3234ff;
+		}
+		to {
+			text-shadow: 1px 1px 0 #ff0048, -1px -1px 0 #3234ff;
+		}
+	}
 
-    span[alt='redTip']{
-        border-radius: $fontSize;
-        font-size: calc($fontSize*0.75);
-        color: #fff;
-        text-align: center;
-        background: red;
-        &::before{
-            content:'🏷️';
-        }
-    }
+	span[alt='shadow'] {
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 900;
+		color: black;
+		text-shadow: white 0.02em -0.02em 0, white 0.04em -0.04em 0, white 0.06em -0.06em 0, white 0.08em -0.08em 0, white 0.1em -0.1em 0,
+			white -0.02em 0.02em 0, white -0.04em 0.04em 0, white -0.06em 0.06em 0, white -0.08em 0.08em 0, white -0.1em 0.1em 0;
+	}
 
-    span[alt='button']{
-        border: 2px solid #000000;
-        border-radius: 5px;
-        text-align: center;
-        text-transform: uppercase;
-        position: relative;
-        overflow:hidden;
-        &:hover{
-            cursor: pointer;
-            transition: .3s;
-            color: #5bcaff;
-            background: #f7f7f7; 
-            // transform: skewX(15deg);
-        }
-    }
+	span[alt='redTip'] {
+		border-radius: $fontSize;
+		font-size: calc($fontSize * 0.75);
+		color: #fff;
+		text-align: center;
+		background: red;
+		&::before {
+			content: '🏷️';
+		}
+	}
 
-    span[alt='shining']{
-        overflow: hidden;
-        background: linear-gradient(90deg, rgb(7, 10, 0), #fff);
-        background-repeat: no-repeat;
-        background-size: 80%;
-        animation: shining 3s linear infinite;
-        background-clip: text;
-        -webkit-text-fill-color: rgba(255, 255, 255, 0);
-    }
-    @keyframes shining{
-        0% {
-            background-position: -500%;
-        }
-        100% {
-            background-position: 500%;
-        }
-    }
+	span[alt='button'] {
+		border: 2px solid #000000;
+		border-radius: 5px;
+		text-align: center;
+		text-transform: uppercase;
+		position: relative;
+		overflow: hidden;
+		&:hover {
+			cursor: pointer;
+			transition: 0.3s;
+			color: #5bcaff;
+			background: #f7f7f7;
+			// transform: skewX(15deg);
+		}
+	}
 
-    span[alt='glitch']{
-        position: relative;
-        color: black;
-        font-family: 'Varela', sans-serif;
-        text-align: left;
-        font-weight: bold;
-        $left:16px;
-        $top:8px;
-        &::before{
-            content:attr(data-text);
-            position:absolute;
-            left:($left - 1px);
-            text-shadow:1px 0 rgb(91, 255, 119);
-            top:$top;
-            color:black;
-            background:transparent;
-            overflow:hidden;
-            clip:rect(0,300px,0,0);
-            animation: noise1 3s linear infinite;
-        }
-        &::after{
-            content:attr(data-text);
-            position:absolute;
-            left:($left + 1px);
-            text-shadow:-1px 0 rgb(255, 255, 255);
-            top:$top;
-            color:black;
-            background:transparent;
-            overflow:hidden;
-            clip:rect(0,300px,0,0);
-            animation: noise2 3s linear infinite;
-        }
-    }
-    @keyframes noise1{
-        $steps:20;
-        @for $i from 0 through $steps{
-            #{percentage($i*calc(1/$steps))}{
-                clip:rect(random(100)+px,120px,random(60)+px,0);
-            }
-        }
-    }
-    @keyframes noise2{
-        $steps:20;
-        @for $i from 0 through $steps{
-            #{percentage($i*calc(1/$steps))}{
-                clip:rect(random(100)+px,120px,random(60)+px,0);
-            }
-        }
-    }
+	span[alt='shining'] {
+		overflow: hidden;
+		background: linear-gradient(90deg, rgb(7, 10, 0), #fff);
+		background-repeat: no-repeat;
+		background-size: 80%;
+		animation: shining 3s linear infinite;
+		background-clip: text;
+		-webkit-text-fill-color: rgba(255, 255, 255, 0);
+	}
+	@keyframes shining {
+		0% {
+			background-position: -500%;
+		}
+		100% {
+			background-position: 500%;
+		}
+	}
+
+	span[alt='glitch'] {
+		position: relative;
+		color: black;
+		font-family: 'Varela', sans-serif;
+		text-align: left;
+		font-weight: bold;
+		$left: 16px;
+		$top: 8px;
+		&::before {
+			content: attr(data-text);
+			position: absolute;
+			left: ($left - 1px);
+			text-shadow: 1px 0 rgb(91, 255, 119);
+			top: $top;
+			color: black;
+			background: transparent;
+			overflow: hidden;
+			clip: rect(0, 300px, 0, 0);
+			animation: noise1 3s linear infinite;
+		}
+		&::after {
+			content: attr(data-text);
+			position: absolute;
+			left: ($left + 1px);
+			text-shadow: -1px 0 rgb(255, 255, 255);
+			top: $top;
+			color: black;
+			background: transparent;
+			overflow: hidden;
+			clip: rect(0, 300px, 0, 0);
+			animation: noise2 3s linear infinite;
+		}
+	}
+	@keyframes noise1 {
+		$steps: 20;
+		@for $i from 0 through $steps {
+			#{percentage($i*calc(1/$steps))} {
+				clip: rect(random(100) + px, 120px, random(60) + px, 0);
+			}
+		}
+	}
+	@keyframes noise2 {
+		$steps: 20;
+		@for $i from 0 through $steps {
+			#{percentage($i*calc(1/$steps))} {
+				clip: rect(random(100) + px, 120px, random(60) + px, 0);
+			}
+		}
+	}
 }

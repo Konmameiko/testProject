@@ -1,471 +1,470 @@
 .main {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  overflow: auto;
-  .content {
-    width: 12vw;
-    height: 12vw;
-    border: 2px solid rgb(255, 145, 0);
-    margin-bottom: 40px;
-    margin-right: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    & > div {
-      background-color: rgb(255, 89, 117);
-    }
-  }
-  .square {
-    width: 6vw;
-    height: 6vw;
-  }
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	overflow: auto;
+	.content {
+		width: 12vw;
+		height: 12vw;
+		border: 2px solid rgb(255, 145, 0);
+		margin-bottom: 40px;
+		margin-right: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		& > div {
+			background-color: rgb(255, 89, 117);
+		}
+	}
+	.square {
+		width: 6vw;
+		height: 6vw;
+	}
 
-  .rectangle {
-    width: 10vw;
-    height: 6vw;
-  }
+	.rectangle {
+		width: 10vw;
+		height: 6vw;
+	}
 
-  .circle {
-    width: 6vw;
-    height: 6vw;
-    border-radius: 50%;
-  }
+	.circle {
+		width: 6vw;
+		height: 6vw;
+		border-radius: 50%;
+	}
 
-  .oval {
-    width: 10vw;
-    height: 6vw;
-    border-radius: 50%;
-  }
+	.oval {
+		width: 10vw;
+		height: 6vw;
+		border-radius: 50%;
+	}
 
-  .triangleUp {
-    width: 0;
-    background-color: transparent !important;
-    border-left: 3vw solid transparent;
-    border-right: 3vw solid transparent;
-    border-bottom: 6vw solid blue;
-  }
+	.triangleUp {
+		width: 0;
+		background-color: transparent !important;
+		border-left: 3vw solid transparent;
+		border-right: 3vw solid transparent;
+		border-bottom: 6vw solid blue;
+	}
 
-  .triangleDown {
-    width: 0;
-    background-color: transparent !important;
-    border-left: 3vw solid transparent;
-    border-right: 3vw solid transparent;
-    border-top: 6vw solid blue;
-  }
+	.triangleDown {
+		width: 0;
+		background-color: transparent !important;
+		border-left: 3vw solid transparent;
+		border-right: 3vw solid transparent;
+		border-top: 6vw solid blue;
+	}
 
-  .triangleTopLeft {
-    width: 0;
-    border-top: 100px solid blue;
-    border-right: 100px solid transparent;
-    background-color: transparent !important;
-  }
+	.triangleTopLeft {
+		width: 0;
+		border-top: 100px solid blue;
+		border-right: 100px solid transparent;
+		background-color: transparent !important;
+	}
 
-  .curvedarrow {
-    position: relative;
-    width: 0;
-    background-color: transparent !important;
-    border-top: 5vw solid transparent;
-    border-right: 5vw solid red;
-    transform: rotate(10deg) translateX(50%) translateY(50%);
-    &::after {
-      content: '';
-      position: absolute;
-      border: 0 solid transparent;
-      border-top: 2vw solid red;
-      border-radius: 12vw 0 0;
-      top: -6.9vw;
-      left: -5vw;
-      width: 7vw;
-      height: 7vw;
-      transform: rotate(45deg);
-    }
-  }
+	.curvedarrow {
+		position: relative;
+		width: 0;
+		background-color: transparent !important;
+		border-top: 5vw solid transparent;
+		border-right: 5vw solid red;
+		transform: rotate(10deg) translateX(50%) translateY(50%);
+		&::after {
+			content: '';
+			position: absolute;
+			border: 0 solid transparent;
+			border-top: 2vw solid red;
+			border-radius: 12vw 0 0;
+			top: -6.9vw;
+			left: -5vw;
+			width: 7vw;
+			height: 7vw;
+			transform: rotate(45deg);
+		}
+	}
 
-  .trapezoid {
-    background-color: transparent !important;
-    border-bottom: 5vw solid blue;
-    border-left: 1.5vw solid transparent;
-    border-right: 1.5vw solid transparent;
-    width: 8vw;
-  }
+	.trapezoid {
+		background-color: transparent !important;
+		border-bottom: 5vw solid blue;
+		border-left: 1.5vw solid transparent;
+		border-right: 1.5vw solid transparent;
+		width: 8vw;
+	}
 
-  .parallelogram {
-    width: 9vw;
-    height: 6vw;
-    transform: skew(20deg);
-  }
+	.parallelogram {
+		width: 9vw;
+		height: 6vw;
+		transform: skew(20deg);
+	}
 
-  .sixStar {
-    width: 0;
-    background-color: transparent !important;
-    border-left: 4vw solid transparent;
-    border-right: 4vw solid transparent;
-    border-bottom: 6vw solid rgb(22, 0, 167);
-    position: relative;
-    &::after {
-      border-left: 4vw solid transparent;
-      border-right: 4vw solid transparent;
-      border-top: 6vw solid rgb(22, 0, 167);
-      position: absolute;
-      content: '';
-      top: 2vw;
-      left: -4vw;
-    }
-  }
+	.sixStar {
+		width: 0;
+		background-color: transparent !important;
+		border-left: 4vw solid transparent;
+		border-right: 4vw solid transparent;
+		border-bottom: 6vw solid rgb(22, 0, 167);
+		position: relative;
+		&::after {
+			border-left: 4vw solid transparent;
+			border-right: 4vw solid transparent;
+			border-top: 6vw solid rgb(22, 0, 167);
+			position: absolute;
+			content: '';
+			top: 2vw;
+			left: -4vw;
+		}
+	}
 
-  .fiveStar {
-    position: relative;
-    border-right: 6vw solid transparent;
-    border-bottom: 4.2vw solid red;
-    border-left: 6vw solid transparent;
-    background-color: transparent !important;
-    transform: rotate(35deg);
-    &::before {
-      position: absolute;
-      content: '';
-      border-left: 2vw solid transparent;
-      border-right: 2vw solid transparent;
-      border-bottom: 5vw solid red;
-      top: -3vw;
-      left: -4vw;
-      transform: rotate(-35deg);
-    }
-    &::after {
-      position: absolute;
-      content: '';
-      border-left: 6vw solid transparent;
-      border-right: 6vw solid transparent;
-      border-bottom: 4.2vw solid red;
-      top: 0vw;
-      left: -6.2vw;
-      transform: rotate(-70deg);
-    }
-  }
+	.fiveStar {
+		position: relative;
+		border-right: 6vw solid transparent;
+		border-bottom: 4.2vw solid red;
+		border-left: 6vw solid transparent;
+		background-color: transparent !important;
+		transform: rotate(35deg);
+		&::before {
+			position: absolute;
+			content: '';
+			border-left: 2vw solid transparent;
+			border-right: 2vw solid transparent;
+			border-bottom: 5vw solid red;
+			top: -3vw;
+			left: -4vw;
+			transform: rotate(-35deg);
+		}
+		&::after {
+			position: absolute;
+			content: '';
+			border-left: 6vw solid transparent;
+			border-right: 6vw solid transparent;
+			border-bottom: 4.2vw solid red;
+			top: 0vw;
+			left: -6.2vw;
+			transform: rotate(-70deg);
+		}
+	}
 
-  .pentagon {
-    position: relative;
-    border-left: 1.5vw solid transparent;
-    border-right: 1.5vw solid transparent;
-    border-top: 4vw solid green;
-    background-color: transparent !important;
-    margin-top: 3vw;
-    width: 6vw;
-    &::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      border-left: 3vw solid transparent;
-      border-right: 3vw solid transparent;
-      border-bottom: 4vw solid green;
-      top: -8vw;
-      left: -1.5vw;
-    }
-  }
+	.pentagon {
+		position: relative;
+		border-left: 1.5vw solid transparent;
+		border-right: 1.5vw solid transparent;
+		border-top: 4vw solid green;
+		background-color: transparent !important;
+		margin-top: 3vw;
+		width: 6vw;
+		&::after {
+			content: '';
+			position: absolute;
+			width: 0;
+			border-left: 3vw solid transparent;
+			border-right: 3vw solid transparent;
+			border-bottom: 4vw solid green;
+			top: -8vw;
+			left: -1.5vw;
+		}
+	}
 
-  .hexagon {
-    width: 6vw;
-    height: 3.1vw;
-    position: relative;
-    &::before {
-      position: absolute;
-      content: '';
-      width: 0;
-      border-left: 3vw solid transparent;
-      border-right: 3vw solid transparent;
-      border-bottom: 2vw solid rgb(255, 89, 117);
-      top: -2vw;
-    }
-    &::after {
-      position: absolute;
-      content: '';
-      width: 0;
-      border-left: 3vw solid transparent;
-      border-right: 3vw solid transparent;
-      border-top: 2vw solid rgb(255, 89, 117);
-      top: 3vw;
-    }
-  }
+	.hexagon {
+		width: 6vw;
+		height: 3.1vw;
+		position: relative;
+		&::before {
+			position: absolute;
+			content: '';
+			width: 0;
+			border-left: 3vw solid transparent;
+			border-right: 3vw solid transparent;
+			border-bottom: 2vw solid rgb(255, 89, 117);
+			top: -2vw;
+		}
+		&::after {
+			position: absolute;
+			content: '';
+			width: 0;
+			border-left: 3vw solid transparent;
+			border-right: 3vw solid transparent;
+			border-top: 2vw solid rgb(255, 89, 117);
+			top: 3vw;
+		}
+	}
 
-  .octagon {
-    width: 6vw;
-    height: 6vw;
-    background-color: rgb(255, 0, 242) !important;
-    position: relative;
-    &::before {
-      content: '';
-      width: 6vw;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-bottom: 2vw solid rgb(255, 0, 242);
-      border-left: 1.5vw solid #f0f2f5;
-      border-right: 1.5vw solid #f0f2f5;
-      box-sizing: border-box;
-    }
-    &::after {
-      content: '';
-      width: 6vw;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      border-top: 2vw solid rgb(255, 0, 242);
-      border-left: 1.5vw solid #f0f2f5;
-      border-right: 1.5vw solid #f0f2f5;
-      box-sizing: border-box;
-    }
-  }
+	.octagon {
+		width: 6vw;
+		height: 6vw;
+		background-color: rgb(255, 0, 242) !important;
+		position: relative;
+		&::before {
+			content: '';
+			width: 6vw;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-bottom: 2vw solid rgb(255, 0, 242);
+			border-left: 1.5vw solid #f0f2f5;
+			border-right: 1.5vw solid #f0f2f5;
+			box-sizing: border-box;
+		}
+		&::after {
+			content: '';
+			width: 6vw;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			border-top: 2vw solid rgb(255, 0, 242);
+			border-left: 1.5vw solid #f0f2f5;
+			border-right: 1.5vw solid #f0f2f5;
+			box-sizing: border-box;
+		}
+	}
 
-  .heart {
-    position: relative;
-    width: 6vw;
-    height: 5.4vw;
-    background-color: transparent !important;
-    &::before,
-    &::after {
-      position: absolute;
-      content: '';
-      left: 3vw;
-      top: 0;
-      width: 3vw;
-      height: 5vw;
-      background-color: red;
-      border-radius: 3vw 3vw 0 0;
-      transform: rotate(-45deg);
-      transform-origin: 0 100%;
-    }
-    &::after {
-      left: 0;
-      transform: rotate(45deg);
-      transform-origin: 100% 100%;
-    }
-  }
+	.heart {
+		position: relative;
+		width: 6vw;
+		height: 5.4vw;
+		background-color: transparent !important;
+		&::before,
+		&::after {
+			position: absolute;
+			content: '';
+			left: 3vw;
+			top: 0;
+			width: 3vw;
+			height: 5vw;
+			background-color: red;
+			border-radius: 3vw 3vw 0 0;
+			transform: rotate(-45deg);
+			transform-origin: 0 100%;
+		}
+		&::after {
+			left: 0;
+			transform: rotate(45deg);
+			transform-origin: 100% 100%;
+		}
+	}
 
-  .infinity {
-    position: relative;
-    width: 12vw;
-    height: 6vw;
-    box-sizing: content-box;
-    background-color: transparent !important;
-    &::before,
-    &::after {
-      position: absolute;
-      content: '';
-      box-sizing: content-box;
-      top: 0;
-      left: 0;
-      width: 3.2vw;
-      height: 3.2vw;
-      border: 1.2vw solid red;
-      border-radius: 3vw 3vw 0 3vw;
-      transform: rotate(-45deg);
-    }
-    &::after {
-      left: auto;
-      right: 0;
-      border-radius: 3vw 3vw 3vw 0;
-      transform: rotate(45deg);
-    }
-  }
+	.infinity {
+		position: relative;
+		width: 12vw;
+		height: 6vw;
+		box-sizing: content-box;
+		background-color: transparent !important;
+		&::before,
+		&::after {
+			position: absolute;
+			content: '';
+			box-sizing: content-box;
+			top: 0;
+			left: 0;
+			width: 3.2vw;
+			height: 3.2vw;
+			border: 1.2vw solid red;
+			border-radius: 3vw 3vw 0 3vw;
+			transform: rotate(-45deg);
+		}
+		&::after {
+			left: auto;
+			right: 0;
+			border-radius: 3vw 3vw 3vw 0;
+			transform: rotate(45deg);
+		}
+	}
 
-  .diamondNarrow {
-    width: 0;
-    border: 3vw solid transparent;
-    background-color: transparent !important;
-    border-bottom: 4.2vw solid greenyellow;
-    position: relative;
-    top: -3vw;
-    &::after {
-      position: absolute;
-      content: '';
-      border: 3vw solid transparent;
-      border-top: 4.2vw solid rgb(13, 0, 255);
-      top: 4vw;
-      left: -3vw;
-    }
-  }
+	.diamondNarrow {
+		width: 0;
+		border: 3vw solid transparent;
+		background-color: transparent !important;
+		border-bottom: 4.2vw solid greenyellow;
+		position: relative;
+		top: -3vw;
+		&::after {
+			position: absolute;
+			content: '';
+			border: 3vw solid transparent;
+			border-top: 4.2vw solid rgb(13, 0, 255);
+			top: 4vw;
+			left: -3vw;
+		}
+	}
 
-  .diamond {
-    background-color: transparent !important;
-    border-style: solid;
-    border-color: transparent transparent rgb(255, 0, 0) transparent;
-    border-width: 0 1.5vw 1.5vw 1.5vw;
-    width: 3vw;
-    box-sizing: content-box;
-    position: relative;
-    margin: 0.7vw 0 3vw 0;
-    &::before {
-      width: 0;
-      position: absolute;
-      content: '';
-      border: 3vw solid transparent;
-      border-top: 3vw solid red;
-      left: -1.5vw;
-      top: 1.5vw;
-    }
-  }
+	.diamond {
+		background-color: transparent !important;
+		border-style: solid;
+		border-color: transparent transparent rgb(255, 0, 0) transparent;
+		border-width: 0 1.5vw 1.5vw 1.5vw;
+		width: 3vw;
+		box-sizing: content-box;
+		position: relative;
+		margin: 0.7vw 0 3vw 0;
+		&::before {
+			width: 0;
+			position: absolute;
+			content: '';
+			border: 3vw solid transparent;
+			border-top: 3vw solid red;
+			left: -1.5vw;
+			top: 1.5vw;
+		}
+	}
 
-  .pacman {
-    width: 0;
-    height: 0;
-    background-color: transparent !important;
-    border-right: 3.6vw solid transparent;
-    border-top: 3.6vw solid black;
-    border-left: 3.6vw solid black;
-    border-bottom: 3.6vw solid black;
-    border-top-left-radius: 3.6vw;
-    border-top-right-radius: 3.6vw;
-    border-bottom-left-radius: 3.6vw;
-    border-bottom-right-radius: 3.6vw;
-  }
+	.pacman {
+		width: 0;
+		height: 0;
+		background-color: transparent !important;
+		border-right: 3.6vw solid transparent;
+		border-top: 3.6vw solid black;
+		border-left: 3.6vw solid black;
+		border-bottom: 3.6vw solid black;
+		border-top-left-radius: 3.6vw;
+		border-top-right-radius: 3.6vw;
+		border-bottom-left-radius: 3.6vw;
+		border-bottom-right-radius: 3.6vw;
+	}
 
-  .talkbubble {
-    width: 7vw;
-    height: 4.5vw;
-    position: relative;
-    border-radius: 1vw;
-    &::before {
-      content: '';
-      position: absolute;
-      right: 100%;
-      top: 1.5vw;
-      border-top: 0.75vw solid transparent;
-      border-right: 1.5vw solid rgb(255, 89, 117);
-      border-bottom: 0.75vw solid transparent;
-    }
-  }
+	.talkbubble {
+		width: 7vw;
+		height: 4.5vw;
+		position: relative;
+		border-radius: 1vw;
+		&::before {
+			content: '';
+			position: absolute;
+			right: 100%;
+			top: 1.5vw;
+			border-top: 0.75vw solid transparent;
+			border-right: 1.5vw solid rgb(255, 89, 117);
+			border-bottom: 0.75vw solid transparent;
+		}
+	}
 
-  .burst12 {
-    background-color: aqua !important;
-    width: 5vw;
-    height: 5vw;
-    position: relative;
-    text-align: center;
-    &::after,
-    &::before {
-      position: absolute;
-      content: '';
-      top: 0;
-      left: 0;
-      height: 5vw;
-      width: 5vw;
-      background-color: aqua;
-    }
-    &::before {
-      transform: rotate(30deg);
-    }
-    &::after {
-      transform: rotate(60deg);
-    }
-  }
+	.burst12 {
+		background-color: aqua !important;
+		width: 5vw;
+		height: 5vw;
+		position: relative;
+		text-align: center;
+		&::after,
+		&::before {
+			position: absolute;
+			content: '';
+			top: 0;
+			left: 0;
+			height: 5vw;
+			width: 5vw;
+			background-color: aqua;
+		}
+		&::before {
+			transform: rotate(30deg);
+		}
+		&::after {
+			transform: rotate(60deg);
+		}
+	}
 
-  .Taiji {
-    width: 0;
-    height: 9vw;
-    border-right: 4.5vw solid #fff;
-    border-left: 4.5vw solid #000;
-    border-radius: 50%;
-    position: relative;
-    &::before {
-      display: block;
-      content: '';
-      box-sizing: content-box;
-      background-color: #fff;
-      border: 2vw solid #000;
-      width: 0.5vw;
-      height: 0.5vw;
-      border-radius: 50%;
-      margin-left: -2.25vw;
-    }
-    &::after {
-      display: block;
-      content: '';
-      box-sizing: content-box;
-      background-color: #000;
-      border: 2vw solid #fff;
-      width: 0.5vw;
-      height: 0.5vw;
-      border-radius: 50%;
-      margin-left: -2.25vw;
-    }
-    &:hover {
-      box-shadow: 5px 0 10px #457b9d, -5px 0 10px #06d6a0, 0 5px 10px #480ca8,
-        0 -5px 10px #e63946;
-    }
-  }
+	.Taiji {
+		width: 0;
+		height: 9vw;
+		border-right: 4.5vw solid #fff;
+		border-left: 4.5vw solid #000;
+		border-radius: 50%;
+		position: relative;
+		&::before {
+			display: block;
+			content: '';
+			box-sizing: content-box;
+			background-color: #fff;
+			border: 2vw solid #000;
+			width: 0.5vw;
+			height: 0.5vw;
+			border-radius: 50%;
+			margin-left: -2.25vw;
+		}
+		&::after {
+			display: block;
+			content: '';
+			box-sizing: content-box;
+			background-color: #000;
+			border: 2vw solid #fff;
+			width: 0.5vw;
+			height: 0.5vw;
+			border-radius: 50%;
+			margin-left: -2.25vw;
+		}
+		&:hover {
+			box-shadow: 5px 0 10px #457b9d, -5px 0 10px #06d6a0, 0 5px 10px #480ca8, 0 -5px 10px #e63946;
+		}
+	}
 
-  .magnifyingGlass {
-    font-size: 10em;
-    display: inline-block;
-    width: 0.7em;
-    height: 0.7em;
-    border: 0.1em solid red;
-    position: relative;
-    border-radius: 0.35em;
-    background-color: transparent !important;
-    &::before {
-      position: absolute;
-      content: '';
-      display: inline-block;
-      right: -0.25em;
-      bottom: -0.1em;
-      border-width: 0;
-      background-color: red;
-      width: 0.35em;
-      height: 0.08em;
-      transform: rotate(45deg);
-    }
-  }
+	.magnifyingGlass {
+		font-size: 10em;
+		display: inline-block;
+		width: 0.7em;
+		height: 0.7em;
+		border: 0.1em solid red;
+		position: relative;
+		border-radius: 0.35em;
+		background-color: transparent !important;
+		&::before {
+			position: absolute;
+			content: '';
+			display: inline-block;
+			right: -0.25em;
+			bottom: -0.1em;
+			border-width: 0;
+			background-color: red;
+			width: 0.35em;
+			height: 0.08em;
+			transform: rotate(45deg);
+		}
+	}
 
-  .moon {
-    width: 6vw;
-    height: 6vw;
-    border-radius: 50%;
-    box-shadow: 1vw 1vw 0 0 red;
-    background-color: transparent !important;
-  }
+	.moon {
+		width: 6vw;
+		height: 6vw;
+		border-radius: 50%;
+		box-shadow: 1vw 1vw 0 0 red;
+		background-color: transparent !important;
+	}
 
-  .lock {
-    font-size: 8px;
-    position: relative;
-    width: 18em;
-    height: 13em;
-    border-radius: 2em;
-    top: 10em;
-    box-sizing: border-box;
-    border: 3.5em solid red;
-    border-right-width: 7.5em;
-    border-left-width: 7.5em;
-    margin: 0 0 6rem 0;
-    background-color: transparent !important;
-    &::before {
-      content: '';
-      box-sizing: border-box;
-      position: absolute;
-      border: 2.5em solid red;
-      width: 14em;
-      height: 12em;
-      left: 50%;
-      margin-left: -7em;
-      top: -12em;
-      border-top-left-radius: 7em;
-      border-top-right-radius: 7em;
-    }
-    &::after {
-      content: '';
-      box-sizing: border-box;
-      position: absolute;
-      border: 1em solid red;
-      width: 5em;
-      height: 8em;
-      border-radius: 2.5em;
-      left: 50%;
-      top: -1em;
-      margin-left: -2.5em;
-    }
-  }
+	.lock {
+		font-size: 8px;
+		position: relative;
+		width: 18em;
+		height: 13em;
+		border-radius: 2em;
+		top: 10em;
+		box-sizing: border-box;
+		border: 3.5em solid red;
+		border-right-width: 7.5em;
+		border-left-width: 7.5em;
+		margin: 0 0 6rem 0;
+		background-color: transparent !important;
+		&::before {
+			content: '';
+			box-sizing: border-box;
+			position: absolute;
+			border: 2.5em solid red;
+			width: 14em;
+			height: 12em;
+			left: 50%;
+			margin-left: -7em;
+			top: -12em;
+			border-top-left-radius: 7em;
+			border-top-right-radius: 7em;
+		}
+		&::after {
+			content: '';
+			box-sizing: border-box;
+			position: absolute;
+			border: 1em solid red;
+			width: 5em;
+			height: 8em;
+			border-radius: 2.5em;
+			left: 50%;
+			top: -1em;
+			margin-left: -2.5em;
+		}
+	}
 }

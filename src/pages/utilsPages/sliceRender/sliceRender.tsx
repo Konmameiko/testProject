@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import image1 from '@/assets/images/1.webp'
-import SlicingHoc from './hoc'
+import React, { useState, useEffect } from 'react';
+import image1 from '@/assets/images/1.webp';
+import SlicingHoc from './hoc';
 
 // 分片渲染：简单的说就是一个执行完再执行下一个，其思想是建立一个队列，
 // 通过定时器来进行渲染，比如说一共有3次，先把这三个放入到数组中，
@@ -23,24 +23,24 @@ const Item: React.FC<{ id: any }> = ({ id }) => {
 			<img src={image1} width={100} height={60} alt="" />
 			<p style={{ width: 80 }}>列表{id}</p>
 		</div>
-	)
-}
+	);
+};
 
-const ItemHoc = SlicingHoc(Item)
+const ItemHoc = SlicingHoc(Item);
 
 const SliceRender = () => {
-	const [list, setList] = useState<Array<number>>([])
+	const [list, setList] = useState<Array<number>>([]);
 
 	useEffect(() => {
-		let arr: number[] = []
+		let arr: number[] = [];
 		for (let i = 0; i < 5000; i++) {
-			arr.push(i)
+			arr.push(i);
 		}
-		setList(arr)
+		setList(arr);
 		return () => {
-			setList([])
-		}
-	}, [])
+			setList([]);
+		};
+	}, []);
 
 	return (
 		<div
@@ -52,8 +52,8 @@ const SliceRender = () => {
 		>
 			<ItemHoc list={list} />
 		</div>
-	)
-}
+	);
+};
 
 //memo的使用在不希望一直跟随父组件更新的子组件上
-export default React.memo(SliceRender)
+export default React.memo(SliceRender);

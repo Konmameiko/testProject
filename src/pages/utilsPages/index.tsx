@@ -9,11 +9,11 @@ import React, { FC } from 'react';
 import SliceRender from './sliceRender/sliceRender';
 
 interface IProps {
-  onSomething: () => void;
+	onSomething: () => void;
 }
 
 const UtilsHome: FC<IProps> = ({ onSomething }) => {
-  return <SliceRender></SliceRender>;
+	return <SliceRender></SliceRender>;
 };
 //memo的使用在不希望一直跟随父组件更新的子组件上
 export default React.memo(UtilsHome);

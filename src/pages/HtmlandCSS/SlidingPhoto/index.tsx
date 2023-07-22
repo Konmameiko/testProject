@@ -5,69 +5,69 @@
  * @lastEditTime: Do not edit
  * @LastEditors: KonmaMeiko
  */
-import React, { Component } from 'react'
-import styles from './index.less'
+import React, { Component } from 'react';
+import styles from './index.less';
 
 export default class SlidingPhoto extends Component {
-	photolist: any
+	photolist: any;
 	componentDidMount() {
 		for (let i = 1; i < 5; i++) {
-			this.photolist.children[i].style.left = 850 - 280 + (i - 1) * 70 + 'px'
+			this.photolist.children[i].style.left = 850 - 280 + (i - 1) * 70 + 'px';
 		}
 	}
 	onmouseover = (value: any) => {
 		return () => {
 			for (let i = 0; i < 5; i++) {
 				if (i <= value) {
-					this.statrMove(this.photolist.children[i], { left: i * 70 }, '')
+					this.statrMove(this.photolist.children[i], { left: i * 70 }, '');
 				} else {
-					this.statrMove(this.photolist.children[i], { left: 850 - 280 + (i - 1) * 70 }, '')
+					this.statrMove(this.photolist.children[i], { left: 850 - 280 + (i - 1) * 70 }, '');
 				}
 			}
-		}
-	}
+		};
+	};
 	getStyle = (obj: any, attr: any) => {
 		if (obj.currentStyle) {
-			return obj.currentStyle[attr]
+			return obj.currentStyle[attr];
 		} else {
-			return getComputedStyle(obj, 'false')[attr]
+			return getComputedStyle(obj, 'false')[attr];
 		}
-	}
+	};
 	statrMove = (obj: any, json: any, endFn: any) => {
-		clearInterval(obj.timer)
+		clearInterval(obj.timer);
 		obj.timer = setInterval(() => {
-			var bBtn = true
+			var bBtn = true;
 			for (var attr in json) {
-				var iCur = 0
+				var iCur = 0;
 				if (attr == 'opacity') {
 					if (Math.round(parseFloat(this.getStyle(obj, attr)) * 100) == 0) {
-						iCur = Math.round(parseFloat(this.getStyle(obj, attr)) * 100)
+						iCur = Math.round(parseFloat(this.getStyle(obj, attr)) * 100);
 					} else {
-						iCur = Math.round(parseFloat(this.getStyle(obj, attr)) * 100) || 100
+						iCur = Math.round(parseFloat(this.getStyle(obj, attr)) * 100) || 100;
 					}
 				} else {
-					iCur = parseInt(this.getStyle(obj, attr)) || 0
+					iCur = parseInt(this.getStyle(obj, attr)) || 0;
 				}
-				var iSpeed = (json[attr] - iCur) / 8
-				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed)
+				var iSpeed = (json[attr] - iCur) / 8;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
 				if (iCur != json[attr]) {
-					bBtn = false
+					bBtn = false;
 				}
 				if (attr == 'opacity') {
-					obj.style.filter = 'alpha(opacity=' + (iCur + iSpeed) + ')'
-					obj.style.opacity = (iCur + iSpeed) / 100
+					obj.style.filter = 'alpha(opacity=' + (iCur + iSpeed) + ')';
+					obj.style.opacity = (iCur + iSpeed) / 100;
 				} else {
-					obj.style[attr] = iCur + iSpeed + 'px'
+					obj.style[attr] = iCur + iSpeed + 'px';
 				}
 			}
 			if (bBtn) {
-				clearInterval(obj.timer)
+				clearInterval(obj.timer);
 				if (endFn) {
-					endFn.call(obj)
+					endFn.call(obj);
 				}
 			}
-		}, 30)
-	}
+		}, 30);
+	};
 
 	render() {
 		return (
@@ -90,6 +90,6 @@ export default class SlidingPhoto extends Component {
 					</li>
 				</ul>
 			</div>
-		)
+		);
 	}
 }

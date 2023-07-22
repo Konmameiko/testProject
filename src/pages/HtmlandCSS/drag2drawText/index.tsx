@@ -15,14 +15,14 @@ let letters = `时维九月，序属三秋。潦水尽而寒潭清，烟光凝�
     怀帝阍而不见，奉宣室以何年？`;
 
 interface ptType {
-  x: number;
-  y: number;
+	x: number;
+	y: number;
 }
 
 interface pt2Type {
-  x: number;
-  y: number;
-  down: boolean;
+	x: number;
+	y: number;
+	down: boolean;
 }
 
 // Drawing variables
@@ -31,104 +31,104 @@ let context: CanvasRenderingContext2D;
 let position: ptType = { x: 0, y: window.innerHeight / 2 };
 let mouse: pt2Type = { x: 0, y: 0, down: false };
 export default class index extends Component {
-  componentDidMount() {
-    canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    context = canvas.getContext('2d') as CanvasRenderingContext2D;
-    canvas.width = window.innerWidth * 0.8;
-    canvas.height = window.innerHeight * 0.9;
+	componentDidMount() {
+		canvas = document.getElementById('canvas') as HTMLCanvasElement;
+		context = canvas.getContext('2d') as CanvasRenderingContext2D;
+		canvas.width = window.innerWidth * 0.8;
+		canvas.height = window.innerHeight * 0.9;
 
-    canvas.addEventListener('mousemove', this.mouseMove, false);
-    canvas.addEventListener('mousedown', this.mouseDown, false);
-    canvas.addEventListener('mouseup', this.mouseUp, false);
-    canvas.addEventListener('mouseout', this.mouseUp, false);
-    canvas.addEventListener('dblclick', this.doubleClick, false);
+		canvas.addEventListener('mousemove', this.mouseMove, false);
+		canvas.addEventListener('mousedown', this.mouseDown, false);
+		canvas.addEventListener('mouseup', this.mouseUp, false);
+		canvas.addEventListener('mouseout', this.mouseUp, false);
+		canvas.addEventListener('dblclick', this.doubleClick, false);
 
-    window.onresize = function () {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-  }
+		window.onresize = function () {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+		};
+	}
 
-  // 移动事件
-  mouseMove = (event: any) => {
-    // 减去div外的宽高
-    mouse.x = event.pageX - 76;
-    mouse.y = event.pageY - 90;
-    this.draw();
-  };
+	// 移动事件
+	mouseMove = (event: any) => {
+		// 减去div外的宽高
+		mouse.x = event.pageX - 76;
+		mouse.y = event.pageY - 90;
+		this.draw();
+	};
 
-  draw = () => {
-    if (mouse.down) {
-      const d = this.distance(position, mouse);
-      const fontSize = minFontSize + d / 2;
-      const letter = letters[counter];
-      const stepSize = this.textWidth(letter);
-      if (d > stepSize) {
-        // 返回从原点(0,0)到(x,y)点的线段与x轴正方向之间的平面角度 (0-> π -π -> 0)
-        const angle = Math.atan2(mouse.y - position.y, mouse.x - position.x);
-        context.font = fontSize + 'px kaiTi';
-        context.save();
-        context.translate(position.x, position.y);
-        context.rotate(angle);
-        context.fillText(letter, 0, 0);
-        context.restore();
-        counter++;
-        if (counter > letters.length - 1) {
-          counter = 0;
-        }
+	draw = () => {
+		if (mouse.down) {
+			const d = this.distance(position, mouse);
+			const fontSize = minFontSize + d / 2;
+			const letter = letters[counter];
+			const stepSize = this.textWidth(letter);
+			if (d > stepSize) {
+				// 返回从原点(0,0)到(x,y)点的线段与x轴正方向之间的平面角度 (0-> π -π -> 0)
+				const angle = Math.atan2(mouse.y - position.y, mouse.x - position.x);
+				context.font = fontSize + 'px kaiTi';
+				context.save();
+				context.translate(position.x, position.y);
+				context.rotate(angle);
+				context.fillText(letter, 0, 0);
+				context.restore();
+				counter++;
+				if (counter > letters.length - 1) {
+					counter = 0;
+				}
 
-        position.x = position.x + Math.cos(angle) * stepSize;
-        position.y = position.y + Math.sin(angle) * stepSize;
-      }
-    }
-  };
+				position.x = position.x + Math.cos(angle) * stepSize;
+				position.y = position.y + Math.sin(angle) * stepSize;
+			}
+		}
+	};
 
-  distance = (pt: ptType, pt2: pt2Type) => {
-    var xs = 0;
-    var ys = 0;
+	distance = (pt: ptType, pt2: pt2Type) => {
+		var xs = 0;
+		var ys = 0;
 
-    xs = pt2.x - pt.x;
-    xs = xs * xs;
+		xs = pt2.x - pt.x;
+		xs = xs * xs;
 
-    ys = pt2.y - pt.y;
-    ys = ys * ys;
+		ys = pt2.y - pt.y;
+		ys = ys * ys;
 
-    // console.log(pt, pt2)
-    return Math.sqrt(xs + ys);
-  };
+		// console.log(pt, pt2)
+		return Math.sqrt(xs + ys);
+	};
 
-  mouseDown = (event: any) => {
-    mouse.down = true;
-    position.x = event.pageX - 76;
-    position.y = event.pageY - 90;
-    const infoHtml = document.getElementById('info') as HTMLSpanElement;
-    infoHtml.style.display = 'none';
-  };
+	mouseDown = (event: any) => {
+		mouse.down = true;
+		position.x = event.pageX - 76;
+		position.y = event.pageY - 90;
+		const infoHtml = document.getElementById('info') as HTMLSpanElement;
+		infoHtml.style.display = 'none';
+	};
 
-  mouseUp = () => {
-    mouse.down = false;
-  };
+	mouseUp = () => {
+		mouse.down = false;
+	};
 
-  doubleClick = () => {
-    canvas.width = canvas.width;
-    const infoHtml = document.getElementById('info') as HTMLSpanElement;
-    infoHtml.style.display = 'inline';
-  };
+	doubleClick = () => {
+		canvas.width = canvas.width;
+		const infoHtml = document.getElementById('info') as HTMLSpanElement;
+		infoHtml.style.display = 'inline';
+	};
 
-  textWidth = (string: string): number => {
-    if (context.fillText !== null) {
-      // 返回字体的宽度
-      return context.measureText(string).width;
-    }
-    return 10;
-  };
+	textWidth = (string: string): number => {
+		if (context.fillText !== null) {
+			// 返回字体的宽度
+			return context.measureText(string).width;
+		}
+		return 10;
+	};
 
-  render() {
-    return (
-      <div className={styles.body}>
-        <canvas id="canvas"></canvas>
-        <span id="info">Click and drag to draw!</span>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className={styles.body}>
+				<canvas id="canvas"></canvas>
+				<span id="info">Click and drag to draw!</span>
+			</div>
+		);
+	}
 }

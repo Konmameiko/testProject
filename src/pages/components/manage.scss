@@ -1,18 +1,18 @@
 // 设置变量
-$count: 100;	// 总数
-$sqrt: 10;		// 	开方根
+$count: 100; // 总数
+$sqrt: 10; // 	开方根
 $per: 11%;
 // 设置SCSS循环 输出自定义@prpperty 名称
 @for $i from 1 to ($count + 1) {
 	@property --m-#{$i} {
-		syntax: "<number>";
+		syntax: '<number>';
 		initial-value: 1;
 		inherits: false;
-	 }
+	}
 }
 // mask 渐变属性
 @function bgSet($n) {
-	$bg : radial-gradient(rgba(0, 0, 0, var(--m-1)), rgba(0, 0, 0, var(--m-1)));
+	$bg: radial-gradient(rgba(0, 0, 0, var(--m-1)), rgba(0, 0, 0, var(--m-1)));
 
 	@for $i from 2 through $n {
 		$bg: $bg, radial-gradient(rgba(0, 0, 0, var(--m-#{$i})), rgba(0, 0, 0, var(--m-#{$i})));
@@ -156,7 +156,7 @@ $per: 11%;
 				filter: saturate(200%);
 			}
 
-			.fadeout{
+			.fadeout {
 				mask: bgSet($count);
 				mask-size: $per $per;
 				mask-repeat: no-repeat;
@@ -278,8 +278,7 @@ $per: 11%;
 	padding: 10px 25px;
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
-	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-		7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 	outline: none;
 	border: none;
 	transition: all 0.3s ease;
@@ -300,19 +299,15 @@ $per: 11%;
 
 	&:hover {
 		background: transparent;
-		box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
-			-4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-			inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
-			inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+		box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+			inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
 		color: #ffffff;
 
 		&:after {
 			-webkit-transform: scale(2) rotate(180deg);
 			transform: scale(2) rotate(180deg);
-			box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
-				-4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-				inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
-				inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+			box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+				inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
 		}
 	}
 }

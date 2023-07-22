@@ -5,18 +5,18 @@
  * @lastEditTime: Do not edit
  * @LastEditors: KonmaMeiko
  */
-import React, { Component } from 'react'
-import styles from './index.less'
-import Scratch from 'react-scratch-perfect'
+import React, { Component } from 'react';
+import styles from './index.less';
+import Scratch from 'react-scratch-perfect';
 
 class PhotoErasure extends Component {
 	handlePre = (e: any) => {
-		console.log('test')
-	}
+		console.log('test');
+	};
 
 	onSuccess = () => {
-		console.log('完成')
-	}
+		console.log('完成');
+	};
 	render() {
 		return (
 			<div className={styles.body}>
@@ -46,8 +46,8 @@ class PhotoErasure extends Component {
 					<img className={styles.img2} src={require('@/assets/images/2.webp')} alt="" />
 				</Scratch>
 			</div>
-		)
+		);
 	}
 }
 
-export default PhotoErasure
+export default PhotoErasure;

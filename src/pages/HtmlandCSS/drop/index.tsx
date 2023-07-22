@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
-import styles from './index.less'
+import React, { Component } from 'react';
+import styles from './index.less';
 
 export default class index extends Component<any, any> {
-	disX: number
-	disY: number
+	disX: number;
+	disY: number;
 	constructor(props: any) {
-		super(props)
+		super(props);
 		this.state = {
 			needX: 0,
 			needY: 0,
 			flag: 0,
 			radio: 88,
-		}
-		this.disX = 0
-		this.disY = 0
-		window.addEventListener('resize', this.handleResize.bind(this))
+		};
+		this.disX = 0;
+		this.disY = 0;
+		window.addEventListener('resize', this.handleResize.bind(this));
 	}
 
 	fnDown(e: any) {
 		// 第二步：记录拖拽起始位置，鼠标按下时document绑定onmousemove事件，实时改变元素的布局style
 		this.setState({
 			flag: 0,
-		})
-		document.onmousemove = this.fnMove.bind(this)
+		});
+		document.onmousemove = this.fnMove.bind(this);
 	}
 
 	fnMove(e: any) {
@@ -31,45 +31,45 @@ export default class index extends Component<any, any> {
 			needY: e.clientY - 208,
 			flag: 1,
 			scale: 1,
-		})
+		});
 	}
 
 	fnUp() {
 		// 第三步：鼠标放开时document移除onmousemove事件
-		document.onmousemove = null
+		document.onmousemove = null;
 	}
 
 	handleClick() {
-		const { flag } = this.state
+		const { flag } = this.state;
 		if (flag == 0) {
-			document.onmousemove = null
+			document.onmousemove = null;
 		}
 	}
 
 	largeScale = () => {
-		const { scale } = this.state
-		this.setState({ scale: scale * 1.1 })
-	}
+		const { scale } = this.state;
+		this.setState({ scale: scale * 1.1 });
+	};
 
 	smallScale = () => {
-		const { scale } = this.state
-		this.setState({ scale: scale * 0.9 })
-	}
+		const { scale } = this.state;
+		this.setState({ scale: scale * 0.9 });
+	};
 
 	handleResize = () => {
 		// window.devicePixelRatio
-		const value = ((((document.body.clientWidth * 43) / 48) * 0.6 * 191) / 273 - 400) / 2
-		console.log(value, 'value')
-		this.setState({ radio: value })
-	}
+		const value = ((((document.body.clientWidth * 43) / 48) * 0.6 * 191) / 273 - 400) / 2;
+		console.log(value, 'value');
+		this.setState({ radio: value });
+	};
 
 	componentWillUnmount() {
-		window.removeEventListener('resize', this.handleResize.bind(this))
+		window.removeEventListener('resize', this.handleResize.bind(this));
 	}
 
 	render() {
 		// 第一步：拖拽元素绑定onmousedown，onmouseup事件
-		const { needX, needY, scale, radio } = this.state
+		const { needX, needY, scale, radio } = this.state;
 		return (
 			<div
 				style={{
@@ -98,6 +98,6 @@ export default class index extends Component<any, any> {
 					/>
 				</div>
 			</div>
-		)
+		);
 	}
 }

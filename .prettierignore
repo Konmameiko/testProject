@@ -2,7 +2,12 @@
 **/*.svg
 **/*.ejs
 **/*.html
+**/*.json
 package.json
 .umi
+.vscode
+/nginx
 .umi-production
 .umi-test
+/node_modules
+/public

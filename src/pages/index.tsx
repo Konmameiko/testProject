@@ -37,6 +37,7 @@ export default class IndexPage extends Component<any, any> {
 		{ router: '/imgWrapper', text: '图片瀑布流', icon: icon7 },
 		{ router: '/404', text: '', icon: icon8 },
 	];
+
 	componentDidMount() {
 		// 关闭首页下方滚动波浪
 		// window.addEventListener('visibilitychange', this.onViewChange);
