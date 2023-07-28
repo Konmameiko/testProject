@@ -1,3 +1,10 @@
+/*
+ * @Description:
+ * @Author: KonmaMeiko
+ * @Date: 2023-05-22 00:00:52
+ * @lastEditTime: Do not edit
+ * @LastEditors: KonmaMeiko
+ */
 import { useState } from 'react';
 import styles from './index.less';
 
@@ -5,7 +12,7 @@ const index = (props: any) => {
 	const [flag, setFlag] = useState(false);
 	const login = (e: any) => {
 		e.preventDefault();
-		let form = document.getElementsByName('form')[0] as HTMLElement;
+		let form = document.getElementsByName('form')[0];
 		form.style.display = 'none';
 		setFlag(true);
 	};

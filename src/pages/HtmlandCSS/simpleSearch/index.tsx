@@ -1,4 +1,3 @@
-import { event } from 'jquery';
 import React from 'react';
 import styles from './index.less';
 
@@ -6,7 +5,6 @@ function index() {
 	function searchToggle(e: any) {
 		const body1 = document.getElementsByClassName(styles.searchWrapper)[0];
 		if (!body1.classList.contains(styles.active)) {
-			console.log('chufa');
 			body1.classList.add(styles.active);
 			e.preventDefault();
 		} else {

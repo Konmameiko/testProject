@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './Less2Stars.scss';
 class Less2Stars extends Component {
+	// eslint-disable-next-line class-methods-use-this
 	render() {
 		return (
 			<div className={styles.body}>

@@ -22,5 +22,5 @@ const NotFound: FC<IProps> = ({ onSomething }) => {
 		</>
 	);
 };
-//memo的使用在不希望一直跟随父组件更新的子组件上
+// memo的使用在不希望一直跟随父组件更新的子组件上
 export default React.memo(NotFound);

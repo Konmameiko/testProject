@@ -4,7 +4,7 @@ export interface Iprops {}
 
 interface IProps extends Partial<Iprops> {}
 
-const Recharge: FC<IProps> = ({}) => {
+const Recharge: FC<IProps> = () => {
 	return (
 		<div className={styles.content}>
 			<div className={styles.recharge}>
@@ -33,5 +33,5 @@ const Recharge: FC<IProps> = ({}) => {
 		</div>
 	);
 };
-//memo的使用在不希望一直跟随父组件更新的子组件上
+// memo的使用在不希望一直跟随父组件更新的子组件上
 export default React.memo(Recharge);

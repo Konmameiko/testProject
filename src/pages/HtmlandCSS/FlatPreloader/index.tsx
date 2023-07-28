@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './index.less';
 export default class index extends Component {
+	// eslint-disable-next-line class-methods-use-this
 	render() {
 		return (
 			<div className={styles.content}>

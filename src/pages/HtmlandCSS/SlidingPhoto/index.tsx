@@ -15,6 +15,7 @@ export default class SlidingPhoto extends Component {
 			this.photolist.children[i].style.left = 850 - 280 + (i - 1) * 70 + 'px';
 		}
 	}
+
 	onmouseover = (value: any) => {
 		return () => {
 			for (let i = 0; i < 5; i++) {
@@ -26,6 +27,7 @@ export default class SlidingPhoto extends Component {
 			}
 		};
 	};
+
 	getStyle = (obj: any, attr: any) => {
 		if (obj.currentStyle) {
 			return obj.currentStyle[attr];
@@ -33,13 +35,15 @@ export default class SlidingPhoto extends Component {
 			return getComputedStyle(obj, 'false')[attr];
 		}
 	};
+
 	statrMove = (obj: any, json: any, endFn: any) => {
 		clearInterval(obj.timer);
 		obj.timer = setInterval(() => {
-			var bBtn = true;
-			for (var attr in json) {
-				var iCur = 0;
-				if (attr == 'opacity') {
+			let bBtn = true;
+			// eslint-disable-next-line guard-for-in
+			for (let attr in json) {
+				let iCur = 0;
+				if (attr === 'opacity') {
 					if (Math.round(parseFloat(this.getStyle(obj, attr)) * 100) == 0) {
 						iCur = Math.round(parseFloat(this.getStyle(obj, attr)) * 100);
 					} else {
@@ -48,12 +52,12 @@ export default class SlidingPhoto extends Component {
 				} else {
 					iCur = parseInt(this.getStyle(obj, attr)) || 0;
 				}
-				var iSpeed = (json[attr] - iCur) / 8;
+				let iSpeed = (json[attr] - iCur) / 8;
 				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
-				if (iCur != json[attr]) {
+				if (iCur !== json[attr]) {
 					bBtn = false;
 				}
-				if (attr == 'opacity') {
+				if (attr === 'opacity') {
 					obj.style.filter = 'alpha(opacity=' + (iCur + iSpeed) + ')';
 					obj.style.opacity = (iCur + iSpeed) / 100;
 				} else {
