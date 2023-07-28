@@ -2,7 +2,7 @@
  * @Description: CSS常用形状集合
  * @Author: KonmaMeiko
  * @Date: 2022-08-03 14:10:48
- * @LastEditTime: 2022-08-04 17:46:08
+ * @LastEditTime: 2023-07-28 23:57:20
  * @LastEditors: KonmaMeiko
  */
 import React from 'react';
@@ -92,5 +92,5 @@ const CssGraph = () => {
 		</div>
 	);
 };
-//memo的使用在不希望一直跟随父组件更新的子组件上
+// memo的使用在不希望一直跟随父组件更新的子组件上
 export default React.memo(CssGraph);

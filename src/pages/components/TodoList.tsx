@@ -1,3 +1,11 @@
+/* eslint-disable array-callback-return */
+/*
+ * @Description:
+ * @Author: KonmaMeiko
+ * @Date: 2023-05-22 00:00:52
+ * @lastEditTime: Do not edit
+ * @LastEditors: KonmaMeiko
+ */
 import { Component } from 'react';
 import styles from './todo.less';
 export default class TodoList extends Component {
@@ -5,7 +13,7 @@ export default class TodoList extends Component {
 
 	componentDidMount() {
 		const stroageData = localStorage.getItem('lists');
-		var total = 0;
+		let total = 0;
 		if (stroageData) {
 			this.setState({ data: JSON.parse(stroageData) }, () => {
 				this.state.data.map(item => {
@@ -24,11 +32,11 @@ export default class TodoList extends Component {
 		if (length) {
 			id = this.state.data[0].id + 1;
 		}
-		if (e.keyCode == 13) {
+		if (e.keyCode === 13) {
 			if (e.target.value.trim()) {
 				let tmp = { id: id, name: e.target.value.trim(), isdone: false };
 				this.setState({ data: [tmp, ...this.state.data] }, () => {
-					//清空数据
+					// 清空数据
 					e.target.value = '';
 				});
 			} else {
@@ -39,7 +47,7 @@ export default class TodoList extends Component {
 
 	handleCheck = (id: Number) => {
 		return (e: any) => {
-			var total = 0;
+			let total = 0;
 			this.state.data.map(item => {
 				if (item.id === id) {
 					item.isdone = e.target.checked;
@@ -55,10 +63,9 @@ export default class TodoList extends Component {
 	delOne = (id: Number) => {
 		return () => {
 			if (confirm('确认要删除吗？')) {
-				console.log('测试');
-				var total = this.state.total;
+				let total = this.state.total;
 				const newdata = this.state.data.filter(item => {
-					if (item.id == id && item.isdone === true) total--;
+					if (item.id === id && item.isdone === true) total--;
 					return item.id !== id;
 				});
 				this.setState({ data: newdata, total: total });

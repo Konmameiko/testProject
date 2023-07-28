@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /*
  * @Description:
  * @Author: KonmaMeiko
@@ -5,7 +6,7 @@
  * @lastEditTime: Do not edit
  * @LastEditors: KonmaMeiko
  */
-import React, { Component } from 'react';
+import { Component } from 'react';
 import styles from './index.less';
 
 export default class buttons extends Component {
@@ -38,7 +39,7 @@ export default class buttons extends Component {
 	componentDidMount() {
 		const bubblyButtons = document.getElementsByClassName(styles.btn12);
 		const button14 = document.getElementsByClassName(styles.btn14)[0];
-		for (var i = 0; i < bubblyButtons.length; i++) {
+		for (let i = 0; i < bubblyButtons.length; i++) {
 			bubblyButtons[i].addEventListener('click', this.button12, false);
 		}
 		button14.addEventListener('click', this.button14, false);

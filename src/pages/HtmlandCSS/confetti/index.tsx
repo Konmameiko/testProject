@@ -1,16 +1,16 @@
-import React, { Component, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './index.less';
 
 function Index() {
-	var raf = (function () {
-		var TIME = Math.floor(1000 / 60);
-		var frame, cancel;
-		var frames: any = {};
-		var lastFrameTime = 0;
+	let raf = (function () {
+		let TIME = Math.floor(1000 / 60);
+		let frame, cancel;
+		let frames: any = {};
+		let lastFrameTime = 0;
 
 		if (typeof requestAnimationFrame === 'function' && typeof cancelAnimationFrame === 'function') {
 			frame = function (cb: any) {
-				var id = Math.random();
+				let id = Math.random();
 				frames[id] = requestAnimationFrame(function onFrame(time) {
 					if (lastFrameTime === time || lastFrameTime + TIME - 1 < time) {
 						lastFrameTime = time;
@@ -47,17 +47,18 @@ function Index() {
 	// 设置彩花颜色值
 	const colors = ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff'];
 	// 设置动画元素
-	var animationFrame: any = null;
+	let animationFrame: any = null;
 
 	useEffect(() => {
 		canvas = conRef.current;
 		context = canvas.getContext('2d');
+		// eslint-disable-next-line no-use-before-define
 		conRef.current.addEventListener('click', createConfetti);
 	});
 
 	// hex to rgb 方法
 	function hexToRgb(str: string) {
-		var val = String(str).replace(/[^0-9a-f]/gi, '');
+		let val = String(str).replace(/[^0-9a-f]/gi, '');
 
 		if (val.length < 6) {
 			val = val[0] + val[0] + val[1] + val[1] + val[2] + val[2];
@@ -74,13 +75,13 @@ function Index() {
 	}
 
 	// 循环生成多个礼花参数(默认)
-	var arr: any[] = [];
+	let arr: any[] = [];
 	for (let i = 0; i < 50; i++) {
 		arr.push({
 			x: 100,
 			y: 100,
 			velocity: 25 * 0.5 + Math.random() * 10, // 喷出速度
-			angle2D: 1.5 * Math.PI + ((Math.random() * 1) / 4) * Math.PI, // 喷出角度
+			angle2D: 1.5 * Math.PI + (Number(Math.random()) / 4) * Math.PI, // 喷出角度
 			tiltAngle: Math.random() * Math.PI,
 			color: hexToRgb(colors[Math.floor(Math.random() * 7)]),
 			tick: 0,
@@ -95,7 +96,7 @@ function Index() {
 
 	// 更新传入参数
 	function updateFetti(context: any, fetti: any) {
-		var progress = fetti.tick++ / fetti.totalTicks;
+		let progress = fetti.tick++ / fetti.totalTicks;
 		if (progress > 1) {
 			return;
 		}
@@ -108,17 +109,17 @@ function Index() {
 		fetti.tiltCos = Math.cos(fetti.tiltAngle);
 		fetti.random = Math.random() * 5; // 修改纸屑尺寸
 
-		var x1 = fetti.x;
-		var y1 = fetti.y;
+		let x1 = fetti.x;
+		let y1 = fetti.y;
 
-		var x2 = fetti.x + fetti.random * fetti.tiltCos; // 左上角
-		var y2 = fetti.y + fetti.random * fetti.tiltSin; // 左上角
+		let x2 = fetti.x + fetti.random * fetti.tiltCos; // 左上角
+		let y2 = fetti.y + fetti.random * fetti.tiltSin; // 左上角
 
-		var x3 = x2 + fetti.random;
-		var y3 = y2;
+		let x3 = x2 + fetti.random;
+		let y3 = y2;
 
-		var x4 = fetti.x + fetti.random;
-		var y4 = fetti.y;
+		let x4 = fetti.x + fetti.random;
+		let y4 = fetti.y;
 
 		context.fillStyle = 'rgba(' + fetti.color.r + ', ' + fetti.color.g + ', ' + fetti.color.b + ', ' + (1 - progress) + ')';
 		context.beginPath();
@@ -135,7 +136,6 @@ function Index() {
 	}
 
 	function update() {
-		console.log('update');
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		arr = arr.filter(item => {
 			return updateFetti(context, item);
@@ -156,7 +156,7 @@ function Index() {
 					x: 100,
 					y: 100,
 					velocity: 25 * 0.5 + Math.random() * 10, // 喷出速度
-					angle2D: 1.5 * Math.PI + ((Math.random() * 1) / 4) * Math.PI, // 喷出角度
+					angle2D: 1.5 * Math.PI + (Number(Math.random()) / 4) * Math.PI, // 喷出角度
 					tiltAngle: (1 / 2) * Math.random() * Math.PI, // 倾斜角度
 					color: hexToRgb(colors[Math.floor(Math.random() * 7)]),
 					tick: 0,

@@ -17,7 +17,7 @@ class test extends Component<any, any> {
 	//     console.log(this.count,"willmount");
 	// }
 
-	//如果state的值完全取决于props，那么可以使用该方法
+	// 如果state的值完全取决于props，那么可以使用该方法
 	// static getDerivedStateFromProps(props:any,state:any){
 	//     console.log('getDerivedStateFromProps',props,state);
 	//     return {count:99};

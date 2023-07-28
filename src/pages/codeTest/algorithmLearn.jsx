@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /*
  * @Description:
  * @Author: KonmaMeiko
@@ -5,12 +6,10 @@
  * @lastEditTime: Do not edit
  * @LastEditors: KonmaMeiko
  */
-import React from 'react';
-import { TimePicker } from 'antd';
 import moment from 'moment';
 
 const ProgressDemos = () => {
-	var minNumberOfHours = function (initialEnergy, initialExperience, energy, experience) {
+	let minNumberOfHours = function (initialEnergy, initialExperience, energy, experience) {
 		let sum = 0;
 		for (const e of energy) {
 			sum += e;

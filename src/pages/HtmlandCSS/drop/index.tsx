@@ -34,6 +34,7 @@ export default class index extends Component<any, any> {
 		});
 	}
 
+	// eslint-disable-next-line class-methods-use-this
 	fnUp() {
 		// 第三步：鼠标放开时document移除onmousemove事件
 		document.onmousemove = null;
@@ -41,7 +42,7 @@ export default class index extends Component<any, any> {
 
 	handleClick() {
 		const { flag } = this.state;
-		if (flag == 0) {
+		if (flag === 0) {
 			document.onmousemove = null;
 		}
 	}
@@ -59,7 +60,6 @@ export default class index extends Component<any, any> {
 	handleResize = () => {
 		// window.devicePixelRatio
 		const value = ((((document.body.clientWidth * 43) / 48) * 0.6 * 191) / 273 - 400) / 2;
-		console.log(value, 'value');
 		this.setState({ radio: value });
 	};
 

@@ -22,7 +22,7 @@ interface JSONProps {
 	styleData: stylyProps[];
 }
 
-const Manage = ({}) => {
+const Manage = () => {
 	const swiperRef = useRef<any>(null);
 	const swiperTwoRef = useRef<any>(null);
 	const [data, setData] = useState<JSONProps | null>(null);
@@ -124,12 +124,13 @@ const CodePart = ({ title, codeStr }: textProps) => {
 			<h1 className={styles.title}>{title}</h1>
 			<div className={styles.code}>
 				{codeStr.map((item, index) => {
-					if (index <= codeStr.length - 1)
+					if (index <= codeStr.length - 1) {
 						return (
 							<p key={index} className={styles.codeStr}>
 								{item}
 							</p>
 						);
+					}
 				})}
 			</div>
 		</div>
