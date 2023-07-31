@@ -1,9 +1,14 @@
+/*
+ * @Description:
+ * @Author: KonmaMeiko
+ * @Date: 2023-05-22 00:00:52
+ * @lastEditTime: Do not edit
+ * @LastEditors: KonmaMeiko
+ */
 import React, { Component } from 'react';
 import styles from './index.less';
 class Index extends Component {
-	componentDidMount() {
-		console.log(document.body.clientWidth);
-	}
+	// eslint-disable-next-line class-methods-use-this
 	render() {
 		return (
 			<div className={styles.trunk}>
