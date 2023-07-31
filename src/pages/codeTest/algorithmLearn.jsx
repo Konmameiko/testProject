@@ -15,7 +15,6 @@ const ProgressDemos = () => {
 			sum += e;
 		}
 		let trainingHours = initialEnergy > sum ? 0 : sum + 1 - initialEnergy;
-		console.log(trainingHours);
 		for (const e of experience) {
 			if (initialExperience <= e) {
 				trainingHours += 1 + (e - initialExperience);
@@ -44,13 +43,8 @@ const ProgressDemos = () => {
 		return res;
 	};
 
-	const onChange = (time, timeString) => {
-		console.log(time, timeString);
-	};
-
 	return (
 		<div>
-			<TimePicker onChange={onChange} defaultOpenValue={moment('00:00:00', 'HH:mm:ss')} />
 			<p>shoudonghuanhang</p>
 			<button onClick={() => console.log(handleClick())}>点击</button>
 		</div>
