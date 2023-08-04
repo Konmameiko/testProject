@@ -436,6 +436,56 @@
 			animation-delay: 0.4s;
 		}
 	}
+
+	.emoji_g {
+		position: relative;
+		width: 50%;
+		height: 50%;
+		perspective: 2000px;
+		transform-style: preserve-3d;
+		font-size: 100px;
+		animation: rotate_emoji 2s alternate infinite ease-in-out;
+		&::before,
+		&::after {
+			content: '\1F600';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-25%, -25%);
+			width: 50%;
+			height: 50%;
+		}
+		&::after {
+			transform: translate(-25%, -25%) translateZ(-4px);
+		}
+
+		.emoji_foo,
+		.emoji_bar,
+		.emoji_baz {
+			position: absolute;
+			inset: 0;
+			transform-style: preserve-3d;
+		}
+
+		.emoji_foo::before,
+		.emoji_bar::before,
+		.emoji_baz::before,
+		.emoji_foo::after,
+		.emoji_bar::after,
+		.emoji_baz::after {
+			content: '\1F600';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 50%;
+			height: 50%;
+		}
+
+		.emoji-foo::before {
+			transform: translate(-25%, -25%) translateZ(-8px);
+			opacity: 0.95;
+		}
+	}
 }
 
 // load1

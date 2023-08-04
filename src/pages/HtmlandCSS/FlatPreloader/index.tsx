@@ -120,7 +120,11 @@ export default class index extends Component {
 				</div>
 				{/* loading12 */}
 				<div className={styles.wrapper}>
-					<p>loading 12</p>
+					<div className={styles.emoji_g}>
+						<div className={styles.emoji_foo}></div>
+						<div className={styles.emoji_bar}></div>
+						<div className={styles.emoji_baz}></div>
+					</div>
 				</div>
 				{/* loading13 */}
 				<div className={styles.wrapper}>
