@@ -1,6 +1,33 @@
 import React, { Component } from 'react';
 import styles from './index.less';
 export default class index extends Component {
+	timer: any | null = null;
+
+	componentDidMount() {
+		const emoji = document.getElementById('emoji_g');
+		if (emoji) {
+			this.timer = setInterval(() => {
+				emoji.style = `--emoji: "${this.generatedEmoji()}"`;
+			}, 2000);
+		}
+	}
+
+	componentWillUnmount() {
+		this.timer && clearTimeout(this.timer);
+	}
+
+	generatedEmoji = () => {
+		let emojiCode: number;
+		const start = 0x1f600;
+		const start2 = 0x1f900;
+		const end = 0x1f64f;
+		const end2 = 0x1f9ff;
+		const random = Math.random();
+		emojiCode =
+			random > 0.5 ? Math.floor(Math.random() * (end - start + 1)) + start : Math.floor(Math.random() * (end2 - start2 + 1)) + start2;
+		return String.fromCodePoint(emojiCode);
+	};
+
 	// eslint-disable-next-line class-methods-use-this
 	render() {
 		return (
@@ -120,11 +147,7 @@ export default class index extends Component {
 				</div>
 				{/* loading12 */}
 				<div className={styles.wrapper}>
-					<div className={styles.emoji_g}>
-						<div className={styles.emoji_foo}></div>
-						<div className={styles.emoji_bar}></div>
-						<div className={styles.emoji_baz}></div>
-					</div>
+					<div id="emoji_g" className={styles.emoji_g}></div>
 				</div>
 				{/* loading13 */}
 				<div className={styles.wrapper}>
