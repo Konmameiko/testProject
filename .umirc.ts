@@ -1,10 +1,17 @@
+/*
+ * @Description:
+ * @Author: KonmaMeiko
+ * @Date: 2023-05-22 00:00:51
+ * @lastEditTime: Do not edit
+ * @LastEditors: KonmaMeiko
+ */
 import { defineConfig } from 'umi';
 import routes from './src/Routers/router';
 
 export default defineConfig({
-	nodeModulesTransform: {
-		type: 'none',
-	},
+	// nodeModulesTransform: {
+	// 	type: 'none',
+	// },
 
 	proxy: {
 		'/local': {
@@ -20,9 +27,9 @@ export default defineConfig({
 			secure: false,
 		},
 	},
-	favicon: '/ico/icon.ico',
+	// favicon: '/ico/icon.ico',
 	routes: routes,
-	fastRefresh: {},
+	fastRefresh: true,
 	alias: {
 		'@': require('path').resolve(__dirname, './src'),
 		'@pages': require('path').resolve(__dirname, './src/pages'),
