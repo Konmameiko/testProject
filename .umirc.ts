@@ -7,6 +7,9 @@
  */
 import { defineConfig } from 'umi';
 import routes from './src/Routers/router';
+import { theme } from 'antd';
+const { defaultAlgorithm, defaultSeed } = theme;
+const mapToken = defaultAlgorithm(defaultSeed);
 
 export default defineConfig({
 	// nodeModulesTransform: {
@@ -34,6 +37,9 @@ export default defineConfig({
 		'@': require('path').resolve(__dirname, './src'),
 		'@pages': require('path').resolve(__dirname, './src/pages'),
 	},
+	antd: {
+		import: false,
+	},
 	// 引入 MP3 mp4 wav格式的视频
 	chainWebpack(config: any) {
 		config.module
@@ -44,5 +50,8 @@ export default defineConfig({
 			.options({
 				esModule: false,
 			});
+	},
+	lessLoader: {
+		modifyVars: mapToken,
 	},
 });

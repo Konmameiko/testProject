@@ -8,6 +8,7 @@
  */
 import { FC, useEffect, useState } from 'react';
 import { Layout, Tabs, Menu } from 'antd';
+import 'antd/dist/reset.css';
 import Rotate from './PhotoRotate';
 import Sliding from './SlidingPhoto';
 import Erasure from './PhotoErasure';
