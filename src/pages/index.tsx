@@ -39,8 +39,7 @@ export default class IndexPage extends Component<any, any> {
 	];
 
 	componentDidMount() {
-		// 关闭首页下方滚动波浪
-		// window.addEventListener('visibilitychange', this.onViewChange);
+		window.addEventListener('visibilitychange', this.onViewChange);
 		// if ('paintWorklet' in CSS) {
 		//   // 将文件放入public文件夹下方便引入
 		//   (CSS as any).paintWorklet.addModule('worklet/CSSHoudini.js');
