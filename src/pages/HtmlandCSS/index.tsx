@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /*
  * @Description:
  * @Author: KonmaMeiko
@@ -6,6 +5,7 @@
  * @lastEditTime: Do not edit
  * @LastEditors: KonmaMeiko
  */
+import { useParams, useSearchParams } from '@/.umi/exports';
 import { FC, useEffect, useState } from 'react';
 import { Layout, Tabs, Menu } from 'antd';
 import 'antd/dist/reset.css';
@@ -32,15 +32,17 @@ import CssGraph from './CssGraph';
 import LazyEyes from './lazyEyes';
 import GlitchGIF from './GlitchGIF';
 import styles from './index.less';
+import Utiles from '@/utils/util';
+
 const { Header, Content, Sider } = Layout;
 
 const Index: FC = () => {
 	const TabArr = [
-		{ label: '图片CSS相关', key: 'tab-0' },
-		{ label: 'HTML组件相关', key: 'tab-1' },
-		{ label: 'CSS特效相关', key: 'tab-2' },
-		{ label: '有趣的前端界面集合', key: 'tab-3' },
-		{ label: '临时DEMO', key: 'tab-4' },
+		{ label: '图片CSS相关', key: 'photo' },
+		{ label: 'HTML组件相关', key: 'html' },
+		{ label: 'CSS特效相关', key: 'css' },
+		{ label: '有趣的前端界面集合', key: 'inter' },
+		{ label: '临时DEMO', key: 'temp' },
 	];
 	// 图片相关CSS菜单项
 	const photoItems = [
@@ -48,8 +50,8 @@ const Index: FC = () => {
 		{ label: '轮播图与滚动图片', key: 'photo-2', component: <Sliding /> },
 		{ label: '图片擦除', key: 'photo-3', component: <Erasure /> },
 		{ label: '图片3D 轮播', key: 'photo-4', component: <ThreeD /> },
-		{ label: '简单的视差滚动效果', key: 'photo-7', component: <NotFound /> },
-		{ label: '抖音风格GIF', key: 'photo-11', component: <GlitchGIF /> },
+		{ label: '简单的视差滚动效果', key: 'photo-5', component: <NotFound /> },
+		{ label: '抖音风格GIF', key: 'photo-6', component: <GlitchGIF /> },
 	];
 	// HTML组件菜单项
 	const htmlComItems = [
@@ -78,25 +80,18 @@ const Index: FC = () => {
 	// 临时DEMO
 	const tmpItems = [{ label: '临时Demo页', key: 'temp-1', component: <Temporary /> }];
 	const ItemsObj = {
-		'tab-0': photoItems,
-		'tab-1': htmlComItems,
-		'tab-2': cssItems,
-		'tab-3': interItems,
-		'tab-4': tmpItems,
+		photo: photoItems,
+		html: htmlComItems,
+		css: cssItems,
+		inter: interItems,
+		temp: tmpItems,
 	};
-	const [key, setKey] = useState<string>(sessionStorage.getItem('HtmlDemoIndex') || 'tab-0');
+	const [searchParams, setSearchParams] = useSearchParams();
+	const [key, setKey] = useState<string>(Utiles.getInstance().getURLObj()?.key || 'photo');
+	const [itmKey, setItemKey] = useState<string>(Utiles.getInstance().getURLObj()?.index || 'photo-1');
+	// 配置tab页菜单项
 	const [menuitems, setMenuItems] = useState(tmpItems);
-	const [menuItemKey, setMenuItemKey] = useState('temp-1');
-	// eslint-disable-next-line no-undef
 	const [indexKey, setIndexKey] = useState<Map<string, JSX.Element>>(new Map());
-
-	// tab选项修改
-	const setTabKey = (key: any) => {
-		sessionStorage.setItem('HtmlDemoIndex', key);
-		setMenuItems(ItemsObj[key]);
-		setMenuItemKey(ItemsObj[key][0].key);
-		setKey(key);
-	};
 
 	useEffect(() => {
 		const tempMap = new Map();
@@ -107,14 +102,31 @@ const Index: FC = () => {
 		setTabKey(key);
 	}, []);
 
-	// 左侧内容页修改
-	const setItemKey = (item: any) => {
-		setMenuItemKey(item.key);
+	// tab选项修改
+	const setTabKey = (key: any) => {
+		setMenuItems(ItemsObj[key]);
+		setKey(key);
+		const defaultParam = Utiles.getInstance().getURLObj();
+		if (defaultParam?.key === key) {
+			const index = Number(defaultParam?.index) || 1;
+			setItemKey(ItemsObj[key][index - 1].key);
+		} else {
+			setItemKey(ItemsObj[key][0].key);
+		}
+		setSearchParams({ ...defaultParam, key });
 	};
+
+	// 左侧菜单项改变
+	const setLeftMenuItemKey = (menu: any) => {
+		const defaultParam = Utiles.getInstance().getURLObj();
+		setItemKey(menu.key);
+		setSearchParams({ ...defaultParam, index: menu.key.split('-')[1] });
+	};
+
 	// 组件渲染
 	const renderDemo = () => {
 		if (indexKey.size !== 0) {
-			return indexKey.get(menuItemKey);
+			return indexKey.get(itmKey);
 		} else {
 			return <h1>Loading......</h1>;
 		}
@@ -125,7 +137,6 @@ const Index: FC = () => {
 			<Header>
 				<Tabs
 					className={styles.tabs}
-					defaultActiveKey="0"
 					onChange={setTabKey}
 					activeKey={key}
 					destroyInactiveTabPane={true}
@@ -136,7 +147,12 @@ const Index: FC = () => {
 			<Layout className={styles.home}>
 				<Sider trigger={null} collapsible>
 					<div className={styles.logo}>Just Happy</div>
-					<Menu style={{ backgroundColor: 'white' }} onClick={item => setItemKey(item)} items={menuitems} />
+					<Menu
+						style={{ backgroundColor: 'white' }}
+						selectedKeys={[itmKey]}
+						onClick={item => setLeftMenuItemKey(item)}
+						items={menuitems}
+					/>
 				</Sider>
 				<Layout className={styles.siteLayout}>
 					<Content className={styles.siteLayoutBackground}>{renderDemo()}</Content>

@@ -12,15 +12,15 @@
 	height: 100%;
 	.outer {
 		position: relative;
-		perspective: 1600px; //定义 3D 元素距视图的距离
+		perspective: 16rem; //定义 3D 元素距视图的距离
 		top: 20%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		.photos {
 			// border: 2px red solid;
-			width: 500px;
-			height: 300px;
+			width: 5rem;
+			height: 3rem;
 			position: relative;
 			transform-style: preserve-3d; //设置元素的子元素是位于3D 空间中还是平面中
 			animation: outer 8s infinite cubic-bezier(0.7, 0.3, 0.3, 0.7);
@@ -34,9 +34,9 @@
 			position: absolute;
 			background-size: cover;
 			opacity: 0.9;
-			width: 400px;
-			height: 250px;
-			transform: rotateY(calc(var(--index) * 90deg)) translateZ(600px);
+			width: 8rem;
+			height: 4.5rem;
+			transform: rotateY(calc(var(--index) * 90deg)) translateZ(6rem);
 		}
 		.photo1 {
 			--index: 1;
@@ -58,18 +58,18 @@
 }
 @keyframes outer {
 	0% {
-		transform: translateZ(-200px) rotateY(-0);
+		transform: translateZ(-2rem) rotateY(-0);
 	}
 	25% {
-		transform: translateZ(-200px) rotateY(-90deg);
+		transform: translateZ(-2rem) rotateY(-90deg);
 	}
 	50% {
-		transform: translateZ(-200px) rotateY(-180deg);
+		transform: translateZ(-2rem) rotateY(-180deg);
 	}
 	75% {
-		transform: translateZ(-200px) rotateY(-270deg);
+		transform: translateZ(-2rem) rotateY(-270deg);
 	}
 	100% {
-		transform: translateZ(-200px) rotateY(-360deg);
+		transform: translateZ(-2rem) rotateY(-360deg);
 	}
 }

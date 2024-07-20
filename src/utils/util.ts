@@ -2,7 +2,7 @@
  * @Description: 常用API方法
  * @Author: KonmaMeiko
  * @Date: 2022-06-02 14:41:45
- * @LastEditTime: 2022-08-01 17:36:41
+ * @LastEditTime: 2024-07-21 01:37:41
  * @LastEditors: KonmaMeiko
  */
 
@@ -23,7 +23,7 @@ class Utiles {
 	}
 
 	/* 获取路由参数 */
-	public getURLObj(): object {
+	public getURLObj(): { [key: string]: any } {
 		const url: string = window.location.search || window.location.hash;
 		const theRequest: any = {};
 		if (url.indexOf('?') != -1) {
