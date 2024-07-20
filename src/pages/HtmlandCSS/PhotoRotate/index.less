@@ -1,16 +1,17 @@
+@import '../../../config/config.less';
+
 .box {
-	width: 800px;
-	margin: 30px auto;
+	width: 100%;
+	margin: 0.3rem;
 }
 
 .piclist {
 	margin: 0;
-	padding: 50px;
-	height: 360px;
-	//perspective: 800px;
+	padding: 0.5rem;
+	height: 3.6rem;
 	li {
-		width: 800px;
-		height: 360px;
+		width: 80%;
+		height: 6rem;
 		position: relative;
 		list-style: none;
 		float: left;
@@ -20,53 +21,54 @@
 	}
 	a {
 		width: 100%;
-		height: 360px;
+		height: 5rem;
 		position: absolute;
 		left: 0;
 		top: 0;
 		color: white;
-		font-size: 24px;
+		font-size: 0.24rem;
 	}
 
 	li a:nth-of-type(1) {
 		background: url(../../../assets/images/1.webp) no-repeat;
 		background-size: cover;
-		transform: translateZ(180px);
+		transform: translateZ(1.8rem);
 	}
 
 	li a:nth-of-type(2) {
 		background: url(../../../assets/images/2.webp) no-repeat;
 		background-size: cover;
 		transform-origin: top;
-		transform: translateZ(-180px) rotateX(90deg);
+		transform: translateZ(-1.8rem) rotateX(90deg);
 	}
 
 	li a:nth-of-type(3) {
 		background: url(../../../assets/images/3.webp) no-repeat;
 		background-size: cover;
-		transform: translateZ(-180px) rotateX(180deg);
+		transform: translateZ(-1.8rem) rotateX(180deg);
 	}
 
 	li a:nth-of-type(4) {
 		background: url(../../../assets/images/4.webp) no-repeat;
 		background-size: cover;
 		transform-origin: bottom;
-		transform: translateZ(-180px) rotateX(-90deg);
+		transform: translateZ(-1.8rem) rotateX(-90deg);
 	}
 }
 
 .btns {
-	padding-top: 100px;
-	height: 30px;
+	padding-top: 5rem;
+	padding-left: 0.5rem;
+	height: 0.3rem;
 	li {
-		height: 30px;
-		width: 30px;
+		height: 0.3rem;
+		width: 0.3rem;
 		background: #000;
 		color: #fff;
 		font-size: 16px;
 		text-align: center;
-		line-height: 30px;
-		margin: 0 10px;
+		line-height: 0.3rem;
+		margin: 0 0.1rem;
 		float: left;
 		border-radius: 50%;
 		list-style: none;
