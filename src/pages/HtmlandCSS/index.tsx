@@ -5,9 +5,10 @@
  * @lastEditTime: Do not edit
  * @LastEditors: KonmaMeiko
  */
-import { useParams, useSearchParams } from '@/.umi/exports';
+import { useSearchParams } from '@/.umi/exports';
 import { FC, useEffect, useState } from 'react';
 import { Layout, Tabs, Menu } from 'antd';
+import { history } from 'umi';
 import 'antd/dist/reset.css';
 import Rotate from './PhotoRotate';
 import Sliding from './SlidingPhoto';
@@ -123,6 +124,10 @@ const Index: FC = () => {
 		setSearchParams({ ...defaultParam, index: menu.key.split('-')[1] });
 	};
 
+	const goHome = () => {
+		history.push('/');
+	};
+
 	// 组件渲染
 	const renderDemo = () => {
 		if (indexKey.size !== 0) {
@@ -146,7 +151,9 @@ const Index: FC = () => {
 			</Header>
 			<Layout className={styles.home}>
 				<Sider trigger={null} collapsible>
-					<div className={styles.logo}>Just Happy</div>
+					<div className={styles.logo} onClick={() => goHome()}>
+						Just Happy
+					</div>
 					<Menu
 						style={{ backgroundColor: 'white' }}
 						selectedKeys={[itmKey]}
