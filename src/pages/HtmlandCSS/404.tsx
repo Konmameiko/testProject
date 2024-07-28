@@ -1,9 +1,12 @@
+/*
+ * @Description:
+ * @Author: KonmaMeiko
+ * @Date: 2023-05-22 00:00:52
+ * @lastEditTime: Do not edit
+ * @LastEditors: KonmaMeiko
+ */
 import React, { FC } from 'react';
 import styles from './index.less';
-
-// export interface  {
-
-// }
 
 interface IProps {
 	onSomething?: () => void;
