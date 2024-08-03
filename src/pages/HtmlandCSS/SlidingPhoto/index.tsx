@@ -6,23 +6,18 @@
  * @LastEditors: KonmaMeiko
  */
 import React, { Component } from 'react';
-import styles from './index.less';
+import styles from './index.scss';
 
 export default class SlidingPhoto extends Component {
 	photolist: any;
-	componentDidMount() {
-		for (let i = 1; i < 5; i++) {
-			this.photolist.children[i].style.left = 850 - 280 + (i - 1) * 70 + 'px';
-		}
-	}
 
 	onmouseover = (value: any) => {
 		return () => {
 			for (let i = 0; i < 5; i++) {
 				if (i <= value) {
-					this.statrMove(this.photolist.children[i], { left: i * 70 }, '');
+					this.statrMove(this.photolist.children[i], { left: i * 100 }, '');
 				} else {
-					this.statrMove(this.photolist.children[i], { left: 850 - 280 + (i - 1) * 70 }, '');
+					this.statrMove(this.photolist.children[i], { left: 450 + (i - 1) * 100 }, '');
 				}
 			}
 		};
@@ -77,19 +72,19 @@ export default class SlidingPhoto extends Component {
 		return (
 			<div className={styles.box}>
 				<ul ref={e => (this.photolist = e)}>
-					<li className={styles.photo} onMouseOver={this.onmouseover(0)}>
+					<li className={styles.photo1} onMouseOver={this.onmouseover(0)}>
 						<img src={require('@/assets/images/3.webp')} alt="" />
 					</li>
-					<li onMouseOver={this.onmouseover(1)}>
+					<li className={styles.photo2} onMouseOver={this.onmouseover(1)}>
 						<img src={require('@/assets/images/4.webp')} alt="" />
 					</li>
-					<li onMouseOver={this.onmouseover(2)}>
+					<li className={styles.photo3} onMouseOver={this.onmouseover(2)}>
 						<img src={require('@/assets/images/7.webp')} alt="" />
 					</li>
-					<li onMouseOver={this.onmouseover(3)}>
+					<li className={styles.photo4} onMouseOver={this.onmouseover(3)}>
 						<img src={require('@/assets/images/28.webp')} alt="" />
 					</li>
-					<li onMouseOver={this.onmouseover(4)}>
+					<li className={styles.photo5} onMouseOver={this.onmouseover(4)}>
 						<img src={require('@/assets/images/25.webp')} alt="" />
 					</li>
 				</ul>
