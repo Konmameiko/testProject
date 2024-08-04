@@ -15,7 +15,6 @@ import Sliding from './SlidingPhoto';
 import Erasure from './PhotoErasure';
 import ThreeD from './PhotoThreeD';
 import TimerShaft from './TimeShaftMake';
-import SimpleSearch from './simpleSearch';
 import SimpleLogin from './simpleLogin';
 import Drop from './drop';
 import FlatPreloader from './FlatPreloader';
@@ -57,10 +56,9 @@ const Index: FC = () => {
 	// HTML组件菜单项
 	const htmlComItems = [
 		{ label: '时间轴制作', key: 'html-1', component: <TimerShaft /> },
-		{ label: '简易搜索框', key: 'html-2', component: <SimpleSearch /> },
-		{ label: '简易登陆界面', key: 'html-3', component: <SimpleLogin /> },
-		{ label: '拖拽缩放页面', key: 'html-4', component: <Drop /> },
-		{ label: '毛玻璃效果', key: 'html-5', component: <FrostedGlass /> },
+		{ label: '简易登陆界面', key: 'html-2', component: <SimpleLogin /> },
+		{ label: '拖拽缩放页面', key: 'html-3', component: <Drop /> },
+		{ label: '毛玻璃效果', key: 'html-4', component: <FrostedGlass /> },
 	];
 	// CSS特效菜单项
 	const cssItems = [
