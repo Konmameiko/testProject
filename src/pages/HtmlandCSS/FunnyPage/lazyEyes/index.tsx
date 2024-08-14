@@ -5,7 +5,6 @@
  * @LastEditTime: 2023-04-09 00:23:23
  * @LastEditors: KonmaMeiko
  */
-import e from '@umijs/deps/compiled/express';
 import React, { FC, useState, useRef, useCallback, useEffect } from 'react';
 import styles from './index.less';
 
@@ -88,7 +87,7 @@ const LazyEye: FC<IProps> = () => {
 					? e => handleMouseMove(e)
 					: () => {
 							return null;
-					  }
+						}
 			}
 		>
 			<p>维克兹当前的状态：{stateArr[eyeState]}</p>

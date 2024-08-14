@@ -18,7 +18,9 @@
 		line-height: 50px;
 		letter-spacing: 10px;
 		text-align: center;
-		box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5), 0 5px 0 rgba(255, 255, 255, 0.9);
+		box-shadow:
+			0 2px 0 rgba(0, 0, 0, 0.5),
+			0 5px 0 rgba(255, 255, 255, 0.9);
 	}
 
 	.wrapper {
@@ -154,7 +156,9 @@
 			transform: rotate(180deg);
 			opacity: 0;
 			animation: textRotate 3s linear infinite;
-			text-shadow: -1px -1px 0 #00ff2a, 1px 1px 0 #32e0ff;
+			text-shadow:
+				-1px -1px 0 #00ff2a,
+				1px 1px 0 #32e0ff;
 		}
 		& div:nth-child(2) {
 			animation-delay: 0.3s;
@@ -190,7 +194,9 @@
 			max-width: 100%;
 			position: absolute;
 			border-radius: 0 60px 0 60px;
-			box-shadow: inset 0 0 0 1.6px #e645d0, 0 0 9px 0 #e645d0;
+			box-shadow:
+				inset 0 0 0 1.6px #e645d0,
+				0 0 9px 0 #e645d0;
 			&:nth-of-type(1) {
 				top: 0;
 				left: 50px;
@@ -441,7 +447,8 @@
 		transform-style: preserve-3d;
 		font-size: 100px;
 		transform-origin: center;
-		animation: rotate-emoji 4s alternate infinite ease-in-out,
+		animation:
+			rotate-emoji 4s alternate infinite ease-in-out,
 			fall-emoji 1s alternate infinite cubic-bezier(0.22, 0.16, 0.04, 0.99) forwards;
 		&::before {
 			content: var(--emoji, '🤣');
@@ -563,7 +570,9 @@
 	100% {
 	}
 	50% {
-		box-shadow: inset 0 0 0 1.6px #17e1e6, 0 0 9px 0 #17e1e6;
+		box-shadow:
+			inset 0 0 0 1.6px #17e1e6,
+			0 0 9px 0 #17e1e6;
 	}
 }
 
