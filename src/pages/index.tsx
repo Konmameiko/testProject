@@ -8,7 +8,6 @@
 import styles from './index.less';
 import { Link, history } from 'umi';
 import React, { Component } from 'react';
-import '../config/rem';
 import icon1 from '../assets/darksouls_icon/1.png';
 import icon2 from '../assets/darksouls_icon/2.png';
 import icon3 from '../assets/darksouls_icon/3.png';

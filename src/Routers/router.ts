@@ -7,6 +7,7 @@
  */
 export default [
 	{ path: '/', component: '@/pages/index', title: '主页展示' },
+	{ path: '/home', component: '@/pages/index', title: '主页展示' },
 	{
 		path: '/photoManage',
 		component: '@/pages/components/Manage',
