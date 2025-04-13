@@ -33,6 +33,7 @@ import LazyEyes from './FunnyPage/lazyEyes';
 import GlitchGIF from './PhotoWithHtml/GlitchGIF';
 import styles from './index.less';
 import Utiles from '@/utils/util';
+import JsonEditor from './HtmlComponent/jsonEditor';
 
 const { Header, Content, Sider } = Layout;
 
@@ -75,6 +76,7 @@ const Index: FC = () => {
 		{ label: '毛玻璃渐变背景', key: 'inter-5', component: <FrostedGlassBg /> },
 		{ label: '安卓充电效果', key: 'inter-6', component: <Recharge /> },
 		{ label: 'LazyEye', key: 'inter-7', component: <LazyEyes /> },
+		{ label: 'JsonEditor', key: 'inter-8', component: <JsonEditor /> },
 	];
 	// 临时DEMO
 	const tmpItems = [{ label: '临时Demo页', key: 'temp-1', component: <Temporary /> }];
