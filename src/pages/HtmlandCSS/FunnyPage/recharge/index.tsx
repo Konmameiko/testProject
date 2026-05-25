@@ -1,3 +1,10 @@
+/*
+ * @Description: 模拟手机充电效果
+ * @Author: KonmaMeiko
+ * @Date: 2022-08-29 15:47:18
+ * @LastEditTime: 2026-05-26 00:00:23
+ * @LastEditors: KonmaMeiko
+ */
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import styles from './index.scss';
 export interface Iprops {}
