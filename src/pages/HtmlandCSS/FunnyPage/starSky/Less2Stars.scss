@@ -1,54 +1,93 @@
+/*
+ * 雪花特效样式 — 冬雪主题
+ * 性能优化：移除 body 级 filter:drop-shadow（原性能瓶颈），
+ *           改用单雪花 box-shadow 发光 + will-change GPU 加速
+ */
+
 .body {
-  height: 100%;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  overflow: hidden;
-  filter: drop-shadow(0 0 10px white);
+	height: 100%;
+	background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+	overflow: hidden;
+	// 已移除 filter: drop-shadow(0 0 10px white) ——
+	// body 级滤镜会对所有子元素逐帧重算，200 片雪花时每帧合成开销极大
 
-  .txt1 {
-    font-size: 10vh;
-    width: 80vh;
-    left: 10vh;
-    font-weight: bold;
-    position: absolute;
-    background-clip: text;
-    color: rgb(230, 240, 230);
-    mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#53ec0c), to(rgba(128, 4, 4, 0.062)));
-  }
+	.txt1 {
+		font-size: 8vh;
+		width: 80vw;
+		left: 10vw;
+		top: 5vh;
+		font-weight: bold;
+		position: absolute;
+		z-index: 2;
+		background-image: linear-gradient(
+			to right,
+			#7ec8e3,
+			#ffffff 40%,
+			#d4f1f9 70%,
+			#a8d8ea
+		);
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		filter: drop-shadow(0 0 12px rgba(168, 216, 234, 0.6));
+	}
 
-  .txt2 {
-    font-size: 10vh;
-    top: 100px;
-    width: 80vh;
-    left: 200px;
-    font-weight: bold;
-    position: absolute;
-    color: rgb(230, 240, 230);
-    mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#53ec0c), to(rgba(128, 4, 4, 0.062)));
-  }
+	.txt2 {
+		font-size: 8vh;
+		top: calc(5vh + 8vh + 2vh); // 紧跟第一行下方
+		width: 80vw;
+		left: 10vw;
+		font-weight: bold;
+		position: absolute;
+		z-index: 2;
+		// 冰白色文字
+		color: #dceef5;
+		// 白色发光模拟雪光
+		text-shadow:
+			0 0 10px rgba(255, 255, 255, 0.5),
+			0 0 30px rgba(168, 216, 234, 0.3);
+		// 渐变遮罩：上方亮白 → 下方淡出到半透明冰雪色
+		mask-image: linear-gradient(
+			to bottom,
+			#ffffff 0%,
+			#ffffff 60%,
+			rgba(168, 216, 234, 0.3) 100%
+		);
+		-webkit-mask-image: linear-gradient(
+			to bottom,
+			#ffffff 0%,
+			#ffffff 60%,
+			rgba(168, 216, 234, 0.3) 100%
+		);
+	}
 
-  .snow {
-    position: absolute;
-    top: -10px;
-    background: white;
-    border-radius: 50%;
-    animation: snowfall linear infinite;
-  }
+	// --- 雪花粒子 ---
+	.snow {
+		position: absolute;
+		top: -10px;
+		background: white;
+		border-radius: 50%;
+		animation: snowfall linear infinite;
+		// GPU 加速：每片雪花提升为独立合成层
+		will-change: transform;
+		// 用 box-shadow 替代 body 级 filter，开销远低于滤镜
+		box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+	}
 }
 
 @keyframes snowfall {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  25% {
-    transform: translateY(25vh) translateX(var(--sway-x, 10px));
-  }
-  50% {
-    transform: translateY(50vh) translateX(calc(var(--sway-x, 10px) * -1));
-  }
-  75% {
-    transform: translateY(75vh) translateX(var(--sway-x, 10px));
-  }
-  100% {
-    transform: translateY(100vh) translateX(calc(var(--sway-x, 10px) * -1));
-  }
+	0% {
+		transform: translateY(0) translateX(0);
+	}
+	25% {
+		transform: translateY(25vh) translateX(var(--sway-x, 10px));
+	}
+	50% {
+		transform: translateY(50vh) translateX(calc(var(--sway-x, 10px) * -1));
+	}
+	75% {
+		transform: translateY(75vh) translateX(var(--sway-x, 10px));
+	}
+	100% {
+		transform: translateY(95vh) translateX(calc(var(--sway-x, 10px) * -1));
+	}
 }
