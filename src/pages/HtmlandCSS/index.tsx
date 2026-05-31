@@ -15,7 +15,6 @@ import StarSky from './FunnyPage/starSky/Less2Stars';
 import Interstellar from './FunnyPage/Interstellar';
 import FrostedGlass from './HtmlComponent/frostedGlass/frosted';
 import FrostedGlassBg from './FunnyPage/frostedGlassBg';
-import NotFound from './404';
 import Recharge from './FunnyPage/recharge';
 import PhotoMoveMode from './CssEffect/photoMoveMode';
 import CssGraph from './CssEffect/CssGraph';
@@ -46,8 +45,7 @@ const MENUS: Record<string, MenuItem[]> = {
 		{ label: '轮播图与滚动图片', key: 'photo-2', component: <Sliding /> },
 		{ label: '图片擦除', key: 'photo-3', component: <Erasure /> },
 		{ label: '图片3D 轮播', key: 'photo-4', component: <ThreeD /> },
-		{ label: '简单的视差滚动效果', key: 'photo-5', component: <NotFound /> },
-		{ label: '抖音风格GIF', key: 'photo-6', component: <GlitchGIF /> },
+		{ label: '抖音风格GIF', key: 'photo-5', component: <GlitchGIF /> },
 	],
 	html: [
 		{ label: '时间轴制作', key: 'html-1', component: <TimerShaft /> },

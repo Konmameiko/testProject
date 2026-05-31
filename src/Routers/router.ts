@@ -8,6 +8,7 @@
 export default [
 	{ path: '/', component: '@/pages/index', title: '主页展示' },
 	{ path: '/home', component: '@/pages/index', title: '主页展示' },
+	{ path: '/404', component: '@/pages/HtmlandCSS/404', title: '主页展示' },
 	{
 		path: '/photoManage',
 		component: '@/pages/components/Manage',
