@@ -10,9 +10,9 @@
     left: 10vh;
     font-weight: bold;
     position: absolute;
-    background-image: linear-gradient(to right, rgb(152, 9, 248), #0adbf7, rgb(250, 77, 9));
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: rgb(230, 240, 230);
+    mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#53ec0c), to(rgba(128, 4, 4, 0.062)));
   }
 
   .txt2 {

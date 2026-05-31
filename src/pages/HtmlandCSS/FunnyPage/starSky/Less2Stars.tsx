@@ -1,8 +1,8 @@
 /*
- * @Description: 模拟雪花飞舞效果
+ * @Description: 模拟雪花飞舞效果（冬雪主题）
  * @Author: KonmaMeiko
  * @Date: 2022-08-29 15:47:18
- * @LastEditTime: 2026-05-26 00:00:23
+ * @LastEditTime: 2026-05-31 00:00:00
  * @LastEditors: KonmaMeiko
  */
 
@@ -32,12 +32,13 @@ const generateSnowflakes = (count: number): Snowflake[] => {
 };
 
 const Less2Stars: React.FC = () => {
-	const snowflakes = useMemo(() => generateSnowflakes(200), []);
+	// 削减至 100 片以减少 DOM 节点和动画数
+	const snowflakes = useMemo(() => generateSnowflakes(100), []);
 
 	return (
 		<div className={styles.body}>
-			<h1 className={styles.txt1}>落霞与孤鹜齐飞</h1>
-			<h1 className={styles.txt2}>秋水共长天一色</h1>
+			<h1 className={styles.txt1}>忽如一夜春风来</h1>
+			<h1 className={styles.txt2}>千树万树梨花开</h1>
 			<main>
 				{snowflakes.map(sf => (
 					<div
