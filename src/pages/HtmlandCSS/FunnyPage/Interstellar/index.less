@@ -1,6 +1,13 @@
-/*less循环  传入参数为要生成盒子阴影的个数，*/
+/*
+ * 响应式星际穿越效果 — 适配 1920x1080 / 2K / 4K
+ * 性能优化：大幅削减 box-shadow 数量（最主要的性能瓶颈）
+ * 注意：不要在 3D 上下文父元素上使用 will-change: filter / contain: paint，
+ *       它们会压扁 transform-style: preserve-3d 导致面不可见
+ */
+
+/* 生成随机分布的"星星"（盒子阴影），偏移量基于视口单位 */
 .mixin(@n) when(@n>0) {
-	box-shadow+: ~`Math.ceil(Math.random() * 350) + 'px' + ' ' + Math.ceil(Math.random() * 600) + 'px  gold' `;
+	box-shadow+: ~`Math.ceil(Math.random() * 10) + 'vw' + ' ' + Math.ceil(Math.random() * 40) + 'vh  gold' `;
 	.mixin(@n - 1);
 }
 
@@ -19,8 +26,9 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		width: 0.15rem;
-		height: 0.15rem;
+		// 星点略大以补偿数量削减
+		width: 0.2rem;
+		height: 0.2rem;
 		border-radius: 50%;
 	}
 }
@@ -33,58 +41,70 @@
 	border: 1px solid black;
 	background-color: black;
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .gContainer {
 	position: relative;
 	perspective: 5px;
-	margin-top: 220px;
 	perspective-origin: 50% 50%;
 	animation: hueRotate 20s infinite linear;
+	width: 100%;
+	height: 100%;
+
 	.gGroup {
 		position: absolute;
-		width: 200px;
-		height: 200px;
-		left: 543px;
-		top: -159px;
+		// 隧道面尺寸随视口缩放：1920→192px, 2560→256px, 3840→384px
+		width: 10vw;
+		height: 10vw;
+		// 使用 calc 居中定位，避免占用 transform（transform 留给 3D 动画）
+		left: calc(50% - 5vw);
+		top: calc(50% - 5vw);
 		transform-style: preserve-3d;
 		animation: move 11s infinite linear;
+		// GPU 加速：告知浏览器提前将动画元素提升为合成层
+		will-change: transform;
+
 		&:nth-child(2) {
 			animation: move 11s infinite linear;
 			animation-delay: -5s;
 		}
+
+		/* ---- 隧道四面 + 中面 ---- */
 		.itemRight {
-			transform: rotateY(90deg) translateZ(50px);
+			transform: rotateY(90deg) translateZ(2.5vw);
 			.item();
 			animation-delay: -1s;
 			&::after {
-				.mixin(1000);
+				.mixin(80);
 			}
 		}
 		.itemLeft {
-			transform: rotateY(-90deg) translateZ(50px);
+			transform: rotateY(-90deg) translateZ(2.5vw);
 			.item();
-			animation-delay: -s;
+			animation-delay: -2s;
 			&::after {
-				.mixin(1000);
+				.mixin(80);
 			}
 		}
 		.itemTop {
-			transform: rotateX(90deg) translateZ(50px);
+			transform: rotateX(90deg) translateZ(2.5vw);
 			.item();
 			&::after {
-				.mixin(500);
+				.mixin(80);
 			}
 		}
 		.itemBottom {
-			transform: rotateX(-90deg) translateZ(50px);
+			transform: rotateX(-90deg) translateZ(2.5vw);
 			.item();
 			&::after {
-				.mixin(500);
+				.mixin(80);
 			}
 		}
 		.itemMiddle {
-			transform: rotateX(180deg) translateZ(50px);
+			transform: rotateX(180deg) translateZ(2.5vw);
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -99,20 +119,21 @@
 				left: 0;
 				right: 0;
 				bottom: 0;
-				width: 0.15rem;
-				height: 0.15rem;
+				width: 0.1rem;
+				height: 0.1rem;
 				border-radius: 50%;
 			}
 		}
 	}
 }
 
+/* ---- 关键帧动画 ---- */
 @keyframes move {
 	0% {
-		transform: translateZ(-50px) rotate(0deg);
+		transform: translateZ(-2.5vw) rotate(0deg);
 	}
 	100% {
-		transform: translateZ(50px) rotate(0deg);
+		transform: translateZ(2.5vw) rotate(0deg);
 	}
 }
 

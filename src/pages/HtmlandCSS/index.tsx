@@ -7,7 +7,6 @@ import Erasure from './PhotoWithHtml/PhotoErasure';
 import ThreeD from './PhotoWithHtml/PhotoThreeD';
 import TimerShaft from './HtmlComponent/TimeShaftMake';
 import SimpleLogin from './HtmlComponent/simpleLogin';
-import Drop from './HtmlComponent/drop';
 import FlatPreloader from './CssEffect/FlatPreloader';
 import Wave from './FunnyPage/wave/wave';
 import DrawText from './FunnyPage/drag2drawText';
@@ -53,8 +52,7 @@ const MENUS: Record<string, MenuItem[]> = {
 	html: [
 		{ label: '时间轴制作', key: 'html-1', component: <TimerShaft /> },
 		{ label: '简易登陆界面', key: 'html-2', component: <SimpleLogin /> },
-		{ label: '拖拽缩放页面', key: 'html-3', component: <Drop /> },
-		{ label: '毛玻璃效果', key: 'html-4', component: <FrostedGlass /> },
+		{ label: '毛玻璃效果', key: 'html-3', component: <FrostedGlass /> },
 	],
 	css: [
 		{ label: 'load组件页', key: 'css-1', component: <FlatPreloader /> },
