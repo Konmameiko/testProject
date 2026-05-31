@@ -1,13 +1,22 @@
-@fuschia: #ff0081;
-@button-bg: @fuschia;
-@button-text-color: #fff;
-@baby-blue: #f8faff;
+/*
+ * 按钮样式展示 — Dark Theme Showcase
+ * 统一 dark theme 卡片网格布局，保留所有按钮特效
+ */
 
-.default {
+// ==================== 变量 ====================
+@bg-primary: #0d1117;
+@bg-card: #161b22;
+@border-card: #30363d;
+@text-primary: #e6edf3;
+@text-secondary: #8b949e;
+@accent: #58a6ff;
+
+// ==================== 按钮基础 mixin（暗色主题适配） ====================
+.btn-base() {
 	text-transform: uppercase;
-	width: 130px;
+	min-width: 130px;
 	height: 40px;
-	color: #fff;
+	color: @text-primary;
 	border-radius: 5px;
 	padding: 10px 25px;
 	font-family: 'Lato', sans-serif;
@@ -17,566 +26,631 @@
 	transition: all 0.3s ease;
 	position: relative;
 	display: inline-block;
-	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+	border: 1px solid @border-card;
 	outline: none;
+	letter-spacing: 1px;
+	font-size: 13px;
 }
 
-.home {
-	width: 100vw;
-	height: 100vh;
-	background-color: #e0e5ec;
-	p {
-		font-family: 'Lato', sans-serif;
-		font-weight: 300;
+// ==================== 页面容器 ====================
+.body {
+	min-height: 100vh;
+	background: @bg-primary;
+	padding: 40px 48px 60px;
+	box-sizing: border-box;
+	color: @text-primary;
+
+	// ==================== 页面标题 ====================
+	.header {
 		text-align: center;
-		font-size: 18px;
-		color: #676767;
+		margin-bottom: 48px;
+
+		.title {
+			margin: 0;
+			font-size: 1.2rem;
+			font-weight: 700;
+			color: @text-primary;
+			letter-spacing: 2px;
+		}
 	}
+
+	// ==================== 分组区块 ====================
+	.section {
+		margin-bottom: 44px;
+
+		.sectionTitle {
+			margin: 0 0 20px;
+			padding-bottom: 10px;
+			font-size: 0.5rem;
+			font-weight: 600;
+			color: @accent;
+			border-bottom: 1px solid @border-card;
+			letter-spacing: 1px;
+		}
+	}
+
+	// ==================== 卡片网格 ====================
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 16px;
+	}
+
+	.card {
+		background: @bg-card;
+		border: 1px solid @border-card;
+		border-radius: 8px;
+		overflow: hidden;
+		transition:
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
+
+		&:hover {
+			border-color: lighten(@border-card, 15%);
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+		}
+
+		.cardBody {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 80px;
+			padding: 20px 16px;
+		}
+
+		.cardLabel {
+			display: block;
+			padding: 8px 12px;
+			font-size: 11px;
+			font-weight: 500;
+			color: @text-secondary;
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 0.8px;
+			background: rgba(255, 255, 255, 0.02);
+			border-top: 1px solid @border-card;
+		}
+	}
+
+	// ==================== 按钮全局重置 ====================
 	button {
-		margin: 20px;
+		margin: 0;
 	}
-	.title {
-		position: relative;
-		text-align: center;
-		color: #353535;
-		font-size: 50px;
-		font-family: 'Cormorant Garamond', serif;
-		font-weight: 600;
+
+	// ==================== btn1：蓝色渐变 ====================
+	.btn1 {
+		.btn-base();
+		background: rgb(6, 14, 131);
+		background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%);
+		border: none;
+
+		&:hover {
+			background: rgb(0, 3, 255);
+			background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(2, 126, 251, 1) 100%);
+		}
 	}
-	.buttons {
-		width: 90%;
-		margin: 40px auto;
-		text-align: center;
-		.btn1 {
-			.default();
-			background: rgb(6, 14, 131);
-			background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%);
-			border: none;
-			&:hover {
-				background: rgb(0, 3, 255);
-				background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(2, 126, 251, 1) 100%);
-			}
-		}
 
-		.btn2 {
-			.default();
-			background: rgb(96, 9, 240);
-			background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%);
-			border: none;
-			&:hover {
-				box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.5),
-					inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
-			}
+	// ==================== btn2：紫色渐变 ====================
+	.btn2 {
+		.btn-base();
+		background: rgb(96, 9, 240);
+		background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%);
+		border: none;
+
+		&:hover {
+			box-shadow:
+				0 0 20px rgba(129, 5, 240, 0.5),
+				0 0 40px rgba(96, 9, 240, 0.2);
+		}
+	}
+
+	// ==================== btn3：蓝色渐变 + 边框揭示 ====================
+	.btn3 {
+		.btn-base();
+		background: rgb(0, 172, 238);
+		background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
+		line-height: 42px;
+		padding: 0;
+		border: none;
+		overflow: visible;
+
+		span {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 5px;
+
 			&:before {
-				height: 0%;
 				width: 2px;
-			}
-		}
-
-		.btn3 {
-			.default();
-			background: rgb(0, 172, 238);
-			background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
-			width: 130px;
-			height: 40px;
-			line-height: 42px;
-			padding: 0;
-			border: none;
-			span {
-				position: relative;
-				display: block;
-				width: 100%;
-				height: 100%;
-				&:hover {
-					color: rgba(2, 126, 251, 1);
-					&:before {
-						height: 100%;
-					}
-					&:after {
-						width: 100%;
-					}
-				}
-				&:before {
-					// 左
-					width: 2px;
-					height: 0%;
-					position: absolute;
-					content: '';
-					left: 0;
-					bottom: 0;
-					background: rgba(2, 126, 251, 1);
-					transition: all 0.3s ease;
-				}
-				&:after {
-					// 下方
-					width: 0%;
-					height: 2px;
-					position: absolute;
-					content: '';
-					left: 0;
-					bottom: 0;
-					background: rgba(2, 126, 251, 1);
-					transition: all 0.3s ease;
-				}
-			}
-			&:before {
-				// 右
-				height: 0%;
-				width: 2px;
+				height: 0;
 				position: absolute;
 				content: '';
-				right: 0;
-				top: 0;
-				background: rgba(2, 126, 251, 1);
-				transition: all 0.3s ease;
-			}
-			&:after {
-				// 上
-				width: 0%;
-				height: 2px;
-				position: absolute;
-				content: '';
-				right: 0;
-				top: 0;
-				background: rgba(2, 126, 251, 1);
-				transition: all 0.3s ease;
-			}
-			&:hover {
-				background: transparent;
-				box-shadow: none;
-				&:before {
-					height: 100%;
-				}
-				&:after {
-					width: 100%;
-				}
-			}
-		}
-
-		.btn4 {
-			.default();
-			background-color: #4dccc6;
-			background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
-			line-height: 42px;
-			padding: 0;
-			border: none;
-			&:hover {
-				background-color: #89d8d3;
-				background-image: linear-gradient(315deg, #89d8d3, 0%, #03c8a8, 74%);
-				&:after {
-					width: 100%;
-				}
-				&:before {
-					height: 100%;
-				}
-			}
-			&:before {
-				height: 0%;
-				width: 0.1px;
-				position: absolute;
-				content: '';
-				right: 0;
-				top: 0;
-				box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.9), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-					inset -4px -4px 6px 0 rgba(255, 255, 255, 0.9), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
-				transition: all 0.3s ease;
-			}
-			&:after {
-				width: 0%;
-				height: 0.1px;
-				position: absolute;
-				content: '';
-				right: 0;
-				top: 0;
-				box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.9), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-					inset -4px -4px 6px 0 rgba(255, 255, 255, 0.9), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
-				transition: all 0.3s ease;
-			}
-			span {
-				position: relative;
-				display: block;
-				width: 100%;
-				height: 100%;
-				&:hover {
-					background-color: #89d8d3;
-					background-image: linear-gradient(315deg, #89d8d3, 0%, #03c8a8, 74%);
-					&:after {
-						width: 100%;
-					}
-					&:before {
-						height: 100%;
-					}
-				}
-				&:before {
-					height: 0%;
-					width: 0.1px;
-					position: absolute;
-					content: '';
-					right: 0;
-					top: 0;
-					box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.9), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-						inset -4px -4px 6px 0 rgba(255, 255, 255, 0.9), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
-					transition: all 0.3s ease;
-				}
-				&:after {
-					width: 0%;
-					height: 0.1px;
-					position: absolute;
-					content: '';
-					right: 0;
-					top: 0;
-					box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.9), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-						inset -4px -4px 6px 0 rgba(255, 255, 255, 0.9), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
-					transition: all 0.3s ease;
-				}
-			}
-		}
-
-		.btn5 {
-			.default();
-			background: rgb(255, 27, 0);
-			background: linear-gradient(0deg, rgba(255, 27, 0, 1) 0%, rgba(251, 75, 2, 1) 100%);
-			width: 130px;
-			height: 40px;
-			line-height: 42px;
-			padding: 0;
-			border: none;
-			span {
-				position: relative;
-				display: block;
-				width: 100%;
-				height: 100%;
-				&:hover {
-					color: rgb(251, 10, 2);
-					&:before {
-						height: 100%;
-					}
-					&:after {
-						width: 100%;
-					}
-				}
-				&:after {
-					// 下方
-					width: 0%;
-					height: 2px;
-					position: absolute;
-					content: '';
-					left: 0;
-					bottom: 0;
-					background: rgb(251, 10, 2);
-					transition: all 0.3s ease;
-				}
-			}
-			&:after {
-				// 上
-				width: 0%;
-				height: 2px;
-				position: absolute;
-				content: '';
-				right: 0;
-				top: 0;
-				background: #fb3402;
-				transition: all 0.3s ease;
-			}
-			&:hover {
-				color: #f0094a;
-				background: transparent;
-				box-shadow: none;
-				&:before {
-					height: 100%;
-				}
-				&:after {
-					width: 100%;
-				}
-			}
-		}
-
-		.btn6 {
-			.default();
-			background: rgb(247, 150, 192);
-			background: radial-gradient(circle, rgba(247, 150, 192, 1) 0%, rgba(118, 174, 241, 1) 100%);
-			line-height: 42px;
-			padding: 0;
-			border: none;
-			&:after {
-				position: absolute;
-				content: '';
-				height: 2px;
-				width: 0;
-				box-shadow: -1px -1px 20px 0px rgba(255, 255, 255, 1), -4px -4px 5px 0px rgba(255, 255, 255, 1),
-					7px 7px 20px 0px rgba(0, 0, 0, 0.4), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
 				left: 0;
 				bottom: 0;
-				transition: all 500ms ease;
+				background: rgba(2, 126, 251, 1);
+				transition: all 0.3s ease;
 			}
-			&:before {
+			&:after {
+				width: 0;
+				height: 2px;
 				position: absolute;
 				content: '';
+				left: 0;
+				bottom: 0;
+				background: rgba(2, 126, 251, 1);
+				transition: all 0.3s ease;
+			}
+		}
+		&:before {
+			height: 0;
+			width: 2px;
+			position: absolute;
+			content: '';
+			right: 0;
+			top: 0;
+			background: rgba(2, 126, 251, 1);
+			transition: all 0.3s ease;
+		}
+		&:after {
+			width: 0;
+			height: 2px;
+			position: absolute;
+			content: '';
+			right: 0;
+			top: 0;
+			background: rgba(2, 126, 251, 1);
+			transition: all 0.3s ease;
+		}
+		&:hover {
+			background: transparent;
+			box-shadow: none;
+
+			&:before {
+				height: 100%;
+			}
+			&:after {
+				width: 100%;
+			}
+
+			span {
+				color: rgba(2, 126, 251, 1);
+				&:before {
+					height: 100%;
+				}
+				&:after {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	// ==================== btn4：青绿渐变 + 边框揭示 ====================
+	.btn4 {
+		.btn-base();
+		background-color: #4dccc6;
+		background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+		line-height: 42px;
+		padding: 0;
+		border: none;
+
+		span {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 5px;
+
+			&:before {
 				height: 0;
-				width: 2px;
-				box-shadow: -1px -1px 20px 0px rgba(255, 255, 255, 1), -4px -4px 5px 0px rgba(255, 255, 255, 1),
-					7px 7px 20px 0px rgba(0, 0, 0, 0.4), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+				width: 1px;
+				position: absolute;
+				content: '';
 				right: 0;
 				top: 0;
-				transition: all 500ms ease;
+				box-shadow:
+					4px 4px 6px 0 rgba(255, 255, 255, 0.9),
+					-4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+					inset -4px -4px 6px 0 rgba(255, 255, 255, 0.9),
+					inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+				transition: all 0.3s ease;
 			}
-			&:hover {
-				background: transparent;
-				color: #76aef1;
-				box-shadow: none;
-				&:before {
-					transition: all 500ms ease;
-					height: 100%;
-				}
-				&:after {
-					transition: all 500ms ease;
-					width: 100%;
-				}
+			&:after {
+				width: 0;
+				height: 1px;
+				position: absolute;
+				content: '';
+				right: 0;
+				top: 0;
+				box-shadow:
+					4px 4px 6px 0 rgba(255, 255, 255, 0.9),
+					-4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+					inset -4px -4px 6px 0 rgba(255, 255, 255, 0.9),
+					inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+				transition: all 0.3s ease;
+			}
+		}
+		&:before {
+			height: 0;
+			width: 1px;
+			position: absolute;
+			content: '';
+			right: 0;
+			top: 0;
+			box-shadow:
+				4px 4px 6px 0 rgba(255, 255, 255, 0.9),
+				-4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+				inset -4px -4px 6px 0 rgba(255, 255, 255, 0.9),
+				inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+			transition: all 0.3s ease;
+		}
+		&:after {
+			width: 0;
+			height: 1px;
+			position: absolute;
+			content: '';
+			right: 0;
+			top: 0;
+			box-shadow:
+				4px 4px 6px 0 rgba(255, 255, 255, 0.9),
+				-4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+				inset -4px -4px 6px 0 rgba(255, 255, 255, 0.9),
+				inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+			transition: all 0.3s ease;
+		}
+
+		&:hover {
+			background-color: #89d8d3;
+			background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+
+			&:before {
+				height: 100%;
+			}
+			&:after {
+				width: 100%;
 			}
 			span {
-				position: relative;
-				display: block;
-				width: 100%;
-				height: 100%;
-				&:after {
-					position: absolute;
-					content: '';
-					box-shadow: -1px -1px 20px 0px rgba(255, 255, 255, 1), -4px -4px 5px 0px rgba(255, 255, 255, 1),
-						7px 7px 20px 0px rgba(0, 0, 0, 0.4), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
-					left: 0;
-					top: 0;
-					transition: all 500ms ease;
-					width: 0%;
-					height: 2px;
-				}
 				&:before {
-					left: 0;
-					bottom: 0;
-					width: 2px;
-					height: 0;
-					transition: all 500ms ease;
-					position: absolute;
-					content: '';
-					box-shadow: -1px -1px 20px 0px rgba(255, 255, 255, 1), -4px -4px 5px 0px rgba(255, 255, 255, 1),
-						7px 7px 20px 0px rgba(0, 0, 0, 0.4), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
-				}
-				&:hover {
-					&:before {
-						height: 100%;
-					}
-					&:after {
-						width: 100%;
-					}
-				}
-			}
-		}
-
-		.btn7 {
-			.default();
-			border: none;
-			transition: all 0.3s ease;
-			overflow: hidden;
-			z-index: 1;
-			&:after {
-				position: absolute;
-				content: ' ';
-				z-index: -1;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-color: #1fd1f9;
-				background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
-				transition: all 0.3s ease;
-			}
-			&:hover {
-				background: transparent;
-				box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-					inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
-				color: #ffffff;
-				&:after {
-					-webkit-transform: scale(2) rotate(180deg);
-					transform: scale(2) rotate(180deg);
-					box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-						inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
-				}
-			}
-		}
-
-		.btn8 {
-			.default();
-			border: none;
-			overflow: hidden;
-			z-index: 1;
-			background-image: linear-gradient(125deg, #f9261f 0%, #d4f809 74%);
-			box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-				inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5), inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
-			&:after {
-				position: absolute;
-				content: ' ';
-				z-index: -1;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				transition: all 0.5s ease;
-				transform: scale(0);
-			}
-			&:hover {
-				background: transparent;
-				border: none;
-				&:after {
-					background: transparent;
-					background-image: linear-gradient(125deg, #f9261f 0%, #d4f809 74%);
-					transform: scale(1);
-				}
-			}
-		}
-
-		.btn9 {
-			.default();
-			border: none;
-			background: rgb(251, 33, 117);
-			background: linear-gradient(0deg, rgba(251, 33, 117, 1) 0%, rgba(234, 76, 137, 1) 100%);
-			color: #fff;
-			overflow: hidden;
-			&:hover {
-				text-decoration: none;
-				color: #fff;
-				opacity: 0.7;
-			}
-			&:before {
-				position: absolute;
-				content: '';
-				display: inline-block;
-				top: -180px;
-				left: 0;
-				width: 30px;
-				height: 100%;
-				background-color: #fff;
-				animation: shiny-btn1 3s ease-in-out infinite;
-			}
-			&:active {
-				box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3), -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-					inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
-			}
-		}
-
-		.btn10 {
-			.default();
-			background: rgb(255, 151, 0);
-			border: none;
-			z-index: 1;
-			&:after {
-				position: absolute;
-				content: '';
-				width: 100%;
-				height: 0;
-				top: 0;
-				left: 0;
-				z-index: -1;
-				border-radius: 5px;
-				background-color: #eaf818;
-				background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
-				box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 20px 0px rgba(0, 0, 0, 0.1),
-					4px 4px 5px 0px rgba(0, 0, 0, 0.1);
-				transition: all 0.3s ease;
-			}
-			&:hover {
-				color: #000;
-				&:after {
-					top: auto;
-					bottom: 0;
 					height: 100%;
 				}
-			}
-			&:active {
-				top: 2px;
-			}
-		}
-
-		.btn11 {
-			.default();
-			border: none;
-			color: #000;
-			z-index: 1;
-			&:after {
-				position: absolute;
-				content: '';
-				width: 0;
-				height: 100%;
-				top: 0;
-				left: 0;
-				direction: rtl;
-				box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
-				transition: all 0.3s ease;
-			}
-			&:hover {
-				color: #000;
 				&:after {
-					left: auto;
-					right: 0;
 					width: 100%;
 				}
 			}
-			&:active {
-				top: 2px;
+		}
+	}
+
+	// ==================== btn5：红色渐变 + 边框揭示 ====================
+	.btn5 {
+		.btn-base();
+		background: rgb(255, 27, 0);
+		background: linear-gradient(0deg, rgba(255, 27, 0, 1) 0%, rgba(251, 75, 2, 1) 100%);
+		line-height: 42px;
+		padding: 0;
+		border: none;
+
+		span {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 5px;
+
+			&:after {
+				width: 0;
+				height: 2px;
+				position: absolute;
+				content: '';
+				left: 0;
+				bottom: 0;
+				background: rgb(251, 10, 2);
+				transition: all 0.3s ease;
 			}
 		}
+		&:after {
+			width: 0;
+			height: 2px;
+			position: absolute;
+			content: '';
+			right: 0;
+			top: 0;
+			background: #fb3402;
+			transition: all 0.3s ease;
+		}
+		&:hover {
+			color: #f0094a;
+			background: transparent;
+			box-shadow: none;
 
-		.btn12 {
-			.default();
-			background-color: @button-bg;
-			border-radius: 4px;
-			border: none;
-			cursor: pointer;
-			position: relative;
-			transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
-			box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-			-webkit-appearance: none;
-			appearance: none;
-			&:focus {
-				outline: 0;
+			&:after {
+				width: 100%;
 			}
+			span {
+				color: rgb(251, 10, 2);
+				&:after {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	// ==================== btn6：径向渐变 + 双层边框揭示 ====================
+	.btn6 {
+		.btn-base();
+		background: rgb(247, 150, 192);
+		background: radial-gradient(circle, rgba(247, 150, 192, 1) 0%, rgba(118, 174, 241, 1) 100%);
+		line-height: 42px;
+		padding: 0;
+		border: none;
+
+		span {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 5px;
+
 			&:before {
-				display: block;
-				top: -75%;
-				background-image: radial-gradient(circle, #ff0081 20%, transparent 20%),
-					radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%),
-					radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%),
-					radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%),
-					radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%),
-					radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
-				background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+				left: 0;
+				bottom: 0;
+				width: 2px;
+				height: 0;
+				transition: all 500ms ease;
+				position: absolute;
+				content: '';
+				box-shadow:
+					-1px -1px 20px 0px rgba(255, 255, 255, 1),
+					-4px -4px 5px 0px rgba(255, 255, 255, 1),
+					7px 7px 20px 0px rgba(0, 0, 0, 0.4),
+					4px 4px 5px 0px rgba(0, 0, 0, 0.3);
 			}
 			&:after {
-				display: block;
-				bottom: -75%;
-				background-image: radial-gradient(circle, #c8ff00 20%, transparent 20%),
-					radial-gradient(circle, #c8ff00 20%, transparent 20%),
-					radial-gradient(circle, transparent 10%, #c8ff00 15%, transparent 20%),
-					radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%),
-					radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%);
-				background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+				position: absolute;
+				content: '';
+				left: 0;
+				top: 0;
+				transition: all 500ms ease;
+				width: 0;
+				height: 2px;
+				box-shadow:
+					-1px -1px 20px 0px rgba(255, 255, 255, 1),
+					-4px -4px 5px 0px rgba(255, 255, 255, 1),
+					7px 7px 20px 0px rgba(0, 0, 0, 0.4),
+					4px 4px 5px 0px rgba(0, 0, 0, 0.3);
 			}
-			&:active {
-				transform: scale(0.9);
-				background-color: #e60074;
-				box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+		}
+		&:before {
+			position: absolute;
+			content: '';
+			height: 0;
+			width: 2px;
+			box-shadow:
+				-1px -1px 20px 0px rgba(255, 255, 255, 1),
+				-4px -4px 5px 0px rgba(255, 255, 255, 1),
+				7px 7px 20px 0px rgba(0, 0, 0, 0.4),
+				4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+			right: 0;
+			top: 0;
+			transition: all 500ms ease;
+		}
+		&:after {
+			position: absolute;
+			content: '';
+			height: 2px;
+			width: 0;
+			box-shadow:
+				-1px -1px 20px 0px rgba(255, 255, 255, 1),
+				-4px -4px 5px 0px rgba(255, 255, 255, 1),
+				7px 7px 20px 0px rgba(0, 0, 0, 0.4),
+				4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+			left: 0;
+			bottom: 0;
+			transition: all 500ms ease;
+		}
+		&:hover {
+			background: transparent;
+			color: #76aef1;
+			box-shadow: none;
+
+			&:before {
+				height: 100%;
 			}
-			&.animate {
+			&:after {
+				width: 100%;
+			}
+			span {
 				&:before {
-					display: block;
-					animation: topBubbles ease-in-out 0.75s forwards;
+					height: 100%;
 				}
 				&:after {
-					display: block;
-					animation: bottomBubbles ease-in-out 0.75s forwards;
+					width: 100%;
 				}
 			}
 		}
-		.btn12:before,
-		.btn12:after {
+	}
+
+	// ==================== btn7：渐变背景 → 缩放旋转 ====================
+	.btn7 {
+		.btn-base();
+		border: none;
+		overflow: hidden;
+		z-index: 1;
+
+		&:after {
+			position: absolute;
+			content: ' ';
+			z-index: -1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #1fd1f9;
+			background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+			transition: all 0.3s ease;
+			border-radius: 5px;
+		}
+		&:hover {
+			background: transparent;
+			color: #fff;
+
+			&:after {
+				transform: scale(2) rotate(180deg);
+			}
+		}
+	}
+
+	// ==================== btn8：隐藏 → 显示填充 ====================
+	.btn8 {
+		.btn-base();
+		border: none;
+		overflow: hidden;
+		z-index: 1;
+		background-image: linear-gradient(125deg, #f9261f 0%, #d4f809 74%);
+
+		&:after {
+			position: absolute;
+			content: ' ';
+			z-index: -1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			transition: all 0.5s ease;
+			transform: scale(0);
+			border-radius: 5px;
+		}
+		&:hover {
+			background: transparent;
+			border: none;
+
+			&:after {
+				background: transparent;
+				background-image: linear-gradient(125deg, #f9261f 0%, #d4f809 74%);
+				transform: scale(1);
+			}
+		}
+	}
+
+	// ==================== btn9：闪光扫过 ====================
+	.btn9 {
+		.btn-base();
+		border: none;
+		background: rgb(251, 33, 117);
+		background: linear-gradient(0deg, rgba(251, 33, 117, 1) 0%, rgba(234, 76, 137, 1) 100%);
+		color: #fff;
+		overflow: hidden;
+
+		&:hover {
+			color: #fff;
+			opacity: 0.85;
+		}
+		&:before {
+			position: absolute;
+			content: '';
+			display: inline-block;
+			top: -180px;
+			left: 0;
+			width: 30px;
+			height: 100%;
+			background-color: #fff;
+			animation: shiny-btn1 3s ease-in-out infinite;
+		}
+		&:active {
+			box-shadow:
+				4px 4px 6px 0 rgba(255, 255, 255, 0.3),
+				-4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+				inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+				inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
+		}
+	}
+
+	// ==================== btn10：底部向上填充 ====================
+	.btn10 {
+		.btn-base();
+		background: rgb(255, 151, 0);
+		border: none;
+		z-index: 1;
+
+		&:after {
+			position: absolute;
+			content: '';
+			width: 100%;
+			height: 0;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			border-radius: 5px;
+			background-color: #eaf818;
+			background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
+			transition: all 0.3s ease;
+		}
+		&:hover {
+			color: #1a1a2e;
+
+			&:after {
+				top: auto;
+				bottom: 0;
+				height: 100%;
+			}
+		}
+		&:active {
+			top: 2px;
+		}
+	}
+
+	// ==================== btn11：从左滑入填充 ====================
+	.btn11 {
+		.btn-base();
+		border: none;
+		color: @text-primary;
+		z-index: 1;
+
+		&:after {
+			position: absolute;
+			content: '';
+			width: 0;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			border-radius: 5px;
+			background: @accent;
+			transition: all 0.3s ease;
+		}
+		&:hover {
+			color: #fff;
+
+			&:after {
+				left: auto;
+				right: 0;
+				width: 100%;
+			}
+		}
+		&:active {
+			top: 2px;
+		}
+	}
+
+	// ==================== btn12：气泡点击特效 ====================
+	.btn12 {
+		.btn-base();
+		background-color: #ff0081;
+		border: none;
+		cursor: pointer;
+		position: relative;
+		transition:
+			transform ease-in 0.1s,
+			box-shadow ease-in 0.25s;
+		box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+
+		&:active {
+			transform: scale(0.9);
+			background-color: #e60074;
+			box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+		}
+
+		&:before,
+		&:after {
 			position: absolute;
 			content: '';
 			display: none;
@@ -586,43 +660,65 @@
 			transition: all ease-in-out 0.5s;
 			background-repeat: no-repeat;
 		}
-
-		.btn13 {
-			.default();
-			border-radius: 0;
-			border: none;
-			color: red;
-			font-weight: 700;
-			isolation: isolate;
-			&:hover {
-				color: #fff;
-				&:before {
-					background: #fc0303;
-					border-top-color: #f45e61;
-					border-right-color: #f45e61;
-					border-bottom-color: #fc0303;
-					transition: background 0s linear 0.6s, border-top-color 0.2s linear, border-right-color 0.2s linear 0.2s,
-						border-bottom-color 0.2s linear 0.4s;
-				}
-				&:after {
-					border-top: 2px solid red;
-					border-left-width: 20px;
-					border-right-width: 20px;
-				}
-			}
-			&:before {
-				border: 20px solid transparent;
-				z-index: -1;
-			}
-			&:after {
-				mix-blend-mode: color-dodge;
-				z-index: -1;
-			}
+		&:before {
+			top: -75%;
+			background-image: radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%),
+				radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+			background-size:
+				10% 10%,
+				20% 20%,
+				15% 15%,
+				20% 20%,
+				18% 18%,
+				10% 10%,
+				15% 15%,
+				10% 10%,
+				18% 18%;
+		}
+		&:after {
+			bottom: -75%;
+			background-image: radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%),
+				radial-gradient(circle, transparent 10%, #c8ff00 15%, transparent 20%),
+				radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%),
+				radial-gradient(circle, #c8ff00 20%, transparent 20%), radial-gradient(circle, #c8ff00 20%, transparent 20%);
+			background-size:
+				15% 15%,
+				20% 20%,
+				18% 18%,
+				20% 20%,
+				15% 15%,
+				10% 10%,
+				20% 20%;
 		}
 
-		.btn13:before,
-		.btn13:after {
-			box-sizing: inherit;
+		&.animate {
+			&:before {
+				display: block;
+				animation: topBubbles ease-in-out 0.75s forwards;
+			}
+			&:after {
+				display: block;
+				animation: bottomBubbles ease-in-out 0.75s forwards;
+			}
+		}
+	}
+
+	// ==================== btn13：边框闪烁 ====================
+	.btn13 {
+		.btn-base();
+		border-radius: 0;
+		border: none;
+		color: #f85149;
+		font-weight: 700;
+		isolation: isolate;
+
+		&:before,
+		&:after {
+			box-sizing: border-box;
 			content: '';
 			position: absolute;
 			top: 0;
@@ -630,102 +726,157 @@
 			width: 100%;
 			height: 100%;
 		}
+		&:before {
+			border: 20px solid transparent;
+			z-index: -1;
+		}
+		&:after {
+			mix-blend-mode: color-dodge;
+			z-index: -1;
+		}
+		&:hover {
+			color: #fff;
 
-		.btn14 {
-			.default();
-			background-color: #ecfbff;
-			border: 2px solid #a6e0ee;
-			color: #2d7586;
-			font-weight: 800;
-			text-align: left;
-			&:hover {
-				background-color: #ddf7ff;
-				svg {
-					transform: rotate(10deg);
-					transition: transform 0.15s;
-				}
+			&:before {
+				background: #fc0303;
+				border-top-color: #f45e61;
+				border-right-color: #f45e61;
+				border-bottom-color: #fc0303;
+				transition:
+					background 0s linear 0.6s,
+					border-top-color 0.2s linear,
+					border-right-color 0.2s linear 0.2s,
+					border-bottom-color 0.2s linear 0.4s;
 			}
+			&:after {
+				border-top: 2px solid red;
+				border-left-width: 20px;
+				border-right-width: 20px;
+			}
+		}
+	}
+
+	// ==================== btn14：发送按钮（纸飞机） ====================
+	.btn14 {
+		.btn-base();
+		background-color: #ecfbff;
+		border: 2px solid #a6e0ee;
+		color: #2d7586;
+		font-weight: 800;
+		text-align: left;
+		min-width: 140px;
+
+		&:hover {
+			background-color: #ddf7ff;
 
 			svg {
-				position: absolute;
-				top: 5px;
-				right: 15px;
-				height: 30px;
-				width: auto;
+				transform: rotate(10deg);
 				transition: transform 0.15s;
+			}
+		}
+
+		svg {
+			position: absolute;
+			top: 5px;
+			right: 15px;
+			height: 30px;
+			width: auto;
+			transition: transform 0.15s;
+
+			path {
+				fill: #2d7586;
+			}
+		}
+
+		&.click14 {
+			background-color: #cff5b3;
+			border: 2px solid #cff5b3;
+			color: #6aaa3b;
+
+			svg {
+				animation: flyaway 2s linear;
+				top: -80px;
+				right: -600px;
 
 				path {
-					fill: #2d7586;
-				}
-			}
-			&.click14 {
-				background-color: #cff5b3;
-				border: 2px solid #cff5b3;
-				color: #6aaa3b;
-				svg {
-					animation: flyaway 2s linear;
-					top: -80px;
-					right: -600px;
-					path {
-						fill: #6aaa3b;
-					}
+					fill: #6aaa3b;
 				}
 			}
 		}
+	}
 
-		.btn15 {
-			.default();
-			position: relative;
-			width: 100px;
-			background-color: #e9ecef;
-			border-radius: 40px;
-			overflow: hidden;
-			box-shadow: 0 -1px 2px #999, inset 0 1px 3px #333, 0 2px 2px #ffe, inset 0 -1px 2px #ddd;
-			background: radial-gradient(circle at 18% 20px, #fff, #fff 6px, transparent 7px, transparent),
-				radial-gradient(circle at 35% 45px, #fff, #fff 1px, transparent 2px, transparent),
-				radial-gradient(circle at 10% 70px, #fff, #fff 2.5px, transparent 3.5px, transparent),
-				radial-gradient(circle at 25% 15px, #fff, #fff 3px, transparent 4px, transparent),
-				radial-gradient(circle at 15% 50px, #fff, #fff 1.5px, transparent 2.5px, transparent),
-				radial-gradient(circle at 30% 75px, #fff, #fff 5px, transparent 6px, transparent),
-				radial-gradient(circle at 5% 30px, #fff, #fff 0.5px, transparent 1.5px, transparent),
-				radial-gradient(circle at 25% 60px, #fff, #fff 0.5px, transparent 1.5px, transparent),
-				radial-gradient(circle at 7% 35px, #fff, #fff 0.5px, transparent 1.5px, transparent),
-				linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
-			background-repeat: no-repeat;
-			background-size: 200% 100%;
-			background-position: 100% 0;
-			cursor: pointer;
-			overflow: hidden;
+	// ==================== btn15：切换开关 ====================
+	.btn15 {
+		.btn-base();
+		position: relative;
+		width: 100px;
+		min-width: 100px;
+		background-color: #e9ecef;
+		border-radius: 40px;
+		border: none;
+		overflow: hidden;
+		cursor: pointer;
+		background: radial-gradient(circle at 18% 20px, #fff, #fff 6px, transparent 7px, transparent),
+			radial-gradient(circle at 35% 45px, #fff, #fff 1px, transparent 2px, transparent),
+			radial-gradient(circle at 10% 70px, #fff, #fff 2.5px, transparent 3.5px, transparent),
+			radial-gradient(circle at 25% 15px, #fff, #fff 3px, transparent 4px, transparent),
+			radial-gradient(circle at 15% 50px, #fff, #fff 1.5px, transparent 2.5px, transparent),
+			radial-gradient(circle at 30% 75px, #fff, #fff 5px, transparent 6px, transparent),
+			radial-gradient(circle at 5% 30px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+			radial-gradient(circle at 25% 60px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+			radial-gradient(circle at 7% 35px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+			linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
+		background-repeat: no-repeat;
+		background-size: 200% 100%;
+		background-position: 100% 0;
+		transition: 0.5s all;
+		padding: 0;
+
+		&:hover::before {
+			filter: contrast(90%) brightness(110%);
+			scale: 1.05;
+		}
+		&::before {
+			content: '';
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: #e9cb50;
+			inset: 3.5px;
+			box-shadow:
+				0 0 2px #333,
+				inset 1px 1px 1px #f8f4e4,
+				inset -1px -1px 1px #665613;
 			transition: 0.5s all;
-			&:hover::before {
-				filter: contrast(90%) brightness(110%);
-				scale: 1.05;
-			}
-			&::before {
-				content: '';
-				position: absolute;
-				width: 30px;
-				height: 30px;
-				border-radius: 50%;
-				background: #e9cb50;
-				inset: 3.5px;
-				box-shadow: 0 0 2px #333, inset 1px 1px 1px #f8f4e4, inset -1px -1px 1px #665613;
-			}
-			&::after {
-				content: '';
-				position: absolute;
-				width: 30px;
-				height: 30px;
-				inset: 3.5px;
-				border-radius: 50%;
-				box-shadow: 5px 30px 0 3px #fff, 32px 30px 0 4px #fff, 48px 35px 0 5px #fff, 75px 23px 0 5px #fff, 85px 17px 0 5px #fff,
-					90px -2px 0 5px #fff, -12px -6px 0 15px rgba(255, 255, 255, 0.2), 17px 0 0 15px rgba(255, 255, 255, 0.15),
-					10px 0 0 15px rgba(255, 255, 255, 0.21), 5px 20px 0 3px #abc1d9, 35px 18px 0 3px #abc1d9, 48px 20px 0 3px #abc1d9,
-					67px 10px 0 5px #abc1d9, 80px 7px 0 5px #abc1d9, 85px -10px 0 5px #abc1d9;
-			}
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			inset: 3.5px;
+			border-radius: 50%;
+			box-shadow:
+				5px 30px 0 3px #fff,
+				32px 30px 0 4px #fff,
+				48px 35px 0 5px #fff,
+				75px 23px 0 5px #fff,
+				85px 17px 0 5px #fff,
+				90px -2px 0 5px #fff,
+				-12px -6px 0 15px rgba(255, 255, 255, 0.2),
+				17px 0 0 15px rgba(255, 255, 255, 0.15),
+				10px 0 0 15px rgba(255, 255, 255, 0.21),
+				5px 20px 0 3px #abc1d9,
+				35px 18px 0 3px #abc1d9,
+				48px 20px 0 3px #abc1d9,
+				67px 10px 0 5px #abc1d9,
+				80px 7px 0 5px #abc1d9,
+				85px -10px 0 5px #abc1d9;
+			transition: 0.5s all;
 		}
 
-		.click_active15 {
+		&.click_active15 {
 			&::before {
 				translate: 60px;
 				background: radial-gradient(circle at 50% 10px, #939aa5, #939aa5 3.5px, transparent 3px, transparent),
@@ -737,71 +888,165 @@
 				border-radius: 50%;
 				transform: translate(58px);
 				inset: 5px;
-				box-shadow: 5px 30px 0 5px transparent, 30px 30px 0 2.5px transparent, 48px 35px 0 5px transparent,
-					58px 12.5px 0 2.5px transparent, 85px 18px 0 5px transparent, 95px -2.5px 0 5px transparent,
-					5px 0 0 25px rgba(255, 255, 255, 0.2), -7.5px 0 0 25px rgba(255, 255, 255, 0.15),
-					-20px 0 0 25px rgba(255, 255, 255, 0.21), 5px 20px 0 5px transparent, 35px 18px 0 5px transparent,
-					48px 20px 0 5px transparent, 68px 10px 0 5px transparent, 78px 7.5px 0 5px transparent, 95px -10px 0 5px transparent;
+				box-shadow:
+					5px 30px 0 5px transparent,
+					30px 30px 0 2.5px transparent,
+					48px 35px 0 5px transparent,
+					58px 12.5px 0 2.5px transparent,
+					85px 18px 0 5px transparent,
+					95px -2.5px 0 5px transparent,
+					5px 0 0 25px rgba(255, 255, 255, 0.2),
+					-7.5px 0 0 25px rgba(255, 255, 255, 0.15),
+					-20px 0 0 25px rgba(255, 255, 255, 0.21),
+					5px 20px 0 5px transparent,
+					35px 18px 0 5px transparent,
+					48px 20px 0 5px transparent,
+					68px 10px 0 5px transparent,
+					78px 7.5px 0 5px transparent,
+					95px -10px 0 5px transparent;
 			}
 		}
+	}
 
-		.btn16 {
-			.default();
+	// ==================== btn16 / btn17：暗色主题按钮 ====================
+	.btn16 {
+		.btn-base();
+		border: 2px solid @border-card;
+		color: @text-primary;
+		background: transparent;
+
+		&:hover {
+			border-color: @accent;
+			color: @accent;
+			box-shadow: 0 0 20px rgba(88, 166, 255, 0.15);
+			transform: translateY(-2px);
 		}
-
-		.btn17 {
-			.default();
+		&:active {
+			transform: translateY(0);
 		}
 	}
-	.text {
-		font-weight: 600;
+
+	.btn17 {
+		.btn-base();
+		border: 2px solid rgba(248, 81, 73, 0.4);
+		color: #f85149;
+		background: transparent;
+
+		&:hover {
+			border-color: #f85149;
+			background: rgba(248, 81, 73, 0.1);
+			box-shadow: 0 0 20px rgba(248, 81, 73, 0.2);
+			transform: translateY(-2px);
+		}
+		&:active {
+			transform: translateY(0);
+		}
 	}
 }
 
-// 9
+// ==================== 关键帧动画 ====================
 @keyframes shiny-btn1 {
 	0% {
-		-webkit-transform: scale(0) rotate(45deg);
+		transform: scale(0) rotate(45deg);
 		opacity: 0;
 	}
 	80% {
-		-webkit-transform: scale(0) rotate(45deg);
+		transform: scale(0) rotate(45deg);
 		opacity: 0.5;
 	}
 	81% {
-		-webkit-transform: scale(4) rotate(45deg);
+		transform: scale(4) rotate(45deg);
 		opacity: 1;
 	}
 	100% {
-		-webkit-transform: scale(50) rotate(45deg);
+		transform: scale(50) rotate(45deg);
 		opacity: 0;
 	}
 }
 
-// 12
 @keyframes topBubbles {
 	0% {
-		background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+		background-position:
+			5% 90%,
+			10% 90%,
+			10% 90%,
+			15% 90%,
+			25% 90%,
+			25% 90%,
+			40% 90%,
+			55% 90%,
+			70% 90%;
 	}
 	50% {
-		background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+		background-position:
+			0% 80%,
+			0% 20%,
+			10% 40%,
+			20% 0%,
+			30% 30%,
+			22% 50%,
+			50% 50%,
+			65% 20%,
+			90% 30%;
 	}
 	100% {
-		background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
-		background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+		background-position:
+			0% 70%,
+			0% 10%,
+			10% 30%,
+			20% -10%,
+			30% 20%,
+			22% 40%,
+			50% 40%,
+			65% 10%,
+			90% 20%;
+		background-size:
+			0% 0%,
+			0% 0%,
+			0% 0%,
+			0% 0%,
+			0% 0%,
+			0% 0%;
 	}
 }
 
 @keyframes bottomBubbles {
 	0% {
-		background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+		background-position:
+			10% -10%,
+			30% 10%,
+			55% -10%,
+			70% -10%,
+			85% -10%,
+			70% -10%,
+			70% 0%;
 	}
 	50% {
-		background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+		background-position:
+			0% 80%,
+			20% 80%,
+			45% 60%,
+			60% 100%,
+			75% 70%,
+			95% 60%,
+			105% 0%;
 	}
 	100% {
-		background-position: 0% 100%, 20% 110%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
-		background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+		background-position:
+			0% 100%,
+			20% 110%,
+			45% 70%,
+			60% 110%,
+			75% 80%,
+			95% 70%,
+			110% 10%;
+		background-size:
+			0% 0%,
+			0% 0%,
+			0% 0%,
+			0% 0%,
+			0% 0%,
+			0% 0%;
 	}
 }
 
@@ -834,5 +1079,37 @@
 		top: -200px;
 		right: -400px;
 		opacity: 0;
+	}
+}
+
+// ==================== 响应式 ====================
+@media (max-width: 1024px) {
+	.body {
+		padding: 24px 20px 40px;
+
+		.grid {
+			grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+			gap: 12px;
+		}
+	}
+}
+
+@media (max-width: 640px) {
+	.body {
+		padding: 16px 12px 32px;
+
+		.grid {
+			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+			gap: 10px;
+		}
+
+		.card .cardBody {
+			min-height: 60px;
+			padding: 14px 10px;
+		}
+
+		.btn14 svg {
+			display: none;
+		}
 	}
 }
