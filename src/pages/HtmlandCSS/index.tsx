@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams, history } from 'umi';
-import { Layout, Tabs, Menu } from 'antd';
+import { Tabs, Menu, Layout } from 'antd';
 import Rotate from './PhotoWithHtml/PhotoRotate';
 import Sliding from './PhotoWithHtml/SlidingPhoto';
 import Erasure from './PhotoWithHtml/PhotoErasure';
@@ -23,7 +23,7 @@ import GlitchGIF from './PhotoWithHtml/GlitchGIF';
 import JsonEditor from './HtmlComponent/jsonEditor';
 import styles from './index.less';
 
-const { Header, Content, Sider } = Layout;
+const { Header, Sider, Content } = Layout;
 
 interface MenuItem {
 	label: string;
@@ -103,25 +103,22 @@ export default function Index() {
 	};
 
 	return (
-		<Layout className={styles.layout}>
-			{/* ---- 返回首页按钮 ---- */}
-			<button className={styles.homeBtn} onClick={() => history.push('/')}>
-				BACK
-			</button>
-
-			<Header>
-				<Tabs className={styles.tabs} onChange={handleTabChange} activeKey={tab} destroyInactiveTabPane type="line" items={TABS} />
+		<Layout className={styles.body}>
+			{/* ---- 顶部标签导航 ---- */}
+			<Header className={styles.header}>
+				<Tabs onChange={handleTabChange} activeKey={tab} destroyInactiveTabPane type="line" items={TABS} />
 			</Header>
-			<Layout className={styles.home}>
-				<Sider trigger={null} collapsible>
+
+			{/* ---- 主体：侧边栏 + 内容 ---- */}
+			<Layout className={styles.main}>
+				<Sider className={styles.sidebar} trigger={null} collapsible>
 					<div className={styles.logo} onClick={() => history.push('/')}>
 						Just Happy
 					</div>
-					<Menu style={{ backgroundColor: 'white' }} selectedKeys={[menuKey]} onClick={handleMenuClick} items={MENUS[tab]} />
+					<Menu className={styles.menu} selectedKeys={[menuKey]} onClick={handleMenuClick} items={MENUS[tab]} />
 				</Sider>
-				<Layout className={styles.siteLayout}>
-					<Content className={styles.siteLayoutBackground}>{componentMap.get(menuKey)}</Content>
-				</Layout>
+
+				<Content className={styles.content}>{componentMap.get(menuKey)}</Content>
 			</Layout>
 		</Layout>
 	);
