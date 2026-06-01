@@ -805,17 +805,22 @@
 		}
 	}
 
-	// ==================== btn15：切换开关 ====================
+	// ==================== btn15：日月切换开关 ====================
+	// 参考：单标签下的日间/黑夜模式切换按钮效果（掘金 7246917539766304829）
+	// 核心技巧：拟态阴影 + radial-gradient 陨石坑 + box-shadow 云朵装饰
 	.btn15 {
 		.btn-base();
 		position: relative;
 		width: 100px;
 		min-width: 100px;
-		background-color: #e9ecef;
-		border-radius: 40px;
+		height: 44px;
+		border-radius: 44px;
 		border: none;
 		overflow: hidden;
 		cursor: pointer;
+		padding: 0;
+		// 轨道背景：左侧夜空 #2b303e → 右侧白昼天空 #5a81b4
+		// 用 radial-gradient 叠加白色小点模拟星星（夜间可见，白天被天空色覆盖）
 		background: radial-gradient(circle at 18% 20px, #fff, #fff 6px, transparent 7px, transparent),
 			radial-gradient(circle at 35% 45px, #fff, #fff 1px, transparent 2px, transparent),
 			radial-gradient(circle at 10% 70px, #fff, #fff 2.5px, transparent 3.5px, transparent),
@@ -830,43 +835,54 @@
 		background-size: 200% 100%;
 		background-position: 100% 0;
 		transition: 0.5s all;
-		padding: 0;
 
-		&:hover::before {
-			filter: contrast(90%) brightness(110%);
-			scale: 1.05;
+		// 悬停：整体提亮
+		&:hover {
+			filter: brightness(1.08);
 		}
+
+		// ---- 太阳/月亮球体（拟态阴影 3D 效果） ----
 		&::before {
 			content: '';
 			position: absolute;
-			width: 30px;
-			height: 30px;
+			width: 34px;
+			height: 34px;
 			border-radius: 50%;
+			top: 5px;
+			left: 5px;
 			background: #e9cb50;
-			inset: 3.5px;
+			// 文章推荐：外阴影 + 内阴影叠加营造拟态立体感
 			box-shadow:
-				0 0 2px #333,
-				inset 1px 1px 1px #f8f4e4,
-				inset -1px -1px 1px #665613;
+				0 0 5px #333,
+				inset 2px 2px 3px #f8f4e4,
+				inset -2px -2px 3px #665613;
 			transition: 0.5s all;
+			z-index: 1;
 		}
+
+		// ---- 云朵/光晕装饰（box-shadow 多重叠加技法） ----
 		&::after {
 			content: '';
 			position: absolute;
-			width: 30px;
-			height: 30px;
-			inset: 3.5px;
+			width: 34px;
+			height: 34px;
+			top: 5px;
+			left: 5px;
 			border-radius: 50%;
+			// 用 box-shadow 模拟白云、光晕、暗色云朵，无需额外DOM元素
 			box-shadow:
-				5px 30px 0 3px #fff,
-				32px 30px 0 4px #fff,
+				// 白天白云
+				5px 32px 0 3px #fff,
+				32px 32px 0 4px #fff,
 				48px 35px 0 5px #fff,
 				75px 23px 0 5px #fff,
 				85px 17px 0 5px #fff,
 				90px -2px 0 5px #fff,
+				// 太阳光晕
 				-12px -6px 0 15px rgba(255, 255, 255, 0.2),
 				17px 0 0 15px rgba(255, 255, 255, 0.15),
 				10px 0 0 15px rgba(255, 255, 255, 0.21),
+				// 暗色云朵
 				5px 20px 0 3px #abc1d9,
 				35px 18px 0 3px #abc1d9,
 				48px 20px 0 3px #abc1d9,
@@ -876,33 +892,42 @@
 			transition: 0.5s all;
 		}
 
+		// ---- 激活状态：切换为月亮 + 星空 ----
 		&.click_active15 {
+			// 轨道背景滑到夜空侧（星星可见）
+			background-position: 0 0;
+
 			&::before {
-				translate: 60px;
-				background: radial-gradient(circle at 50% 10px, #939aa5, #939aa5 3.5px, transparent 3px, transparent),
-					radial-gradient(circle at 35% 23px, #939aa5, #939aa5 6px, transparent 6px, transparent),
-					radial-gradient(circle at 72% 25px, #939aa5, #939aa5 4px, transparent 4.5px, transparent),
+				// 月亮右移，陨石坑用 radial-gradient 模拟
+				translate: 56px;
+				background: radial-gradient(circle at 50% 6px, #939aa5, #939aa5 4px, transparent 4.5px, transparent),
+					radial-gradient(circle at 30% 16px, #939aa5, #939aa5 7px, transparent 7.5px, transparent),
+					radial-gradient(circle at 65% 20px, #939aa5, #939aa5 5px, transparent 5.5px, transparent),
 					radial-gradient(#cbcdda, #cbcdda);
 			}
+
 			&::after {
-				border-radius: 50%;
-				transform: translate(58px);
-				inset: 5px;
+				// 云朵同步右移，白云和暗色云朵淡出 → 露出星空
+				translate: 56px;
+				top: 7px;
 				box-shadow:
-					5px 30px 0 5px transparent,
-					30px 30px 0 2.5px transparent,
+					// 白云 → 透明
+					5px 32px 0 5px transparent,
+					32px 32px 0 3px transparent,
 					48px 35px 0 5px transparent,
-					58px 12.5px 0 2.5px transparent,
-					85px 18px 0 5px transparent,
-					95px -2.5px 0 5px transparent,
+					58px 12px 0 2px transparent,
+					85px 17px 0 5px transparent,
+					95px -3px 0 5px transparent,
+					// 光晕保留（月亮周边辉光）
 					5px 0 0 25px rgba(255, 255, 255, 0.2),
-					-7.5px 0 0 25px rgba(255, 255, 255, 0.15),
+					-8px 0 0 25px rgba(255, 255, 255, 0.15),
 					-20px 0 0 25px rgba(255, 255, 255, 0.21),
+					// 暗色云朵 → 透明
 					5px 20px 0 5px transparent,
 					35px 18px 0 5px transparent,
 					48px 20px 0 5px transparent,
 					68px 10px 0 5px transparent,
-					78px 7.5px 0 5px transparent,
+					78px 8px 0 5px transparent,
 					95px -10px 0 5px transparent;
 			}
 		}
@@ -940,6 +965,56 @@
 		}
 		&:active {
 			transform: translateY(0);
+		}
+	}
+}
+
+// ==================== 返回首页按钮（btn7 风格：渐变缩放旋转） ====================
+.homeBtn {
+	position: fixed;
+	top: 16px;
+	left: 16px;
+	z-index: 1000;
+	text-transform: uppercase;
+	height: 36px;
+	color: #fff;
+	border-radius: 5px;
+	padding: 0 20px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+	font-size: 13px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	border: none;
+	outline: none;
+	background-color: #1fd1f9;
+	background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+	line-height: 36px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+
+	&:after {
+		position: absolute;
+		content: ' ';
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #1fd1f9;
+		background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+		transition: all 0.3s ease;
+		border-radius: 5px;
+	}
+
+	&:hover {
+		background: transparent;
+		color: #fff;
+
+		&:after {
+			transform: scale(2) rotate(180deg);
 		}
 	}
 }

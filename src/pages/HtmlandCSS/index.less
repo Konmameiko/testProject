@@ -128,3 +128,53 @@
 		background-position: -30vw;
 	}
 }
+
+// ==================== 返回首页按钮（btn7 风格：渐变缩放旋转） ====================
+.homeBtn {
+	position: fixed;
+	top: 16px;
+	left: 16px;
+	z-index: 1000;
+	text-transform: uppercase;
+	height: 36px;
+	color: #fff;
+	border-radius: 5px;
+	padding: 0 20px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+	font-size: 13px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	border: none;
+	outline: none;
+	background-color: #1fd1f9;
+	background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+	line-height: 36px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+
+	&:after {
+		position: absolute;
+		content: ' ';
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #1fd1f9;
+		background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+		transition: all 0.3s ease;
+		border-radius: 5px;
+	}
+
+	&:hover {
+		background: transparent;
+		color: #fff;
+
+		&:after {
+			transform: scale(2) rotate(180deg);
+		}
+	}
+}

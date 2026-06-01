@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { history } from 'umi';
 import styles from './text.scss';
 
 declare module 'react' {
@@ -59,6 +60,11 @@ export default class index extends Component {
 	render() {
 		return (
 			<div className={styles.body}>
+				{/* ---- 返回首页按钮 ---- */}
+				<button className={styles.homeBtn} onClick={() => history.push('/')}>
+					BACK
+				</button>
+
 				{/* ---- 页面标题 ---- */}
 				<header className={styles.header}>
 					<h3 className={styles.title}>文字样式展示</h3>

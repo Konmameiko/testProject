@@ -104,6 +104,11 @@ export default function Index() {
 
 	return (
 		<Layout className={styles.layout}>
+			{/* ---- 返回首页按钮 ---- */}
+			<button className={styles.homeBtn} onClick={() => history.push('/')}>
+				BACK
+			</button>
+
 			<Header>
 				<Tabs className={styles.tabs} onChange={handleTabChange} activeKey={tab} destroyInactiveTabPane type="line" items={TABS} />
 			</Header>

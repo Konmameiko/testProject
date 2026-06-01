@@ -5,6 +5,7 @@
  */
 
 import { Component } from 'react';
+import { history } from 'umi';
 import styles from './index.less';
 
 interface ButtonItem {
@@ -152,6 +153,11 @@ export default class Buttons extends Component<{}, State> {
 	render() {
 		return (
 			<div className={styles.body}>
+				{/* ---- 返回首页按钮 ---- */}
+				<button className={styles.homeBtn} onClick={() => history.push('/')}>
+					BACK
+				</button>
+
 				{/* ---- 页面标题 ---- */}
 				<header className={styles.header}>
 					<h3 className={styles.title}>按钮样式展示</h3>
