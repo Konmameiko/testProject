@@ -72,12 +72,17 @@
 	}
 
 	// ---- 诗文内容区 ----
+	// 注意：.content 不使用 position: relative，
+	// 让 .message 的绝对定位以 .simulateBody（100%×100%）为基准，
+	// 从而使未激活文字随机散布覆盖全页。
 	.content {
-		position: relative;
-		width: 100%;
+		width: 50%;
+		max-width: 50%;
 		height: 70%;
+		margin: 0 auto;
 		z-index: 1;
 
+		// message 以 .simulateBody 为定位基准 → 覆盖全页
 		.message {
 			position: absolute;
 			width: 100%;
@@ -85,97 +90,108 @@
 			top: 0;
 			left: 0;
 
+			// 标题区：无定位，作为激活态文字的 flex 容器（50% 居中）
 			.title {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
+				width: 50%;
+				margin: 0 auto;
+				margin-top: 8vh;
 				display: flex;
-				align-items: center;
+				flex-direction: row;
+				align-items: baseline;
 				justify-content: center;
-				flex-direction: column;
+				border-bottom: 2px solid rgba(139, 105, 20, 0.18);
+				padding-bottom: 18px;
 
+				// 未激活：绝对定位，基准为 .message（全页），随机散布
 				span {
 					position: absolute;
 					font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', '仿宋', serif;
-					font-size: 26px;
-					color: rgba(60, 45, 25, 0.5);
-					opacity: 0;
+					font-size: 28px;
+					color: rgba(60, 45, 25, 0.3);
+					opacity: 1;
 					transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1);
-					transition-property: opacity, top, left, color, font-size;
-					// 墨迹晕染效果
-					text-shadow: 0 0 1px rgba(44, 36, 22, 0.1);
+					transition-property: opacity, top, left, color, font-size, filter;
+					text-shadow: 0 0 1px rgba(44, 36, 22, 0.05);
 				}
 
-				// 激活态标题 - 浓墨重彩
+				// 激活态：相对定位，汇入 50% 居中横向排列
 				.isTitle {
 					position: relative;
+					top: 0;
+					left: 0;
 					color: #2c2416;
-					top: -15%;
-					margin: 0 4px;
-					text-align: center;
 					font-family: 'STZhongsong', 'STSong', 'SimSun', '宋体', 'KaiTi', serif;
-					font-size: 48px;
+					font-size: 52px;
 					font-weight: 700;
 					opacity: 1;
+					filter: blur(0);
 					z-index: 3;
-					letter-spacing: 8px;
-					// 墨迹晕染边缘
+					margin: 0 2px;
+					letter-spacing: 6px;
 					text-shadow:
 						0 0 2px rgba(44, 36, 22, 0.3),
 						0 0 8px rgba(44, 36, 22, 0.1);
+					&::after {
+						content: '';
+						position: absolute;
+						bottom: -12px;
+						left: 50%;
+						transform: translateX(-50%);
+						width: 4px;
+						height: 4px;
+						border-radius: 50%;
+						background: rgba(196, 45, 45, 0.35);
+					}
 				}
 			}
 
+			// 正文区：无定位，作为激活态文字的 flex 容器（50% 居中）
 			.text {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
+				width: 50%;
+				margin: 4vh auto 0;
 				display: flex;
-				align-items: center;
+				align-items: flex-start;
 				justify-content: center;
 				flex-wrap: wrap;
-				align-content: center;
+				align-content: flex-start;
 
+				// 未激活：绝对定位，基准为 .message（全页），随机散布
 				span {
 					position: absolute;
 					font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', '仿宋', serif;
-					font-size: 1.2em;
-					color: rgba(60, 45, 25, 0.45);
-					opacity: 0;
+					font-size: 1.1em;
+					color: rgba(60, 45, 25, 0.35);
+					opacity: 0.3;
 					transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1);
 					text-shadow: 0 0 1px rgba(44, 36, 22, 0.05);
 				}
 
-				// 激活态正文 - 松烟墨色，竖排风格
+				// 激活态：相对定位，汇入 50% 居中文本流
 				.isText {
 					position: relative;
-					font-size: 22px;
+					top: 0;
+					left: 0;
+					font-size: 20px;
 					font-weight: 400;
-					top: 8%;
 					font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', serif;
 					color: #2c2416;
 					z-index: 3;
 					opacity: 1;
-					// 宣纸便签底色
 					background: linear-gradient(
 						135deg,
 						rgba(250, 246, 235, 0.95) 0%,
 						rgba(245, 238, 220, 0.9) 50%,
 						rgba(240, 230, 210, 0.95) 100%
 					);
-					// 轻微卷边阴影
 					box-shadow:
 						2px 3px 12px rgba(139, 105, 20, 0.12),
 						0 1px 3px rgba(44, 36, 22, 0.08);
 					border-left: 3px solid rgba(196, 45, 45, 0.25);
-					padding: 2px 12px;
-					margin: 2px 1px;
+					padding: 1px 10px;
+					margin: 1px;
 					border-radius: 2px;
 					letter-spacing: 2px;
+					line-height: 1.8;
 				}
 			}
 		}
@@ -186,16 +202,13 @@
 		position: absolute;
 		width: 82%;
 		height: 12vh;
-		// 深色木质卷轴
 		background: linear-gradient(180deg, #5c3d2e 0%, #4a3020 15%, #3d2518 30%, #4a3020 70%, #5c3d2e 100%);
 		top: 70vh;
 		left: 9%;
 		padding: 8px 18px;
 		border-radius: 8px;
-		// 卷轴两头装饰
 		border-left: 3px solid rgba(200, 170, 100, 0.3);
 		border-right: 3px solid rgba(200, 170, 100, 0.3);
-		// 柔和投影
 		box-shadow:
 			0 8px 30px rgba(60, 30, 10, 0.35),
 			inset 0 1px 0 rgba(255, 255, 255, 0.05),
@@ -205,7 +218,6 @@
 		justify-content: space-evenly;
 		z-index: 2;
 
-		// 时间轴线 - 墨线
 		.line {
 			position: absolute;
 			width: calc(100% - 40px);
@@ -213,11 +225,9 @@
 			top: calc(50% - 1px);
 			left: 20px;
 			background: linear-gradient(90deg, rgba(200, 170, 120, 0.6) 0%, rgba(180, 150, 100, 0.8) 50%, rgba(200, 170, 120, 0.6) 100%);
-			// 墨线两端淡出
 			mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
 		}
 
-		// 已激活进度线 - 朱砂红线
 		.activeLine {
 			position: absolute;
 			width: 0;
@@ -226,7 +236,6 @@
 			left: 20px;
 			background: linear-gradient(90deg, rgba(196, 45, 45, 0.7) 0%, rgba(196, 45, 45, 0.9) 70%, rgba(196, 45, 45, 0.5) 100%);
 			transition: width 2.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-			// 线端光点
 			&::after {
 				content: '';
 				position: absolute;
@@ -249,7 +258,6 @@
 			flex-direction: column;
 			align-items: center;
 
-			// ---- 未激活圆点 ----
 			.dot {
 				position: absolute;
 				width: 8px;
@@ -261,7 +269,6 @@
 				transition: all 0.5s ease;
 			}
 
-			// ---- 作者名 ----
 			.age {
 				position: relative;
 				margin-top: 42px;
@@ -273,7 +280,6 @@
 				transition: color 0.5s ease;
 			}
 
-			// ---- 已激活圆点（走过的路） ----
 			.dotActive {
 				position: absolute;
 				width: 18px;
@@ -282,7 +288,6 @@
 				top: calc(50% - 9px);
 				.sealBase(18px);
 				animation: sealAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-				// 仿印章白文
 				&::before {
 					content: '印';
 					width: 10px;
@@ -299,7 +304,6 @@
 				}
 			}
 
-			// ---- 当前选中（印钮/铜钮） ----
 			.dotEnd {
 				position: absolute;
 				width: 28px;
@@ -308,12 +312,10 @@
 				top: calc(50% - 14px);
 				.sealBase(28px);
 				animation: sealStamp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-				// 外圈光晕（印章刚落下的红晕）
 				box-shadow:
 					0 0 0 6px rgba(196, 45, 45, 0.15),
 					0 0 0 12px rgba(196, 45, 45, 0.06),
 					0 4px 15px rgba(139, 26, 26, 0.4);
-				// 仿金色印钮
 				&::before {
 					content: '鉴';
 					width: 14px;
@@ -328,14 +330,12 @@
 					line-height: 14px;
 					text-align: center;
 				}
-				// 选中态 - 作者名高亮
 				& ~ .age {
 					color: #ffd700;
 					text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
 				}
 			}
 
-			// hover 态 - 圆点微亮
 			&:hover .dot {
 				box-shadow: 0 0 8px rgba(196, 180, 140, 0.5);
 				transform: scale(1.3);
@@ -356,7 +356,6 @@
 // 动画
 // ==========================================
 
-// 印章落下动画
 @keyframes sealStamp {
 	0% {
 		transform: scale(0.3) rotate(-15deg);
@@ -372,7 +371,6 @@
 	}
 }
 
-// 印点显现
 @keyframes sealAppear {
 	0% {
 		transform: scale(0);

@@ -1,4 +1,4 @@
-import React, { Component, useRef } from 'react';
+import React, { Component, useMemo } from 'react';
 import styles from './index.less';
 
 export default class TimeShaftMake extends Component {
@@ -97,17 +97,24 @@ interface MessageProp {
 const MessageItem = (props: MessageProp) => {
 	const { title, text, isEnd } = props;
 
-	/**
-	 * 将标题拆分为逐字，每个字以轻微随机偏移起始，
-	 * 激活时汇聚归位——模拟墨迹在宣纸上从淡到浓的晕染过程
-	 */
+	// 为每个字符生成稳定的随机位置（避免重渲染时抖动）
+	const titlePositions = useMemo(() => {
+		return title.split('').map(() => ({
+			left: `${Math.random() * 100}%`,
+			top: `${Math.random() * 100}%`,
+			rotate: `${(Math.random() - 0.5) * 30}deg`,
+		}));
+	}, [title]);
+
+	const textPositions = useMemo(() => {
+		return text.split('').map(() => ({
+			left: `${Math.random() * 100}%`,
+			top: `${Math.random() * 100}%`,
+		}));
+	}, [text]);
+
 	const renderTitle = (title: string) => {
 		return title.split('').map((char, i) => {
-			// 未激活时: 轻微飘散 + 淡墨
-			const offsetX = (Math.random() - 0.5) * 60;
-			const offsetY = (Math.random() - 0.5) * 40;
-			const rotation = (Math.random() - 0.5) * 25;
-
 			if (isEnd) {
 				return (
 					<span key={i} className={styles.isTitle}>
@@ -119,8 +126,9 @@ const MessageItem = (props: MessageProp) => {
 				<span
 					key={i}
 					style={{
-						transform: `translate(${offsetX}px, ${offsetY}px) rotate(${rotation}deg)`,
-						filter: 'blur(1px)',
+						left: titlePositions[i].left,
+						top: titlePositions[i].top,
+						transform: `rotate(${titlePositions[i].rotate})`,
 					}}
 				>
 					{char}
@@ -129,14 +137,8 @@ const MessageItem = (props: MessageProp) => {
 		});
 	};
 
-	/**
-	 * 正文逐字渲染，未激活时微弱散落如淡墨浮于纸上
-	 */
 	const renderText = (text: string) => {
 		return text.split('').map((char, i) => {
-			const offsetX = (Math.random() - 0.5) * 80;
-			const offsetY = (Math.random() - 0.5) * 50;
-
 			if (isEnd) {
 				return (
 					<span key={i} className={styles.isText}>
@@ -148,8 +150,8 @@ const MessageItem = (props: MessageProp) => {
 				<span
 					key={i}
 					style={{
-						transform: `translate(${offsetX}px, ${offsetY}px)`,
-						filter: 'blur(1.5px)',
+						left: textPositions[i].left,
+						top: textPositions[i].top,
 					}}
 				>
 					{char}
@@ -182,11 +184,8 @@ const TimeLineItem = (props: TimeLineProp) => {
 
 	return (
 		<div className={styles.item} onClick={() => handClick(sortKey)}>
-			{/* 未激活 */}
 			{!isActive && <div className={styles.dot} />}
-			{/* 已激活但非当前 */}
 			{isActive && !isEnd && <div className={styles.dotActive} />}
-			{/* 当前选中（盖章效果） */}
 			{isEnd && <div className={styles.dotEnd} />}
 			<div className={styles.age}>{age}</div>
 		</div>
