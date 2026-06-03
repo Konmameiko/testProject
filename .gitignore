@@ -7,6 +7,10 @@
 /yarn.lock
 /.vscode
 
+#agent
+/.claude
+/memory
+
 # production
 /dist
 
