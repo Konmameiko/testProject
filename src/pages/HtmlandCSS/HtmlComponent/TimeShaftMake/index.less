@@ -1,32 +1,90 @@
-// 设置左循环与右循环  每隔32个字符换行一次 最大字数为300
-.leftLoop(@n) when(@n<300) {
-	.isText:nth-of-type(@{n}) {
-		margin-left: calc((100% - 768px) / 2);
-	}
-	.leftLoop(@n+32);
+// ==========================================
+// 宣纸古典风格 - 时间轴组件
+// 配色：宣纸米白 / 松烟墨色 / 朱砂红 / 古卷棕
+// ==========================================
+
+// --- 宣纸纹理模拟 ---
+.paperTexture() {
+	background-color: #f7f2e6;
+	background-image:
+		// 纤维纹理
+		repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(180, 160, 120, 0.03) 2px, rgba(180, 160, 120, 0.03) 4px),
+		repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(160, 140, 100, 0.02) 1px, rgba(160, 140, 100, 0.02) 3px),
+		// 宣纸自然斑点
+		radial-gradient(ellipse at 15% 20%, rgba(180, 150, 100, 0.08) 0%, transparent 50%),
+		radial-gradient(ellipse at 85% 60%, rgba(160, 130, 80, 0.06) 0%, transparent 50%),
+		radial-gradient(ellipse at 40% 80%, rgba(200, 170, 120, 0.05) 0%, transparent 50%),
+		radial-gradient(ellipse at 70% 10%, rgba(190, 160, 110, 0.07) 0%, transparent 50%);
 }
 
-.rightLoop(@n) when(@n<300) {
-	.rightLoop(@n+32);
+// --- 墨色渐变 ---
+.inkGradient() {
+	background: linear-gradient(180deg, #3a3028 0%, #2c2416 50%, #1a1410 100%);
+}
+
+// --- 朱砂印章效果 ---
+.sealBase(@size) {
+	width: @size;
+	height: @size;
+	background: radial-gradient(circle at 40% 35%, #e84040 0%, #c42e2e 30%, #8b1a1a 70%, #6b1010 100%);
+	border-radius: 50%;
+	box-shadow:
+		inset 0 1px 2px rgba(255, 255, 255, 0.2),
+		0 2px 6px rgba(139, 26, 26, 0.4);
 }
 
 .simulateBody {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	background-color: whitesmoke;
+	.paperTexture();
 	z-index: 1;
 	overflow: hidden;
+
+	// 仿古边框装饰
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 20px;
+		border: 1px solid rgba(139, 105, 20, 0.2);
+		border-image: linear-gradient(
+				135deg,
+				rgba(139, 105, 20, 0.35) 0%,
+				rgba(139, 105, 20, 0.08) 30%,
+				rgba(139, 105, 20, 0.08) 70%,
+				rgba(139, 105, 20, 0.35) 100%
+			)
+			1;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	// 四角装饰纹样 - 左上
+	&::after {
+		content: '❖';
+		position: absolute;
+		top: 28px;
+		left: 32px;
+		font-size: 18px;
+		color: rgba(139, 105, 20, 0.4);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	// ---- 诗文内容区 ----
 	.content {
 		position: relative;
 		width: 100%;
-		height: 100%;
+		height: 70%;
+		z-index: 1;
+
 		.message {
 			position: absolute;
 			width: 100%;
 			height: 100%;
 			top: 0;
 			left: 0;
+
 			.title {
 				position: absolute;
 				width: 100%;
@@ -36,25 +94,40 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				flex-direction: column;
+
 				span {
 					position: absolute;
-					font-size: 24px;
-					color: gray;
-					opacity: 0.7;
-					transition: all 1s;
+					font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', '仿宋', serif;
+					font-size: 26px;
+					color: rgba(60, 45, 25, 0.5);
+					opacity: 0;
+					transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+					transition-property: opacity, top, left, color, font-size;
+					// 墨迹晕染效果
+					text-shadow: 0 0 1px rgba(44, 36, 22, 0.1);
 				}
+
+				// 激活态标题 - 浓墨重彩
 				.isTitle {
 					position: relative;
-					color: black;
-					top: -40%;
-					margin-right: 1%;
+					color: #2c2416;
+					top: -15%;
+					margin: 0 4px;
 					text-align: center;
-					font-size: 36px;
-					font-weight: 900;
+					font-family: 'STZhongsong', 'STSong', 'SimSun', '宋体', 'KaiTi', serif;
+					font-size: 48px;
+					font-weight: 700;
 					opacity: 1;
 					z-index: 3;
+					letter-spacing: 8px;
+					// 墨迹晕染边缘
+					text-shadow:
+						0 0 2px rgba(44, 36, 22, 0.3),
+						0 0 8px rgba(44, 36, 22, 0.1);
 				}
 			}
+
 			.text {
 				position: absolute;
 				width: 100%;
@@ -63,149 +136,250 @@
 				left: 0;
 				display: flex;
 				align-items: center;
-				align-content: center;
+				justify-content: center;
 				flex-wrap: wrap;
+				align-content: center;
+
 				span {
 					position: absolute;
-					font-size: 1em;
-					color: gray;
-					opacity: 0.7;
-					transition: all 1s;
+					font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', '仿宋', serif;
+					font-size: 1.2em;
+					color: rgba(60, 45, 25, 0.45);
+					opacity: 0;
+					transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+					text-shadow: 0 0 1px rgba(44, 36, 22, 0.05);
 				}
+
+				// 激活态正文 - 松烟墨色，竖排风格
 				.isText {
 					position: relative;
-					font-size: 24px;
-					font-weight: 300;
-					top: -20%;
-					font-family: STXihei, '华文细黑', 'Microsoft YaHei', '微软雅黑';
-					color: black;
+					font-size: 22px;
+					font-weight: 400;
+					top: 8%;
+					font-family: 'STKaiti', 'KaiTi', '楷体', 'FangSong', serif;
+					color: #2c2416;
 					z-index: 3;
 					opacity: 1;
-					background-color: aliceblue;
-					box-shadow: 10px 10px 10px 10px rgb(255, 255, 255);
+					// 宣纸便签底色
+					background: linear-gradient(
+						135deg,
+						rgba(250, 246, 235, 0.95) 0%,
+						rgba(245, 238, 220, 0.9) 50%,
+						rgba(240, 230, 210, 0.95) 100%
+					);
+					// 轻微卷边阴影
+					box-shadow:
+						2px 3px 12px rgba(139, 105, 20, 0.12),
+						0 1px 3px rgba(44, 36, 22, 0.08);
+					border-left: 3px solid rgba(196, 45, 45, 0.25);
+					padding: 2px 12px;
+					margin: 2px 1px;
+					border-radius: 2px;
+					letter-spacing: 2px;
 				}
-				.leftLoop(1);
-				.rightLoop(32);
 			}
 		}
 	}
+
+	// ---- 底部时间轴（仿古卷轴杆） ----
 	.bar {
 		position: absolute;
-		width: 80%;
-		height: 15vh;
-		background-color: rgb(255, 211, 153);
-		top: 65vh;
-		left: 10%;
-		padding: 10px 10px;
-		border-radius: 20px;
-		border: 2px solid white;
-		box-shadow: 40px 0 65px rgba(#d4c5ba, 0.7);
+		width: 82%;
+		height: 12vh;
+		// 深色木质卷轴
+		background: linear-gradient(180deg, #5c3d2e 0%, #4a3020 15%, #3d2518 30%, #4a3020 70%, #5c3d2e 100%);
+		top: 70vh;
+		left: 9%;
+		padding: 8px 18px;
+		border-radius: 8px;
+		// 卷轴两头装饰
+		border-left: 3px solid rgba(200, 170, 100, 0.3);
+		border-right: 3px solid rgba(200, 170, 100, 0.3);
+		// 柔和投影
+		box-shadow:
+			0 8px 30px rgba(60, 30, 10, 0.35),
+			inset 0 1px 0 rgba(255, 255, 255, 0.05),
+			inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 		display: flex;
 		align-items: center;
-		justify-items: left;
-		z-index: 1;
-		overflow: hidden;
+		justify-content: space-evenly;
+		z-index: 2;
+
+		// 时间轴线 - 墨线
 		.line {
 			position: absolute;
-			width: 100%;
-			height: 4px;
-			top: calc(50% - 2px);
-			left: 10px;
-			background-color: gray;
-			display: inline-block;
+			width: calc(100% - 40px);
+			height: 2px;
+			top: calc(50% - 1px);
+			left: 20px;
+			background: linear-gradient(90deg, rgba(200, 170, 120, 0.6) 0%, rgba(180, 150, 100, 0.8) 50%, rgba(200, 170, 120, 0.6) 100%);
+			// 墨线两端淡出
+			mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
 		}
+
+		// 已激活进度线 - 朱砂红线
 		.activeLine {
 			position: absolute;
 			width: 0;
-			height: 4px;
-			top: calc(50% - 2px);
-			left: 10px;
-			display: inline-block;
-			background-color: rgb(34, 255, 0);
-			// 当width发生变化时, 触发效果
-			transition: width 2s linear;
+			height: 2.5px;
+			top: calc(50% - 1.25px);
+			left: 20px;
+			background: linear-gradient(90deg, rgba(196, 45, 45, 0.7) 0%, rgba(196, 45, 45, 0.9) 70%, rgba(196, 45, 45, 0.5) 100%);
+			transition: width 2.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+			// 线端光点
+			&::after {
+				content: '';
+				position: absolute;
+				right: -3px;
+				top: -3px;
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: rgba(196, 45, 45, 0.8);
+			}
 		}
+
 		.item {
 			position: relative;
-			width: 500px;
+			flex: 1;
 			height: 50px;
 			z-index: 5;
 			cursor: pointer;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			// ---- 未激活圆点 ----
 			.dot {
 				position: absolute;
-				width: 10px;
-				height: 10px;
+				width: 8px;
+				height: 8px;
 				border-radius: 50%;
-				background-color: black;
-				display: inline-block;
-				top: calc(50% - 5px);
+				background: radial-gradient(circle at 40% 35%, rgba(180, 150, 110, 0.8) 0%, rgba(120, 100, 70, 0.7) 100%);
+				top: calc(50% - 4px);
+				box-shadow: 0 0 4px rgba(139, 105, 20, 0.2);
+				transition: all 0.5s ease;
 			}
+
+			// ---- 作者名 ----
 			.age {
 				position: relative;
-				margin-top: 40px;
-				font-size: large;
-				color: #ba7c3f;
+				margin-top: 42px;
+				font-family: 'STKaiti', 'KaiTi', '楷体', serif;
+				font-size: 15px;
+				font-weight: 600;
+				color: rgba(255, 240, 215, 0.75);
+				letter-spacing: 2px;
+				transition: color 0.5s ease;
 			}
 
+			// ---- 已激活圆点（走过的路） ----
 			.dotActive {
 				position: absolute;
-				width: 20px;
-				height: 20px;
+				width: 18px;
+				height: 18px;
 				border-radius: 50%;
-				display: inline-block;
-				top: calc(50% - 10px);
-				background-color: brown;
+				top: calc(50% - 9px);
+				.sealBase(18px);
+				animation: sealAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+				// 仿印章白文
 				&::before {
-					content: '';
-					width: 6px;
-					height: 6px;
-					border-radius: 50%;
-					background-color: white;
-					position: absolute;
-					left: 7px;
-					top: 7px;
-				}
-				animation: colorDot 1s linear 1;
-			}
-
-			.dotEnd {
-				position: absolute;
-				width: 30px;
-				height: 30px;
-				border-radius: 40%;
-				display: inline-block;
-				top: calc(50% - 15px);
-				background-color: brown;
-				&::before {
-					content: '';
+					content: '印';
 					width: 10px;
 					height: 10px;
-					border-radius: 50%;
-					background-color: white;
+					font-size: 8px;
+					color: rgba(255, 255, 255, 0.7);
 					position: absolute;
-					left: 10px;
-					top: 10px;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					font-family: 'STKaiti', 'KaiTi', serif;
+					line-height: 10px;
+					text-align: center;
 				}
-				animation: colorDot 2s linear 1;
+			}
+
+			// ---- 当前选中（印钮/铜钮） ----
+			.dotEnd {
+				position: absolute;
+				width: 28px;
+				height: 28px;
+				border-radius: 50%;
+				top: calc(50% - 14px);
+				.sealBase(28px);
+				animation: sealStamp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+				// 外圈光晕（印章刚落下的红晕）
+				box-shadow:
+					0 0 0 6px rgba(196, 45, 45, 0.15),
+					0 0 0 12px rgba(196, 45, 45, 0.06),
+					0 4px 15px rgba(139, 26, 26, 0.4);
+				// 仿金色印钮
+				&::before {
+					content: '鉴';
+					width: 14px;
+					height: 14px;
+					font-size: 11px;
+					color: rgba(255, 240, 200, 0.85);
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					font-family: 'STKaiti', 'KaiTi', serif;
+					line-height: 14px;
+					text-align: center;
+				}
+				// 选中态 - 作者名高亮
+				& ~ .age {
+					color: #ffd700;
+					text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+				}
+			}
+
+			// hover 态 - 圆点微亮
+			&:hover .dot {
+				box-shadow: 0 0 8px rgba(196, 180, 140, 0.5);
+				transform: scale(1.3);
+			}
+			&:hover .dotActive {
+				box-shadow:
+					0 0 0 4px rgba(196, 45, 45, 0.12),
+					0 0 15px rgba(139, 26, 26, 0.3);
+			}
+			&:hover .age {
+				color: rgba(255, 245, 220, 0.95);
 			}
 		}
 	}
 }
 
-@keyframes colorLine {
+// ==========================================
+// 动画
+// ==========================================
+
+// 印章落下动画
+@keyframes sealStamp {
 	0% {
-		width: 0;
+		transform: scale(0.3) rotate(-15deg);
+		opacity: 0.5;
+	}
+	60% {
+		transform: scale(1.15) rotate(3deg);
+		opacity: 1;
 	}
 	100% {
-		width: 100%;
+		transform: scale(1) rotate(0deg);
+		opacity: 1;
 	}
 }
 
-@keyframes colorDot {
+// 印点显现
+@keyframes sealAppear {
 	0% {
-		transform: scale(0.5);
+		transform: scale(0);
+		opacity: 0;
 	}
 	100% {
 		transform: scale(1);
+		opacity: 1;
 	}
 }

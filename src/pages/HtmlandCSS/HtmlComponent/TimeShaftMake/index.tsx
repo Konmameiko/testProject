@@ -1,7 +1,7 @@
 import React, { Component, useRef } from 'react';
 import styles from './index.less';
 
-export default class index extends Component {
+export default class TimeShaftMake extends Component {
 	timeTitle = [
 		{
 			age: '屈原',
@@ -42,13 +42,14 @@ export default class index extends Component {
 			age: '王安石',
 			title: '游褒禅山记',
 			message:
-				'禅山亦谓之华山，唐浮图慧褒始舍于其址，而卒葬之；以故其后名之曰“褒禅”。今所谓慧空禅院者，褒之庐冢也。距其院东五里，所谓华山洞者，以其乃华山之阳名之也。',
+				'禅山亦谓之华山，唐浮图慧褒始舍于其址，而卒葬之；以故其后名之曰"褒禅"。今所谓慧空禅院者，褒之庐冢也。距其院东五里，所谓华山洞者，以其乃华山之阳名之也。',
 		},
 	];
 
 	state = {
 		number: -1,
 	};
+
 	handleClick = (index: number) => {
 		this.setState({ number: index });
 	};
@@ -77,76 +78,116 @@ export default class index extends Component {
 						);
 					})}
 					<div className={styles.line} />
-					<div className={styles.activeLine} style={{ width: `${(this.state.number + 1) * (100 / 7)}%` }} />
+					<div className={styles.activeLine} style={{ width: `${Math.max(this.state.number + 1, 0) * (100 / 7)}%` }} />
 				</div>
 			</div>
 		);
 	}
 }
-interface messageProp {
+
+// ==========================================
+// 诗文展示区
+// ==========================================
+interface MessageProp {
 	title: string;
 	text: string;
 	isEnd: boolean;
 }
 
-const MessageItem = (props: messageProp) => {
+const MessageItem = (props: MessageProp) => {
 	const { title, text, isEnd } = props;
-	const titleRef = useRef<HTMLDivElement>(null);
-	const textRef = useRef<HTMLDivElement>(null);
-	const handleTitle = (title: string) => {
-		let element = [];
-		for (let i of title) {
-			const randomX = Math.random() * 100;
-			const randomY = Math.random() * 100;
+
+	/**
+	 * 将标题拆分为逐字，每个字以轻微随机偏移起始，
+	 * 激活时汇聚归位——模拟墨迹在宣纸上从淡到浓的晕染过程
+	 */
+	const renderTitle = (title: string) => {
+		return title.split('').map((char, i) => {
+			// 未激活时: 轻微飘散 + 淡墨
+			const offsetX = (Math.random() - 0.5) * 60;
+			const offsetY = (Math.random() - 0.5) * 40;
+			const rotation = (Math.random() - 0.5) * 25;
+
 			if (isEnd) {
-				element.push(<span className={styles.isTitle}>{i}</span>);
-			} else {
-				element.push(<span style={{ left: `${randomX}%`, top: `${randomY}%` }}>{i}</span>);
+				return (
+					<span key={i} className={styles.isTitle}>
+						{char}
+					</span>
+				);
 			}
-		}
-		return element;
+			return (
+				<span
+					key={i}
+					style={{
+						transform: `translate(${offsetX}px, ${offsetY}px) rotate(${rotation}deg)`,
+						filter: 'blur(1px)',
+					}}
+				>
+					{char}
+				</span>
+			);
+		});
 	};
 
-	const handleMessage = (text: string) => {
-		let element = [];
+	/**
+	 * 正文逐字渲染，未激活时微弱散落如淡墨浮于纸上
+	 */
+	const renderText = (text: string) => {
+		return text.split('').map((char, i) => {
+			const offsetX = (Math.random() - 0.5) * 80;
+			const offsetY = (Math.random() - 0.5) * 50;
 
-		for (let i of text) {
-			const randomX = Math.random() * 100;
-			const randomY = Math.random() * 100;
 			if (isEnd) {
-				element.push(<span className={styles.isText}>{i}</span>);
-			} else {
-				element.push(<span style={{ left: `${randomX}%`, top: `${randomY}%` }}>{i}</span>);
+				return (
+					<span key={i} className={styles.isText}>
+						{char}
+					</span>
+				);
 			}
-		}
-		return element;
+			return (
+				<span
+					key={i}
+					style={{
+						transform: `translate(${offsetX}px, ${offsetY}px)`,
+						filter: 'blur(1.5px)',
+					}}
+				>
+					{char}
+				</span>
+			);
+		});
 	};
+
 	return (
 		<div className={styles.message}>
-			<div className={styles.title} ref={titleRef}>
-				{handleTitle(title)}
-			</div>
-			<div className={styles.text} ref={textRef}>
-				{handleMessage(text)}
-			</div>
+			<div className={styles.title}>{renderTitle(title)}</div>
+			<div className={styles.text}>{renderText(text)}</div>
 		</div>
 	);
 };
 
-interface prop {
+// ==========================================
+// 时间轴节点（仿印章标记）
+// ==========================================
+interface TimeLineProp {
 	age: string;
 	sortKey: number;
 	isActive: boolean;
 	isEnd: boolean;
 	handClick: (index: number) => void;
 }
-const TimeLineItem = (props: prop) => {
+
+const TimeLineItem = (props: TimeLineProp) => {
 	const { age, isEnd, sortKey, isActive, handClick } = props;
+
 	return (
 		<div className={styles.item} onClick={() => handClick(sortKey)}>
-			{(isActive && !isEnd && <div className={styles.dotActive} />) ||
-				(!isActive && <div className={styles.dot} />) ||
-				(isEnd && <div className={styles.dotEnd} />)}
+			{/* 未激活 */}
+			{!isActive && <div className={styles.dot} />}
+			{/* 已激活但非当前 */}
+			{isActive && !isEnd && <div className={styles.dotActive} />}
+			{/* 当前选中（盖章效果） */}
+			{isEnd && <div className={styles.dotEnd} />}
 			<div className={styles.age}>{age}</div>
 		</div>
 	);
