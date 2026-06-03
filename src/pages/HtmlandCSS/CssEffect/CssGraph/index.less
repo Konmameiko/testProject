@@ -1,240 +1,370 @@
+// ==========================================
+// CSS Shape 图形集合 —— 暗色主题
+// ==========================================
+
+// ---- 暗色主题变量 ----
+@bg-primary: #0d1117;
+@bg-card: #161b22;
+@border-card: #21262d;
+@accent-cyan: #00d4ff;
+@accent-pink: #ff6b9d;
+@accent-green: #7ee787;
+@accent-yellow: #ffd93d;
+@accent-purple: #c084fc;
+@accent-orange: #ff8c42;
+@text-primary: #e6edf3;
+@text-secondary: #8b949e;
+@glow-cyan: 0 0 12px rgba(0, 212, 255, 0.25);
+@glow-pink: 0 0 12px rgba(255, 107, 157, 0.25);
+
+// ---- 通用 ----
 .main {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	flex-wrap: wrap;
+	background: @bg-primary;
 	overflow: auto;
-	.content {
-		width: 12vw;
-		height: 12vw;
-		border: 2px solid rgb(255, 145, 0);
-		margin-bottom: 40px;
-		margin-right: 51px;
+	padding: 32px 28px 40px;
+	box-sizing: border-box;
+
+	// 自定义滚动条
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: @border-card;
+		border-radius: 3px;
+	}
+
+	// ---- 页面标题 ----
+	.pageTitle {
+		margin: 0;
+		font-size: 32px;
+		font-weight: 700;
+		color: @text-primary;
+		text-align: center;
+		letter-spacing: 2px;
+		text-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+	}
+
+	.pageSubtitle {
+		margin: 6px 0 32px;
+		font-size: 14px;
+		color: @text-secondary;
+		text-align: center;
+		letter-spacing: 1px;
+	}
+
+	// ---- 网格布局 ----
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 20px;
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+
+	// ---- 卡片 ----
+	.card {
+		background: @bg-card;
+		border: 1px solid @border-card;
+		border-radius: 10px;
+		padding: 16px 12px 12px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		transition: all 0.3s ease;
+		cursor: default;
+
+		&:hover {
+			border-color: lighten(@border-card, 15%);
+			transform: translateY(-3px);
+			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+		}
+	}
+
+	// ---- 图形舞台 ----
+	.cardStage {
+		flex: 1;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		& > div {
-			background-color: rgb(255, 89, 117);
-		}
+		min-height: 80px;
+		width: 100%;
+		position: relative;
 	}
+
+	// ---- 卡片标签 ----
+	.cardLabel {
+		margin-top: 10px;
+		font-size: 12px;
+		color: @text-secondary;
+		letter-spacing: 1px;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	.cardIndex {
+		font-size: 11px;
+		color: darken(@text-secondary, 20%);
+		font-family: 'Courier New', monospace;
+		background: lighten(@bg-card, 3%);
+		padding: 1px 5px;
+		border-radius: 3px;
+	}
+
+	// ==========================================
+	// 图形样式（暗色适配）
+	// 奇数用 cyan，偶数用 pink 为主色调
+	// ==========================================
+
+	// 所有图形的默认底色
+	& > .grid > .card:nth-child(odd) > .cardStage > div {
+		background-color: @accent-cyan;
+	}
+	& > .grid > .card:nth-child(even) > .cardStage > div {
+		background-color: @accent-pink;
+	}
+
+	// === 基础形状 ===
 	.square {
-		width: 6vw;
-		height: 6vw;
+		width: 48px;
+		height: 48px;
 	}
 
 	.rectangle {
-		width: 10vw;
-		height: 6vw;
+		width: 72px;
+		height: 42px;
 	}
 
 	.circle {
-		width: 6vw;
-		height: 6vw;
+		width: 52px;
+		height: 52px;
 		border-radius: 50%;
 	}
 
 	.oval {
-		width: 10vw;
-		height: 6vw;
+		width: 70px;
+		height: 44px;
 		border-radius: 50%;
 	}
 
+	// === 三角形 ===
 	.triangleUp {
 		width: 0;
-		background-color: transparent !important;
-		border-left: 3vw solid transparent;
-		border-right: 3vw solid transparent;
-		border-bottom: 6vw solid blue;
+		height: 0;
+		background: transparent !important;
+		border-left: 28px solid transparent;
+		border-right: 28px solid transparent;
+		border-bottom: 48px solid @accent-green;
 	}
 
 	.triangleDown {
 		width: 0;
-		background-color: transparent !important;
-		border-left: 3vw solid transparent;
-		border-right: 3vw solid transparent;
-		border-top: 6vw solid blue;
+		height: 0;
+		background: transparent !important;
+		border-left: 28px solid transparent;
+		border-right: 28px solid transparent;
+		border-top: 48px solid @accent-green;
 	}
 
 	.triangleTopLeft {
 		width: 0;
-		border-top: 100px solid blue;
-		border-right: 100px solid transparent;
-		background-color: transparent !important;
+		height: 0;
+		background: transparent !important;
+		border-top: 56px solid @accent-green;
+		border-right: 56px solid transparent;
 	}
 
+	// === 弯箭头 ===
 	.curvedarrow {
 		position: relative;
 		width: 0;
-		background-color: transparent !important;
-		border-top: 5vw solid transparent;
-		border-right: 5vw solid red;
-		transform: rotate(10deg) translateX(50%) translateY(50%);
+		height: 0;
+		background: transparent !important;
+		border-top: 28px solid transparent;
+		border-right: 28px solid @accent-orange;
+		transform: rotate(10deg);
 		&::after {
 			content: '';
 			position: absolute;
 			border: 0 solid transparent;
-			border-top: 2vw solid red;
-			border-radius: 12vw 0 0;
-			top: -6.9vw;
-			left: -5vw;
-			width: 7vw;
-			height: 7vw;
+			border-top: 12px solid @accent-orange;
+			border-radius: 40px 0 0;
+			top: -40px;
+			left: -28px;
+			width: 36px;
+			height: 36px;
 			transform: rotate(45deg);
 		}
 	}
 
+	// === 梯形 ===
 	.trapezoid {
-		background-color: transparent !important;
-		border-bottom: 5vw solid blue;
-		border-left: 1.5vw solid transparent;
-		border-right: 1.5vw solid transparent;
-		width: 8vw;
+		width: 52px;
+		height: 0;
+		background: transparent !important;
+		border-bottom: 36px solid @accent-purple;
+		border-left: 12px solid transparent;
+		border-right: 12px solid transparent;
 	}
 
+	// === 平行四边形 ===
 	.parallelogram {
-		width: 9vw;
-		height: 6vw;
+		width: 56px;
+		height: 36px;
 		transform: skew(20deg);
 	}
 
+	// === 六角星 ===
 	.sixStar {
 		width: 0;
-		background-color: transparent !important;
-		border-left: 4vw solid transparent;
-		border-right: 4vw solid transparent;
-		border-bottom: 6vw solid rgb(22, 0, 167);
+		height: 0;
+		background: transparent !important;
+		border-left: 26px solid transparent;
+		border-right: 26px solid transparent;
+		border-bottom: 40px solid @accent-yellow;
 		position: relative;
 		&::after {
-			border-left: 4vw solid transparent;
-			border-right: 4vw solid transparent;
-			border-top: 6vw solid rgb(22, 0, 167);
-			position: absolute;
 			content: '';
-			top: 2vw;
-			left: -4vw;
+			position: absolute;
+			border-left: 26px solid transparent;
+			border-right: 26px solid transparent;
+			border-top: 40px solid @accent-yellow;
+			top: 14px;
+			left: -26px;
 		}
 	}
 
+	// === 五角星 ===
 	.fiveStar {
 		position: relative;
-		border-right: 6vw solid transparent;
-		border-bottom: 4.2vw solid red;
-		border-left: 6vw solid transparent;
-		background-color: transparent !important;
+		width: 0;
+		height: 0;
+		background: transparent !important;
+		border-right: 36px solid transparent;
+		border-bottom: 26px solid @accent-yellow;
+		border-left: 36px solid transparent;
 		transform: rotate(35deg);
 		&::before {
-			position: absolute;
 			content: '';
-			border-left: 2vw solid transparent;
-			border-right: 2vw solid transparent;
-			border-bottom: 5vw solid red;
-			top: -3vw;
-			left: -4vw;
+			position: absolute;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+			border-bottom: 30px solid @accent-yellow;
+			top: -17px;
+			left: -23px;
 			transform: rotate(-35deg);
 		}
 		&::after {
-			position: absolute;
 			content: '';
-			border-left: 6vw solid transparent;
-			border-right: 6vw solid transparent;
-			border-bottom: 4.2vw solid red;
-			top: 0vw;
-			left: -6.2vw;
+			position: absolute;
+			border-left: 36px solid transparent;
+			border-right: 36px solid transparent;
+			border-bottom: 26px solid @accent-yellow;
+			top: 0;
+			left: -36px;
 			transform: rotate(-70deg);
 		}
 	}
 
+	// === 五边形 ===
 	.pentagon {
 		position: relative;
-		border-left: 1.5vw solid transparent;
-		border-right: 1.5vw solid transparent;
-		border-top: 4vw solid green;
-		background-color: transparent !important;
-		margin-top: 3vw;
-		width: 6vw;
+		width: 34px;
+		height: 0;
+		background: transparent !important;
+		border-left: 12px solid transparent;
+		border-right: 12px solid transparent;
+		border-top: 26px solid @accent-purple;
 		&::after {
 			content: '';
 			position: absolute;
 			width: 0;
-			border-left: 3vw solid transparent;
-			border-right: 3vw solid transparent;
-			border-bottom: 4vw solid green;
-			top: -8vw;
-			left: -1.5vw;
+			border-left: 19px solid transparent;
+			border-right: 19px solid transparent;
+			border-bottom: 26px solid @accent-purple;
+			top: -52px;
+			left: -12px;
 		}
 	}
 
+	// === 六边形 ===
 	.hexagon {
-		width: 6vw;
-		height: 3.1vw;
+		width: 44px;
+		height: 22px;
 		position: relative;
+		background-color: @accent-purple !important;
 		&::before {
-			position: absolute;
 			content: '';
+			position: absolute;
 			width: 0;
-			border-left: 3vw solid transparent;
-			border-right: 3vw solid transparent;
-			border-bottom: 2vw solid rgb(255, 89, 117);
-			top: -2vw;
+			border-left: 22px solid transparent;
+			border-right: 22px solid transparent;
+			border-bottom: 14px solid @accent-purple;
+			top: -14px;
 		}
 		&::after {
-			position: absolute;
 			content: '';
+			position: absolute;
 			width: 0;
-			border-left: 3vw solid transparent;
-			border-right: 3vw solid transparent;
-			border-top: 2vw solid rgb(255, 89, 117);
-			top: 3vw;
+			border-left: 22px solid transparent;
+			border-right: 22px solid transparent;
+			border-top: 14px solid @accent-purple;
+			top: 22px;
 		}
 	}
 
+	// === 八边形 ===
 	.octagon {
-		width: 6vw;
-		height: 6vw;
-		background-color: rgb(255, 0, 242) !important;
+		width: 40px;
+		height: 40px;
+		background-color: @accent-purple !important;
 		position: relative;
 		&::before {
 			content: '';
-			width: 6vw;
+			width: 40px;
 			position: absolute;
 			top: 0;
 			left: 0;
-			border-bottom: 2vw solid rgb(255, 0, 242);
-			border-left: 1.5vw solid #f0f2f5;
-			border-right: 1.5vw solid #f0f2f5;
+			border-bottom: 12px solid @accent-purple;
+			border-left: 10px solid @bg-card;
+			border-right: 10px solid @bg-card;
 			box-sizing: border-box;
 		}
 		&::after {
 			content: '';
-			width: 6vw;
+			width: 40px;
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			border-top: 2vw solid rgb(255, 0, 242);
-			border-left: 1.5vw solid #f0f2f5;
-			border-right: 1.5vw solid #f0f2f5;
+			border-top: 12px solid @accent-purple;
+			border-left: 10px solid @bg-card;
+			border-right: 10px solid @bg-card;
 			box-sizing: border-box;
 		}
 	}
 
+	// === 爱心 ===
 	.heart {
 		position: relative;
-		width: 6vw;
-		height: 5.4vw;
-		background-color: transparent !important;
+		width: 40px;
+		height: 36px;
+		background: transparent !important;
 		&::before,
 		&::after {
-			position: absolute;
 			content: '';
-			left: 3vw;
+			position: absolute;
+			left: 20px;
 			top: 0;
-			width: 3vw;
-			height: 5vw;
-			background-color: red;
-			border-radius: 3vw 3vw 0 0;
+			width: 20px;
+			height: 32px;
+			background: @accent-pink;
+			border-radius: 20px 20px 0 0;
 			transform: rotate(-45deg);
 			transform-origin: 0 100%;
 		}
@@ -245,115 +375,117 @@
 		}
 	}
 
+	// === 无穷 ===
 	.infinity {
 		position: relative;
-		width: 12vw;
-		height: 6vw;
-		box-sizing: content-box;
-		background-color: transparent !important;
+		width: 64px;
+		height: 28px;
+		background: transparent !important;
 		&::before,
 		&::after {
-			position: absolute;
 			content: '';
-			box-sizing: content-box;
-			top: 0;
+			position: absolute;
+			top: -3px;
 			left: 0;
-			width: 3.2vw;
-			height: 3.2vw;
-			border: 1.2vw solid red;
-			border-radius: 3vw 3vw 0 3vw;
+			width: 32px;
+			height: 32px;
+			border: 8px solid @accent-cyan;
+			border-radius: 18px 18px 0 18px;
 			transform: rotate(-45deg);
 		}
 		&::after {
 			left: auto;
 			right: 0;
-			border-radius: 3vw 3vw 3vw 0;
+			border-radius: 18px 18px 18px 0;
 			transform: rotate(45deg);
 		}
 	}
 
+	// === 细菱形 ===
 	.diamondNarrow {
 		width: 0;
-		border: 3vw solid transparent;
-		background-color: transparent !important;
-		border-bottom: 4.2vw solid greenyellow;
+		height: 0;
+		background: transparent !important;
+		border: 20px solid transparent;
+		border-bottom: 28px solid @accent-cyan;
 		position: relative;
-		top: -3vw;
+		top: -20px;
 		&::after {
-			position: absolute;
 			content: '';
-			border: 3vw solid transparent;
-			border-top: 4.2vw solid rgb(13, 0, 255);
-			top: 4vw;
-			left: -3vw;
+			position: absolute;
+			border: 20px solid transparent;
+			border-top: 28px solid @accent-pink;
+			top: 28px;
+			left: -20px;
 		}
 	}
 
+	// === 菱形 ===
 	.diamond {
-		background-color: transparent !important;
+		width: 20px;
+		height: 0;
+		background: transparent !important;
 		border-style: solid;
-		border-color: transparent transparent rgb(255, 0, 0) transparent;
-		border-width: 0 1.5vw 1.5vw 1.5vw;
-		width: 3vw;
-		box-sizing: content-box;
+		border-color: transparent transparent @accent-cyan transparent;
+		border-width: 0 12px 12px 12px;
 		position: relative;
-		margin: 0.7vw 0 3vw 0;
+		margin: 0;
 		&::before {
+			content: '';
 			width: 0;
 			position: absolute;
-			content: '';
-			border: 3vw solid transparent;
-			border-top: 3vw solid red;
-			left: -1.5vw;
-			top: 1.5vw;
+			border: 20px solid transparent;
+			border-top: 20px solid @accent-cyan;
+			left: -12px;
+			top: 12px;
 		}
 	}
 
+	// === 吃豆人 ===
 	.pacman {
 		width: 0;
 		height: 0;
-		background-color: transparent !important;
-		border-right: 3.6vw solid transparent;
-		border-top: 3.6vw solid black;
-		border-left: 3.6vw solid black;
-		border-bottom: 3.6vw solid black;
-		border-top-left-radius: 3.6vw;
-		border-top-right-radius: 3.6vw;
-		border-bottom-left-radius: 3.6vw;
-		border-bottom-right-radius: 3.6vw;
+		background: transparent !important;
+		border-right: 24px solid transparent;
+		border-top: 24px solid @accent-yellow;
+		border-left: 24px solid @accent-yellow;
+		border-bottom: 24px solid @accent-yellow;
+		border-radius: 50%;
 	}
 
+	// === 气泡框 ===
 	.talkbubble {
-		width: 7vw;
-		height: 4.5vw;
+		width: 52px;
+		height: 32px;
 		position: relative;
-		border-radius: 1vw;
+		border-radius: 8px;
+		background-color: @accent-pink !important;
 		&::before {
 			content: '';
 			position: absolute;
 			right: 100%;
-			top: 1.5vw;
-			border-top: 0.75vw solid transparent;
-			border-right: 1.5vw solid rgb(255, 89, 117);
-			border-bottom: 0.75vw solid transparent;
+			top: 10px;
+			border-top: 6px solid transparent;
+			border-right: 12px solid @accent-pink;
+			border-bottom: 6px solid transparent;
 		}
 	}
 
+	// === 爆炸12 ===
 	.burst12 {
-		background-color: aqua !important;
-		width: 5vw;
-		height: 5vw;
+		width: 32px;
+		height: 32px;
+		background: @accent-orange !important;
 		position: relative;
-		text-align: center;
 		&::after,
 		&::before {
-			position: absolute;
 			content: '';
+			position: absolute;
 			top: 0;
 			left: 0;
-			height: 5vw;
-			width: 5vw;
-			background-color: aqua;
+			width: 32px;
+			height: 32px;
+			background: @accent-orange;
 		}
 		&::before {
 			transform: rotate(30deg);
@@ -363,112 +495,123 @@
 		}
 	}
 
+	// === 太极 ===
 	.Taiji {
 		width: 0;
-		height: 9vw;
-		border-right: 4.5vw solid #fff;
-		border-left: 4.5vw solid #000;
+		height: 56px;
+		border-right: 28px solid #e6edf3;
+		border-left: 28px solid #0d1117;
 		border-radius: 50%;
 		position: relative;
+		background: transparent !important;
 		&::before {
-			display: block;
 			content: '';
+			display: block;
 			box-sizing: content-box;
-			background-color: #fff;
-			border: 2vw solid #000;
-			width: 0.5vw;
-			height: 0.5vw;
+			background: #e6edf3;
+			border: 12px solid #0d1117;
+			width: 4px;
+			height: 4px;
 			border-radius: 50%;
-			margin-left: -2.25vw;
+			margin-left: -14px;
 		}
 		&::after {
-			display: block;
 			content: '';
+			display: block;
 			box-sizing: content-box;
-			background-color: #000;
-			border: 2vw solid #fff;
-			width: 0.5vw;
-			height: 0.5vw;
+			background: #0d1117;
+			border: 12px solid #e6edf3;
+			width: 4px;
+			height: 4px;
 			border-radius: 50%;
-			margin-left: -2.25vw;
+			margin-left: -14px;
 		}
 		&:hover {
-			box-shadow:
-				5px 0 10px #457b9d,
-				-5px 0 10px #06d6a0,
-				0 5px 10px #480ca8,
-				0 -5px 10px #e63946;
+			animation: taijiSpin 2s linear infinite;
 		}
 	}
 
+	// === 放大镜 ===
 	.magnifyingGlass {
-		font-size: 10em;
-		display: inline-block;
-		width: 0.7em;
-		height: 0.7em;
-		border: 0.1em solid red;
+		font-size: 6px;
+		display: block;
+		line-height: 0;
+		width: 6em;
+		height: 6em;
+		border: 1em solid @accent-cyan;
 		position: relative;
-		border-radius: 0.35em;
-		background-color: transparent !important;
+		border-radius: 50%;
+		background: transparent !important;
 		&::before {
-			position: absolute;
 			content: '';
-			display: inline-block;
-			right: -0.25em;
-			bottom: -0.1em;
-			border-width: 0;
-			background-color: red;
-			width: 0.35em;
-			height: 0.08em;
+			position: absolute;
+			right: -2.4em;
+			bottom: -0.6em;
+			background: @accent-cyan;
+			width: 3em;
+			height: 0.8em;
 			transform: rotate(45deg);
 		}
 	}
 
+	// === 月亮 ===
 	.moon {
-		width: 6vw;
-		height: 6vw;
+		width: 44px;
+		height: 44px;
 		border-radius: 50%;
-		box-shadow: 1vw 1vw 0 0 red;
-		background-color: transparent !important;
+		box-shadow: 10px 8px 0 0 @accent-yellow;
+		background: transparent !important;
 	}
 
+	// === 锁 ===
 	.lock {
-		font-size: 8px;
+		font-size: 3px;
 		position: relative;
-		width: 18em;
-		height: 13em;
+		width: 16em;
+		height: 12em;
 		border-radius: 2em;
-		top: 10em;
 		box-sizing: border-box;
-		border: 3.5em solid red;
-		border-right-width: 7.5em;
-		border-left-width: 7.5em;
-		margin: 0 0 6rem 0;
-		background-color: transparent !important;
+		border: 3em solid @accent-yellow;
+		border-right-width: 7em;
+		border-left-width: 7em;
+		background: transparent !important;
 		&::before {
 			content: '';
 			box-sizing: border-box;
 			position: absolute;
-			border: 2.5em solid red;
-			width: 14em;
-			height: 12em;
+			border: 2.2em solid @accent-yellow;
+			width: 13em;
+			height: 11em;
 			left: 50%;
-			margin-left: -7em;
-			top: -12em;
-			border-top-left-radius: 7em;
-			border-top-right-radius: 7em;
+			margin-left: -6.5em;
+			top: -11em;
+			border-top-left-radius: 6.5em;
+			border-top-right-radius: 6.5em;
 		}
 		&::after {
 			content: '';
 			box-sizing: border-box;
 			position: absolute;
-			border: 1em solid red;
+			border: 0.8em solid @accent-yellow;
 			width: 5em;
-			height: 8em;
+			height: 7em;
 			border-radius: 2.5em;
 			left: 50%;
-			top: -1em;
+			top: -0.5em;
 			margin-left: -2.5em;
 		}
+	}
+}
+
+// ==========================================
+// 动画
+// ==========================================
+
+@keyframes taijiSpin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
 	}
 }
