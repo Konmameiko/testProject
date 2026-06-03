@@ -28,14 +28,18 @@ interface pt2Type {
 // Drawing variables
 let canvas: HTMLCanvasElement;
 let context: CanvasRenderingContext2D;
-let position: ptType = { x: 0, y: window.innerHeight / 2 };
+let position: ptType = { x: 0, y: 0 };
 let mouse: pt2Type = { x: 0, y: 0, down: false };
 export default class index extends Component {
+	containerRef = React.createRef<HTMLDivElement>();
+
 	componentDidMount() {
 		canvas = document.getElementById('canvas') as HTMLCanvasElement;
 		context = canvas.getContext('2d') as CanvasRenderingContext2D;
-		canvas.width = window.innerWidth * 0.8;
-		canvas.height = window.innerHeight * 0.9;
+		this.resizeCanvas();
+
+		// 检测夜间模式，设置画布文字颜色
+		this.setCanvasFillStyle();
 
 		canvas.addEventListener('mousemove', this.mouseMove, false);
 		canvas.addEventListener('mousedown', this.mouseDown, false);
@@ -43,17 +47,46 @@ export default class index extends Component {
 		canvas.addEventListener('mouseout', this.mouseUp, false);
 		canvas.addEventListener('dblclick', this.doubleClick, false);
 
-		window.onresize = function () {
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-		};
+		// 监听容器尺寸变化
+		if (this.containerRef.current) {
+			new ResizeObserver(() => {
+				this.resizeCanvas();
+			}).observe(this.containerRef.current);
+		}
+
+		// 监听系统主题变化，更新画布文字颜色
+		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+			this.setCanvasFillStyle();
+		});
 	}
 
+	// 根据容器尺寸设置 canvas 大小
+	resizeCanvas = () => {
+		if (!this.containerRef.current || !canvas) return;
+		const { clientWidth, clientHeight } = this.containerRef.current;
+		canvas.width = clientWidth;
+		canvas.height = clientHeight;
+		this.setCanvasFillStyle();
+	};
+
+	// 根据系统主题设置画布填充颜色
+	setCanvasFillStyle = () => {
+		if (!context) return;
+		const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		context.fillStyle = isDark ? '#e0e0e0' : '#333';
+	};
+
+	// 获取鼠标相对于 canvas 的坐标
+	getCanvasOffset = () => {
+		const rect = canvas.getBoundingClientRect();
+		return { left: rect.left, top: rect.top };
+	};
+
 	// 移动事件
-	mouseMove = (event: any) => {
-		// 减去div外的宽高
-		mouse.x = event.pageX - 76;
-		mouse.y = event.pageY - 90;
+	mouseMove = (event: MouseEvent) => {
+		const offset = this.getCanvasOffset();
+		mouse.x = event.pageX - offset.left;
+		mouse.y = event.pageY - offset.top;
 		this.draw();
 	};
 
@@ -97,10 +130,11 @@ export default class index extends Component {
 		return Math.sqrt(xs + ys);
 	};
 
-	mouseDown = (event: any) => {
+	mouseDown = (event: MouseEvent) => {
 		mouse.down = true;
-		position.x = event.pageX - 76;
-		position.y = event.pageY - 90;
+		const offset = this.getCanvasOffset();
+		position.x = event.pageX - offset.left;
+		position.y = event.pageY - offset.top;
 		const infoHtml = document.getElementById('info') as HTMLSpanElement;
 		infoHtml.style.display = 'none';
 	};
@@ -125,9 +159,9 @@ export default class index extends Component {
 
 	render() {
 		return (
-			<div className={styles.body}>
+			<div className={styles.body} ref={this.containerRef}>
 				<canvas id="canvas"></canvas>
-				<span id="info">Click and drag to draw!</span>
+				<span id="info">按住鼠标拖拽书写</span>
 			</div>
 		);
 	}
