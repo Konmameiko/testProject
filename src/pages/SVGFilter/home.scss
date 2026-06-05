@@ -1,79 +1,177 @@
-.home {
-	position: relative;
-	width: 100%;
-	height: auto;
-	body {
-		//background-color:black;
-		color: black;
-		margin: 0;
+/*
+ * SVG滤镜展示页 — Dark Theme Showcase
+ * antd Tabs 标签切换，暗色主题覆盖
+ */
+
+// ==================== 暗色主题变量 ====================
+$bg-primary: #0d1117;
+$bg-card: #161b22;
+$border-card: #30363d;
+$text-primary: #e6edf3;
+$text-secondary: #8b949e;
+$accent: #58a6ff;
+
+// ==================== 页面容器 ====================
+.body {
+	min-height: 100vh;
+	background: $bg-primary;
+	color: $text-primary;
+	display: flex;
+	flex-direction: column;
+
+	:global {
+		.ant-layout {
+			background: transparent;
+		}
+	}
+}
+
+// ==================== 顶部标题 + 标签导航栏 ====================
+.header {
+	background: $bg-primary;
+	border-bottom: 1px solid $border-card;
+	padding: 24px 48px 0 110px;
+	flex-shrink: 0;
+
+	.title {
+		margin: 0 0 12px;
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: $text-primary;
+		letter-spacing: 2px;
+	}
+
+	// 覆盖 antd Tabs 暗色样式
+	:global {
+		.ant-tabs {
+			color: $text-primary;
+		}
+		.ant-tabs-nav {
+			margin-bottom: 0;
+			&::before {
+				border-bottom: 1px solid transparent;
+			}
+		}
+		.ant-tabs-tab {
+			color: $text-secondary;
+			font-size: 14px;
+			padding: 12px 24px;
+
+			&:hover {
+				color: $accent;
+			}
+
+			.ant-tabs-tab-btn {
+				font-weight: 500;
+				letter-spacing: 0.5px;
+			}
+		}
+		.ant-tabs-tab-active .ant-tabs-tab-btn {
+			color: $accent !important;
+		}
+		.ant-tabs-ink-bar {
+			background: $accent;
+			height: 2px;
+		}
+	}
+}
+
+// ==================== 内容展示区 ====================
+.content {
+	flex: 1;
+	background: $bg-primary;
+	padding: 40px 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: auto;
+}
+
+// ==================== 返回首页按钮（btn7 风格：渐变缩放旋转） ====================
+.homeBtn {
+	position: fixed;
+	top: 16px;
+	left: 16px;
+	z-index: 1000;
+	text-transform: uppercase;
+	height: 36px;
+	color: #fff;
+	border-radius: 5px;
+	padding: 0 20px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+	font-size: 13px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	border: none;
+	outline: none;
+	background-color: #1fd1f9;
+	background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+	line-height: 36px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+
+	&:after {
+		position: absolute;
+		content: ' ';
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
 		height: 100%;
-		overflow-y: scroll;
+		background-color: #1fd1f9;
+		background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+		transition: all 0.3s ease;
+		border-radius: 5px;
 	}
 
-	h1 {
-		color: chartreuse;
+	&:hover {
+		background: transparent;
+		color: #fff;
+
+		&:after {
+			transform: scale(2) rotate(180deg);
+		}
+	}
+}
+
+// ==================== 响应式 ====================
+@media (max-width: 1024px) {
+	.header {
+		padding: 20px 24px 0 100px;
 	}
 
-	/*去掉列表前面的圆点*/
-	ul,
-	ol {
-		list-style: none;
+	.content {
+		padding: 32px 24px;
 	}
 
-	input {
-		padding-top: 0;
-		padding-bottom: 0;
-		font-family: 'SimSun', '宋体';
+	.header :global {
+		.ant-tabs-tab {
+			padding: 10px 16px;
+			font-size: 13px;
+		}
+	}
+}
+
+@media (max-width: 640px) {
+	.header {
+		padding: 14px 12px 0 90px;
+
+		.title {
+			font-size: 0.35rem;
+		}
 	}
 
-	/*字体一般是指定这两个*/
-	select,
-	input {
-		vertical-align: middle;
+	.content {
+		padding: 20px 12px;
 	}
 
-	select,
-	input,
-	textarea {
-		font-size: 12px;
-		margin: 0;
-	}
-
-	textarea {
-		resize: none;
-	}
-
-	/*禁止文本输入框在右下角拖拽（因为拖动后会调整输入框大小）*/
-	img {
-		border: 0;
-		vertical-align: middle;
-	}
-
-	/* 去掉图片底侧默认的3像素空白缝隙*/
-	table {
-		border-collapse: collapse;
-	}
-
-	s,
-	i,
-	em {
-		font-style: normal;
-		text-decoration: none;
-	}
-	.logo {
-		height: 32px;
-		margin: 16px;
-		background: rgba(255, 255, 255, 0.3);
-		color: white;
-		text-align: center;
-		font-size: 24px;
-		line-height: 32px;
-		font-weight: 800;
-		font-family: 'Times New Roman', Times, serif;
-	}
-
-	.siteLayout,
-	.siteLayoutBackground {
-		background: #fff;
+	.header :global {
+		.ant-tabs-tab {
+			padding: 8px 12px;
+			font-size: 12px;
+		}
 	}
 }
