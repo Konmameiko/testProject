@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, ReactElement } from 'react';
 import { useSearchParams, history } from 'umi';
 import { Tabs, Menu, Layout } from 'antd';
 import Rotate from './PhotoWithHtml/PhotoRotate';
@@ -28,7 +28,7 @@ const { Header, Sider, Content } = Layout;
 interface MenuItem {
 	label: string;
 	key: string;
-	component: React.ReactElement;
+	component: ReactElement;
 }
 
 const TABS = [
@@ -81,7 +81,7 @@ export default function Index() {
 	});
 
 	const componentMap = useMemo(() => {
-		const map = new Map<string, React.ReactElement>();
+		const map = new Map<string, ReactElement>();
 		for (const items of Object.values(MENUS)) {
 			for (const { key, component } of items) {
 				map.set(key, component);

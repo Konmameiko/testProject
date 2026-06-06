@@ -7,7 +7,7 @@
  */
 /* 参考网址：https://juejin.cn/post/7071518211392405541 */
 import axios, { AxiosResponse } from 'axios';
-import type { AxiosInstance, AxiosRequestConfig } from 'axios';
+import type { AxiosInstance, AxiosRequestConfig } from 'axios'; // eslint-disable-line no-duplicate-imports
 
 export interface RequestInterceptors<T> {
 	// 请求拦截
@@ -97,6 +97,7 @@ class Request {
 		return new Promise((resolve, reject) => {
 			// 如果为单个请求设置拦截器 这里使用单个请求的拦截器
 			if (config.interceptors?.requestInterceptors) {
+				// eslint-disable-next-line no-param-reassign
 				config = config.interceptors.requestInterceptors(config);
 			}
 
@@ -116,6 +117,7 @@ class Request {
 				.then(res => {
 					// 如果为单个响应设置拦截器 这里使用单个响应的拦截器
 					if (config.interceptors?.responseInterceptors) {
+						// eslint-disable-next-line no-param-reassign
 						res = config.interceptors.responseInterceptors(res);
 					}
 					resolve(res);

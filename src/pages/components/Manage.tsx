@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useState, useRef } from 'react';
+/* eslint-disable no-mixed-spaces-and-tabs, no-use-before-define, array-callback-return */
+import React, { useEffect, useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { history } from 'umi';
 import styles from './manage.scss';
@@ -86,7 +87,7 @@ const Manage = () => {
 											<img className={`${styles.managePhoto} ${styles[item.style]}`} src={imageArr[index % 6]} />
 										</SwiperSlide>
 									);
-							  })
+								})
 							: null}
 					</Swiper>
 
@@ -106,7 +107,7 @@ const Manage = () => {
 											<CodePart title={item.title} codeStr={item.codeStr} />
 										</SwiperSlide>
 									);
-							  })
+								})
 							: null}
 					</Swiper>
 				</div>

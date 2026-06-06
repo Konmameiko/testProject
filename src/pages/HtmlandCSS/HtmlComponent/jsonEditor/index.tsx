@@ -5,6 +5,7 @@
  * @lastEditTime: Do not edit
  * @LastEditors: KonmaMeiko
  */
+/* eslint-disable no-unused-vars, no-console */
 import { useEffect, useState } from 'react';
 import jsoneditor, { JSONEditorOptions } from 'jsoneditor';
 
@@ -13,7 +14,7 @@ import './index.less';
 
 const JsonEditor = (props: any) => {
 	let jsonEditor: jsoneditor;
-	const [flag, setFlag] = useState(false);
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [jsonRef, setJsonRef] = useState<any>(null);
 
 	const renderJsonEditor = () => {
@@ -38,6 +39,7 @@ const JsonEditor = (props: any) => {
 		const container = document.getElementById('jsoneditor-react');
 
 		if (container) {
+			// eslint-disable-next-line new-cap
 			jsonEditor = new jsoneditor(container, options);
 			jsonEditor.set(value);
 		}
@@ -60,6 +62,7 @@ const JsonEditor = (props: any) => {
 		const defaultKey = ['action'];
 
 		const container = document.getElementById('jsoneditor-react');
+		// eslint-disable-next-line no-console
 		console.log(container);
 	};
 

@@ -1,10 +1,10 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import 'css-doodle'; // 该组件将通过其内部的规则（纯 CSS）生成一个 div 网格 可用以生成图形模式或动画图形。
 import styles from './index.scss';
 
 export interface IProps {}
 
-const GlassBg: FC<IProps> = ({}) => {
+const GlassBg: FC<IProps> = () => {
 	const doodle = document.querySelector('css-doodle') as any;
 	const updateCss = () => {
 		doodle && doodle.update();
@@ -50,5 +50,5 @@ const GlassBg: FC<IProps> = ({}) => {
 		</div>
 	);
 };
-//memo的使用在不希望一直跟随父组件更新的子组件上
+// memo的使用在不希望一直跟随父组件更新的子组件上
 export default React.memo(GlassBg);

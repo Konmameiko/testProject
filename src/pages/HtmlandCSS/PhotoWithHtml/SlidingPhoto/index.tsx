@@ -8,6 +8,8 @@
 import React, { Component } from 'react';
 import styles from './index.scss';
 
+/* eslint-disable class-methods-use-this */
+
 export default class SlidingPhoto extends Component {
 	photolist: any;
 
@@ -39,13 +41,13 @@ export default class SlidingPhoto extends Component {
 			for (let attr in json) {
 				let iCur = 0;
 				if (attr === 'opacity') {
-					if (Math.round(parseFloat(this.getStyle(obj, attr)) * 100) == 0) {
+					if (Math.round(parseFloat(this.getStyle(obj, attr)) * 100) === 0) {
 						iCur = Math.round(parseFloat(this.getStyle(obj, attr)) * 100);
 					} else {
 						iCur = Math.round(parseFloat(this.getStyle(obj, attr)) * 100) || 100;
 					}
 				} else {
-					iCur = parseInt(this.getStyle(obj, attr)) || 0;
+					iCur = parseInt(this.getStyle(obj, attr), 10) || 0;
 				}
 				let iSpeed = (json[attr] - iCur) / 8;
 				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);

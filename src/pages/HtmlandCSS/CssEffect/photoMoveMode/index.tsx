@@ -5,7 +5,8 @@
  * @LastEditTime: 2023-07-17 21:35:37
  * @LastEditors: KonmaMeiko
  */
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+/* eslint-disable no-use-before-define, no-param-reassign, array-callback-return */
+import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './index.less';
 
 import image1 from '@/assets/images/1.webp';
@@ -18,7 +19,7 @@ import voice1 from '@/assets/audios/windy.mp3';
 export interface IProps {}
 
 const PhotoMode: FC<IProps> = () => {
-	let timer: NodeJS.Timeout | null = null;
+	let timer: ReturnType<typeof setTimeout> | null = null;
 	const ulRef = useRef<HTMLUListElement>(null);
 	const animFlag = useRef<boolean>(false);
 	const refArr = useRef<Array<any>>([]);
@@ -136,15 +137,17 @@ const AudioPlay = () => {
 			// loop
 			// controls={true}
 			onEnded={() => {
+				// eslint-disable-next-line no-console
 				console.log('what fuck');
 			}}
 			crossOrigin="anonymous"
 		/>
 	);
 };
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 interface IliProps {
 	image: string;
 	text: string;
 }
-//memo的使用在不希望一直跟随父组件更新的子组件上
+// memo的使用在不希望一直跟随父组件更新的子组件上
 export default React.memo(PhotoMode);

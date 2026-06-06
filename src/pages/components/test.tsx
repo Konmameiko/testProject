@@ -1,6 +1,6 @@
-import { Table, Tabs } from 'antd';
+/* eslint-disable class-methods-use-this, no-console, no-unused-vars */
+import { Tabs } from 'antd';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import styles from './index.less';
 
 const { TabPane } = Tabs;

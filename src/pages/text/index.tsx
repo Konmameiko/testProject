@@ -1,11 +1,14 @@
+/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { history } from 'umi';
 import styles from './text.scss';
 
+/* eslint-disable no-unused-vars */
 declare module 'react' {
 	interface HTMLAttributes<T> {
 		alt?: string;
 	}
+	/* eslint-enable no-unused-vars */
 }
 
 interface TextItem {

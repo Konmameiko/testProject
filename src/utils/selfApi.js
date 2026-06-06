@@ -1,3 +1,4 @@
+/* eslint-disable */
 const handleTimeSpend = (fn, args) => {
 	console.log('传入参数：', typeof fn, ...args);
 	console.time('test');
@@ -66,7 +67,7 @@ const SomeFun1 = (prev, cur) => {
 // console.log([1, 2, 3, , 11, 6, 7].selfReduce(SomeFun1, undefined))
 
 // 利用reduce实现flat方法
-//flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
+// flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
 const selfFlat = function (depth = 1) {
 	// 设定默认深度为1
 	let arr = Array.prototype.slice.call(this);
@@ -176,9 +177,9 @@ const selfBind = function (bindTarget, ...args1) {
 		// 使用new关键字调用返回新对象
 		if (new.target) {
 			let res = originFunc.call(this, ...args1, ...args2);
-			//如果构造函数返回一个对象则返回这个对象
+			// 如果构造函数返回一个对象则返回这个对象
 			if (isComplexDataType(res)) return res;
-			//否则返回新建的对象
+			// 否则返回新建的对象
 			return this;
 		} else {
 			return originFunc.call(bindTarget, ...args1, ...args2);

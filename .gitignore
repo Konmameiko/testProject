@@ -10,6 +10,7 @@
 #agent
 /.claude
 /memory
+/docs/team-misaka.md
 
 # production
 /dist

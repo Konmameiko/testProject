@@ -5,6 +5,7 @@
  * @LastEditTime: 2026-06-05 00:00:00
  * @LastEditors: KonmaMeiko
  */
+/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import logo from '../../../assets/images/11.webp';
 import styles from './basic.less';

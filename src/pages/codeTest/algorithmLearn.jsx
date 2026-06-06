@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, no-param-reassign */
 /*
  * @Description:
  * @Author: KonmaMeiko
@@ -6,7 +6,6 @@
  * @lastEditTime: Do not edit
  * @LastEditors: KonmaMeiko
  */
-import moment from 'moment';
 
 const ProgressDemos = () => {
 	let minNumberOfHours = function (initialEnergy, initialExperience, energy, experience) {

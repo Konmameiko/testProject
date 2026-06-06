@@ -5,7 +5,7 @@
  * @LastEditTime: 2023-04-09 00:23:23
  * @LastEditors: KonmaMeiko
  */
-import React, { FC, useState, useRef, useCallback, useEffect } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import styles from './index.less';
 
 export interface IProps {}
@@ -15,7 +15,7 @@ const LazyEye: FC<IProps> = () => {
 	const eyeRef = useRef<HTMLDivElement>(null);
 	const ballref = useRef<HTMLDivElement>(null);
 	const stateArr = ['sleeping', 'angry', 'veryAngry', 'work'];
-	let timer: NodeJS.Timeout | null = null;
+	let timer: ReturnType<typeof setTimeout> | null = null;
 
 	useEffect(() => {
 		if (eyeState === 0) {
@@ -117,5 +117,5 @@ const LazyEye: FC<IProps> = () => {
 		</div>
 	);
 };
-//memo的使用在不希望一直跟随父组件更新的子组件上
+// memo的使用在不希望一直跟随父组件更新的子组件上
 export default React.memo(LazyEye);

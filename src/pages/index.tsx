@@ -6,7 +6,7 @@
  * @LastEditors: KonmaMeiko
  */
 import styles from './index.less';
-import { Link, history } from 'umi';
+import { Link } from 'umi';
 import React, { Component } from 'react';
 import icon1 from '../assets/darksouls_icon/1.png';
 import icon2 from '../assets/darksouls_icon/2.png';
@@ -25,6 +25,25 @@ interface menuItemProps {
 	router: string;
 }
 
+const MenuItem = ({ text, icon, router }: menuItemProps) => {
+	const onIconHover = (type: number) => {
+		type === 1
+			? ((document.getElementById(`${text}-id`) as HTMLElement).style.backgroundImage = `url(${darkSoulGif})`)
+			: ((document.getElementById(`${text}-id`) as HTMLElement).style.backgroundImage = `url(${bg1})`);
+	};
+
+	return (
+		<div className={styles.muneItenBody} onMouseEnter={() => onIconHover(1)} onMouseLeave={() => onIconHover(2)}>
+			<div id={`${text}-id`} className={styles.routerBtn} style={{ backgroundImage: `url(${bg1})` }}>
+				<Link to={router}>
+					<img className={styles.menuIcon} src={icon} alt="图标" />
+					<span className={styles.text}>{text}</span>
+				</Link>
+			</div>
+		</div>
+	);
+};
+
 export default class IndexPage extends Component<any, any> {
 	timer: any | null = null;
 	MenuItemArr = [
@@ -40,15 +59,11 @@ export default class IndexPage extends Component<any, any> {
 
 	componentDidMount() {
 		window.addEventListener('visibilitychange', this.onViewChange);
-		// if ('paintWorklet' in CSS) {
-		//   // 将文件放入public文件夹下方便引入
-		//   (CSS as any).paintWorklet.addModule('worklet/CSSHoudini.js');
-		// }
 	}
 
 	onViewChange(): void {
-		let hidden = document.visibilityState;
-		if (hidden == 'hidden') {
+		const hidden = document.visibilityState;
+		if (hidden === 'hidden') {
 			this.timer && clearTimeout(this.timer);
 			document.title = '页面要崩溃了~';
 		} else {
@@ -86,22 +101,3 @@ export default class IndexPage extends Component<any, any> {
 		);
 	}
 }
-
-const MenuItem = ({ text, icon, router }: menuItemProps) => {
-	const onIconHover = (type: number) => {
-		type === 1
-			? ((document.getElementById(`${text}-id`) as HTMLElement).style.backgroundImage = `url(${darkSoulGif})`)
-			: ((document.getElementById(`${text}-id`) as HTMLElement).style.backgroundImage = `url(${bg1})`);
-	};
-
-	return (
-		<div className={styles.muneItenBody} onMouseEnter={() => onIconHover(1)} onMouseLeave={() => onIconHover(2)}>
-			<div id={`${text}-id`} className={styles.routerBtn} style={{ backgroundImage: `url(${bg1})` }}>
-				<Link to={router}>
-					<img className={styles.menuIcon} src={icon} alt="图标" />
-					<span className={styles.text}>{text}</span>
-				</Link>
-			</div>
-		</div>
-	);
-};

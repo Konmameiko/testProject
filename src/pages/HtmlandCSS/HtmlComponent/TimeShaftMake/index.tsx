@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import React, { Component, useMemo } from 'react';
 import styles from './index.less';
 

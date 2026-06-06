@@ -1,4 +1,4 @@
-/* eslint-disable array-callback-return */
+/* eslint-disable array-callback-return, no-alert */
 /*
  * @Description:
  * @Author: KonmaMeiko

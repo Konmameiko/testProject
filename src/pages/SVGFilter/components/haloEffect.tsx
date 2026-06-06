@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import styles from './basic.less';
 
 export default class HaloEffect extends Component {
+	/* eslint-disable-next-line class-methods-use-this */
 	render() {
 		return (
 			<div className={styles.content}>

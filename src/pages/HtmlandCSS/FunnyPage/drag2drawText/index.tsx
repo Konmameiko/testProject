@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styles from './index.less';
 
+/* eslint-disable class-methods-use-this */
+
 // 原项目地址  https://codepen.io/tholman/pen/qCnfB
 let counter = 0;
 let minFontSize = 6;
@@ -117,8 +119,8 @@ export default class index extends Component {
 	};
 
 	distance = (pt: ptType, pt2: pt2Type) => {
-		var xs = 0;
-		var ys = 0;
+		let xs = 0;
+		let ys = 0;
 
 		xs = pt2.x - pt.x;
 		xs = xs * xs;
@@ -144,7 +146,7 @@ export default class index extends Component {
 	};
 
 	doubleClick = () => {
-		canvas.width = canvas.width;
+		canvas.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height);
 		const infoHtml = document.getElementById('info') as HTMLSpanElement;
 		infoHtml.style.display = 'inline';
 	};

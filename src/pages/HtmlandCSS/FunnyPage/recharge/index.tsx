@@ -5,7 +5,7 @@
  * @LastEditTime: 2026-05-26 00:00:23
  * @LastEditors: KonmaMeiko
  */
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import styles from './index.scss';
 export interface Iprops {}
 

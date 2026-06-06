@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './index.less';
+/* eslint-disable class-methods-use-this */
 export default class index extends Component {
 	timer: any | null = null;
 

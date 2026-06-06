@@ -5,6 +5,7 @@
  * @lastEditTime: Do not edit
  * @LastEditors: KonmaMeiko
  */
+/* eslint-disable class-methods-use-this */
 import { Component } from 'react';
 import styles from './index.less';
 import Scratch from 'react-scratch-perfect';
@@ -14,17 +15,17 @@ class PhotoErasure extends Component {
 		return (
 			<div className={styles.body}>
 				<Scratch
-					//填充图片
+					// 填充图片
 					img={require('@/assets/images/32.webp')}
-					//内部图片与上下左右的间距值
+					// 内部图片与上下左右的间距值
 					round={[0, 0, 0, 0]}
-					//画笔直径
+					// 画笔直径
 					size={50}
-					//完成多少算结束
+					// 完成多少算结束
 					percentage={70}
-					//结束后是否清空画布
+					// 结束后是否清空画布
 					clear={true}
-					//鼠标抬起时触发事件
+					// 鼠标抬起时触发事件
 					mode="end"
 					className={styles.scratch}
 					/* imgRepeat:
