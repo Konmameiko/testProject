@@ -1,18 +1,14 @@
 module.exports = {
 	// 解析ES6
-	parser: 'babel-eslint',
+	parser: '@typescript-eslint/parser',
 	parserOptions: {
-		// 启用ES8语法支持
-		ecmaVersion: 2017,
-		// module表示ECMAScript模块
+		ecmaVersion: 2018,
 		sourceType: 'module',
-		// 使用额外的语言特性
 		ecmaFeatures: {
-			experimentalObjectRestSpread: true,
 			jsx: true,
-			modules: true,
 		},
 	},
+	plugins: ['@typescript-eslint'],
 	// 这些环境并不是互斥的，所以你可以同时定义多个
 	env: {
 		browser: true,
