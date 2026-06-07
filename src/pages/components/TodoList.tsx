@@ -12,15 +12,11 @@ export default class TodoList extends Component {
 	state = { data: [{ id: 0, name: '吃饭', isdone: false }], total: 0 };
 
 	componentDidMount() {
-		const stroageData = localStorage.getItem('lists');
-		let total = 0;
-		if (stroageData) {
-			this.setState({ data: JSON.parse(stroageData) }, () => {
-				this.state.data.map(item => {
-					if (item.isdone === true) total++;
-					this.setState({ total: total });
-				});
-			});
+		const storageData = localStorage.getItem('lists');
+		if (storageData) {
+			const parsedData = JSON.parse(storageData);
+			const total = parsedData.filter((item: any) => item.isdone === true).length;
+			this.setState({ data: parsedData, total });
 		} else {
 			localStorage.setItem('lists', JSON.stringify([]));
 		}
@@ -45,22 +41,23 @@ export default class TodoList extends Component {
 		}
 	};
 
-	handleCheck = (id: Number) => {
+	handleCheck = (id: number) => {
 		return (e: any) => {
 			let total = 0;
-			this.state.data.map(item => {
+			const newData = this.state.data.map(item => {
 				if (item.id === id) {
-					item.isdone = e.target.checked;
+					const updated = { ...item, isdone: e.target.checked };
+					if (updated.isdone) total++;
+					return updated;
 				}
-				if (item.isdone === true) {
-					total++;
-				}
+				if (item.isdone) total++;
+				return item;
 			});
-			this.setState({ total: total });
+			this.setState({ data: newData, total });
 		};
 	};
 
-	delOne = (id: Number) => {
+	delOne = (id: number) => {
 		return () => {
 			if (confirm('确认要删除吗？')) {
 				let total = this.state.total;

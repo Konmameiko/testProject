@@ -1,8 +1,8 @@
 # 御坂网络 - 项目任务列表
 
-> 最后更新: 2026-06-06 23:10
+> 最后更新: 2026-06-07 22:35
 > 团队: misaka-team
-> 状态: ✅ 全部完成，Team 待收队
+> 状态: 🔄 持续迭代中
 
 ## 任务概览
 
@@ -14,6 +14,7 @@
 | 4 | 类型安全与代码规范检查 | ✅ completed | 御坂20001号 | ~~#1~~ |
 | 5 | 组件复用性与架构优化建议 | ✅ completed | 御坂19090号 | ~~#2~~ |
 | 6 | ESLint 全面修复（164→0） | ✅ completed | 御坂10032号 | ~~#4~~ |
+| 7 | 修复 TodoList 直接修改 this.state.data | ✅ completed | 御坂10032号 | ~~#2~~ |
 
 ## 产出汇总
 
@@ -66,13 +67,23 @@
 - **修改文件**：27个源文件
 - **关键重构**：util.ts/func.ts 从 Singleton Class → 纯函数导出
 
+### #7 修复 TodoList 直接修改 this.state.data ✅ 新增
+- **问题**：`handleCheck` 中直接 `item.isdone = e.target.checked` 篡改 state 对象，且未通过 `setState` 更新 data，React 不会重渲染
+- **辅修**：`componentDidMount` 中 `.map()` 当 `forEach()` 用，循环内反复调 `setState`
+- **TS类型**：`Number` → `number`（原始类型约定）
+- **修复方案**：
+  - `handleCheck`：用 `.map()` 返回新数组，`{...item, isdone: checked}` 不可变更新，一次 `setState({data, total})`
+  - `componentDidMount`：用 `.filter().length` 一次计算 total，一次 `setState({data, total})`
+  - 修正 `delOne` 参数类型 `Number` → `number`
+- **修改文件**：1个 (`src/pages/components/TodoList.tsx`)
+
 ## 综合关键发现 Top 10
 
 | # | 严重度 | 问题 | 来源 | 状态 |
 |---|--------|------|------|:--:|
 | 1 | 🔴 P0 | 96.2MB GIF 单文件 | #3 | ⏳ |
 | 2 | 🔴 P0 | ~~ESLint 完全不可用~~ | #4 | ✅ 已修复 |
-| 3 | 🔴 P0 | TodoList 直接修改 this.state.data | #2 | ⏳ |
+| 3 | 🔴 P0 | ~~TodoList 直接修改 this.state.data~~ | #2, #7 | ✅ 已修复 |
 | 4 | 🔴 P0 | FlatPreloader clearTimeout 清除 setInterval | #2, #3 | ⏳ |
 | 5 | 🔴 P0 | jsonEditor useEffect 无限循环风险 | #2 | ⏳ |
 | 6 | 🔴 P0 | 零代码分割，20组件同步import | #3 | ⏳ |
