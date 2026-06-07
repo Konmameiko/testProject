@@ -1,36 +1,45 @@
 import React, { Component } from 'react';
 import styles from './index.less';
-/* eslint-disable class-methods-use-this */
-export default class index extends Component {
-	timer: any | null = null;
+
+interface FlatPreloaderState {
+	currentEmoji: string;
+}
+
+export default class FlatPreloader extends Component<{}, FlatPreloaderState> {
+	timer: ReturnType<typeof setInterval> | null = null;
+
+	override state: FlatPreloaderState = {
+		currentEmoji: '\u{1F923}', // 初始回退表情 (rolling on the floor laughing)
+	};
 
 	componentDidMount() {
-		const emoji = document.getElementById('emoji_g');
-		if (emoji) {
-			this.timer = setInterval(() => {
-				emoji.style = `--emoji: "${this.generatedEmoji()}"`;
-			}, 2000);
-		}
+		this.timer = setInterval(() => {
+			this.setState({ currentEmoji: FlatPreloader.generatedEmoji() });
+		}, 2000);
 	}
 
 	componentWillUnmount() {
-		this.timer && clearTimeout(this.timer);
+		if (this.timer !== null) {
+			clearInterval(this.timer);
+			this.timer = null;
+		}
 	}
 
-	generatedEmoji = () => {
-		let emojiCode: number;
+	static generatedEmoji(): string {
 		const start = 0x1f600;
-		const start2 = 0x1f900;
 		const end = 0x1f64f;
+		const start2 = 0x1f900;
 		const end2 = 0x1f9ff;
-		const random = Math.random();
-		emojiCode =
-			random > 0.5 ? Math.floor(Math.random() * (end - start + 1)) + start : Math.floor(Math.random() * (end2 - start2 + 1)) + start2;
+		const useFirstRange = Math.random() > 0.5;
+		const emojiCode = useFirstRange
+			? Math.floor(Math.random() * (end - start + 1)) + start
+			: Math.floor(Math.random() * (end2 - start2 + 1)) + start2;
 		return String.fromCodePoint(emojiCode);
-	};
+	}
 
 	// eslint-disable-next-line class-methods-use-this
 	render() {
+		const { currentEmoji } = this.state;
 		return (
 			<div className={styles.content}>
 				<div className={styles.title}>CSS3 Loading animations</div>
@@ -146,9 +155,9 @@ export default class index extends Component {
 						<div className={styles.dash_cuatro}></div>
 					</div>
 				</div>
-				{/* loading12 */}
+				{/* loading12 — emoji 由 React state 驱动，不再使用 getElementById */}
 				<div className={styles.wrapper}>
-					<div id="emoji_g" className={styles.emoji_g}></div>
+					<div className={styles.emoji_g} style={{ '--emoji': `"${currentEmoji}"` } as React.CSSProperties}></div>
 				</div>
 				{/* loading13 */}
 				<div className={styles.wrapper}>

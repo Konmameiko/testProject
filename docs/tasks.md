@@ -1,6 +1,6 @@
 # 御坂网络 - 项目任务列表
 
-> 最后更新: 2026-06-07 22:35
+> 最后更新: 2026-06-07 23:00
 > 团队: misaka-team
 > 状态: 🔄 持续迭代中
 
@@ -15,6 +15,7 @@
 | 5 | 组件复用性与架构优化建议 | ✅ completed | 御坂19090号 | ~~#2~~ |
 | 6 | ESLint 全面修复（164→0） | ✅ completed | 御坂10032号 | ~~#4~~ |
 | 7 | 修复 TodoList 直接修改 this.state.data | ✅ completed | 御坂10032号 | ~~#2~~ |
+| 8 | 修复 FlatPreloader clearTimeout 清除 setInterval | ✅ completed | 御坂19090号, 御坂19009号, 御坂20001号 | ~~#2~~ |
 
 ## 产出汇总
 
@@ -77,14 +78,39 @@
   - 修正 `delOne` 参数类型 `Number` → `number`
 - **修改文件**：1个 (`src/pages/components/TodoList.tsx`)
 
-## 综合关键发现 Top 10
+### #8 修复 FlatPreloader clearTimeout 清除 setInterval ✅ 新增
+- **问题**：`componentWillUnmount` 中用 `clearTimeout` 尝试清除 `setInterval` 创建的定时器，API 不匹配导致定时器永不停止
+- **团队协作模式**：19090号(架构分析) + 19009号(性能扫描) → 20001号(代码修复)
+- **19090号架构审查**：
+  - 确认 clearTimeout/setInterval API 不匹配为 P0 缺陷
+  - 识别 `document.getElementById` + `element.style` 直接 DOM 操作反模式
+  - 指出 emoji 元素缺少空值检查，闭包引用无防御性保护
+  - 提出 P0→P1→P2 三层修复方案
+- **19009号性能扫描**：
+  - 全项目 14 个 timer 文件逐一审查，仅 FlatPreloader 一处 API 不匹配
+  - 量化分析：CPU 极低、DOM 操作中等、**内存泄漏严重**（组件实例无法 GC）
+  - 额外发现 2 处 P2 级缺少 unmount 清理（SlidingPhoto、sliceRender HOC）
+  - 提供 5 步修复验证方案
+- **20001号代码修复（11处改动）**：
+  1. P0：`clearTimeout` → `clearInterval`，清除后 `this.timer = null` 防二次清除
+  2. 类型：`timer: any | null` → `ReturnType<typeof setInterval> | null`
+  3. 接口：新增 `FlatPreloaderState` interface，组件声明为 `Component<{}, FlatPreloaderState>`
+  4. 状态：`override state` 显式声明，含初始 emoji 回退值 `\u{1F923}`
+  5. **DOM重构**：彻底移除 `document.getElementById('emoji_g')` + `emoji.style = ...`
+  6. **纯React驱动**：`componentDidMount` 仅调 `setState({ currentEmoji })`，render 通过 `style={{ '--emoji': ... } as React.CSSProperties}` 传递 CSS 变量
+  7. 移除 `id="emoji_g"` 属性（不再需要 DOM 查询）
+  8. 命名：`class index` → `class FlatPreloader`（PascalCase）
+  9. 重构：`generatedEmoji` 箭头函数实例方法 → `static generatedEmoji(): string`
+  10. ESLint：移除文件级 `eslint-disable`，仅保留 render() 行级禁用
+  11. 可读性：132 字符超长三元 → 具名变量 `useFirstRange`
+- **修改文件**：1个 (`src/pages/HtmlandCSS/CssEffect/FlatPreloader/index.tsx`)
 
 | # | 严重度 | 问题 | 来源 | 状态 |
 |---|--------|------|------|:--:|
 | 1 | 🔴 P0 | 96.2MB GIF 单文件 | #3 | ⏳ |
 | 2 | 🔴 P0 | ~~ESLint 完全不可用~~ | #4 | ✅ 已修复 |
 | 3 | 🔴 P0 | ~~TodoList 直接修改 this.state.data~~ | #2, #7 | ✅ 已修复 |
-| 4 | 🔴 P0 | FlatPreloader clearTimeout 清除 setInterval | #2, #3 | ⏳ |
+| 4 | 🔴 P0 | ~~FlatPreloader clearTimeout 清除 setInterval~~ | #2, #8 | ✅ 已修复 |
 | 5 | 🔴 P0 | jsonEditor useEffect 无限循环风险 | #2 | ⏳ |
 | 6 | 🔴 P0 | 零代码分割，20组件同步import | #3 | ⏳ |
 | 7 | 🟠 P1 | 85处 any 类型滥用 | #4 | ⏳ |
