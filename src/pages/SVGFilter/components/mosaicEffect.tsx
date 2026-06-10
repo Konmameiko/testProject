@@ -14,7 +14,7 @@ export default class MosaicEffect extends Component {
 	render() {
 		return (
 			<div className={styles.mosaicDemo}>
-				<img src={`${logo}?`} className={styles.mosaicImg} style={{ filter: 'url(#pixelate)' }} alt="mosaic demo" />
+				<img src={`${logo}?`} className={styles.mosaicImg} style={{ filter: 'url(#pixelate)' }} alt="mosaic demo" loading="lazy" />
 				<svg width="0" height="0">
 					<filter id="pixelate" x="0" y="0">
 						<feFlood x="4" y="4" height="2" width="2" />

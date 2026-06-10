@@ -16,11 +16,26 @@
 	border-bottom: inset 5px black;
 }
 
+// ─── 30.jpg 背景图优化 ───
+// 当前: 30.jpg 2.7MB（首页背景 + 毛玻璃叠加层，双重加载 ~5.4MB）
+// 目标: 30.webp ~300-500KB（削减 80%+）
+//
+// 转换命令（在 src/assets/images/ 目录执行）：
+//   ffmpeg -i 30.jpg -q:v 80 30.webp    ← 推荐，约 300-400KB
+//   magick 30.jpg -quality 80 30.webp   ← ImageMagick 备选
+//   cwebp -q 80 30.jpg -o 30.webp       ← libwebp 备选
+//
+// 转换完成后执行：
+//   1. 本文件两处 url('...30.jpg') → url('...30.webp')
+//   2. temporary/index.less 中一处 30.jpg → 30.webp
+//   3. 删除或 .gitignore 30.jpg（可选，webp 足以兜底）
+// ──────────────────────────────
 .homeBody {
 	position: relative;
 	display: flex;
 	width: 100%;
 	height: 100%;
+	// TODO: 转换后改为 url('../assets/images/30.webp')
 	background: url('../assets/images/30.jpg');
 	background-size: cover;
 	background-position: center;
@@ -32,6 +47,7 @@
 		top: 20%;
 		left: 10%;
 		opacity: 0.8;
+		// TODO: 转换后改为 url('../assets/images/30.webp')
 		background: url('../assets/images/30.jpg');
 		background-size: cover;
 		filter: blur(20px);

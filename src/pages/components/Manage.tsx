@@ -84,7 +84,11 @@ const Manage = () => {
 							? data?.styleData.map((item: stylyProps, index: number) => {
 									return (
 										<SwiperSlide key={item.style}>
-											<img className={`${styles.managePhoto} ${styles[item.style]}`} src={imageArr[index % 6]} />
+											<img
+												className={`${styles.managePhoto} ${styles[item.style]}`}
+												src={imageArr[index % 6]}
+												loading="lazy"
+											/>
 										</SwiperSlide>
 									);
 								})

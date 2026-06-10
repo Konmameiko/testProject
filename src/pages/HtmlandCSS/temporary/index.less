@@ -35,6 +35,9 @@
 		width: 200px;
 		height: 200px;
 		left: 600px;
+		// TODO: 30.jpg 2.7MB 对 200x200 元素严重浪费
+		// 转换后改为 ../../../assets/images/30.webp
+		// 或生成缩略图: ffmpeg -i 30.jpg -q:v 80 -vf scale=200:200 30_thumb.webp (~10KB)
 		background-image: url('../../../assets/images/30.jpg');
 		background-size: cover;
 		background-repeat: no-repeat;

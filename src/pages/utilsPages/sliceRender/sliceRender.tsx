@@ -20,7 +20,7 @@ const Item: React.FC<{ id: any }> = ({ id }) => {
 				marginRight: 50,
 			}}
 		>
-			<img src={image1} width={100} height={60} alt="" />
+			<img src={image1} width={100} height={60} alt="" loading="lazy" />
 			<p style={{ width: 80 }}>列表{id}</p>
 		</div>
 	);

@@ -75,19 +75,19 @@ export default class SlidingPhoto extends Component {
 			<div className={styles.box}>
 				<ul ref={e => (this.photolist = e)}>
 					<li className={styles.photo1} onMouseOver={this.onmouseover(0)}>
-						<img src={require('@/assets/images/3.webp')} alt="" />
+						<img src={require('@/assets/images/3.webp')} alt="" loading="lazy" />
 					</li>
 					<li className={styles.photo2} onMouseOver={this.onmouseover(1)}>
-						<img src={require('@/assets/images/4.webp')} alt="" />
+						<img src={require('@/assets/images/4.webp')} alt="" loading="lazy" />
 					</li>
 					<li className={styles.photo3} onMouseOver={this.onmouseover(2)}>
-						<img src={require('@/assets/images/7.webp')} alt="" />
+						<img src={require('@/assets/images/7.webp')} alt="" loading="lazy" />
 					</li>
 					<li className={styles.photo4} onMouseOver={this.onmouseover(3)}>
-						<img src={require('@/assets/images/28.webp')} alt="" />
+						<img src={require('@/assets/images/28.webp')} alt="" loading="lazy" />
 					</li>
 					<li className={styles.photo5} onMouseOver={this.onmouseover(4)}>
-						<img src={require('@/assets/images/25.webp')} alt="" />
+						<img src={require('@/assets/images/25.webp')} alt="" loading="lazy" />
 					</li>
 				</ul>
 			</div>

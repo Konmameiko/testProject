@@ -23,7 +23,7 @@ export default class RoundRec extends Component {
 					}}
 				/>
 				{/* 图片模糊滤镜 */}
-				<img src={img} className={styles.roundRecImg} style={{ filter: 'url(#blur)' }} alt="round blur demo" />
+				<img src={img} className={styles.roundRecImg} style={{ filter: 'url(#blur)' }} alt="round blur demo" loading="lazy" />
 				<svg width="0" height="0">
 					<filter id="blur" colorInterpolationFilters="sRGB">
 						<feGaussianBlur stdDeviation="10" />

@@ -25,58 +25,58 @@ const ImgWrapper: FC<IProps> = () => {
 	return (
 		<ul className={styles.imgWrapper}>
 			<li>
-				<img src={pic1} alt="" />
+				<img loading="lazy" src={pic1} alt="" />
 			</li>
 			<li>
-				<img src={pic2} alt="" />
+				<img loading="lazy" src={pic2} alt="" />
 			</li>
 			<li>
-				<img src={pic3} alt="" />
+				<img loading="lazy" src={pic3} alt="" />
 			</li>
 			<li>
-				<img src={pic4} alt="" />
+				<img loading="lazy" src={pic4} alt="" />
 			</li>
 			<li>
-				<img src={pic5} alt="" />
+				<img loading="lazy" src={pic5} alt="" />
 			</li>
 			<li>
-				<img src={pic6} alt="" />
+				<img loading="lazy" src={pic6} alt="" />
 			</li>
 			<li>
-				<img src={pic7} alt="" />
+				<img loading="lazy" src={pic7} alt="" />
 			</li>
 			<li>
-				<img src={pic8} alt="" />
+				<img loading="lazy" src={pic8} alt="" />
 			</li>
 			<li>
-				<img src={pic9} alt="" />
+				<img loading="lazy" src={pic9} alt="" />
 			</li>
 			<li>
-				<img src={pic10} alt="" />
+				<img loading="lazy" src={pic10} alt="" />
 			</li>
 			<li>
-				<img src={pic11} alt="" />
+				<img loading="lazy" src={pic11} alt="" />
 			</li>
 			<li>
-				<img src={pic8} alt="" />
+				<img loading="lazy" src={pic8} alt="" />
 			</li>
 			<li>
-				<img src={pic6} alt="" />
+				<img loading="lazy" src={pic6} alt="" />
 			</li>
 			<li>
-				<img src={pic3} alt="" />
+				<img loading="lazy" src={pic3} alt="" />
 			</li>
 			<li>
-				<img src={pic1} alt="" />
+				<img loading="lazy" src={pic1} alt="" />
 			</li>
 			<li>
-				<img src={pic2} alt="" />
+				<img loading="lazy" src={pic2} alt="" />
 			</li>
 			<li>
-				<img src={pic7} alt="" />
+				<img loading="lazy" src={pic7} alt="" />
 			</li>
 			<li>
-				<img src={pic9} alt="" />
+				<img loading="lazy" src={pic9} alt="" />
 			</li>
 		</ul>
 	);

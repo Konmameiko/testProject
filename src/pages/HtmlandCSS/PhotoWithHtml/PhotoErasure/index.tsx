@@ -35,7 +35,7 @@ class PhotoErasure extends Component {
                         无值或者其他值会被拉伸铺满容器
                     */
 				>
-					<img className={styles.img2} src={require('@/assets/images/8.webp')} alt="" />
+					<img className={styles.img2} src={require('@/assets/images/8.webp')} alt="" loading="lazy" />
 				</Scratch>
 			</div>
 		);
